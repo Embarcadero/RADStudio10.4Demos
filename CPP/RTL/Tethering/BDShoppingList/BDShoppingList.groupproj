@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{69AC2550-81DD-446F-A1BD-DB20735BB399}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="VCL\TetherDatabaseCpp.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Client\TetherDBClientCpp.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TetherDatabaseCpp">
+        <MSBuild Projects="VCL\TetherDatabaseCpp.cbproj"/>
+    </Target>
+    <Target Name="TetherDatabaseCpp:Clean">
+        <MSBuild Projects="VCL\TetherDatabaseCpp.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TetherDatabaseCpp:Make">
+        <MSBuild Projects="VCL\TetherDatabaseCpp.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="TetherDBClientCpp">
+        <MSBuild Projects="Client\TetherDBClientCpp.cbproj"/>
+    </Target>
+    <Target Name="TetherDBClientCpp:Clean">
+        <MSBuild Projects="Client\TetherDBClientCpp.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TetherDBClientCpp:Make">
+        <MSBuild Projects="Client\TetherDBClientCpp.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TetherDatabaseCpp;TetherDBClientCpp"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TetherDatabaseCpp:Clean;TetherDBClientCpp:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TetherDatabaseCpp:Make;TetherDBClientCpp:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

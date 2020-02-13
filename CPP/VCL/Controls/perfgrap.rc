@@ -1,0 +1,5 @@
+#include "perfgrap.rh"
+STRINGTABLE
+{
+ Exceed_RC, "Number of data points exceeds limit"
+}

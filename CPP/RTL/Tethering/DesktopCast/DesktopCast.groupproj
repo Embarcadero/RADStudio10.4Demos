@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{19C2DE34-4A2F-4465-9917-5EF2D1E8A7F1}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Mobile\FMXClientTetherDeskTopCpp.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="VCL\VCLTetherDesktopCpp.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="VCL_Client\VCLTetherClientCpp.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="FMXClientTetherDeskTopCpp">
+        <MSBuild Projects="Mobile\FMXClientTetherDeskTopCpp.cbproj"/>
+    </Target>
+    <Target Name="FMXClientTetherDeskTopCpp:Clean">
+        <MSBuild Projects="Mobile\FMXClientTetherDeskTopCpp.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FMXClientTetherDeskTopCpp:Make">
+        <MSBuild Projects="Mobile\FMXClientTetherDeskTopCpp.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="VCLTetherDesktopCpp">
+        <MSBuild Projects="VCL\VCLTetherDesktopCpp.cbproj"/>
+    </Target>
+    <Target Name="VCLTetherDesktopCpp:Clean">
+        <MSBuild Projects="VCL\VCLTetherDesktopCpp.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VCLTetherDesktopCpp:Make">
+        <MSBuild Projects="VCL\VCLTetherDesktopCpp.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="VCLTetherClientCpp">
+        <MSBuild Projects="VCL_Client\VCLTetherClientCpp.cbproj"/>
+    </Target>
+    <Target Name="VCLTetherClientCpp:Clean">
+        <MSBuild Projects="VCL_Client\VCLTetherClientCpp.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VCLTetherClientCpp:Make">
+        <MSBuild Projects="VCL_Client\VCLTetherClientCpp.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="FMXClientTetherDeskTopCpp;VCLTetherDesktopCpp;VCLTetherClientCpp"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="FMXClientTetherDeskTopCpp:Clean;VCLTetherDesktopCpp:Clean;VCLTetherClientCpp:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="FMXClientTetherDeskTopCpp:Make;VCLTetherDesktopCpp:Make;VCLTetherClientCpp:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

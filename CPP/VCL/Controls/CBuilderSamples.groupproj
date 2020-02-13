@@ -1,0 +1,48 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{07C6F66F-CA99-460B-9808-004CBDDFD792}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="bcbsmp.cbproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="dclbcbsmp.cbproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="bcbsmp">
+			<MSBuild Projects="bcbsmp.cbproj"/>
+		</Target>
+		<Target Name="bcbsmp:Clean">
+			<MSBuild Projects="bcbsmp.cbproj" Targets="Clean"/>
+		</Target>
+		<Target Name="bcbsmp:Make">
+			<MSBuild Projects="bcbsmp.cbproj" Targets="Make"/>
+		</Target>
+		<Target Name="dclbcbsmp">
+			<MSBuild Projects="dclbcbsmp.cbproj"/>
+		</Target>
+		<Target Name="dclbcbsmp:Clean">
+			<MSBuild Projects="dclbcbsmp.cbproj" Targets="Clean"/>
+		</Target>
+		<Target Name="dclbcbsmp:Make">
+			<MSBuild Projects="dclbcbsmp.cbproj" Targets="Make"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="bcbsmp;dclbcbsmp"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="bcbsmp:Clean;dclbcbsmp:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="bcbsmp:Make;dclbcbsmp:Make"/>
+		</Target>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
+	</Project>

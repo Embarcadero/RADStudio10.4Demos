@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{30ACF21A-2C43-4492-98C8-07CB86308E5E}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CppDBDataSnapServer\CppDBDataSnapServer.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="CppDBDataSnapClient\CppDBDataSnapClient.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CppDBDataSnapServer">
+        <MSBuild Projects="CppDBDataSnapServer\CppDBDataSnapServer.cbproj"/>
+    </Target>
+    <Target Name="CppDBDataSnapServer:Clean">
+        <MSBuild Projects="CppDBDataSnapServer\CppDBDataSnapServer.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CppDBDataSnapServer:Make">
+        <MSBuild Projects="CppDBDataSnapServer\CppDBDataSnapServer.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="CppDBDataSnapClient">
+        <MSBuild Projects="CppDBDataSnapClient\CppDBDataSnapClient.cbproj"/>
+    </Target>
+    <Target Name="CppDBDataSnapClient:Clean">
+        <MSBuild Projects="CppDBDataSnapClient\CppDBDataSnapClient.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CppDBDataSnapClient:Make">
+        <MSBuild Projects="CppDBDataSnapClient\CppDBDataSnapClient.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CppDBDataSnapServer;CppDBDataSnapClient"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CppDBDataSnapServer:Clean;CppDBDataSnapClient:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CppDBDataSnapServer:Make;CppDBDataSnapClient:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

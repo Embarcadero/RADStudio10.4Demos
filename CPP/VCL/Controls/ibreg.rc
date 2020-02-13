@@ -1,0 +1,28 @@
+/****************************************************************************
+
+
+ibreg.rc
+
+
+*****************************************************************************/
+
+TIBEVENTALERTER BITMAP "images\\tibeventalerter.bmp"
+
+STRINGTABLE 
+{
+ 57810, "Requested Events"
+ 57811, "&OK"
+ 57812, "Cancel"
+}
+
+STRINGTABLE 
+{
+ 57800, "You must register events before queueing them"
+ 57801, "Component is not connected to an open Database"
+ 57802, "''%s'' is not connected to an InterBase database"
+ 57803, "You cannot call CancelEvents from within an OnEventAlert handler"
+ 57804, "Invalid blank event added to EventAlerter events list"
+ 57805, "You cannot call QueueEvents from within an OnEventAlert handler"
+ 57806, "You cannot Register or Unregister events from within an OnEventAlert handler"
+ 57807, "You can only register 15 events per EventAlerter"
+}

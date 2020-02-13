@@ -1,0 +1,178 @@
+object Form3: TForm3
+  Left = 0
+  Top = 0
+  Caption = 'Form3'
+  ClientHeight = 499
+  ClientWidth = 416
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  object Image1: TImage
+    MultiResBitmap = <
+      item
+      end>
+    Align = Client
+    Size.Width = 416.000000000000000000
+    Size.Height = 355.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object ToolBar1: TToolBar
+    Align = Bottom
+    Position.Y = 451.000000000000000000
+    Size.Width = 416.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 29
+    object lbStatus: TLabel
+      Align = Client
+      StyledSettings = [Family, Style, FontColor]
+      Size.Width = 416.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'toollabel'
+      TextSettings.HorzAlign = Center
+    end
+  end
+  object ToolBar2: TToolBar
+    Size.Width = 416.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 30
+    object Label1: TLabel
+      Align = Client
+      StyledSettings = [Family, Style, FontColor]
+      Margins.Left = 5.000000000000000000
+      Size.Width = 278.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'toollabel'
+      TextSettings.HorzAlign = Center
+      Text = 'You are not connected'
+    end
+    object Button2: TButton
+      Align = Right
+      Margins.Right = 5.000000000000000000
+      Position.X = 283.000000000000000000
+      Size.Width = 128.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'toolbutton'
+      TabOrder = 9
+      Text = 'Connect'
+      OnClick = Button2Click
+    end
+  end
+  object ToolBar3: TToolBar
+    Position.Y = 48.000000000000000000
+    Size.Width = 416.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 31
+    object TakeShot: TButton
+      Action = Action1
+      Align = Left
+      Enabled = True
+      Margins.Left = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'toolbutton'
+      TabOrder = 15
+      Visible = True
+    end
+    object Button1: TButton
+      Action = Action2
+      Align = Left
+      Enabled = True
+      Margins.Left = 5.000000000000000000
+      Position.X = 107.000000000000000000
+      Size.Width = 102.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'toolbutton'
+      TabOrder = 23
+      Visible = True
+    end
+    object Button3: TButton
+      Action = Action3
+      Align = VertCenter
+      Enabled = True
+      Margins.Left = 5.000000000000000000
+      Position.X = 214.000000000000000000
+      Size.Width = 202.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'toolbutton'
+      TabOrder = 22
+      Visible = True
+    end
+  end
+  object tmCheckConnection: TTimer
+    Enabled = False
+    Interval = 2000
+    OnTimer = tmCheckConnectionTimer
+    Left = 72
+    Top = 200
+  end
+  object CommandManager: TTetheringManager
+    OnEndManagersDiscovery = CommandManagerEndManagersDiscovery
+    OnRequestManagerPassword = CommandManagerRequestManagerPassword
+    Password = 'Desktop'
+    Text = 'CommandManager'
+    AllowedAdapters = 'Network_V4'
+    Left = 168
+    Top = 376
+  end
+  object CommandApp: TTetheringAppProfile
+    Manager = CommandManager
+    Text = 'CommandApp'
+    Group = 'TetherDesktop'
+    Actions = <
+      item
+        Name = 'acFullShot'
+        IsPublic = True
+        Kind = Mirror
+        Action = Action1
+        NotifyUpdates = False
+      end
+      item
+        Name = 'acStartCast'
+        IsPublic = True
+        Kind = Mirror
+        Action = Action2
+        NotifyUpdates = False
+      end
+      item
+        Name = 'acStopCast'
+        IsPublic = True
+        Kind = Mirror
+        Action = Action3
+        NotifyUpdates = False
+      end>
+    Resources = <
+      item
+        Name = 'BmpCast'
+        IsPublic = True
+        Kind = Mirror
+        ResType = Stream
+        OnResourceReceived = CommandAppResources0ResourceReceived
+      end>
+    Left = 88
+    Top = 304
+  end
+  object ActionList1: TActionList
+    Left = 176
+    Top = 232
+    object Action1: TAction
+      Text = 'TakeShot'
+    end
+    object Action2: TAction
+      Text = 'StartCast'
+    end
+    object Action3: TAction
+      Text = 'StopCast'
+    end
+  end
+end

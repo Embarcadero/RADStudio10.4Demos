@@ -1,0 +1,35 @@
+#include <winresrc.h>
+
+LANGUAGE LANG_ENGLISH,SUBLANG_ENGLISH_US
+
+
+1 VERSIONINFO LOADONCALL MOVEABLE DISCARDABLE IMPURE
+FILEVERSION 20, 0, 4484, 48204
+PRODUCTVERSION 20, 0, 0, 0
+FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+FILEOS VOS__WINDOWS32
+FILETYPE VFT_DLL
+{
+ BLOCK "StringFileInfo"
+ {
+  BLOCK "040904E4"
+  {
+   VALUE "CompanyName", "Embarcadero Technologies, Inc.\000\000"
+   VALUE "FileDescription", "C++Builder Sample Components Package\000\000"
+   VALUE "FileVersion", "20.0.4484.48204\000"
+   VALUE "InternalName", "bcbsmp200\000\000"
+   VALUE "LegalCopyright", "Copyright \251 1998-2012 Embarcadero Technologies, Inc.\000\000"
+   VALUE "OriginalFilename", "bcbsmp170.BPL\000\000"
+   VALUE "ProductName", "Embarcadero C++Builder\000\000"
+   VALUE "ProductVersion", "20.0\000\000"
+  }
+
+ }
+
+ BLOCK "VarFileInfo"
+ {
+  VALUE "Translation", 1033, 1252
+ }
+
+}
+

@@ -1,0 +1,157 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 567
+  ClientWidth = 384
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 3
+  object ListView1: TListView
+    ItemAppearanceClassName = 'TCustomizeItemObjects'
+    ItemEditAppearanceClassName = 'TCustomizeItemObjects'
+    HeaderAppearanceClassName = 'TListHeaderObjects'
+    FooterAppearanceClassName = 'TListHeaderObjects'
+    Align = Client
+    Size.Width = 384.000000000000000000
+    Size.Height = 450.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    ItemAppearanceObjects.ItemObjects.Detail.Visible = True
+    ItemAppearanceObjects.ItemObjects.Detail.PlaceOffset.X = 50.000000000000000000
+    ItemAppearanceObjects.ItemObjects.Image.PlaceOffset.X = 50.000000000000000000
+    ItemAppearanceObjects.ItemObjects.Accessory.AccessoryType = Detail
+    ItemAppearanceObjects.ItemObjects.TextButton.Visible = True
+    ItemAppearanceObjects.ItemObjects.TextButton.Text = 'Buy 100'
+    ItemAppearanceObjects.ItemObjects.GlyphButton.ButtonType = Add
+    ItemAppearanceObjects.ItemObjects.GlyphButton.Width = 20.000000000000000000
+    ItemAppearanceObjects.ItemObjects.GlyphButton.Align = Trailing
+    OnButtonClick = ListView1ButtonClick
+  end
+  object Label1: TLabel
+    Align = Top
+    Size.Width = 384.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.HorzAlign = Center
+    Text = 'Tether Shopping List'
+  end
+  object Label2: TLabel
+    Align = Top
+    StyledSettings = [Family, Style, FontColor]
+    Position.Y = 23.000000000000000000
+    Size.Width = 384.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 14.000000000000000000
+    Text = 'You are not connected'
+  end
+  object Button1: TButton
+    Align = Bottom
+    Position.Y = 523.000000000000000000
+    Size.Width = 384.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = 'Connect'
+    OnClick = Button1Click
+  end
+  object tmCheckConnection: TTimer
+    Enabled = False
+    Interval = 2000
+    OnTimer = tmCheckConnectionTimer
+    Left = 32
+    Top = 304
+  end
+  object TetherBDTestManager: TTetheringManager
+    OnRequestManagerPassword = TetherBDTestManagerRequestManagerPassword
+    OnRemoteManagerShutdown = TetherBDTestManagerRemoteManagerShutdown
+    OnEndAutoConnect = TetherBDTestManagerEndAutoConnect
+    Password = 'TetherBDTestClient'
+    Text = 'TetherBDTestManager'
+    AllowedAdapters = 'Network_V4'
+    Left = 232
+    Top = 296
+  end
+  object TetherBDTestProfile: TTetheringAppProfile
+    Manager = TetherBDTestManager
+    Text = 'TetherBDTestProfile'
+    Group = 'TetherBDTestGroup'
+    Actions = <
+      item
+        Name = 'acGetList'
+        IsPublic = True
+        Kind = Mirror
+        Action = actGetList
+        NotifyUpdates = False
+      end>
+    Resources = <
+      item
+        Name = 'ResShoppingList'
+        IsPublic = True
+        Kind = Mirror
+        OnResourceReceived = TetherBDTestProfileResources0ResourceReceived
+      end>
+    Left = 216
+    Top = 392
+  end
+  object PrototypeBindSource1: TPrototypeBindSource
+    AutoActivate = True
+    AutoPost = False
+    FieldDefs = <
+      item
+        Name = 'Bitmap1'
+        FieldType = ftBitmap
+        Generator = 'Bitmaps'
+        ReadOnly = False
+      end
+      item
+        Name = 'IntField1'
+        FieldType = ftInteger
+        Generator = 'Integers'
+        ReadOnly = False
+      end
+      item
+        Name = 'ColorsName1'
+        Generator = 'ColorsNames'
+        ReadOnly = False
+      end>
+    ScopeMappings = <>
+    Left = 264
+    Top = 144
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkFillControlToFieldColorsName1: TLinkFillControlToField
+      Category = 'Quick Bindings'
+      Control = ListView1
+      Track = True
+      FillDataSource = PrototypeBindSource1
+      FillDisplayFieldName = 'IntField1'
+      AutoFill = True
+      FillExpressions = <
+        item
+          SourceMemberName = 'Bitmap1'
+          ControlMemberName = 'Bitmap'
+        end
+        item
+          SourceMemberName = 'ColorsName1'
+          ControlMemberName = 'Detail'
+        end>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+  end
+  object ActionList1: TActionList
+    Left = 24
+    Top = 200
+    object actGetList: TAction
+      Text = 'Get List'
+    end
+  end
+end

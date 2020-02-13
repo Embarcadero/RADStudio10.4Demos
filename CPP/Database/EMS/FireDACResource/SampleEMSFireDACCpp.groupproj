@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{79E1F69F-AEEA-4D60-A926-D4637B7D9627}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="SampleEMSFireDACClientCpp.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SampleEMSFireDACResourcePackageCpp.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SampleEMSFireDACClientCpp">
+        <MSBuild Projects="SampleEMSFireDACClientCpp.cbproj"/>
+    </Target>
+    <Target Name="SampleEMSFireDACClientCpp:Clean">
+        <MSBuild Projects="SampleEMSFireDACClientCpp.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SampleEMSFireDACClientCpp:Make">
+        <MSBuild Projects="SampleEMSFireDACClientCpp.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="SampleEMSFireDACResourcePackageCpp">
+        <MSBuild Projects="SampleEMSFireDACResourcePackageCpp.cbproj"/>
+    </Target>
+    <Target Name="SampleEMSFireDACResourcePackageCpp:Clean">
+        <MSBuild Projects="SampleEMSFireDACResourcePackageCpp.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SampleEMSFireDACResourcePackageCpp:Make">
+        <MSBuild Projects="SampleEMSFireDACResourcePackageCpp.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SampleEMSFireDACClientCpp;SampleEMSFireDACResourcePackageCpp"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SampleEMSFireDACClientCpp:Clean;SampleEMSFireDACResourcePackageCpp:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SampleEMSFireDACClientCpp:Make;SampleEMSFireDACResourcePackageCpp:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

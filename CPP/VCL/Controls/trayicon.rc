@@ -1,0 +1,6 @@
+#include "trayicon.rh"
+STRINGTABLE
+{
+  sCannotCreate "Cannot Create System Shell Notification Icon"
+  sCannotRemove "Cannot Remove System Shell Notification Icon"
+}

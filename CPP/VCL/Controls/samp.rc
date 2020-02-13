@@ -1,0 +1,9 @@
+#include "samp.h"
+STRINGTABLE
+{
+ Tab_101, "Samples"
+ Exceed_RC, "Number of data points exceeds limit"
+ StartAngle_RC, "StartAngle = "
+ EndAngle_RC, "EndAngle = "
+ EditAngle_RC, "Edit Angles"
+}

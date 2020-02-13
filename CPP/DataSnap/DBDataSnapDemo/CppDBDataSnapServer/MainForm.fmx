@@ -1,0 +1,47 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'C++Builder DataBase Data Snap Server'
+  ClientHeight = 193
+  ClientWidth = 429
+  FormFactor.Width = 1440
+  FormFactor.Height = 900
+  FormFactor.Devices = [dkDesktop]
+  DesignerMobile = False
+  DesignerWidth = 0
+  DesignerHeight = 0
+  DesignerDeviceName = ''
+  DesignerOrientation = 0
+  object Label1: TLabel
+    Height = 15.000000000000000000
+    Position.X = 56.000000000000000000
+    Position.Y = 32.000000000000000000
+    Text = 'Number of Connected Clients:'
+    Width = 192.000000000000000000
+  end
+  object ClientsLabel: TLabel
+    Height = 15.000000000000000000
+    Position.X = 256.000000000000000000
+    Position.Y = 32.000000000000000000
+    Text = '0'
+    Width = 120.000000000000000000
+  end
+  object DSServer1: TDSServer
+    OnConnect = DSServer1Connect
+    OnDisconnect = DSServer1Disconnect
+    Left = 64
+    Top = 96
+  end
+  object DSServerClass1: TDSServerClass
+    OnGetClass = DSServerClass1GetClass
+    Server = DSServer1
+    Left = 176
+    Top = 96
+  end
+  object DSTCPServerTransport1: TDSTCPServerTransport
+    Server = DSServer1
+    Filters = <>
+    Left = 296
+    Top = 96
+  end
+end

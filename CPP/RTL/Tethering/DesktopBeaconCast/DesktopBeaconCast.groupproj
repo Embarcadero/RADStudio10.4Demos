@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{6CE70B23-8D23-4790-A0B2-A183376BAA22}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="VCLBeaconCastDesktop\VCLBeaconCastDesktop.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="FMXClientBeaconCast\FMXClientBeaconCast.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="VCLBeaconCastDesktop">
+        <MSBuild Projects="VCLBeaconCastDesktop\VCLBeaconCastDesktop.cbproj"/>
+    </Target>
+    <Target Name="VCLBeaconCastDesktop:Clean">
+        <MSBuild Projects="VCLBeaconCastDesktop\VCLBeaconCastDesktop.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VCLBeaconCastDesktop:Make">
+        <MSBuild Projects="VCLBeaconCastDesktop\VCLBeaconCastDesktop.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="FMXClientBeaconCast">
+        <MSBuild Projects="FMXClientBeaconCast\FMXClientBeaconCast.cbproj"/>
+    </Target>
+    <Target Name="FMXClientBeaconCast:Clean">
+        <MSBuild Projects="FMXClientBeaconCast\FMXClientBeaconCast.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FMXClientBeaconCast:Make">
+        <MSBuild Projects="FMXClientBeaconCast\FMXClientBeaconCast.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="VCLBeaconCastDesktop;FMXClientBeaconCast"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="VCLBeaconCastDesktop:Clean;FMXClientBeaconCast:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="VCLBeaconCastDesktop:Make;FMXClientBeaconCast:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

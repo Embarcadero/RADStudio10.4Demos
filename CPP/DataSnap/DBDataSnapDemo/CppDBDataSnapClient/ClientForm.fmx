@@ -1,0 +1,143 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'C++Builder Database DataSnap Client'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 1440
+  FormFactor.Height = 900
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object CheckBox1: TCheckBox
+    Position.X = 208.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 233.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Connect to DataSnap Server'
+    OnChange = CheckBox1Change
+  end
+  object GridBindSourceDB1: TGrid
+    Position.X = 32.000000000000000000
+    Position.Y = 96.000000000000000000
+    Size.Width = 585.000000000000000000
+    Size.Height = 169.000000000000000000
+    Size.PlatformDefault = False
+    RowCount = 0
+    RowHeight = 21.000000000000000000
+    Viewport.Width = 581.000000000000000000
+    Viewport.Height = 144.000000000000000000
+  end
+  object NavigatorBindSourceDB1: TBindNavigator
+    Position.X = 184.000000000000000000
+    Position.Y = 56.000000000000000000
+    Size.Width = 240.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    DataSource = BindSourceDB1
+    xRadius = 4.000000000000000000
+    yRadius = 4.000000000000000000
+  end
+  object GridBindSourceDB2: TGrid
+    Position.X = 32.000000000000000000
+    Position.Y = 312.000000000000000000
+    Size.Width = 585.000000000000000000
+    Size.Height = 100.000000000000000000
+    Size.PlatformDefault = False
+    RowCount = 0
+    RowHeight = 21.000000000000000000
+    Viewport.Width = 581.000000000000000000
+    Viewport.Height = 75.000000000000000000
+  end
+  object NavigatorBindSourceDB2: TBindNavigator
+    Position.X = 200.000000000000000000
+    Position.Y = 280.000000000000000000
+    Size.Width = 240.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    DataSource = BindSourceDB2
+    xRadius = 4.000000000000000000
+    yRadius = 4.000000000000000000
+  end
+  object SQLConnection1: TSQLConnection
+    DriverName = 'DataSnap'
+    LoginPrompt = False
+    Params.Strings = (
+      'DriverUnit=Data.DBXDataSnap'
+      'HostName=localhost'
+      'Port=211'
+      'CommunicationProtocol=tcp/ip'
+      'DatasnapContext=datasnap/'
+      
+        'DriverAssemblyLoader=Borland.Data.TDBXClientDriverLoader,Borland' +
+        '.Data.DbxClientDriver,Version=17.0.0.0,Culture=neutral,PublicKey' +
+        'Token=91d62ebb5b0d1b1b')
+    Left = 552
+    Top = 48
+  end
+  object CustDSProviderConnection: TDSProviderConnection
+    ServerClassName = 'TDSServerModule1'
+    SQLConnection = SQLConnection1
+    Left = 552
+    Top = 112
+  end
+  object CustClientDataSet: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'CustDataSetProvider'
+    RemoteServer = CustDSProviderConnection
+    Left = 552
+    Top = 176
+  end
+  object CustDataSource: TDataSource
+    DataSet = CustClientDataSet
+    Left = 552
+    Top = 232
+  end
+  object SalesDSProviderConnection: TDSProviderConnection
+    ServerClassName = 'TDSServerModule1'
+    SQLConnection = SQLConnection1
+    Left = 552
+    Top = 304
+  end
+  object SalesClientDataSet: TClientDataSet
+    Aggregates = <>
+    IndexFieldNames = 'CUST_NO'
+    MasterFields = 'CUST_NO'
+    MasterSource = CustDataSource
+    PacketRecords = 0
+    Params = <>
+    ProviderName = 'SalesDataSetProvider'
+    RemoteServer = SalesDSProviderConnection
+    Left = 552
+    Top = 368
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 28
+    Top = 5
+    object LinkGridToDataSource1: TLinkGridToDataSource
+      DataSource = BindSourceDB1
+      GridControl = GridBindSourceDB1
+      Columns = <>
+    end
+    object LinkGridToDataSource2: TLinkGridToDataSource
+      DataSource = BindSourceDB2
+      GridControl = GridBindSourceDB2
+      Columns = <>
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = CustClientDataSet
+    ScopeMappings = <>
+    Left = 24
+    Top = 64
+  end
+  object BindSourceDB2: TBindSourceDB
+    DataSet = SalesClientDataSet
+    ScopeMappings = <>
+    Left = 16
+    Top = 280
+  end
+end

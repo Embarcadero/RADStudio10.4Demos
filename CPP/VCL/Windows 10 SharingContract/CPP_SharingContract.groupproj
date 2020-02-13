@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{76D69074-8483-42EF-AECB-292D3DF9519F}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Component\SharingContractComponent.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="FrameWork\SharingContractFramework.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SharingContractComponent">
+        <MSBuild Projects="Component\SharingContractComponent.cbproj"/>
+    </Target>
+    <Target Name="SharingContractComponent:Clean">
+        <MSBuild Projects="Component\SharingContractComponent.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SharingContractComponent:Make">
+        <MSBuild Projects="Component\SharingContractComponent.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="SharingContractFramework">
+        <MSBuild Projects="FrameWork\SharingContractFramework.cbproj"/>
+    </Target>
+    <Target Name="SharingContractFramework:Clean">
+        <MSBuild Projects="FrameWork\SharingContractFramework.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SharingContractFramework:Make">
+        <MSBuild Projects="FrameWork\SharingContractFramework.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SharingContractComponent;SharingContractFramework"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SharingContractComponent:Clean;SharingContractFramework:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SharingContractComponent:Make;SharingContractFramework:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
