@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="xf4khz30jxow4l7ep_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="design:view:::v3n2jpp0bch_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractDataTabForm.TAbstractDataTabForm" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractDataTabForm.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::ogdeowlmnye_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMeetingDM.TMeetingDM" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMeetingDM.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::0i0tqsylpcq_v">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="design:view:::i0qahap88es_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractDataForm.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::wyri5gr7f4s_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uRoomControl.TRoomControl" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uRoomControl.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::obdh0t1d08n_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uRecError.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uRecError.TReconcileErrorForm" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uRecError.TFieldData" />
+    </reference>
+    <reference referencedUin="design:view:::qva1a5nshhn_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractControl.TAbstractControl" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractControl.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::6nygfp7dx0s_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uRoomForm.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uRoomForm.TRoomForm" />
+    </reference>
+    <reference referencedUin="design:view:::d925g8gkz3p_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMainForm.TMainForm" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMainForm.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::kpyxvkpjbmp_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uRoomDM.TRoomDM" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uRoomDM.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::i3qbkfkwqyj_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMeetingForm.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMeetingForm.TMeetingForm" />
+    </reference>
+    <reference referencedUin="design:view:::hp3io92hsor_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uUserForm.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uUserForm.TUserForm" />
+    </reference>
+    <reference referencedUin="design:view:::z0rci934ndi_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uUserDM.TUserDM" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uUserDM.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::8y4a6102dfq_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMsgControl.TMsgControl" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMsgControl.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::p8by1oc9rh_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uUserLoginForm.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uUserLoginForm.TUserLoginForm" />
+    </reference>
+    <reference referencedUin="design:view:::zbkp80swb3l_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractDataModule.TAbstractDataModule" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractDataModule.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::h54le3x7ztp_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMeetingTimeRoomForm.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMeetingTimeRoomForm.TMeetingTimeRoomForm" />
+    </reference>
+    <reference referencedUin="design:view:::w4qoe643bkg_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMainDM.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMainDM.TMainDM" />
+    </reference>
+    <reference referencedUin="design:view:::fk25bx9775i_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractForm.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractForm.TAbstractForm" />
+    </reference>
+    <reference referencedUin="design:view:::d6hl1bsukjqev573p_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMeetingControl.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMeetingControl.TMeetingControl" />
+    </reference>
+    <reference referencedUin="design:view:::y52kudm8q6pys3doj_v">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uUserControl.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uUserControl.TUserControl" />
+    </reference>
+  </view>
+</nodeSet>

@@ -1,0 +1,45 @@
+inherited ABSMainForm_iPhone4in: TABSMainForm_iPhone4in
+  ClientHeight = 548
+  ClientWidth = 320
+  DesignerMasterStyle = 0
+  inherited TabControl1: TTabControl
+    Size.Width = 320.000000000000000000
+    Size.Height = 548.000000000000000000
+    TabHeight = 49.000000000000000000
+    inherited TabItem1: TTabItem
+      Size.Width = 106.000000000000000000
+      Size.Height = 49.000000000000000000
+      ExplicitSize.cx = 63.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      inherited Memo2: TMemo
+        Size.Width = 320.000000000000000000
+        Size.Height = 499.000000000000000000
+        Viewport.Width = 307.000000000000000000
+        Viewport.Height = 491.000000000000000000
+      end
+    end
+    inherited GridTab: TTabItem
+      Size.Width = 106.000000000000000000
+      Size.Height = 49.000000000000000000
+      ExplicitSize.cx = 42.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      inherited Grid1: TGrid
+        Viewport.Width = 30.000000000000000000
+        Viewport.Height = 0.000000000000000000
+      end
+    end
+    inherited JsonTab: TTabItem
+      Size.Width = 108.000000000000000000
+      Size.Height = 49.000000000000000000
+      ExplicitSize.cx = 43.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      inherited Memo1: TMemo
+        Viewport.Width = 50.000000000000000000
+        Viewport.Height = 50.000000000000000000
+      end
+    end
+  end
+  inherited Label1: TLabel
+    Visible = False
+  end
+end

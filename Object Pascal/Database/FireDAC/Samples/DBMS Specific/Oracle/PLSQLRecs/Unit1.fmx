@@ -1,0 +1,126 @@
+object frmMain: TfrmMain
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 280
+  ClientWidth = 530
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Button1: TButton
+    Position.X = 16.000000000000000000
+    Position.Y = 16.000000000000000000
+    TabOrder = 4
+    Text = 'Run'
+    OnClick = Button1Click
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Lines.Strings = (
+      
+        'The demo calls ClientPack.ClntProc PL/SQL stored procedure, whic' +
+        'h has:'
+      '* p_ord_data parameter of a PL/SQL record type;'
+      '* result of a PL/SQL record type.'
+      'Pay attention to:'
+      '1) The setup of FDStoredProc1 parameter.'
+      '2) The code executing stored proc.'
+      '')
+    Position.X = 16.000000000000000000
+    Position.Y = 48.000000000000000000
+    Size.Width = 497.000000000000000000
+    Size.Height = 217.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Viewport.Width = 493.000000000000000000
+    Viewport.Height = 213.000000000000000000
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'ConnectionDef=Oracle_Demo')
+    Left = 64
+    Top = 88
+  end
+  object FDStoredProc1: TFDStoredProc
+    Connection = FDConnection1
+    PackageName = 'CLIENTPACK'
+    StoredProcName = 'CLNTPROC'
+    Left = 184
+    Top = 88
+    ParamData = <
+      item
+        Position = 1
+        Name = 'RESULT$RATE'
+        DataType = ftFMTBcd
+        FDDataType = dtFmtBCD
+        Precision = 38
+        ParamType = ptResult
+      end
+      item
+        Position = 2
+        Name = 'RESULT$DISCOUNT'
+        DataType = ftFMTBcd
+        FDDataType = dtFmtBCD
+        Precision = 38
+        ParamType = ptResult
+      end
+      item
+        Position = 3
+        Name = 'P_ORD_DATA$ORD_ID'
+        DataType = ftFMTBcd
+        FDDataType = dtFmtBCD
+        Precision = 38
+        ParamType = ptInput
+      end
+      item
+        Position = 4
+        Name = 'P_ORD_DATA$CLIENT_DATA$CLIENT_ID'
+        DataType = ftFMTBcd
+        FDDataType = dtFmtBCD
+        Precision = 38
+        ParamType = ptInput
+      end
+      item
+        Position = 5
+        Name = 'P_ORD_DATA$CLIENT_DATA$NAME'
+        DataType = ftString
+        FDDataType = dtAnsiString
+        ParamType = ptInput
+        Size = 10
+      end
+      item
+        Position = 6
+        Name = 'P_ORD_DATA$CLIENT_DATA$ACT'
+        DataType = ftInteger
+        FDDataType = dtInt32
+        ParamType = ptInput
+      end
+      item
+        Position = 7
+        Name = 'P_ORD_DATA$SUMMA'
+        DataType = ftFMTBcd
+        FDDataType = dtFmtBCD
+        Precision = 38
+        ParamType = ptInput
+      end
+      item
+        Position = 8
+        Name = 'P_TEST'
+        DataType = ftInteger
+        FDDataType = dtInt32
+        ParamType = ptInputOutput
+      end>
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'FMX'
+    ScreenCursor = gcrHourGlass
+    Left = 64
+    Top = 192
+  end
+  object FDPhysOracleDriverLink1: TFDPhysOracleDriverLink
+    Left = 184
+    Top = 192
+  end
+end

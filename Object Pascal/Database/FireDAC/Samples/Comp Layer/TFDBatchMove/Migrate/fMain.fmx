@@ -1,0 +1,173 @@
+object frmMain: TfrmMain
+  Left = 0
+  Top = 0
+  Caption = 'Migrate MS Access DB to SQLite'
+  ClientHeight = 372
+  ClientWidth = 547
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Label1: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = '&Source MDB file:'
+  end
+  object edtSrcFile: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Anchors = [akLeft, akTop, akRight]
+    TabOrder = 1
+    Text = 'U:\Embarcadero\FireDAC\DB\Data\FDDemo.mdb'
+    Position.X = 128.000000000000000000
+    Position.Y = 13.000000000000000000
+    Size.Width = 377.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Label2: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 40.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = '&Destination SDB file:'
+  end
+  object edtDestFile: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Anchors = [akLeft, akTop, akRight]
+    TabOrder = 4
+    Text = 'c:\temp\aaa.sdb'
+    Position.X = 128.000000000000000000
+    Position.Y = 37.000000000000000000
+    Size.Width = 377.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Button1: TButton
+    Anchors = [akTop, akRight]
+    Position.X = 508.000000000000000000
+    Position.Y = 13.000000000000000000
+    Size.Width = 25.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = '...'
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Anchors = [akTop, akRight]
+    Position.X = 508.000000000000000000
+    Position.Y = 37.000000000000000000
+    Size.Width = 25.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Text = '...'
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Position.X = 16.000000000000000000
+    Position.Y = 64.000000000000000000
+    TabOrder = 10
+    Text = 'Convert'
+    OnClick = Button3Click
+  end
+  object ProgressBar1: TProgressBar
+    Anchors = [akLeft, akTop, akRight]
+    Orientation = Horizontal
+    Position.X = 128.000000000000000000
+    Position.Y = 64.000000000000000000
+    Size.Width = 377.000000000000000000
+    Size.Height = 20.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Label3: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 96.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Conversion log:'
+  end
+  object mmLog: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Position.X = 16.000000000000000000
+    Position.Y = 120.000000000000000000
+    Size.Width = 489.000000000000000000
+    Size.Height = 241.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 15
+    Viewport.Width = 485.000000000000000000
+    Viewport.Height = 237.000000000000000000
+  end
+  object OpenDialog1: TOpenDialog
+    Filter = 'MDB files|*.mdb|AccDB files|*.accdb|All files|*.*'
+    Left = 440
+    Top = 8
+  end
+  object SaveDialog1: TSaveDialog
+    Filter = 'SDB files|*.sdb|All files|*.*'
+    Left = 440
+    Top = 64
+  end
+  object conSrc: TFDConnection
+    Params.Strings = (
+      'DriverID=MSAcc')
+    Left = 80
+    Top = 128
+  end
+  object conDest: TFDConnection
+    Params.Strings = (
+      'DriverID=SQLite')
+    Left = 200
+    Top = 128
+  end
+  object bmTransfer: TFDBatchMove
+    Reader = bmReader
+    Writer = bmWriter
+    Mappings = <>
+    LogFileName = 'Data.log'
+    Left = 136
+    Top = 192
+  end
+  object bmWriter: TFDBatchMoveSQLWriter
+    Connection = conDest
+    Left = 184
+    Top = 216
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'FMX'
+    Left = 48
+    Top = 280
+  end
+  object FDPhysMSAccessDriverLink1: TFDPhysMSAccessDriverLink
+    Left = 120
+    Top = 280
+  end
+  object FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink
+    Left = 200
+    Top = 280
+  end
+  object mqSrcTables: TFDMetaInfoQuery
+    Connection = conSrc
+    TableKinds = [tkTable]
+    ObjectScopes = [osMy, osOther]
+    Left = 136
+    Top = 144
+  end
+  object bmReader: TFDBatchMoveDataSetReader
+    DataSet = tblSrc
+    Left = 80
+    Top = 216
+  end
+  object tblSrc: TFDTable
+    Connection = conSrc
+    Left = 32
+    Top = 216
+  end
+end

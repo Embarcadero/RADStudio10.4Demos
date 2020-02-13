@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="6nygfp7dx0s_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uRoomForm.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:l_ast:src:MeetingOrganizer:uRoomForm.@unitclass.fRoomForm" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRoomForm.@unitclass.fRoomForm" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uRoomForm.TRoomForm">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRoomForm.TRoomForm.Label4" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRoomForm.TRoomForm.DBEdit1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRoomForm.TRoomForm.Label3" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRoomForm.TRoomForm.FormDestroy(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRoomForm.TRoomForm.Label2" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRoomForm.TRoomForm.DBEdit4" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRoomForm.TRoomForm.DBEdit2" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRoomForm.TRoomForm.Label1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRoomForm.TRoomForm.DBEdit3" />
+    </reference>
+  </view>
+</nodeSet>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="wyri5gr7f4s_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uRoomControl.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uRoomControl.TRoomControl">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="244,1,199,205" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRoomControl.TRoomControl.CreateDefaultDM()" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRoomControl.TRoomControl.fRoomDM" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRoomControl.TRoomControl.Destroy()" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRoomControl.TRoomControl.FindRoomName(System.Integer,System.string)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRoomControl.TRoomControl.FInstance" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRoomControl.TRoomControl.GetInstance()" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRoomControl.TRoomControl.Create(Classes.TComponent)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRoomControl.TRoomControl.CreateDefaultForm()" />
+      <reference referencedUin="delphi:l_ast:src:MeetingOrganizer:uRoomControl.TRoomControl.FInstance">
+        <property name="sourceAnchor" value="443,198" />
+        <property name="targetAnchor" value="435,206" />
+        <property name="bendpoints" value="476,198,476,239,435,239" />
+        <property name="bounds_setted_by_user" value="True" />
+      </reference>
+    </reference>
+    <reference referencedUin="design:node:::fj12ne0tq_n">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,10,215,79" />
+      <reference referencedUin="design:link:::0j120wgwi_l:fj12ne0tq_n">
+        <property name="sourceAnchor" value="225,49" />
+        <property name="targetAnchor" value="244,49" />
+        <property name="bendpoints" value="" />
+        <reference referencedUin="label:@supplierRole:design:link:::0j120wgwi_l:fj12ne0tq_n">
+          <property name="bounds" value="188,-20,56,16" />
+        </reference>
+      </reference>
+    </reference>
+  </view>
+</nodeSet>

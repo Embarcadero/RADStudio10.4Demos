@@ -1,0 +1,196 @@
+object ClientForm: TClientForm
+  Left = 0
+  Top = 0
+  Caption = 'Client Form'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object Panel2: TPanel
+    StyleName = 'Panelstyle'
+    Align = Bottom
+    Position.Y = 448.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    object Button1: TButton
+      StyleName = 'Buttonstyle'
+      Position.X = 8.000000000000000000
+      Position.Y = 6.000000000000000000
+      Size.Width = 100.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Reverse String'
+      OnClick = Button1Click
+    end
+  end
+  object Panel1: TPanel
+    StyleName = 'Panelstyle'
+    Align = MostTop
+    Size.Width = 640.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    object Button2: TButton
+      StyleName = 'Buttonstyle'
+      Action = ActionGetTables
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 16.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 110.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Visible = True
+    end
+    object Button3: TButton
+      StyleName = 'Buttonstyle'
+      Action = ActionPostUpdates
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 144.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 110.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Visible = True
+    end
+    object httpCheckBox: TCheckBox
+      Anchors = [akTop, akRight]
+      Position.X = 552.000000000000000000
+      Position.Y = 14.000000000000000000
+      Size.Width = 73.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = 'http'
+      OnChange = httpCheckBoxChange
+    end
+    object RESTCheckBox: TCheckBox
+      Anchors = [akTop, akRight]
+      Position.X = 464.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 73.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      Text = 'REST'
+      OnChange = RESTCheckBoxChange
+    end
+    object Button4: TButton
+      StyleName = 'Buttonstyle'
+      Action = ActionCancelUpdates
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 264.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 110.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Visible = True
+    end
+  end
+  object StringGrid1: TStringGrid
+    StyleName = 'gridstyle'
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 207.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 8
+    RowCount = 100
+    RowHeight = 21.000000000000000000
+    Viewport.Width = 636.000000000000000000
+    Viewport.Height = 182.000000000000000000
+  end
+  object StringGrid2: TStringGrid
+    StyleName = 'gridstyle'
+    Align = Bottom
+    Position.Y = 256.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 192.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    RowCount = 100
+    RowHeight = 21.000000000000000000
+    Viewport.Width = 636.000000000000000000
+    Viewport.Height = 167.000000000000000000
+  end
+  object ActionList1: TActionList
+    Left = 456
+    Top = 427
+    object ActionGetTables: TAction
+      Text = 'Get Tables'
+      OnExecute = ActionGetTablesExecute
+    end
+    object ActionPostUpdates: TAction
+      Text = 'Post Updates'
+      OnExecute = ActionPostUpdatesExecute
+      OnUpdate = ActionPostUpdatesUpdate
+    end
+    object ActionCancelUpdates: TAction
+      Text = 'Cancel Updates'
+      OnExecute = ActionCancelUpdatesExecute
+      OnUpdate = ActionPostUpdatesUpdate
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = DataModuleFDClient.mtCustomers
+    ScopeMappings = <>
+    Left = 496
+    Top = 136
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 580
+    Top = 429
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = StringGrid1
+      Columns = <>
+    end
+    object LinkGridToDataSourceBindSourceDB2: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB2
+      GridControl = StringGrid2
+      Columns = <>
+    end
+  end
+  object BindSourceDB2: TBindSourceDB
+    DataSet = DataModuleFDClient.mtOrders
+    ScopeMappings = <>
+    Left = 496
+    Top = 344
+  end
+  object SQLConnection1: TSQLConnection
+    DriverName = 'DataSnap'
+    LoginPrompt = False
+    Params.Strings = (
+      'DriverUnit=Data.DbxDatasnap'
+      'HostName=localhost'
+      'Port=211'
+      'CommunicationProtocol=tcp/ip'
+      'DatasnapContext=datasnap/'
+      'Filters={}')
+    Left = 240
+    Top = 136
+    UniqueId = '{2B6F340E-CD3B-4DDA-8A01-7FC14E4900FB}'
+  end
+  object DSRestConnection1: TDSRestConnection
+    Host = 'localhost'
+    Port = 8080
+    LoginPrompt = False
+    Left = 88
+    Top = 136
+    UniqueId = '{804105A7-2297-44EE-842A-AC92F897C008}'
+  end
+end

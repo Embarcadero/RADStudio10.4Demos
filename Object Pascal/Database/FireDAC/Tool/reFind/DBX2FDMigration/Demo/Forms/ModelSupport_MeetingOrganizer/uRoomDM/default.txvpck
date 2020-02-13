@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="kpyxvkpjbmp_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uRoomDM.TRoomDM">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRoomDM.TRoomDM.cdsControlNAME" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRoomDM.TRoomDM.sqlControlROOM_ID" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRoomDM.TRoomDM.sqlControlLOCATION" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRoomDM.TRoomDM.sqlControlCAPACITY" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRoomDM.TRoomDM.cdsControlCAPACITY" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRoomDM.TRoomDM.cdsControlBeforePost(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRoomDM.TRoomDM.cdsControlLOCATION" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRoomDM.TRoomDM.cdsControlROOM_ID" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRoomDM.TRoomDM.sqlControlNAME" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uRoomDM.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

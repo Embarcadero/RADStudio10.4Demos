@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="z0rci934ndi_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uUserDM.TUserDM">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserDM.TUserDM.cdsControlISADMIN" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserDM.TUserDM.cdsControlPASSW" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserDM.TUserDM.sqlControlPHONE" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uUserDM.TUserDM.cdsControlISADMINGetText(DB.TField,ref@System.string,System.Boolean)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserDM.TUserDM.cdsControlEMAIL" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uUserDM.TUserDM.cdsControlBeforePost(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserDM.TUserDM.sqlControlEMAIL" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uUserDM.TUserDM.dspControlBeforeUpdateRecord(System.TObject,DB.TDataSet,DBClient.TCustomClientDataSet,DB.TUpdateKind,ref@System.Boolean)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserDM.TUserDM.cdsControlLOGIN" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserDM.TUserDM.cdsControlPHONE" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserDM.TUserDM.sqlControlPASSW" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserDM.TUserDM.cdsControlUSER_ID" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserDM.TUserDM.cdsControlNAME" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserDM.TUserDM.sqlControlLOGIN" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserDM.TUserDM.sqlControlISADMIN" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserDM.TUserDM.sqlControlNAME" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserDM.TUserDM.sqlControlUSER_ID" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uUserDM.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

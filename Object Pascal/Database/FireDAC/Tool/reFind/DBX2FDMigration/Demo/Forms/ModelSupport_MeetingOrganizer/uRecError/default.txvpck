@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="obdh0t1d08n_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uRecError.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.@unitclass.SCaption" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.@unitclass.SValue" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.@unitclass.UpdateKindStr" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.@unitclass.SAdt" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.@unitclass.SBinary" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.@unitclass.SArray" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRecError.@unitclass.VarToString(System.Variant,DB.TFieldType)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.@unitclass.SUnchanged" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRecError.@unitclass.HandleReconcileError(DB.TDataSet,DB.TUpdateKind,DBClient.EReconcileError)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.@unitclass.ActionStr" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.@unitclass.SNoData" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.@unitclass.SOriginal" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.@unitclass.SFieldName" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.@unitclass.SNew" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.@unitclass.SConflict" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uRecError.TReconcileErrorForm">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TReconcileErrorForm.ActionGroup" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TReconcileErrorForm.FDataSet" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRecError.TReconcileErrorForm.CreateForm(DB.TUpdateKind.TDataSet,DB.TUpdateKind.TUpdateKind,DBClient.EReconcileError)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TReconcileErrorForm.UpdateData" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRecError.TReconcileErrorForm.FormCreate(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRecError.TReconcileErrorForm.SetFieldValues(DB.TUpdateKind.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRecError.TReconcileErrorForm.UpdateDataSelectCell(System.TObject,System.Integer,System.Integer,ref@System.Boolean)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TReconcileErrorForm.ErrorMsg" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRecError.TReconcileErrorForm.InitReconcileActions()" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRecError.TReconcileErrorForm.InitDataFields()" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TReconcileErrorForm.FDataFields" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRecError.TReconcileErrorForm.DisplayFieldValues(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRecError.TReconcileErrorForm.FormDestroy(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRecError.TReconcileErrorForm.AdjustColumnWidths()" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRecError.TReconcileErrorForm.InitUpdateData(System.Boolean)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TReconcileErrorForm.UpdateType" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TReconcileErrorForm.OKBtn" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TReconcileErrorForm.ChangedOnly" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uRecError.TReconcileErrorForm.UpdateDataSetEditText(System.TObject,System.Integer,System.Integer,System.string)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TReconcileErrorForm.FCurColIdx" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TReconcileErrorForm.FError" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TReconcileErrorForm.FOldColIdx" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TReconcileErrorForm.CancelBtn" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TReconcileErrorForm.ConflictsOnly" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TReconcileErrorForm.FNewColIdx" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TReconcileErrorForm.IconImage" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TReconcileErrorForm.FUpdateKind" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uRecError.TFieldData">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TFieldData.NewValue" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TFieldData.OldValue" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TFieldData.CurValue" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TFieldData.EditValue" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TFieldData.Field" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uRecError.TFieldData.Edited" />
+    </reference>
+  </view>
+</nodeSet>

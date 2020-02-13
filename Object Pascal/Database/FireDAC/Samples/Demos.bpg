@@ -1,0 +1,260 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = CDS_CachedUpdates.exe CloneCursor.exe CDS_Main.exe \
+  CDS_MasterDetail.exe ConnectionDefinitions.exe GetFieldNames.exe Pooling.exe \
+  Transactions.exe FireDACConnInfo.exe Main.exe EventAlerter.exe LoginDialog.exe \
+  MetaInfo.exe Aggregates.exe Blobs.exe \
+  Qry_CachedUpdates.exe Qry_SchemaAdapter.exe Async.exe Batch.exe Filter.exe Indices.exe \
+  Macros.exe Qry_MasterDetail.exe NextRecordSet.exe \
+  UpdateSQL.exe TableAdapter.exe SchemaAdapter.exe UPD_CachedUpdates.exe \
+  AutoInc.exe Commands.exe GettingStarted.exe MappingColumns.exe \
+  Ora_StoredProc.exe AddRelation.exe AddTable.exe AggregatesInView.exe \
+  DatS_AutoInc.exe CalcColSimple.exe CalcColumnFuncs.exe ChildRelations.exe \
+  CompareRows.exe CreateRows.exe CreateTable.exe CreateView.exe \
+  GetChanges.exe DatS_MasterDetail.exe MasterDetAutoInc.exe Mechanisms.exe \
+  RowFilter.exe AcceptChanges.exe Search.exe TableUpdates.exe Clients.exe \
+  Moni_Main.exe IFDPhys_Batch.exe IFDPhys_Async.exe EscapeFunctions.exe \
+  FetchTables.exe IFDPhys_Macros.exe CreateConnection.exe IFDPhys_Pooling.exe \
+  IFDPhys_Transactions.exe Meta_Indices.exe Meta_StoredProc.exe Meta_Tables.exe \
+  SQLite_OnAuthorize.exe SQLite_OnUpdate.exe SQLite_UserColl.exe SQLite_UserFunc.exe \
+  Oracle_NestedCursors.exe Oracle_PLSQLTable.exe Oracle_SelectFromArray.exe \
+  Script.exe ScriptGUI.exe ScriptConsole.exe 
+
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+
+CloneCursor.exe: Comp Layer\TFDMemTable\CloneCursor\CloneCursor.dpr
+  $(DCC)
+
+CDS_Main.exe: Comp Layer\TFDMemTable\Main\CDS_Main.dpr
+  $(DCC)
+
+GetFieldNames.exe: Comp Layer\TFDConnection\GetFieldNames\GetFieldNames.dpr
+  $(DCC)
+
+Pooling.exe: Comp Layer\TFDConnection\Pooling\Pooling.dpr
+  $(DCC)
+
+Transactions.exe: Comp Layer\TFDConnection\Transactions\Transactions.dpr
+  $(DCC)
+
+FireDACConnInfo.exe: Comp Layer\TFDConnection\InfoReport\FireDACConnInfo.dpr
+  $(DCC)
+
+LoginDialog.exe: Comp Layer\TFDGUIxLoginDialog\Main\LoginDialog.dpr
+  $(DCC)
+
+MetaInfo.exe: Comp Layer\TFDMetaInfoQuery\Main\MetaInfo.dpr
+  $(DCC)
+
+Aggregates.exe: Comp Layer\TFDQuery\Aggregates\Aggregates.dpr
+  $(DCC)
+
+Blobs.exe: Comp Layer\TFDQuery\Blobs\Blobs.dpr
+  $(DCC)
+
+Async.exe: Comp Layer\TFDQuery\ExecSQL\Async\Async.dpr
+  $(DCC)
+
+Batch.exe: Comp Layer\TFDQuery\ExecSQL\Batch\Batch.dpr
+  $(DCC)
+
+Filter.exe: Comp Layer\TFDQuery\Filter\Filter.dpr
+  $(DCC)
+
+Indices.exe: Comp Layer\TFDQuery\Indices\Indices.dpr
+  $(DCC)
+
+Macros.exe: Comp Layer\TFDQuery\Macros\Macros.dpr
+  $(DCC)
+
+NextRecordSet.exe: Comp Layer\TFDStoredProc\Oracl_NextRecordSet\NextRecordSet.dpr
+  $(DCC)
+
+UpdateSQL.exe: Comp Layer\TFDStoredProc\Oracl_UpdateSQL\UpdateSQL.dpr
+  $(DCC)
+
+TableAdapter.exe: Comp Layer\TFDTableAdapter\Main\TableAdapter.dpr
+  $(DCC)
+
+SchemaAdapter.exe: Comp Layer\TFDSchemaAdapter\MemTable\SchemaAdapter.dpr
+  $(DCC)
+
+UPD_CachedUpdates.exe: Comp Layer\TFDUpdateSQL\Main\UPD_CachedUpdates.dpr
+  $(DCC)
+
+AutoInc.exe: DApt Layer\Autoinc fields\AutoInc.dpr
+  $(DCC)
+
+Commands.exe: DApt Layer\Commands\Commands.dpr
+  $(DCC)
+
+GettingStarted.exe: DApt Layer\GettingStarted\GettingStarted.dpr
+  $(DCC)
+
+MappingColumns.exe: DApt Layer\MappingColumns\MappingColumns.dpr
+  $(DCC)
+
+Ora_StoredProc.exe: DApt Layer\Oracl_StoredProc\Ora_StoredProc.dpr
+  $(DCC)
+
+AddRelation.exe: DatS Layer\AddRelation\AddRelation.dpr
+  $(DCC)
+
+AddTable.exe: DatS Layer\AddTableAndConstr\AddTable.dpr
+  $(DCC)
+
+AggregatesInView.exe: DatS Layer\AggregatesInView\AggregatesInView.dpr
+  $(DCC)
+
+DatS_AutoInc.exe: DatS Layer\AutoInc\DatS_AutoInc.dpr
+  $(DCC)
+
+CalcColSimple.exe: DatS Layer\CalcColumnSimple\CalcColSimple.dpr
+  $(DCC)
+
+CalcColumnFuncs.exe: DatS Layer\CalcColumnWithFuncs\CalcColumnFuncs.dpr
+  $(DCC)
+
+ChildRelations.exe: DatS Layer\ChildRelations\ChildRelations.dpr
+  $(DCC)
+
+CompareRows.exe: DatS Layer\CompareRows\CompareRows.dpr
+  $(DCC)
+
+CreateRows.exe: DatS Layer\CreateRows\CreateRows.dpr
+  $(DCC)
+
+CreateTable.exe: DatS Layer\CreateTable\CreateTable.dpr
+  $(DCC)
+
+CreateView.exe: DatS Layer\CreateView\CreateView.dpr
+  $(DCC)
+
+GetChanges.exe: DatS Layer\GetChanges\GetChanges.dpr
+  $(DCC)
+
+DatS_MasterDetail.exe: DatS Layer\MasterDetail\DatS_MasterDetail.dpr
+  $(DCC)
+
+Mechanisms.exe: DatS Layer\Mechanisms\Mechanisms.dpr
+  $(DCC)
+
+RowFilter.exe: DatS Layer\RowFilter\RowFilter.dpr
+  $(DCC)
+
+AcceptChanges.exe: DatS Layer\SchemaAcceptChanges\AcceptChanges.dpr
+  $(DCC)
+
+Search.exe: DatS Layer\SearchingInView\Search.dpr
+  $(DCC)
+
+TableUpdates.exe: DatS Layer\TableUpdates\TableUpdates.dpr
+  $(DCC)
+
+Moni_Main.exe: Moni Layer\Main\Moni_Main.dpr
+  $(DCC)
+
+IFDPhys_Batch.exe: Phys Layer\IFDPhysCommand\Batch\IFDPhys_Batch.dpr
+  $(DCC)
+
+IFDPhys_Async.exe: Phys Layer\IFDPhysCommand\Async\IFDPhys_Async.dpr
+  $(DCC)
+
+EscapeFunctions.exe: Phys Layer\IFDPhysCommand\Escapefunctions\EscapeFunctions.dpr
+  $(DCC)
+
+FetchTables.exe: Phys Layer\IFDPhysCommand\FetchTables\FetchTables.dpr
+  $(DCC)
+
+IFDPhys_Macros.exe: Phys Layer\IFDPhysCommand\Macros\IFDPhys_Macros.dpr
+  $(DCC)
+
+Meta_Indices.exe: Phys Layer\IFDPhysMetaInfoCommand\Indices\Meta_Indices.dpr
+  $(DCC)
+
+Meta_StoredProc.exe: Phys Layer\IFDPhysMetaInfoCommand\StoredProc\Meta_StoredProc.dpr
+  $(DCC)
+
+Meta_Tables.exe: Phys Layer\IFDPhysMetaInfoCommand\Tables\Meta_Tables.dpr
+  $(DCC)
+
+ConnectionDefinitions.exe: Comp Layer\TFDConnection\ConnectionDefs\ConnectionDefinitions.dpr
+  $(DCC)
+
+Main.exe: Comp Layer\TFDBatchMove\Main\Main.dpr
+  $(DCC)
+
+EventAlerter.exe: Comp Layer\TFDEventAlerter\Main\EventAlerter.dpr
+  $(DCC)
+
+Qry_CachedUpdates.exe: Comp Layer\TFDQuery\CachedUpdates\OnUpdateRecord\Qry_CachedUpdates.dpr
+  $(DCC)
+
+Qry_SchemaAdapter.exe: Comp Layer\TFDQuery\CachedUpdates\Centralized\Qry_SchemaAdapter.dpr
+  $(DCC)
+
+Qry_MasterDetail.exe: Comp Layer\TFDQuery\MasterDetail\Qry_MasterDetail.dpr
+  $(DCC)
+
+Clients.exe: Moni Layer\Clients\Clients.dpr
+  $(DCC)
+
+CDS_CachedUpdates.exe: Comp Layer\TFDMemTable\CachedUpdates\CDS_CachedUpdates.dpr
+  $(DCC)
+
+CDS_MasterDetail.exe: Comp Layer\TFDMemTable\MasterDetail\CDS_MasterDetail.dpr
+  $(DCC)
+
+MasterDetAutoInc.exe: DatS Layer\MasterDetAutoInc\MasterDetAutoInc.dpr
+  $(DCC)
+
+CreateConnection.exe: Phys Layer\IFDPhysConnection\CreateConnection\CreateConnection.dpr
+  $(DCC)
+
+IFDPhys_Pooling.exe: Phys Layer\IFDPhysConnection\Pooling\IFDPhys_Pooling.dpr
+  $(DCC)
+
+IFDPhys_Transactions.exe: Phys Layer\IFDPhysConnection\Transactions\IFDPhys_Transactions.dpr
+  $(DCC)
+
+SQLite_OnAuthorize.exe: DBMS Specific\SQLite\OnAuthorize\SQLite_OnAuthorize.dpr
+  $(DCC)
+
+SQLite_OnUpdate.exe: DBMS Specific\SQLite\OnUpdate\SQLite_OnUpdate.dpr
+  $(DCC)
+
+SQLite_UserColl.exe: DBMS Specific\SQLite\UserCollation\SQLite_UserColl.dpr
+  $(DCC)
+
+SQLite_UserFunc.exe: DBMS Specific\SQLite\UserFunc\SQLite_UserFunc.dpr
+  $(DCC)
+
+Oracle_NestedCursors.exe: DBMS Specific\Oracle\NestedCursors\Oracle_NestedCursors.dpr
+  $(DCC)
+
+Oracle_PLSQLTable.exe: DBMS Specific\Oracle\PLSQLAssocArray\Oracle_PLSQLTable.dpr
+  $(DCC)
+
+Oracle_SelectFromArray.exe: DBMS Specific\Oracle\SelectFromArray\Oracle_SelectFromArray.dpr
+  $(DCC)
+
+Script.exe: Comp Layer\TFDScript\Main\Script.dpr
+  $(DCC)
+
+ScriptGUI.exe: Comp Layer\TFDScript\GUI\ScriptGUI.dpr
+  $(DCC)
+
+ScriptConsole.exe: Comp Layer\TFDScript\Console\ScriptConsole.dpr
+  $(DCC)

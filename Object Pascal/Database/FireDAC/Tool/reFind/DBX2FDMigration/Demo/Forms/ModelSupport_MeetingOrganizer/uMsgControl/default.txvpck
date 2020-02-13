@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="8y4a6102dfq_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMsgControl.TMsgControl">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,10,199,160" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMsgControl.TMsgControl.GetInstance()" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMsgControl.TMsgControl.PostNotification(System.string,System.string)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMsgControl.TMsgControl.FInstance" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMsgControl.TMsgControl.CreateDefaultDM()" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMsgControl.TMsgControl.CreateDefaultForm()" />
+      <reference referencedUin="delphi:l_ast:src:MeetingOrganizer:uMsgControl.TMsgControl.FInstance">
+        <property name="sourceAnchor" value="209,162" />
+        <property name="targetAnchor" value="201,170" />
+        <property name="bendpoints" value="242,162,242,203,201,203" />
+        <property name="bounds_setted_by_user" value="True" />
+      </reference>
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMsgControl.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

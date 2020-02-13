@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="y52kudm8q6pys3doj_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uUserControl.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uUserControl.TUserControl">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="233,1,199,325" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserControl.TUserControl.fUserName" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uUserControl.TUserControl.ValidateUserLogin(System.string,System.string)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uUserControl.TUserControl.GetInstance()" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserControl.TUserControl.fUserIsAdmin" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserControl.TUserControl.fUserDM" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uUserControl.TUserControl.Create(Classes.TComponent)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uUserControl.TUserControl.CreateDefaultForm()" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserControl.TUserControl.fUserID" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uUserControl.TUserControl.CreateDefaultDM()" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uUserControl.TUserControl.FindLoginName(System.Integer,System.string)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uUserControl.TUserControl.GetUserMail(System.Integer)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uUserControl.TUserControl.Destroy()" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uUserControl.TUserControl.DoUserLogin()" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uUserControl.TUserControl.AuthorizationLog()" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserControl.TUserControl.FInstance" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserControl.TUserControl.fUserLogin" />
+      <reference referencedUin="delphi:l_ast:src:MeetingOrganizer:uUserControl.TUserControl.FInstance">
+        <property name="sourceAnchor" value="432,318" />
+        <property name="targetAnchor" value="424,326" />
+        <property name="bendpoints" value="465,318,465,359,424,359" />
+        <property name="bounds_setted_by_user" value="True" />
+      </reference>
+    </reference>
+    <reference referencedUin="design:node:::elg8duywl_n">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,10,204,79" />
+      <reference referencedUin="design:link:::ilg5jdbhk_l:elg8duywl_n">
+        <property name="sourceAnchor" value="213,49" />
+        <property name="targetAnchor" value="233,49" />
+        <property name="bendpoints" value="" />
+        <reference referencedUin="label:@supplierRole:design:link:::ilg5jdbhk_l:elg8duywl_n">
+          <property name="bounds" value="167,-10,56,16" />
+        </reference>
+      </reference>
+    </reference>
+  </view>
+</nodeSet>

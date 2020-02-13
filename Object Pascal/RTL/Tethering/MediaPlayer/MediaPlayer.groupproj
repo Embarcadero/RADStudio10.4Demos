@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{013CBDDD-1901-429F-993A-07B0FE488553}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="MediaPlayerCommand\MediaPlayerCommand.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MediaPlayerHD\MediaPlayerHD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MediaPlayerVCLCommand\MediaPlayerVCLCommand.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="MediaPlayerCommand">
+        <MSBuild Projects="MediaPlayerCommand\MediaPlayerCommand.dproj"/>
+    </Target>
+    <Target Name="MediaPlayerCommand:Clean">
+        <MSBuild Projects="MediaPlayerCommand\MediaPlayerCommand.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MediaPlayerCommand:Make">
+        <MSBuild Projects="MediaPlayerCommand\MediaPlayerCommand.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MediaPlayerHD">
+        <MSBuild Projects="MediaPlayerHD\MediaPlayerHD.dproj"/>
+    </Target>
+    <Target Name="MediaPlayerHD:Clean">
+        <MSBuild Projects="MediaPlayerHD\MediaPlayerHD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MediaPlayerHD:Make">
+        <MSBuild Projects="MediaPlayerHD\MediaPlayerHD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MediaPlayerVCLCommand">
+        <MSBuild Projects="MediaPlayerVCLCommand\MediaPlayerVCLCommand.dproj"/>
+    </Target>
+    <Target Name="MediaPlayerVCLCommand:Clean">
+        <MSBuild Projects="MediaPlayerVCLCommand\MediaPlayerVCLCommand.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MediaPlayerVCLCommand:Make">
+        <MSBuild Projects="MediaPlayerVCLCommand\MediaPlayerVCLCommand.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="MediaPlayerCommand;MediaPlayerHD;MediaPlayerVCLCommand"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="MediaPlayerCommand:Clean;MediaPlayerHD:Clean;MediaPlayerVCLCommand:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="MediaPlayerCommand:Make;MediaPlayerHD:Make;MediaPlayerVCLCommand:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

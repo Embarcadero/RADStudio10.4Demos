@@ -1,0 +1,55 @@
+inherited ABSMainForm_LgXhdpiPh: TABSMainForm_LgXhdpiPh
+  ClientHeight = 695
+  ClientWidth = 450
+  DesignerMasterStyle = 0
+  inherited TabControl1: TTabControl
+    Size.Width = 450.000000000000000000
+    Size.Height = 695.000000000000000000
+    TabHeight = 49.000000000000000000
+    TabIndex = 2
+    inherited TabItem1: TTabItem
+      IsSelected = False
+      Size.Width = 150.000000000000000000
+      Size.Height = 49.000000000000000000
+      ExplicitSize.cx = 63.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      inherited Memo2: TMemo
+        Size.Width = 450.000000000000000000
+        Size.Height = 646.000000000000000000
+        Viewport.Width = 442.000000000000000000
+        Viewport.Height = 638.000000000000000000
+      end
+    end
+    inherited GridTab: TTabItem
+      Size.Width = 150.000000000000000000
+      Size.Height = 49.000000000000000000
+      ExplicitSize.cx = 42.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      inherited Grid1: TGrid
+        Size.Width = 450.000000000000000000
+        Size.Height = 621.000000000000000000
+        Viewport.Width = 450.000000000000000000
+        Viewport.Height = 589.000000000000000000
+      end
+      inherited NavigatorAdapterBindSource1: TBindNavigator
+        Size.Width = 430.000000000000000000
+      end
+    end
+    inherited JsonTab: TTabItem
+      IsSelected = True
+      Size.Width = 150.000000000000000000
+      Size.Height = 49.000000000000000000
+      ExplicitSize.cx = 43.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      inherited Memo1: TMemo
+        Size.Width = 450.000000000000000000
+        Size.Height = 646.000000000000000000
+        Viewport.Width = 442.000000000000000000
+        Viewport.Height = 638.000000000000000000
+      end
+    end
+  end
+  inherited Label1: TLabel
+    Visible = False
+  end
+end

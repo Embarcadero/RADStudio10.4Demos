@@ -1,0 +1,225 @@
+object ABSMainForm: TABSMainForm
+  Left = 0
+  Top = 0
+  Caption = 'Adapter Bind Source - Bidirectional object binding'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object TabControl1: TTabControl
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabIndex = 0
+    TabOrder = 3
+    TabPosition = PlatformDefault
+    OnChange = TabControl1Change
+    object TabItem1: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 63.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Readme'
+      ExplicitSize.cx = 63.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object Memo2: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Lines.Strings = (
+          
+            'This sample shows using the TAdapterBindSource to create a bidir' +
+            'ectional binding between a generic TObjectList of user defined o' +
+            'bjects and a grid. The OnCreateAdapter event of the TAdapterBind' +
+            'Source is used to initialize the user defined list and assign it' +
+            ' to the Adapter. '
+          ''
+          
+            'The TDataGeneratorAdapter is used to generate some prototype dat' +
+            'a for design time purposes. It is replaced at runtime with the u' +
+            'ser defined data. It is optional and is only used for design tim' +
+            'e.'
+          ''
+          'You can view the data on the GRID tab.'
+          ''
+          
+            'Tha JSON tab shows the JSON representation of the data. If you m' +
+            'ake changes on either tab it will be updated on the other tab wh' +
+            'en you switch back.'
+          ''
+          
+            'If you are using 10 Seattle you can hide the non-visual componen' +
+            'ts at design time with [Ctrl]+[H].')
+        StyledSettings = [Family, Style, FontColor]
+        TextSettings.Font.Size = 16.000000000000000000
+        TextSettings.WordWrap = True
+        Align = Client
+        Size.Width = 640.000000000000000000
+        Size.Height = 454.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'memostyle'
+        TabOrder = 0
+        Viewport.Width = 636.000000000000000000
+        Viewport.Height = 450.000000000000000000
+      end
+    end
+    object GridTab: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 42.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Grid'
+      ExplicitSize.cx = 42.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object Grid1: TGrid
+        Align = Client
+        Size.Width = 50.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        RowCount = 9
+        RowHeight = 30.000000000000000000
+        TextSettings.Font.Size = 18.000000000000000000
+        StyledSettings = [Family, Style, FontColor]
+        Viewport.Width = 30.000000000000000000
+        Viewport.Height = 0.000000000000000000
+      end
+      object NavigatorAdapterBindSource1: TBindNavigator
+        Align = Top
+        Margins.Left = 10.000000000000000000
+        Margins.Right = 10.000000000000000000
+        Position.X = 10.000000000000000000
+        Size.Width = 30.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        DataSource = AdapterBindSource1
+        VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete, nbEdit, nbPost, nbCancel]
+        xRadius = 4.000000000000000000
+        yRadius = 4.000000000000000000
+        ConfirmDelete = False
+      end
+    end
+    object JsonTab: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 48.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'JSON'
+      ExplicitSize.cx = 43.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object Memo1: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Lines.Strings = (
+          '{"ownsObjects":true,"listHelper":[9],"items":['
+          '{"age":40,"lastName":"Addams","firstName":"Gomez"},'
+          '{"age":38,"lastName":"Addams","firstName":"Morticia"},'
+          '{"age":8,"lastName":"Addams","firstName":"Pugsley"},'
+          '{"age":12,"lastName":"Addams","firstName":"Wednesday"},'
+          '{"age":55,"lastName":"Fester","firstName":"Uncle"},'
+          '{"age":72,"lastName":"Frump","firstName":"Grandmama"},'
+          '{"age":50,"lastName":"Lurch","firstName":""},'
+          '{"age":99,"lastName":"Thing","firstName":"Thing T."},'
+          '{"age":21,"lastName":"Itt","firstName":"Cousin"}]}')
+        StyledSettings = [Style]
+        TextSettings.Font.Family = 'Consolas'
+        TextSettings.Font.Size = 20.000000000000000000
+        TextSettings.FontColor = claGreen
+        TextSettings.WordWrap = True
+        Align = Client
+        Size.Width = 50.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Viewport.Width = 30.000000000000000000
+        Viewport.Height = 46.000000000000000000
+      end
+    end
+  end
+  object Label1: TLabel
+    Position.X = 176.000000000000000000
+    Position.Y = 5.000000000000000000
+    Size.Width = 281.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.WordWrap = False
+    Text = 
+      'Bidirectional binding. Change or view the objects directly from ' +
+      'the JSON tab.'
+  end
+  object AdapterBindSource1: TAdapterBindSource
+    AutoActivate = True
+    OnCreateAdapter = AdapterBindSource1CreateAdapter
+    Adapter = DataGeneratorAdapter1
+    ScopeMappings = <>
+    Left = 368
+    Top = 376
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 492
+    Top = 373
+    object LinkGridToDataSourceAdapterBindSource12: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = AdapterBindSource1
+      GridControl = Grid1
+      Columns = <
+        item
+          MemberName = 'FirstName'
+          Width = 120
+        end
+        item
+          MemberName = 'LastName'
+          Width = 200
+        end
+        item
+          MemberName = 'Age'
+          Width = 32
+        end>
+    end
+  end
+  object DataGeneratorAdapter1: TDataGeneratorAdapter
+    FieldDefs = <
+      item
+        Name = 'FirstName'
+        Generator = 'LoremIpsum'
+        ReadOnly = False
+      end
+      item
+        Name = 'LastName'
+        Generator = 'LoremIpsum'
+        ReadOnly = False
+      end
+      item
+        Name = 'Age'
+        FieldType = ftInteger
+        Generator = 'Integers'
+        ReadOnly = False
+      end>
+    Active = True
+    AutoPost = False
+    RecordCount = 9
+    Options = [loptAllowInsert, loptAllowDelete, loptAllowModify]
+    Left = 216
+    Top = 376
+  end
+end

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="ogdeowlmnye_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMeetingDM.TMeetingDM">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.sqlParticipants" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsControlBeforeDelete(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.sqlControlUSER_ID" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsControlDURATION" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsControlTOPIC" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsControlNAME_USER" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsControlMEETING_ID" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.sqlControlMEETING_ID" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsParticipantsMEETING_ID" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.sqlSearchPartUSER_ID" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.sqlParticipantsMEETING_ID" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsParticipants" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsControlLASTCHANGE" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsControlNewRecord(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.sqlControlNAME_ROOM" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.sqlControlLASTCHANGE" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsControlNAME_ROOM" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsControlDURATIONChange(DB.TField)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.sqlParticipantsUSER_ID" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMeetingDM.TMeetingDM.dspControlBeforeUpdateRecord(System.TObject,DB.TDataSet,DBClient.TCustomClientDataSet,DB.TUpdateKind,ref@System.Boolean)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsParticipantsUSER_ID" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsControlSTARTDATE" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsSearchPartUSER_ID" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsParticipantsNAME" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsControlAfterScroll(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.dspSearchPart" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.sqlControlSTARTDATE" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.sqlParticipantsUSER_NAME" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsControlBeforePost(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.dspParticipants" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsControlROOM_ID" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.sqlSearchPart" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.sqlControlSTARTTIME" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.sqlControlTOPIC" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsControlBeforeEdit(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsControlSTARTTIME" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMeetingDM.TMeetingDM.dspControlAfterUpdateRecord(System.TObject,DB.TDataSet,DBClient.TCustomClientDataSet,DB.TUpdateKind)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.sqlControlNAME_USER" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsSearchPartNAME" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.sqlSearchPartNAME" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsControlUSER_ID" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.cdsSearchPart" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.sqlControlDURATION" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingDM.TMeetingDM.sqlControlROOM_ID" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMeetingDM.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="d925g8gkz3p_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMainForm.TMainForm">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.MinimizeAll1" />
+      <reference referencedUin="delphi:e_property:src:MeetingOrganizer:uMainForm.TMainForm.DBConnection" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMainForm.TMainForm.GetDBConnection()" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.StatusBar" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.Close1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.Timer" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.WindowTileVertical1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.mnuClose" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.WindowMinimizeAll1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.actClose" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.mnuCustomize" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.Arrange1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.ileHorizontally1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.mnuMeetingManager" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMainForm.TMainForm.actCloseExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.acMeetingManager" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.HelpOnHelp1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.mnuHelp" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.WindowCascade1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.Arrange2" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.acRoom" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.mnuRoom" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.mnuWindow" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.HelpContents1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.mnuFile" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.acUser" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.HelpContextAction1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.mnuControl" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMainForm.TMainForm.TimerTimer(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.mnuTools" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMainForm.TMainForm.SetDBConnection(SQLExpr.TSQLConnection)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.CustomizeDlg" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.WindowClose1" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMainForm.TMainForm.acMeetingManagerExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.MainMenu" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.CustomizeActionBars1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.ImageList" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.WindowArrange1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.ActionToolBar" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.ActionManager" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.ileVertically1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.N1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.HelpContextAction11" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMainForm.TMainForm.FormShow(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMainForm.TMainForm.acUserExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.Contents1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.HelpTopicSearch1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.mnuUser" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.opicSearch1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.fDBConnection" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.TMainForm.WindowTileHorizontal1" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMainForm.TMainForm.acRoomExecute(System.TObject)" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMainForm.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:l_ast:src:MeetingOrganizer:uMainForm.@unitclass.MainForm" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainForm.@unitclass.MainForm" />
+    </reference>
+  </view>
+</nodeSet>

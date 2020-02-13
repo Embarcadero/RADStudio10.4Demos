@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="qva1a5nshhn_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractControl.TAbstractControl">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,10,211,264" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractControl.TAbstractControl.SetTD(SQLExpr.TTransactionDesc)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractControl.TAbstractControl.DataFormat(System.Variant,System.Char)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractControl.TAbstractControl.GetDBConnection()" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractControl.TAbstractControl.fDBConnection" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractControl.TAbstractControl.GetTD()" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractControl.TAbstractControl.SetDBConnection(SQLExpr.TSQLConnection)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractControl.TAbstractControl.Destroy()" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractControl.TAbstractControl.fTD" />
+      <reference referencedUin="delphi:e_property:src:MeetingOrganizer:uAbstractControl.TAbstractControl.TD" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractControl.TAbstractControl.Create(Classes.TComponent)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractControl.TAbstractControl.CreateDefaultDM()" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractControl.TAbstractControl.CreateDefaultForm()" />
+      <reference referencedUin="delphi:e_property:src:MeetingOrganizer:uAbstractControl.TAbstractControl.DBConnection" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractControl.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractControl.@unitclass.MO_ExceptionMsg" />
+    </reference>
+  </view>
+</nodeSet>

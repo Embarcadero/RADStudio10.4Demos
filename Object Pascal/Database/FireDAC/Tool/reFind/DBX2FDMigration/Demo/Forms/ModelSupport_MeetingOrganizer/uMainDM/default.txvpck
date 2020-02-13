@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="w4qoe643bkg_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMainDM.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:l_ast:src:MeetingOrganizer:uMainDM.@unitclass.MainDM" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainDM.@unitclass.MainDM" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMainDM.TMainDM">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMainDM.TMainDM.SQLConnectionBeforeConnect(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMainDM.TMainDM.DataModuleCreate(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMainDM.TMainDM.SQLConnection" />
+    </reference>
+  </view>
+</nodeSet>

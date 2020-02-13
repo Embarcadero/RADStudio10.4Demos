@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="zbkp80swb3l_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractDataModule.TAbstractDataModule">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractDataModule.TAbstractDataModule.GenerateID(System.string)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractDataModule.TAbstractDataModule.cdsControlBeforeRefresh(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataModule.TAbstractDataModule.fDBConnection" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractDataModule.TAbstractDataModule.cdsCancelUpdates(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractDataModule.TAbstractDataModule.SetDBConnection(SQLExpr.TSQLConnection)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractDataModule.TAbstractDataModule.cdsReconcileError(DBClient.TCustomClientDataSet,DBClient.EReconcileError,DB.TUpdateKind,ref@DBClient.TReconcileAction)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataModule.TAbstractDataModule.cdsControl" />
+      <reference referencedUin="delphi:e_property:src:MeetingOrganizer:uAbstractDataModule.TAbstractDataModule.DBConnection" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractDataModule.TAbstractDataModule.cdsControlBeforeDelete(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractDataModule.TAbstractDataModule.DataModuleCreate(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractDataModule.TAbstractDataModule.cdsApplyUpdates(DB.TDataSet)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataModule.TAbstractDataModule.sqlControl" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractDataModule.TAbstractDataModule.GetDBConnection()" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataModule.TAbstractDataModule.dspControl" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractDataModule.TAbstractDataModule.CheckRequiredFields(DB.TDataSet)" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractDataModule.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

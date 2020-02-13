@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="h54le3x7ztp_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMeetingTimeRoomForm.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMeetingTimeRoomForm.TMeetingTimeRoomForm">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingTimeRoomForm.TMeetingTimeRoomForm.pnlBottom" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingTimeRoomForm.TMeetingTimeRoomForm.Meeting_ID" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingTimeRoomForm.TMeetingTimeRoomForm.Duration" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingTimeRoomForm.TMeetingTimeRoomForm.datFreeRoomList" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMeetingTimeRoomForm.TMeetingTimeRoomForm.FormShow(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingTimeRoomForm.TMeetingTimeRoomForm.btnOK" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMeetingTimeRoomForm.TMeetingTimeRoomForm.datFreeTimeListDataChange(System.TObject,DB.TField)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingTimeRoomForm.TMeetingTimeRoomForm.dbgFreeRoomList" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingTimeRoomForm.TMeetingTimeRoomForm.bevLeft" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingTimeRoomForm.TMeetingTimeRoomForm.dbgFreeTimeList" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingTimeRoomForm.TMeetingTimeRoomForm.StartDate" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingTimeRoomForm.TMeetingTimeRoomForm.datFreeTimeList" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingTimeRoomForm.TMeetingTimeRoomForm.btnCancel" />
+    </reference>
+  </view>
+</nodeSet>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="fk25bx9775i_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractForm.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractForm.TAbstractForm">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractForm.TAbstractForm.FormShow(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractForm.TAbstractForm.FormKeyPress(System.TObject,ref@System.Char)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractForm.TAbstractForm.XPManifest" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractForm.TAbstractForm.FormClose(System.TObject,ref@Forms.TCloseAction)" />
+    </reference>
+  </view>
+</nodeSet>

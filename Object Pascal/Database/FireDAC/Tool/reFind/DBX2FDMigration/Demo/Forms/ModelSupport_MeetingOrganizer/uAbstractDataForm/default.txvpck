@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="i0qahap88es_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.DataSetDelete1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.ToolButton8" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.DataSetCancel1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.DataSetNext1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.ToolButton14" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.actClose" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.ActionList" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.DataSetEdit1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.ToolButton9" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.ToolButton11" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.ToolButton13" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.ToolButton1" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.FormCloseQuery(System.TObject,ref@System.Boolean)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.ToolBarData" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.ToolButton3" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.DataSetPost1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.ToolButton6" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.ToolButton4" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.datControl" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.DataSetInsert1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.DataSetRefresh1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.ImageList" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.ToolButton12" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.ToolButton2" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.ToolButton15" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.actCloseExecute(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.DataSetLast1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.DataSetFirst1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.DataSetPrior1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.ToolButton7" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.ToolButton5" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataForm.TAbstractDataForm.ToolButton10" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractDataForm.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

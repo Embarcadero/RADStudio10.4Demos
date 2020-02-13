@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{7D58578B-27D5-4A6C-A09B-2D0A47DD09D0}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Mobile\FMXClientBeaconCast.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="VCL\VCLBeaconCastDesktop.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="FMXClientBeaconCast">
+        <MSBuild Projects="Mobile\FMXClientBeaconCast.dproj"/>
+    </Target>
+    <Target Name="FMXClientBeaconCast:Clean">
+        <MSBuild Projects="Mobile\FMXClientBeaconCast.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FMXClientBeaconCast:Make">
+        <MSBuild Projects="Mobile\FMXClientBeaconCast.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="VCLBeaconCastDesktop">
+        <MSBuild Projects="VCL\VCLBeaconCastDesktop.dproj"/>
+    </Target>
+    <Target Name="VCLBeaconCastDesktop:Clean">
+        <MSBuild Projects="VCL\VCLBeaconCastDesktop.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VCLBeaconCastDesktop:Make">
+        <MSBuild Projects="VCL\VCLBeaconCastDesktop.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="FMXClientBeaconCast;VCLBeaconCastDesktop"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="FMXClientBeaconCast:Clean;VCLBeaconCastDesktop:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="FMXClientBeaconCast:Make;VCLBeaconCastDesktop:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

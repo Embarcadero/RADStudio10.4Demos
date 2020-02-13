@@ -1,0 +1,1 @@
+create table batch_demo (id number primary key, name varchar2(10))

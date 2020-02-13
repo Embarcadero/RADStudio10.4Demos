@@ -1,0 +1,54 @@
+﻿[FDDrivers.ini]
+Encoding=UTF8
+
+[Ora920]
+BaseDriverID=Ora
+VendorHome=OraHome815
+
+[OraXE]
+BaseDriverID=Ora
+VendorHome=XE
+
+[MySQL327]
+BaseDriverID=MySQL
+VendorLib=e:\MySQL\3-23\Bin\LIBMYSQL.DLL
+
+[MySQL559]
+BaseDriverID=MySQL
+VendorLibWin32=e:\MySQL\5-5-9\Lib\LIBMYSQL.DLL
+VendorLibWin64=e:\MySQL\5-5-9\Lib\LIBMYSQL.DLL
+
+[MySQL510_Embedded]
+BaseDriverID=MySQL
+VendorLib=e:\MySQL\5-1-24\Lib\LIBMYSQLD.DLL
+EmbeddedArgs=--datadir=./data;--language=./;--skip-innodb;--skip-networking
+
+[MSSQL_2000]
+BaseDriverID=MSSQL
+ODBCDriver=SQL SERVER
+
+[MSSQL_2005]
+BaseDriverID=MSSQL
+ODBCDriver=SQL NATIVE CLIENT
+
+[IB2007]
+BaseDriverID=IB
+VendorLib=e:\ib\ib2007\bin\gds32.dll
+
+[IB2009]
+BaseDriverID=IB
+VendorLib=e:\ib\ib2009\bin\gds32.dll
+
+[FB25]
+BaseDriverID=FB
+VendorLibWin32=e:\ib\fb25\bin\fbclient.dll
+VendorLibWin64=e:\ib\fb25_x64\bin\fbclient.dll
+
+[FB25_Embedded]
+BaseDriverID=FB
+VendorLib=e:\ib\fb25_embedded\fbembed.dll
+
+[PG90]
+BaseDriverID=PG
+VendorLibWin32=C:\Program Files\PostgreSQL\9.0\bin\libpq.dll
+VendorLibWin64=C:\Program Files\PostgreSQL\9.0_x64\bin\libpq.dll

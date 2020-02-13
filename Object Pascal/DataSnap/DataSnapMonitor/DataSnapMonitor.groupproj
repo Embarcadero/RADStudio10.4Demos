@@ -1,0 +1,60 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{EE4075F9-8DB9-415F-9A55-9B48E7382F2E}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="Server\MonitorConnectionsServerProject.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="ClientVCL\MonitorConnectionsClientProject.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="ClientFireMonkey\MonitorConnectionsFMXProject.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="MonitorConnectionsServerProject">
+			<MSBuild Projects="Server\MonitorConnectionsServerProject.dproj"/>
+		</Target>
+		<Target Name="MonitorConnectionsServerProject:Clean">
+			<MSBuild Projects="Server\MonitorConnectionsServerProject.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="MonitorConnectionsServerProject:Make">
+			<MSBuild Projects="Server\MonitorConnectionsServerProject.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="MonitorConnectionsClientProject">
+			<MSBuild Projects="ClientVCL\MonitorConnectionsClientProject.dproj"/>
+		</Target>
+		<Target Name="MonitorConnectionsClientProject:Clean">
+			<MSBuild Projects="ClientVCL\MonitorConnectionsClientProject.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="MonitorConnectionsClientProject:Make">
+			<MSBuild Projects="ClientVCL\MonitorConnectionsClientProject.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="MonitorConnectionsFMXProject">
+			<MSBuild Projects="ClientFireMonkey\MonitorConnectionsFMXProject.dproj"/>
+		</Target>
+		<Target Name="MonitorConnectionsFMXProject:Clean">
+			<MSBuild Projects="ClientFireMonkey\MonitorConnectionsFMXProject.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="MonitorConnectionsFMXProject:Make">
+			<MSBuild Projects="ClientFireMonkey\MonitorConnectionsFMXProject.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="MonitorConnectionsServerProject;MonitorConnectionsClientProject;MonitorConnectionsFMXProject"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="MonitorConnectionsServerProject:Clean;MonitorConnectionsClientProject:Clean;MonitorConnectionsFMXProject:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="MonitorConnectionsServerProject:Make;MonitorConnectionsClientProject:Make;MonitorConnectionsFMXProject:Make"/>
+		</Target>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
+	</Project>

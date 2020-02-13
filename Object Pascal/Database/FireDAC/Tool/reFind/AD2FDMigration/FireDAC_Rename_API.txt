@@ -1,0 +1,12 @@
+\bC_AD -> C_FD
+\ber_AD -> er_FD
+\bS_AD -> S_FD
+\bTAD(?!v) -> TFD
+\bTADVersion -> TFDVersion
+\bTADVariantArray -> TFDVariantArray
+\bTADValWrapper -> TFDValWrapper
+\bPAD -> PFD
+\bIAD -> IFD
+\bEAD -> EFD
+\bAD(?!river|rv|ata|ate|est|D|MIN|VISED|ot|ll|LL|esc|iag|eco|ir|SODBC|Aptive|SCli|SMeta|SWrapper|apter) -> FD
+\bAnyDAC -> FireDAC

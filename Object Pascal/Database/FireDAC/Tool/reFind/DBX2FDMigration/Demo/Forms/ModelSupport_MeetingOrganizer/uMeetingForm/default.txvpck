@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="i3qbkfkwqyj_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMeetingForm.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:l_ast:src:MeetingOrganizer:uMeetingForm.@unitclass.fMeetingForm" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.@unitclass.fMeetingForm" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uMeetingForm.TMeetingForm">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMeetingForm.TMeetingForm.butUserAddClick(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.Label4" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.dbeDuration" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMeetingForm.TMeetingForm.FormDestroy(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMeetingForm.TMeetingForm.butUserDelClick(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.dbeDate" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.dbgParticipants" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.dbeTopic" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.datSearch" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.Label7" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.Label8" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.Label5" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.dbeStartTime" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.datParticipants" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.dbeMeetingID" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMeetingForm.TMeetingForm.butTimeRoomFormClick(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.panParticipants" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.butUserAdd" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.butTimeRoomForm" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.dbeRoomName" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.edtSearch" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMeetingForm.TMeetingForm.datSearchDataChange(System.TObject,DB.TField)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMeetingForm.TMeetingForm.butUserSearchClick(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.dbeRoomID" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.Label6" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.dbgSearch" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.lblParticipants" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMeetingForm.TMeetingForm.datParticipantsDataChange(System.TObject,DB.TField)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.butUserSearch" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.Label3" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.Label1" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uMeetingForm.TMeetingForm.datControlStateChange(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.butUserDel" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uMeetingForm.TMeetingForm.Label2" />
+    </reference>
+  </view>
+</nodeSet>

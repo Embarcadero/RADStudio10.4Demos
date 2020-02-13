@@ -1,0 +1,186 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{C994640F-6364-4143-8B00-7CC97F655D86}</ProjectGuid>
+        <ProjectVersion>16.0</ProjectVersion>
+        <FrameworkType>VCL</FrameworkType>
+        <MainSource>RESTDemos.dpr</MainSource>
+        <Base>True</Base>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <TargetedPlatforms>3</TargetedPlatforms>
+        <AppType>Application</AppType>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+        <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+        <Base_Win64>true</Base_Win64>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+        <Cfg_1>true</Cfg_1>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
+        <Cfg_1_Win32>true</Cfg_1_Win32>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+        <Cfg_2>true</Cfg_2>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
+        <Cfg_2_Win32>true</Cfg_2_Win32>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+        <SanitizedProjectName>RESTDemos</SanitizedProjectName>
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Locale>1031</VerInfo_Locale>
+        <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
+        <Manifest_File>None</Manifest_File>
+        <DCC_DcuOutput>.\$(Platform)-$(Config)</DCC_DcuOutput>
+        <DCC_ExeOutput>.\$(Platform)-$(Config)</DCC_ExeOutput>
+        <DCC_E>false</DCC_E>
+        <DCC_N>false</DCC_N>
+        <DCC_S>false</DCC_S>
+        <DCC_F>false</DCC_F>
+        <DCC_K>false</DCC_K>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <DCC_UsePackage>IndyIPClient;dxSkinCaramelRS17;dxSkinVS2010RS17;AnyDAC_PhysADS_D18;dxSkinBlueprintRS17;dxSkinHighContrastRS17;dxSkinSevenRS17;AnyDAC_PhysODBC_D18;AnyDAC_GUIxForms_D18;dxSkinOffice2007BlackRS17;dxCoreRS17;DBXSqliteDriver;AnyDAC_ComI_D18;AnyDAC_PhysTDBX_D18;dxThemeRS17;dxSkinXmas2008BlueRS17;fmx;IndySystem;TeeDB;dxSkinSummer2008RS17;dxSkinValentineRS17;dxSkinBlueRS17;AnyDAC_PhysIB_D18;inetdbbde;dxSkinDarkRoomRS17;DBXInterBaseDriver;DataSnapClient;DataSnapCommon;DataSnapServer;dxSkinDevExpressStyleRS17;vclib;DataSnapProviderClient;DBXSybaseASEDriver;dxRibbonRS17;DbxCommonDriver;cxDataRS17;vclimg;dxServerModeRS17;dxSkinsdxBarPainterRS17;dbxcds;DatasnapConnectorsFreePascal;MetropolisUILiveTile;dxSkinMoneyTwinsRS17;dxSkinPumpkinRS17;vcldb;cxExportRS17;dxSkinSpringTimeRS17;vcldsnap;dxBarExtItemsRS17;AnyDAC_PhysMSAcc_D18;dxGDIPlusRS17;dxSkinDevExpressDarkStyleRS17;DBXDb2Driver;dxNavBarRS17;DBXOracleDriver;CustomIPTransport;dxSkinLiquidSkyRS17;cxLibraryRS17;vclribbon;cxGridRS17;dsnap;IndyIPServer;AnyDAC_PhysPg_D18;dxSkinOffice2010BlackRS17;fmxase;vcl;IndyCore;dxSkinMcSkinRS17;dxSkinOffice2007SilverRS17;IndyIPCommon;CloudService;DBXMSSQLDriver;FmxTeeUI;dxSkiniMaginaryRS17;AnyDAC_PhysMSSQL_D18;dxSkinsdxDLPainterRS17;AnyDAC_PhysOracle_D18;dcldxSkinsCoreRS17;CodeSiteExpressPkg;inetdbxpress;webdsnap;AnyDAC_PhysMySQL_D18;dxSkinCoffeeRS17;dxSkinSevenClassicRS17;adortl;AnyDAC_Phys_D18;madBasic_;dxSkinLilianRS17;dxSkinOffice2010BlueRS17;AnyDAC_Comp_D18;CustomComponent;bindcompfmx;dxSkinOffice2010SilverRS17;vcldbx;rtl;dbrtl;DbxClientDriver;bindcomp;inetdb;dxComnRS17;dxSkinsCoreRS17;dxSkinLondonLiquidSkyRS17;dxBarRS17;Tee;dxSkinSharpPlusRS17;DBXOdbcDriver;madDisAsm_;dxSkinWhiteprintRS17;dxSkinBlackRS17;xmlrtl;svnui;dxSkinsdxRibbonPainterRS17;ibxpress;IndyProtocols;DBXMySQLDriver;dxDockingRS17;dxLayoutControlRS17;vclactnband;bindengine;soaprtl;bindcompdbx;FMXTee;TeeUI;bindcompvcl;dxSkinOffice2007PinkRS17;dxSkinOffice2007BlueRS17;vclie;madExcept_;cxPageControlRS17;vcltouch;AnyDAC_PhysASA_D18;dxSkinOffice2007GreenRS17;dxSkinscxPCPainterRS17;dxSkinSharpRS17;dxSkinFoggyRS17;VclSmp;dxSkinDarkSideRS17;DBXInformixDriver;dxSkinTheAsphaltWorldRS17;Intraweb;DataSnapConnectors;dxSkinSilverRS17;dsnapcon;DBXFirebirdDriver;AnyDAC_PhysSQLITE_D18;inet;fmxobj;dxSkinGlassOceansRS17;cxTreeListRS17;vclx;dxSkinStardustRS17;cxEditorsRS17;svn;DBXSybaseASADriver;fmxdae;dxSkinsdxNavBarPainterRS17;bdertl;VirtualTreesR;dbexpress;DataSnapIndy10ServerTransport;AnyDAC_PhysDb2_D18;VCLRESTComponents;RESTComponents;$(DCC_UsePackage)</DCC_UsePackage>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win64)'!=''">
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_UsePackage>IndyIPClient;dxSkinCaramelRS17;dxSkinVS2010RS17;AnyDAC_PhysADS_D18;dxSkinBlueprintRS17;dxSkinHighContrastRS17;dxSkinSevenRS17;AnyDAC_PhysODBC_D18;AnyDAC_GUIxForms_D18;dxSkinOffice2007BlackRS17;dxCoreRS17;DBXSqliteDriver;AnyDAC_ComI_D18;AnyDAC_PhysTDBX_D18;dxThemeRS17;dxSkinXmas2008BlueRS17;fmx;IndySystem;TeeDB;dxSkinSummer2008RS17;dxSkinValentineRS17;dxSkinBlueRS17;AnyDAC_PhysIB_D18;dxSkinDarkRoomRS17;DBXInterBaseDriver;DataSnapClient;DataSnapCommon;DataSnapServer;dxSkinDevExpressStyleRS17;vclib;DataSnapProviderClient;DBXSybaseASEDriver;dxRibbonRS17;DbxCommonDriver;cxDataRS17;vclimg;dxServerModeRS17;dxSkinsdxBarPainterRS17;dbxcds;DatasnapConnectorsFreePascal;MetropolisUILiveTile;dxSkinMoneyTwinsRS17;dxSkinPumpkinRS17;vcldb;cxExportRS17;dxSkinSpringTimeRS17;vcldsnap;dxBarExtItemsRS17;AnyDAC_PhysMSAcc_D18;dxGDIPlusRS17;dxSkinDevExpressDarkStyleRS17;DBXDb2Driver;dxNavBarRS17;DBXOracleDriver;CustomIPTransport;dxSkinLiquidSkyRS17;cxLibraryRS17;vclribbon;cxGridRS17;dsnap;IndyIPServer;AnyDAC_PhysPg_D18;dxSkinOffice2010BlackRS17;fmxase;vcl;IndyCore;dxSkinMcSkinRS17;dxSkinOffice2007SilverRS17;IndyIPCommon;CloudService;DBXMSSQLDriver;FmxTeeUI;dxSkiniMaginaryRS17;AnyDAC_PhysMSSQL_D18;dxSkinsdxDLPainterRS17;AnyDAC_PhysOracle_D18;dcldxSkinsCoreRS17;inetdbxpress;webdsnap;AnyDAC_PhysMySQL_D18;dxSkinCoffeeRS17;dxSkinSevenClassicRS17;adortl;AnyDAC_Phys_D18;dxSkinLilianRS17;dxSkinOffice2010BlueRS17;AnyDAC_Comp_D18;bindcompfmx;dxSkinOffice2010SilverRS17;rtl;dbrtl;DbxClientDriver;bindcomp;inetdb;dxComnRS17;dxSkinsCoreRS17;dxSkinLondonLiquidSkyRS17;dxBarRS17;Tee;dxSkinSharpPlusRS17;DBXOdbcDriver;dxSkinWhiteprintRS17;dxSkinBlackRS17;xmlrtl;dxSkinsdxRibbonPainterRS17;ibxpress;IndyProtocols;DBXMySQLDriver;dxDockingRS17;dxLayoutControlRS17;vclactnband;bindengine;soaprtl;bindcompdbx;FMXTee;TeeUI;bindcompvcl;dxSkinOffice2007PinkRS17;dxSkinOffice2007BlueRS17;vclie;cxPageControlRS17;vcltouch;AnyDAC_PhysASA_D18;dxSkinOffice2007GreenRS17;dxSkinscxPCPainterRS17;dxSkinSharpRS17;dxSkinFoggyRS17;VclSmp;dxSkinDarkSideRS17;DBXInformixDriver;dxSkinTheAsphaltWorldRS17;Intraweb;DataSnapConnectors;dxSkinSilverRS17;dsnapcon;DBXFirebirdDriver;AnyDAC_PhysSQLITE_D18;inet;fmxobj;dxSkinGlassOceansRS17;cxTreeListRS17;vclx;dxSkinStardustRS17;cxEditorsRS17;DBXSybaseASADriver;fmxdae;dxSkinsdxNavBarPainterRS17;VirtualTreesR;dbexpress;DataSnapIndy10ServerTransport;AnyDAC_PhysDb2_D18;RESTComponents;$(DCC_UsePackage)</DCC_UsePackage>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+        <DCC_DebugDCUs>true</DCC_DebugDCUs>
+        <DCC_Optimize>false</DCC_Optimize>
+        <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+        <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+        <DCC_RemoteDebug>true</DCC_RemoteDebug>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <DCC_RemoteDebug>false</DCC_RemoteDebug>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+        <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+        <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+        <DCC_DebugInformation>0</DCC_DebugInformation>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+    </PropertyGroup>
+    <ItemGroup>
+        <DelphiCompile Include="$(MainSource)">
+            <MainSource>MainSource</MainSource>
+        </DelphiCompile>
+        <DCCReference Include="uMain_frm.pas">
+            <Form>frm_Main</Form>
+        </DCCReference>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Base">
+            <Key>Base</Key>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Delphi.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Delphi.Personality>
+                <VersionInfo>
+                    <VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+                    <VersionInfo Name="AutoIncBuild">False</VersionInfo>
+                    <VersionInfo Name="MajorVer">1</VersionInfo>
+                    <VersionInfo Name="MinorVer">0</VersionInfo>
+                    <VersionInfo Name="Release">0</VersionInfo>
+                    <VersionInfo Name="Build">0</VersionInfo>
+                    <VersionInfo Name="Debug">False</VersionInfo>
+                    <VersionInfo Name="PreRelease">False</VersionInfo>
+                    <VersionInfo Name="Special">False</VersionInfo>
+                    <VersionInfo Name="Private">False</VersionInfo>
+                    <VersionInfo Name="DLL">False</VersionInfo>
+                    <VersionInfo Name="Locale">1031</VersionInfo>
+                    <VersionInfo Name="CodePage">1252</VersionInfo>
+                </VersionInfo>
+                <VersionInfoKeys>
+                    <VersionInfoKeys Name="CompanyName"/>
+                    <VersionInfoKeys Name="FileDescription"/>
+                    <VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+                    <VersionInfoKeys Name="InternalName"/>
+                    <VersionInfoKeys Name="LegalCopyright"/>
+                    <VersionInfoKeys Name="LegalTrademarks"/>
+                    <VersionInfoKeys Name="OriginalFilename"/>
+                    <VersionInfoKeys Name="ProductName"/>
+                    <VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+                    <VersionInfoKeys Name="Comments"/>
+                    <VersionInfoKeys Name="CFBundleName"/>
+                    <VersionInfoKeys Name="CFBundleDisplayName"/>
+                    <VersionInfoKeys Name="UIDeviceFamily"/>
+                    <VersionInfoKeys Name="CFBundleIdentifier"/>
+                    <VersionInfoKeys Name="CFBundleVersion"/>
+                    <VersionInfoKeys Name="CFBundlePackageType"/>
+                    <VersionInfoKeys Name="CFBundleSignature"/>
+                    <VersionInfoKeys Name="CFBundleAllowMixedLocalizations"/>
+                    <VersionInfoKeys Name="UISupportedInterfaceOrientations"/>
+                    <VersionInfoKeys Name="CFBundleExecutable"/>
+                    <VersionInfoKeys Name="CFBundleResourceSpecification"/>
+                    <VersionInfoKeys Name="LSRequiresIPhoneOS"/>
+                    <VersionInfoKeys Name="CFBundleInfoDictionaryVersion"/>
+                    <VersionInfoKeys Name="CFBundleDevelopmentRegion"/>
+                </VersionInfoKeys>
+                <Source>
+                    <Source Name="MainSource">RESTDemos.dpr</Source>
+                </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k200.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp200.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k200.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp200.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                </Excluded_Packages>
+            </Delphi.Personality>
+            <Deployment/>
+            <Platforms>
+                <Platform value="Win32">True</Platform>
+                <Platform value="Win64">True</Platform>
+            </Platforms>
+        </BorlandProject>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+</Project>

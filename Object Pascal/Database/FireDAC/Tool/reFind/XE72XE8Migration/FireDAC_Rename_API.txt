@@ -1,0 +1,23 @@
+; C_FD_PhysRDBMSKinds -> oManMeta.GetRDBMSName
+; C_FD_PhysRDBMSIds -> remove
+; Low(TFDRDBMSKind) to High(TFDRDBMSKind) -> Low(TFDRDBMSKindSet) to High(TFDRDBMSKindSet)
+
+mkUnknown -> TFDRDBMSKinds.Unknown
+mkOracle -> TFDRDBMSKinds.Oracle
+mkMSSQL -> TFDRDBMSKinds.MSSQL
+mkMSAccess -> TFDRDBMSKinds.MSAccess
+mkMySQL -> TFDRDBMSKinds.MySQL
+mkDB2 -> TFDRDBMSKinds.DB2
+mkASA -> TFDRDBMSKinds.SQLAnywhere
+mkADS -> TFDRDBMSKinds.Advantage
+mkInterbase -> TFDRDBMSKinds.Interbase
+mkFirebird -> TFDRDBMSKinds.Firebird
+mkSQLite -> TFDRDBMSKinds.SQLite
+mkPostgreSQL -> TFDRDBMSKinds.PostgreSQL
+mkNexus -> TFDRDBMSKinds.NexusDB
+mkDS -> TFDRDBMSKinds.DataSnap
+mkInformix -> TFDRDBMSKinds.Informix
+mkTeradata -> TFDRDBMSKinds.Teradata
+mkOther -> TFDRDBMSKinds.Other
+
+TFDScriptOuputKind -> TFDScriptOutputKind 

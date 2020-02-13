@@ -1,0 +1,119 @@
+object FmxMonitorClient: TFmxMonitorClient
+  Left = 0
+  Top = 0
+  Caption = 'Monitor Connections Client'
+  ClientHeight = 325
+  ClientWidth = 365
+  FormFactor.Width = 1920
+  FormFactor.Height = 1200
+  FormFactor.Devices = [Desktop]
+  OnActivate = FormActivate
+  DesignerMasterStyle = 0
+  object startButton: TButton
+    Position.X = 272.000000000000000000
+    Position.Y = 48.000000000000000000
+    Size.Width = 81.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = 'Start'
+    OnClick = startButtonClick
+  end
+  object HostEdit: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 1
+    Text = 'localhost'
+    Position.X = 88.000000000000000000
+    Position.Y = 21.000000000000000000
+    Size.Width = 100.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object IOMemo: TMemo
+    Position.X = 8.000000000000000000
+    Position.Y = 88.000000000000000000
+    Size.Width = 345.000000000000000000
+    Size.Height = 201.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Lines.Strings = (
+      'Hello world, this is a line of text to reverse.')
+  end
+  object ReqCountLabel: TLabel
+    Position.X = 8.000000000000000000
+    Position.Y = 296.000000000000000000
+    Size.Width = 177.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'ReqCountLabel'
+  end
+  object Label1: TLabel
+    Position.X = 8.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 120.000000000000000000
+    Size.Height = 15.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'HOST SERVER:'
+  end
+  object Label2: TLabel
+    Position.X = 200.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 15.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'TCP/IP Port:'
+  end
+  object PortEdit: TNumberBox
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 6
+    Cursor = crIBeam
+    Max = 10000.000000000000000000
+    Value = 211.000000000000000000
+    KeyboardType = Default
+    Position.X = 272.000000000000000000
+    Position.Y = 21.000000000000000000
+    Size.Width = 49.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Label3: TLabel
+    Position.X = 8.000000000000000000
+    Position.Y = 64.000000000000000000
+    Size.Width = 120.000000000000000000
+    Size.Height = 15.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Hammer server every'
+  end
+  object HammerEdit: TNumberBox
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 8
+    Cursor = crIBeam
+    Max = 10000.000000000000000000
+    Value = 1000.000000000000000000
+    KeyboardType = Default
+    Position.X = 128.000000000000000000
+    Position.Y = 61.000000000000000000
+    Size.Width = 49.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Label4: TLabel
+    Position.X = 184.000000000000000000
+    Position.Y = 64.000000000000000000
+    Size.Width = 81.000000000000000000
+    Size.Height = 15.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'milliseconds'
+  end
+  object CMCSQLConnection: TSQLConnection
+    DriverName = 'DataSnap'
+    LoginPrompt = False
+    Params.Strings = (
+      'Port=211'
+      'CommunicationProtocol=tcp/ip'
+      'DatasnapContext=datasnap/')
+    Left = 152
+    Top = 208
+    UniqueId = '{B20CFA38-BEDE-497B-B520-6C8FD3B34392}'
+  end
+end

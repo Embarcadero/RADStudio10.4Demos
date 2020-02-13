@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="hp3io92hsor_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uUserForm.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:l_ast:src:MeetingOrganizer:uUserForm.@unitclass.fUserForm" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserForm.@unitclass.fUserForm" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uUserForm.TUserForm">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserForm.TUserForm.Label6" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserForm.TUserForm.Label5" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserForm.TUserForm.Label4" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserForm.TUserForm.Label1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserForm.TUserForm.DBComboBox1" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uUserForm.TUserForm.FormDestroy(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserForm.TUserForm.DBEdit1" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserForm.TUserForm.DBEdit2" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserForm.TUserForm.Label3" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserForm.TUserForm.Label2" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserForm.TUserForm.DBEdit5" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserForm.TUserForm.DBEdit6" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserForm.TUserForm.DBEdit3" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserForm.TUserForm.DBEdit4" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserForm.TUserForm.Label7" />
+    </reference>
+  </view>
+</nodeSet>

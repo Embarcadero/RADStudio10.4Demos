@@ -1,0 +1,208 @@
+object ClientForm: TClientForm
+  Left = 0
+  Top = 0
+  Caption = 'Client Form'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 0
+  object Panel2: TPanel
+    StyleName = 'Panelstyle'
+    Align = Bottom
+    Position.Y = 448.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    object Button1: TButton
+      StyleName = 'Buttonstyle'
+      Position.X = 8.000000000000000000
+      Position.Y = 6.000000000000000000
+      Size.Width = 100.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Reverse String'
+      OnClick = Button1Click
+    end
+  end
+  object Panel1: TPanel
+    StyleName = 'Panelstyle'
+    Align = MostTop
+    Size.Width = 640.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    object Button2: TButton
+      StyleName = 'Buttonstyle'
+      Action = ActionGetTables
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 16.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 110.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Visible = True
+    end
+    object Button3: TButton
+      StyleName = 'Buttonstyle'
+      Action = ActionPostUpdates
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 144.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 110.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Visible = True
+    end
+    object Button4: TButton
+      StyleName = 'Buttonstyle'
+      Action = ActionCancelUpdates
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 264.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 110.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Visible = True
+    end
+  end
+  object StringGrid1: TStringGrid
+    StyleName = 'gridstyle'
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 207.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 8
+    RowCount = 100
+    RowHeight = 21.000000000000000000
+    Viewport.Width = 636.000000000000000000
+    Viewport.Height = 182.000000000000000000
+  end
+  object StringGrid2: TStringGrid
+    StyleName = 'gridstyle'
+    Align = Bottom
+    Position.Y = 256.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 192.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    RowCount = 100
+    RowHeight = 21.000000000000000000
+    Viewport.Width = 636.000000000000000000
+    Viewport.Height = 167.000000000000000000
+  end
+  object ActionList1: TActionList
+    Left = 584
+    Top = 259
+    object ActionGetTables: TAction
+      Text = 'Get Tables'
+      OnExecute = ActionGetTablesExecute
+    end
+    object ActionPostUpdates: TAction
+      Text = 'Post Updates'
+      OnExecute = ActionPostUpdatesExecute
+      OnUpdate = ActionPostUpdatesUpdate
+    end
+    object ActionCancelUpdates: TAction
+      Text = 'Cancel Updates'
+      OnExecute = ActionCancelUpdatesExecute
+      OnUpdate = ActionPostUpdatesUpdate
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = DataModuleFDClient.mtCustomers
+    ScopeMappings = <>
+    Left = 496
+    Top = 136
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 516
+    Top = 261
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = StringGrid1
+      Columns = <>
+    end
+    object LinkGridToDataSourceBindSourceDB2: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB2
+      GridControl = StringGrid2
+      Columns = <>
+    end
+  end
+  object BindSourceDB2: TBindSourceDB
+    DataSet = DataModuleFDClient.mtOrders
+    ScopeMappings = <>
+    Left = 496
+    Top = 344
+  end
+  object FDPhysDSDriverLink1: TFDPhysDSDriverLink
+    DriverID = 'DS'
+    Left = 152
+    Top = 248
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'DriverID=DS'
+      'Port=211')
+    LoginPrompt = False
+    Left = 48
+    Top = 248
+  end
+  object FDStoredProcReverse: TFDStoredProc
+    Connection = FDConnection1
+    StoredProcName = 'TServerMethods.ReverseString'
+    Left = 168
+    Top = 432
+    ParamData = <
+      item
+        Name = 'Value'
+        DataType = ftWideString
+        ParamType = ptInput
+      end
+      item
+        Position = 1
+        Name = 'ReturnValue'
+        DataType = ftWideString
+        ParamType = ptResult
+      end>
+  end
+  object FDStoredProcGet: TFDStoredProc
+    Connection = FDConnection1
+    StoredProcName = 'TServerMethods.StreamGet'
+    Left = 289
+    Top = 432
+    ParamData = <
+      item
+        Name = 'ReturnValue'
+        DataType = ftBlob
+        ParamType = ptResult
+      end>
+  end
+  object FDStoredProcPost: TFDStoredProc
+    Connection = FDConnection1
+    StoredProcName = 'TServerMethods.StreamPost'
+    Left = 408
+    Top = 431
+    ParamData = <
+      item
+        Name = 'AStream'
+        DataType = ftStream
+        ParamType = ptInput
+      end>
+  end
+end

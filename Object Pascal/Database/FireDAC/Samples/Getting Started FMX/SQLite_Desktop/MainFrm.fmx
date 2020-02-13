@@ -1,0 +1,95 @@
+object frmMain: TfrmMain
+  Left = 0
+  Top = 0
+  Caption = 'FireMonkey HD Demo'
+  ClientHeight = 400
+  ClientWidth = 600
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [dkDesktop, dkiPhone, dkiPad]
+  DesignerMobile = False
+  DesignerWidth = 0
+  DesignerHeight = 0
+  DesignerDeviceName = ''
+  DesignerOrientation = 0
+  object Button1: TButton
+    Height = 22.000000000000000000
+    Position.X = 16.000000000000000000
+    Position.Y = 16.000000000000000000
+    TabOrder = 0
+    Text = 'Open'
+    Width = 80.000000000000000000
+    OnClick = Button1Click
+  end
+  object StringGrid1: TStringGrid
+    Height = 329.000000000000000000
+    Position.X = 16.000000000000000000
+    Position.Y = 56.000000000000000000
+    TabOrder = 1
+    Width = 569.000000000000000000
+    RowCount = 0
+    RowHeight = 21.000000000000000000
+  end
+  object BindNavigator1: TBindNavigator
+    Height = 25.000000000000000000
+    Position.X = 106.000000000000000000
+    Position.Y = 16.000000000000000000
+    Width = 240.000000000000000000
+    DataSource = BindScopeDB1
+    xRadius = 4.000000000000000000
+    yRadius = 4.000000000000000000
+  end
+  object FDGUIxLoginDialog1: TFDGUIxLoginDialog
+    Provider = 'FMX'
+    Left = 160
+    Top = 256
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'FMX'
+    Left = 264
+    Top = 256
+  end
+  object FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink
+    Left = 56
+    Top = 256
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'ConnectionDef=SQLite_Demo')
+    LoginDialog = FDGUIxLoginDialog1
+    Left = 56
+    Top = 208
+  end
+  object FDQuery1: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from "Territories"')
+    Left = 160
+    Top = 208
+  end
+  object DataSource1: TDataSource
+    DataSet = FDQuery1
+    Left = 264
+    Top = 208
+  end
+  object BindScopeDB1: TBindScopeDB
+    DataSource = DataSource1
+    DataSet = FDQuery1
+    ScopeMappings = <>
+    Left = 352
+    Top = 208
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 436
+    Top = 205
+    object BindDBGridLink1: TBindDBGridLink
+      Category = 'DB Links'
+      DataSource = BindScopeDB1
+      GridControl = StringGrid1
+      AutoBufferCount = False
+      Columns = <>
+    end
+  end
+end

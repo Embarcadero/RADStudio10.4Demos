@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{03B0ECFE-C52C-4B58-91AC-77E549A97EB6}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="SampleDataSnapFireDAC_Server.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SampleDataSnapFireDAC_Client.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SampleDataSnapFireDAC_Server">
+        <MSBuild Projects="SampleDataSnapFireDAC_Server.dproj"/>
+    </Target>
+    <Target Name="SampleDataSnapFireDAC_Server:Clean">
+        <MSBuild Projects="SampleDataSnapFireDAC_Server.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SampleDataSnapFireDAC_Server:Make">
+        <MSBuild Projects="SampleDataSnapFireDAC_Server.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SampleDataSnapFireDAC_Client">
+        <MSBuild Projects="SampleDataSnapFireDAC_Client.dproj"/>
+    </Target>
+    <Target Name="SampleDataSnapFireDAC_Client:Clean">
+        <MSBuild Projects="SampleDataSnapFireDAC_Client.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SampleDataSnapFireDAC_Client:Make">
+        <MSBuild Projects="SampleDataSnapFireDAC_Client.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SampleDataSnapFireDAC_Server;SampleDataSnapFireDAC_Client"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SampleDataSnapFireDAC_Server:Clean;SampleDataSnapFireDAC_Client:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SampleDataSnapFireDAC_Server:Make;SampleDataSnapFireDAC_Client:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

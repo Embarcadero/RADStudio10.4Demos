@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{9CE7A197-1720-46B9-A63D-E9F1EE71A25D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Client\DataSnapTestClient.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Examples\DataSnapExamples.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Server\DataSnapTestServer.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DataSnapTestClient">
+        <MSBuild Projects="Client\DataSnapTestClient.dproj"/>
+    </Target>
+    <Target Name="DataSnapTestClient:Clean">
+        <MSBuild Projects="Client\DataSnapTestClient.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DataSnapTestClient:Make">
+        <MSBuild Projects="Client\DataSnapTestClient.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DataSnapExamples">
+        <MSBuild Projects="Examples\DataSnapExamples.dproj"/>
+    </Target>
+    <Target Name="DataSnapExamples:Clean">
+        <MSBuild Projects="Examples\DataSnapExamples.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DataSnapExamples:Make">
+        <MSBuild Projects="Examples\DataSnapExamples.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DataSnapTestServer">
+        <MSBuild Projects="Server\DataSnapTestServer.dproj"/>
+    </Target>
+    <Target Name="DataSnapTestServer:Clean">
+        <MSBuild Projects="Server\DataSnapTestServer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DataSnapTestServer:Make">
+        <MSBuild Projects="Server\DataSnapTestServer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DataSnapTestClient;DataSnapExamples;DataSnapTestServer"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DataSnapTestClient:Clean;DataSnapExamples:Clean;DataSnapTestServer:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DataSnapTestClient:Make;DataSnapExamples:Make;DataSnapTestServer:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

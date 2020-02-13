@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="v3n2jpp0bch_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractDataTabForm.TAbstractDataTabForm">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataTabForm.TAbstractDataTabForm.lblValue" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataTabForm.TAbstractDataTabForm.aFieldNames" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataTabForm.TAbstractDataTabForm.tabEdit" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataTabForm.TAbstractDataTabForm.cmbField" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataTabForm.TAbstractDataTabForm.btnSearch" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataTabForm.TAbstractDataTabForm.DBGridSearch" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataTabForm.TAbstractDataTabForm.lblField" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataTabForm.TAbstractDataTabForm.panBotton" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractDataTabForm.TAbstractDataTabForm.PageControlChanging(System.TObject,ref@System.Boolean)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataTabForm.TAbstractDataTabForm.lblDataFind" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractDataTabForm.TAbstractDataTabForm.btnSearchClick(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataTabForm.TAbstractDataTabForm.PageControl" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataTabForm.TAbstractDataTabForm.edtValue" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractDataTabForm.TAbstractDataTabForm.PageControlChange(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uAbstractDataTabForm.TAbstractDataTabForm.FormCreate(System.TObject)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uAbstractDataTabForm.TAbstractDataTabForm.tabSearch" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uAbstractDataTabForm.@unitclass">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>

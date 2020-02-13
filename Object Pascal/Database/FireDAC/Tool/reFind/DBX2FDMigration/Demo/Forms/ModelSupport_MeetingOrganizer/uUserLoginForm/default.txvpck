@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="p8by1oc9rh_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uUserLoginForm.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:l_ast:src:MeetingOrganizer:uUserLoginForm.@unitclass.UserLoginForm" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserLoginForm.@unitclass.UserLoginForm" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:MeetingOrganizer:uUserLoginForm.TUserLoginForm">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserLoginForm.TUserLoginForm.edtPassword" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserLoginForm.TUserLoginForm.btnCancel" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserLoginForm.TUserLoginForm.lblUserLogin" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserLoginForm.TUserLoginForm.lblPassword" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserLoginForm.TUserLoginForm.btnOK" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uUserLoginForm.TUserLoginForm.edtUserLoginChange(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:MeetingOrganizer:uUserLoginForm.TUserLoginForm.FormCloseQuery(System.TObject,ref@System.Boolean)" />
+      <reference referencedUin="delphi:e_field:src:MeetingOrganizer:uUserLoginForm.TUserLoginForm.edtUserLogin" />
+    </reference>
+  </view>
+</nodeSet>

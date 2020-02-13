@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F04F7CE2-3700-4E0C-B54A-45688C8531E6}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Component\ShareContractComponent.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="FrameWork\ShareContractFramework.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ShareContractComponent">
+        <MSBuild Projects="Component\ShareContractComponent.dproj"/>
+    </Target>
+    <Target Name="ShareContractComponent:Clean">
+        <MSBuild Projects="Component\ShareContractComponent.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ShareContractComponent:Make">
+        <MSBuild Projects="Component\ShareContractComponent.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ShareContractFramework">
+        <MSBuild Projects="FrameWork\ShareContractFramework.dproj"/>
+    </Target>
+    <Target Name="ShareContractFramework:Clean">
+        <MSBuild Projects="FrameWork\ShareContractFramework.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ShareContractFramework:Make">
+        <MSBuild Projects="FrameWork\ShareContractFramework.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ShareContractComponent;ShareContractFramework"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ShareContractComponent:Clean;ShareContractFramework:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ShareContractComponent:Make;ShareContractFramework:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

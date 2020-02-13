@@ -1,0 +1,98 @@
+[Compiler]
+A=1
+B=0
+C=1
+D=1
+E=0
+F=0
+G=1
+H=1
+I=1
+J=1
+K=0
+L=1
+M=0
+N=1
+O=1
+P=1
+Q=0
+R=0
+S=0
+T=0
+U=0
+V=1
+W=0
+X=1
+Y=1
+Z=1
+ShowHints=1
+ShowWarnings=1
+UnitAliases=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+[Linker]
+MapFile=0
+OutputObjs=0
+ConsoleApp=1
+DebugInfo=0
+RemoteSymbols=0
+MinStackSize=16384
+MaxStackSize=1048576
+ImageBase=4194304
+ExeDescription=
+[Directories]
+OutputDir=
+UnitOutputDir=
+PackageDLLOutputDir=
+PackageDCPOutputDir=
+SearchPath=U:\VCL\TeeChart706\Sources\Compiled\Delphi5\Lib
+Packages=Vcl50;Vclx50;VclSmp50;Vcldb50;vclado50;ibevnt50;Vclbde50;vcldbx50;Qrpt50;VCLIB50;Vclmid50;vclie50;Inetdb50;Inet50;NMFast50;webmid50;dclocx50;dclaxserver50;madBasic_;madDisAsm_;madRemote_;madKernel_;madCodeHook_;madSecurity_;madShell_;cxLibraryVCLD5;cxEditorsD5;dxThemeD5;cxDataD5;cxExtEditorsD5;cxPageControlD5;cxGridD5;dxmdsd5;Tee75;TeeUI75;TeeDB75;TeePro75;TeeGL75;TeeImage75;TeeLanguage75;TeeQR75
+Conditionals=
+DebugSourceDirs=
+UsePackages=0
+[Parameters]
+RunParams=
+HostApplication=
+[Language]
+ActiveLang=
+ProjectLang=$00000419
+RootDir=
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1033
+CodePage=1252
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+[Excluded Packages]
+U:\VCL\TeeChart706\Sources\Compiled\Delphi5\Bin\DclTGL75.bpl=TeeChart 7 for OpenGL
+U:\VCL\TeeChart706\Sources\Compiled\Delphi5\System\TeeImage75.bpl=TeeChart Pro 7 Graphic Formats
+U:\VCL\TeeChart706\Sources\Compiled\Delphi5\Bin\DclTee75.bpl=TeeChart 7 Components
+U:\VCL\TeeChart706\Sources\Compiled\Delphi5\Bin\DclTQR75.bpl=TeeChart 7 for QuickReport
+U:\VCL\TeeChart706\Sources\Compiled\Delphi5\Bin\DclTeePro75.bpl=TeeChart Pro 7 Components
+u:\vcl\FIBPlus\sources\tools\D5\pFIBPlusTools5.bpl=FIBPlus Projects Tools
+E:\Projects\VCL\PostgresDAC Trial\Packages\Delphi 5\dclPostgresDAC5.bpl=PostgreSQL Direct Access Components
+$(DELPHI)\Projects\Bpl\dclIndyCore50.bpl=Indy 10 Core Design Time
+$(DELPHI)\Projects\Bpl\dclIndyProtocols50.bpl=Indy 10 Protocols Design Time
+$(DELPHI)\Projects\Bpl\NexusDB207dv50.bpl=NexusDB 2.07 - designtime - VCL50
+C:\PROGRA~1\Borland\Delphi5\Projects\Bpl\NexusDB207pv50.bpl=NexusDB 2.07 - platform specific Win32/VCL - runtime - VCL50
+$(DELPHI)\Projects\Bpl\NexusDB205dv50.bpl=NexusDB 2.05 - designtime - VCL50
+C:\PROGRA~1\Borland\Delphi5\Projects\Bpl\NexusDB205pv50.bpl=NexusDB 2.05 - platform specific Win32/VCL - runtime - VCL50
+$(DELPHI)\Bin\dcldss50.bpl=Borland Decision Cube Components
+$(DELPHI)\Projects\Bpl\dclusr50.bpl=Borland User Components
