@@ -253,7 +253,7 @@ object Form2: TForm2
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       Anchors = [akLeft, akTop, akRight]
       TabOrder = 3
-      Text = 'ubuntu-15.04-server-ppc64el.template'
+      Text = 'ubuntu-19.10-server-ppc64el.template'
       Position.X = 72.000000000000000000
       Position.Y = 8.000000000000000000
       Size.Width = 561.000000000000000000
@@ -265,8 +265,8 @@ object Form2: TForm2
       Anchors = [akLeft, akTop, akRight]
       TabOrder = 2
       Text = 
-        'http://nl.archive.ubuntu.com/ubuntu-cdimages/15.04/release/ubunt' +
-        'u-15.04-server-ppc64el.template'
+        'http://nl.archive.ubuntu.com/ubuntu-cdimages/19.10/release/ubunt' +
+        'u-19.10-server-ppc64el.template'
       Position.X = 72.000000000000000000
       Position.Y = 44.000000000000000000
       Size.Width = 561.000000000000000000
