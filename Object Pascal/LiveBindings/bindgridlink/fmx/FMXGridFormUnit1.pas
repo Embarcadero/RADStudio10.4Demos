@@ -14,11 +14,10 @@ unit FMXGridFormUnit1;
 interface
 
 uses
-  System.SysUtils, System.Classes, System.Variants, FMX.Types, FMX.Controls, FMX.Forms,
-  FMX.Dialogs, Data.Bind.Components, Data.Bind.DBScope, FMX.Edit, FMX.Layouts, FMX.ListBox, Data.DB, Datasnap.DBClient,
-  FMX.Memo, Fmx.Bind.Navigator, Fmx.Bind.DBEngExt, Data.Bind.EngExt, FMX.Menus, FMX.StdCtrls, FMX.Styles,
-  FMX.Grid, Fmx.Bind.Editors, System.Rtti,
-  System.Bindings.Outputs;
+  System.Bindings.Outputs, System.Classes, System.Rtti,
+  Data.Bind.Components, Data.Bind.Controls, Data.Bind.DBScope, Data.Bind.EngExt, Data.DB, Datasnap.DBClient,
+  FMX.Bind.DBEngExt, FMX.Bind.Editors, FMX.Bind.Navigator, FMX.Controls, FMX.Controls.Presentation,
+  FMX.Edit, FMX.Forms, FMX.Grid, FMX.Grid.Style, FMX.Layouts, FMX.ScrollBox, FMX.StdCtrls, FMX.Types;
 
 type
   TForm1 = class(TForm)
