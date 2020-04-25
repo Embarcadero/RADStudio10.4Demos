@@ -11,7 +11,7 @@ object GyroscopeForm: TGyroscopeForm
   object Rectangle3D1: TRectangle3D
     Position.X = -0.083947569131851200
     Position.Y = 0.124970436096191400
-    RotationAngle.X = 357.247222900390700000
+    RotationAngle.X = 357.247222900390600000
     RotationAngle.Y = 5.521286487579346000
     RotationAngle.Z = 358.115600585937500000
     Width = 3.230767726898193000

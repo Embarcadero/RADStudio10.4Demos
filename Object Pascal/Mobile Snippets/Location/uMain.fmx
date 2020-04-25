@@ -31,22 +31,25 @@ object LocationForm: TLocationForm
       Size.PlatformDefault = False
       TabOrder = 0
       Text = 'Location Sensor'
-      object swLocationSensorActive: TSwitch
+      object Layout1: TLayout
         Align = Right
-        Anchors = []
-        IsChecked = False
-        Margins.Right = 5.000000000000000000
-        Position.X = 335.000000000000000000
-        Position.Y = 9.000000000000000000
-        Size.Width = 44.000000000000000000
-        Size.Height = 26.000000000000000000
+        Position.X = 312.000000000000000000
+        Size.Width = 72.000000000000000000
+        Size.Height = 44.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 0
-        TouchTargetExpansion.Left = 6.000000000000000000
-        TouchTargetExpansion.Top = 6.000000000000000000
-        TouchTargetExpansion.Right = 6.000000000000000000
-        TouchTargetExpansion.Bottom = 6.000000000000000000
-        OnSwitch = swLocationSensorActiveSwitch
+        object swLocationSensorActive: TSwitch
+          Align = Center
+          IsChecked = False
+          Margins.Right = 5.000000000000000000
+          Size.Width = 44.000000000000000000
+          Size.Height = 26.000000000000000000
+          Size.PlatformDefault = False
+          TouchTargetExpansion.Left = 6.000000000000000000
+          TouchTargetExpansion.Top = 6.000000000000000000
+          TouchTargetExpansion.Right = 6.000000000000000000
+          TouchTargetExpansion.Bottom = 6.000000000000000000
+          OnSwitch = swLocationSensorActiveSwitch
+        end
       end
     end
     object lbTriggerDistance: TListBoxItem

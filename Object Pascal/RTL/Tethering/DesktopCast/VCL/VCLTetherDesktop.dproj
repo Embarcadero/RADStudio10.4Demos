@@ -86,11 +86,11 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <Debugger_DebugSourcePath>C:\dev\trunk\runtime\tethering\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
+
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
-        <Debugger_DebugSourcePath>c:\dev\trunk\runtime\indy\lib\Core\;C:\dev\trunk\runtime\tethering\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
+
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>

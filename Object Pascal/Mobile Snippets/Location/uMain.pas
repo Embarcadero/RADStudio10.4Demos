@@ -21,6 +21,7 @@ uses
 
 type
   TLocationForm = class(TForm)
+    Layout1: TLayout;
   published var
     LocationSensor1: TLocationSensor;
     WebBrowser1: TWebBrowser;
@@ -82,8 +83,8 @@ procedure TLocationForm.LocationSensor1LocationChanged(Sender: TObject; const Ol
 const
   GoogleMapsURL: String = 'https://maps.google.com/maps?q=%s,%s';
 begin
-  var Latitude := NewLocation.Latitude.ToString(ffGeneral, 5, 2, TFormatSettings.Create('en-US'));
-  var Longitude := NewLocation.Longitude.ToString(ffGeneral, 5, 2, TFormatSettings.Create('en-US'));
+  var Latitude := NewLocation.Latitude.ToString(ffGeneral, 8, 5, TFormatSettings.Create('en-US'));
+  var Longitude := NewLocation.Longitude.ToString(ffGeneral, 8, 5, TFormatSettings.Create('en-US'));
 
   { convert the location to latitude and longitude }
   lbLatitude.Text := 'Latitude: ' + Latitude;

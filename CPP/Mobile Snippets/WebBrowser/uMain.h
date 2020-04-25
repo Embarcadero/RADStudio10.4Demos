@@ -28,14 +28,15 @@ __published:	// IDE-managed Components
 	TWebBrowser *WebBrowser1;
 	TToolBar *ToolBar1;
 	TButton *btnGO;
-	TClearingEdit *edtURL;
 	TStatusBar *StatusBar1;
 	TButton *btnBack;
 	TButton *btnForward;
+	TEdit *edtURL;
+	TClearEditButton *ClearEditButton1;
 	void __fastcall btnBackClick(TObject *Sender);
 	void __fastcall btnForwardClick(TObject *Sender);
 	void __fastcall btnGOClick(TObject *Sender);
-	void __fastcall edtURLKeyUp(TObject *Sender, WORD &Key, System::WideChar &KeyChar,
+	void __fastcall edtURLKeyDown(TObject *Sender, WORD &Key, System::WideChar &KeyChar,
           TShiftState Shift);
 private:	// User declarations
 public:		// User declarations

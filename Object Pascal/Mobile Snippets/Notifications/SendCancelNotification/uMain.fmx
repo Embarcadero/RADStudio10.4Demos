@@ -61,7 +61,7 @@ object NotificationsForm: TNotificationsForm
       Align = Left
       Margins.Left = 5.000000000000000000
       Position.X = 5.000000000000000000
-      Size.Width = 137.000000000000000000
+      Size.Width = 164.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       Text = 'Cancel Scheduled'
@@ -70,8 +70,8 @@ object NotificationsForm: TNotificationsForm
     object SpeedButton2: TSpeedButton
       Align = Right
       Margins.Right = 5.000000000000000000
-      Position.X = 218.000000000000000000
-      Size.Width = 161.000000000000000000
+      Position.X = 184.000000000000000000
+      Size.Width = 195.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       Text = 'Cancel All Notifications'
@@ -81,15 +81,17 @@ object NotificationsForm: TNotificationsForm
   object Memo1: TMemo
     Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
     DataDetectorTypes = []
-    Anchors = [akLeft, akTop, akRight, akBottom]
-    Position.X = 16.000000000000000000
-    Position.Y = 160.000000000000000000
-    Size.Width = 353.000000000000000000
-    Size.Height = 353.000000000000000000
+    Align = Client
+    Margins.Left = 16.000000000000000000
+    Margins.Top = 3.000000000000000000
+    Margins.Right = 16.000000000000000000
+    Margins.Bottom = 3.000000000000000000
+    Size.Width = 352.000000000000000000
+    Size.Height = 365.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 5
-    Viewport.Width = 345.000000000000000000
-    Viewport.Height = 345.000000000000000000
+    Viewport.Width = 344.000000000000000000
+    Viewport.Height = 357.000000000000000000
   end
   object NotificationC: TNotificationCenter
     OnReceiveLocalNotification = NotificationCReceiveLocalNotification

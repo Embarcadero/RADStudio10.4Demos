@@ -12,8 +12,8 @@ inherited AccelerometerForm_LgXhdpiPh: TAccelerometerForm_LgXhdpiPh
     Viewport.Height = 637.000000000000000000
     inherited lbAccelerometerSensor: TListBoxItem
       Size.Width = 450.000000000000000000
-      inherited swAccelerometerSensorActive: TSwitch
-        Position.X = 401.000000000000000000
+      inherited Layout1: TLayout
+        Position.X = 378.000000000000000000
       end
     end
     inherited lbAccelerationX: TListBoxItem

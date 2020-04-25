@@ -5,9 +5,11 @@ inherited WebBrowserForm_LgXhdpiPh: TWebBrowserForm_LgXhdpiPh
   inherited ToolBar1: TToolBar
     Size.Width = 450.000000000000000000
     inherited btnGO: TButton
-      Position.X = 397.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Position.X = 402.000000000000000000
+      Position.Y = 5.000000000000000000
     end
-    inherited edtURL: TClearingEdit
+    inherited edtURL: TEdit
       Size.Width = 369.000000000000000000
     end
   end

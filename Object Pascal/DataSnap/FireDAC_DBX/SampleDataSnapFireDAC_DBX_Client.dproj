@@ -278,7 +278,7 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-        <Debugger_DebugSourcePath>C:\dev\tp\runtime\data\;C:\dev\tp\runtime\data\dbx\;C:\dev\tp\runtime\indy\lib\Protocols\;C:\dev\tp\runtime\data\datasnap\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
+
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">

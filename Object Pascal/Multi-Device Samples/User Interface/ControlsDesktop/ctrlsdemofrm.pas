@@ -22,7 +22,7 @@ uses
   FMX.Memo, FMX.Colors, FMX.Menus, FMX.Layers3D, FMX.Types3D, FMX.Controls3D, FMX.StdCtrls,
   FMX.DateTimeCtrls, FMX.ComboTrackBar, FMX.ComboEdit, FMX.SpinBox, FMX.Calendar, FMX.EditBox, FMX.NumberBox,
   FMX.Controls.Presentation, Data.Bind.EngExt, Fmx.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs,
-  Fmx.Bind.Editors, Data.Bind.Components, FMX.ScrollBox;
+  Fmx.Bind.Editors, Data.Bind.Components, FMX.ScrollBox, System.Threading, FMX.Graphics, System.UITypes;
 
 type
 
@@ -296,6 +296,7 @@ type
     TrackBarE4: TTrackBar;
     EditE4: TEdit;
     Edit1: TEdit;
+    ControlLayout: TLayout;
     procedure AngleButton1Change(Sender: TObject);
     procedure AngleButton2Change(Sender: TObject);
     procedure AngleButton3Change(Sender: TObject);
@@ -321,11 +322,18 @@ type
       const Point: TPointF; var Operation: TDragOperation);
     procedure ScaleTrackChange(Sender: TObject);
     procedure DropTarget1Dropped(Sender: TObject; const Data: TDragObject; const Point: TPointF);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure ControlLayoutResize(Sender: TObject);
   private
+    FSavedWidth: Single;
+    FSavedHeight: Single;
+    FClosing: Boolean;
     FViewport: TViewport3D;
     FContainer: TLayer3D;
     procedure SwitchTo3D;
     procedure SwitchTo2D;
+
   end;
 
 var
@@ -336,6 +344,40 @@ implementation
 uses System.Math, aboutboxfrm;
 
 {$R *.fmx}
+
+procedure TfrmCtrlsDemo.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  if Assigned(FViewport) then
+  begin
+    FViewport.Free;
+  end;
+end;
+
+procedure TfrmCtrlsDemo.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+var
+ aTask: ITask;
+begin
+  if (ControlRoot.Visible = false) AND (FClosing = false) then
+  begin
+    FClosing := true;
+    CanClose := false;
+    TAnimator.StopAnimation(FContainer, 'Position.Z');
+    TAnimator.StopAnimation(FContainer, 'RotationAngle.X');
+    FContainer.Visible := false;
+    ControlRoot.Visible := true;
+    btn3DBack.Enabled := true;
+     aTask := TTask.Create (procedure ()
+       begin
+         Sleep(100);
+         frmCtrlsDemo.Close();
+       end);
+     aTask.Start;
+  end
+  else
+  begin
+     CanClose := true;
+  end;
+end;
 
 procedure TfrmCtrlsDemo.FormCreate(Sender: TObject);
 var
@@ -357,6 +399,12 @@ begin
       {$R+}
     end;
   AngleButton2.Value := 3;
+end;
+
+procedure TfrmCtrlsDemo.ControlLayoutResize(Sender: TObject);
+begin
+  ControlRoot.Width := ControlLayout.Width;
+  ControlRoot.Height := ControlLayout.Height;
 end;
 
 procedure TfrmCtrlsDemo.MenuItem3Click(Sender: TObject);
@@ -407,6 +455,7 @@ end;
 procedure TfrmCtrlsDemo.SwitchTo3D;
 var
   LImg: TImage;
+  LScreenShot: TBitmap;
 begin
   { Free 3D }
   if Assigned(FViewport) then
@@ -417,14 +466,24 @@ begin
   FViewport.Parent := Self;
   FViewport.Align := TAlignLayout.Client;
   FViewport.Color := claNull;
-  FContainer := TLayer3D.Create(Self);
+  FContainer := TLayer3D.Create(FViewPort);
   FContainer.Parent := FViewport;
   FContainer.Projection := TProjection.Screen;
   FContainer.Align := TAlignLayout.Client;
-  LImg := TImage.Create(Self);
-  LImg.Align := TAlignLayout.Client;
-  LImg.Bitmap.Assign(ControlRoot.MakeScreenshot);
+
+  LImg := TImage.Create(nil);
+  LImg.Height := FSavedHeight;
+  LImg.Width := FSavedWidth;
+  Limg.Margins := ControlRoot.Margins;
+  Limg.WrapMode := TImageWrapMode.Original;
+  LImg.Scale.X := ScaleTrack.Value;
+  LImg.Scale.Y := ScaleTrack.Value;
+  LImg.Bitmap.Height := Trunc(FSavedHeight);
+  LImg.Bitmap.Width := Trunc(FSavedWidth);
+  LScreenShot := ControlRoot.MakeScreenshot;
+  LImg.Bitmap.CopyFromBitmap(LScreenShot);
   LImg.Margins := ControlRoot.Margins;
+  FreeAndNil(LScreenShot);
   LImg.Parent := FContainer;
   ControlRoot.Visible := False;
 end;
@@ -437,6 +496,8 @@ end;
 
 procedure TfrmCtrlsDemo.btn3DBackClick(Sender: TObject);
 begin
+  FSavedHeight := ControlRoot.Height;
+  FSavedwidth := ControlRoot.Width;
   TButton(Sender).Enabled := false;
   SwitchTo3D;
   if Assigned(FContainer) then
@@ -446,6 +507,9 @@ begin
     TAnimator.AnimateFloatWait(FContainer, 'RotationAngle.X', 360, 2, TAnimationType.InOut, TInterpolationType.Back);
   end;
   SwitchTo2D;
+  ControlRoot.Height := FSavedHeight;
+  ControlRoot.Width := FSavedwidth;
+  ControlLayoutResize(Self);
   TButton(Sender).Enabled := true;
 end;
 

@@ -38,6 +38,7 @@ __published:	// IDE-managed Components
     void __fastcall btnPhotoLibraryClick(TObject *Sender);
 private:	// User declarations
     String FPermissionReadExternalStorage;
+    String FPermissionWriteExternalStorage;
     void __fastcall DisplayRationale(TObject *Sender, const DynamicArray<String> APermissions, const _di_TProc APostRationaleProc);
     void __fastcall LoadPicturePermissionRequestResult(TObject *Sender, const DynamicArray<String> APermissions, const DynamicArray<TPermissionStatus> AGrantResults);
 public:		// User declarations

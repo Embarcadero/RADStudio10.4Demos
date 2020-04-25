@@ -118,10 +118,10 @@
                     <VersionInfoKeys Name="Comments"/>
                 </VersionInfoKeys>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="c:\tp\main\bin\ExpertsUI170.bpl">Embarcadero Experts UI Components</Excluded_Packages>
-                    <Excluded_Packages Name="c:\tp\main\bin\designide170.bpl">Embarcadero Designer IDE Package</Excluded_Packages>
-                    <Excluded_Packages Name="c:\tp\main\bin\vclhie170.bpl">Internet Explorer Hosting Support Package</Excluded_Packages>
-                    <Excluded_Packages Name="c:\tp\main\bin\ExpertsCreators170.bpl">Embarcadero Experts Creators Components</Excluded_Packages>
+
+
+
+
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k160.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp160.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k160.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>

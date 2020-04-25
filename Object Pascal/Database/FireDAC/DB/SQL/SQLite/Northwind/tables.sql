@@ -68,7 +68,7 @@ CREATE TABLE "Employees" (
   FirstName varchar (10) NOT NULL ,
   Title varchar (30) NULL ,
   TitleOfCourtesy varchar (25) NULL ,
-  BirthDate datetime CHECK (BirthDate is null or BirthDate < date('now')),
+  BirthDate datetime NULL,
   HireDate datetime NULL ,
   Address varchar (60) NULL ,
   City varchar (15) NULL ,

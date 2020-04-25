@@ -81,7 +81,7 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <Debugger_DebugSourcePath>C:\tp\sfdemos\xe7\Object Pascal\Mobile Samples\User Interface\ListView\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
+
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -119,7 +119,7 @@
                 </Source>
             </Delphi.Personality>
             <Deployment Version="1">
-                <DeployFile LocalName="c:\tp\trunk\bin\CustomLoginPackage.bpl" Configuration="Debug" Class="ProjectOutput"/>
+
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
                         <Overwrite>true</Overwrite>

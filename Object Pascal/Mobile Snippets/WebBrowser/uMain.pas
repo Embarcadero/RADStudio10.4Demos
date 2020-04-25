@@ -26,7 +26,8 @@ type
     btnForward: TButton;
     ToolBar1: TToolBar;
     StatusBar1: TStatusBar;
-    edtURL: TClearingEdit;
+    edtURL: TEdit;
+    ClearEditButton1: TClearEditButton;
     procedure btnGOClick(Sender: TObject);
     procedure btnBackClick(Sender: TObject);
     procedure btnForwardClick(Sender: TObject);
@@ -45,6 +46,10 @@ implementation
 
 {$R *.fmx}
 {$R *.LgXhdpiPh.fmx ANDROID}
+{$R *.SmXhdpiPh.fmx ANDROID}
+{$R *.NmXhdpiPh.fmx ANDROID}
+{$R *.LgXhdpiTb.fmx ANDROID}
+{$R *.XLgXhdpiTb.fmx ANDROID}
 
 {Android: The required permissions have been set under Project-Options}
 

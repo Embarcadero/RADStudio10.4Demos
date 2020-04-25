@@ -36,6 +36,7 @@ type
     TiltButton: TSpeedButton;
     HeadingButton: TSpeedButton;
     Timer1: TTimer;
+    Layout2: TLayout;
     procedure swOrientationSensorActiveSwitch(Sender: TObject);
     procedure OrientationSensor1SensorChoosing(Sender: TObject;
       const Sensors: TSensorArray; var ChoseSensorIndex: Integer);
@@ -100,13 +101,16 @@ end;
 
 procedure TOrientationSensorForm.Timer1Timer(Sender: TObject);
 begin
-  { get the data from the sensor }
-  lbTiltX.Text := Format('Tilt X: %f', [OrientationSensor1.Sensor.TiltX]);
-  lbTiltY.Text := Format('Tilt Y: %f', [OrientationSensor1.Sensor.TiltY]);
-  lbTiltZ.Text := Format('Tilt Z: %f', [OrientationSensor1.Sensor.TiltZ]);
-  lbHeadingX.Text := Format('Heading X: %f', [OrientationSensor1.Sensor.HeadingX]);
-  lbHeadingY.Text := Format('Heading Y: %f', [OrientationSensor1.Sensor.HeadingY]);
-  lbHeadingZ.Text := Format('Heading Z: %f', [OrientationSensor1.Sensor.HeadingZ]);
+  if OrientationSensor1.Sensor<>nil then
+  begin
+    { get the data from the sensor }
+    lbTiltX.Text := Format('Tilt X: %f', [OrientationSensor1.Sensor.TiltX]);
+    lbTiltY.Text := Format('Tilt Y: %f', [OrientationSensor1.Sensor.TiltY]);
+    lbTiltZ.Text := Format('Tilt Z: %f', [OrientationSensor1.Sensor.TiltZ]);
+    lbHeadingX.Text := Format('Heading X: %f', [OrientationSensor1.Sensor.HeadingX]);
+    lbHeadingY.Text := Format('Heading Y: %f', [OrientationSensor1.Sensor.HeadingY]);
+    lbHeadingZ.Text := Format('Heading Z: %f', [OrientationSensor1.Sensor.HeadingZ]);
+  end;
 end;
 
 procedure TOrientationSensorForm.FormActivate(Sender: TObject);

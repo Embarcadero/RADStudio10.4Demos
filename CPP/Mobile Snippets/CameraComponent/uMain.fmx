@@ -71,6 +71,7 @@ object CameraComponentForm: TCameraComponentForm
       ExplicitSize.cy = 49.000000000000000000
       object rCameraType: TRectangle
         Align = Top
+        Fill.Color = x00E0E0E0
         Padding.Left = 5.000000000000000000
         Padding.Top = 5.000000000000000000
         Padding.Right = 5.000000000000000000
@@ -80,6 +81,7 @@ object CameraComponentForm: TCameraComponentForm
         Size.Width = 374.000000000000000000
         Size.Height = 92.000000000000000000
         Size.PlatformDefault = False
+        Stroke.Color = xE2000000
         object lblCameraType: TLabel
           Align = Top
           Position.X = 5.000000000000000000
@@ -123,6 +125,7 @@ object CameraComponentForm: TCameraComponentForm
       end
       object rFlashType: TRectangle
         Align = Top
+        Fill.Color = x00E0E0E0
         Padding.Left = 5.000000000000000000
         Padding.Top = 5.000000000000000000
         Padding.Right = 5.000000000000000000
@@ -132,6 +135,7 @@ object CameraComponentForm: TCameraComponentForm
         Size.Width = 374.000000000000000000
         Size.Height = 89.000000000000000000
         Size.PlatformDefault = False
+        Stroke.Color = xE2000000
         object cbCameraFlashType: TLabel
           Align = Top
           Position.X = 5.000000000000000000
@@ -181,6 +185,7 @@ object CameraComponentForm: TCameraComponentForm
       end
       object rCameraResolution: TRectangle
         Align = Top
+        Fill.Color = x00E0E0E0
         Padding.Left = 5.000000000000000000
         Padding.Top = 5.000000000000000000
         Padding.Right = 5.000000000000000000
@@ -190,6 +195,7 @@ object CameraComponentForm: TCameraComponentForm
         Size.Width = 374.000000000000000000
         Size.Height = 211.000000000000000000
         Size.PlatformDefault = False
+        Stroke.Color = xE2000000
         object lblCameraResolution: TLabel
           Align = Top
           Position.X = 5.000000000000000000
@@ -277,11 +283,10 @@ object CameraComponentForm: TCameraComponentForm
             Size.Width = 44.000000000000000000
             Size.Height = 44.000000000000000000
             Size.PlatformDefault = False
-            TabOrder = 0
             Text = 'Prioritize Resolution'
           end
           object lbiFrameRate: TListBoxItem
-            TabOrder = 1
+            TabOrder = 0
             Text = 'Prioritize FrameRate'
           end
         end

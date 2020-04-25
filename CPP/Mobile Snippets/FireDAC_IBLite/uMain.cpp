@@ -106,6 +106,19 @@ void __fastcall TTIBLiteForm::AddButtonClick(TObject *Sender)
 void __fastcall TTIBLiteForm::OnIdle(System::TObject* Sender, bool &Done)
 {
 	DeleteButton->Visible = (ListViewTASKNAME->Selected != NULL);
+
+	if (!FSingleIdle) {
+		try {
+			LinkFillControlToFieldTASKNAME->AutoActivate = false;
+			LinkFillControlToFieldTASKNAME->AutoFill = false;
+			FireTaskList->Connected = true;
+			FDTableTask->Active = true;
+			LinkFillControlToFieldTASKNAME->BindList->FillList();
+		} catch (Exception &e) {
+			ShowMessage(e.Message);
+		}
+		FSingleIdle = true;
+	}
 }
 
 //---------------------------------------------------------------------------

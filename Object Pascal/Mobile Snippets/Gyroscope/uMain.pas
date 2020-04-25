@@ -90,13 +90,13 @@ begin
       { and rotate the cube }
 
       {$IFDEF ANDROID} //In Android, Tilt property is returned as vector
-        Rectangle3D1.RotationAngle.X := FSensor.TiltX * 360;
-        Rectangle3D1.RotationAngle.Y := FSensor.TiltY * 360;
-        Rectangle3D1.RotationAngle.Z := FSensor.TiltZ * 360;
+        Rectangle3D1.RotationAngle.X := FSensor.TiltZ;
+        Rectangle3D1.RotationAngle.Y := FSensor.TiltX * -1.0;
+        Rectangle3D1.RotationAngle.Z := FSensor.TiltY ;
       {$ELSE} //In other platforms, Tilt property is returned as degree
-        Rectangle3D1.RotationAngle.X := FSensor.TiltX;
-        Rectangle3D1.RotationAngle.Y := FSensor.TiltY;
-        Rectangle3D1.RotationAngle.Z := FSensor.TiltZ;
+        Rectangle3D1.RotationAngle.X := FSensor.TiltZ * -1.0;
+        Rectangle3D1.RotationAngle.Y := FSensor.TiltX;
+        Rectangle3D1.RotationAngle.Z := FSensor.TiltY * -1.0;
       {$ENDIF}
 
       Label1.Text := Format('Gyro: %3.1f %3.1f %3.1f',[Rectangle3D1.RotationAngle.X,

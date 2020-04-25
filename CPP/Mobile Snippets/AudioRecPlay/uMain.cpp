@@ -83,7 +83,8 @@ void __fastcall TAudioRecPlayForm::RequestPermissionsResult(TObject *Sender, con
                 break;
             case TPermissionStatus::PermanentlyDenied:
                 TDialogService::ShowMessage("If you decide you wish to use the audio recording feature of this app, please go to app settings and enable the microphone permission");
-                break;
+				break;
+			default: break;
 		}
 	else
 		TDialogService::ShowMessage("Something went wrong with the permission checking");

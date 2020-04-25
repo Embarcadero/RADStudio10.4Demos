@@ -77,6 +77,26 @@ String GetCodename(String VerString)
 	return "JELLY_BEAN_MR2";
   else if (Pos("4.4", VerString) == 1)
 	return "KITKAT";
+  else if (VerString == "5.0")
+	return "LOLLIPOP";
+  else if (VerString == "5.1")
+	return "LOLLIPOP_MR1";
+  else if (VerString == "6.0")
+	return "MARSHMALLOW";
+  else if (VerString == "7.0")
+	return "NOUGAT";
+  else if (VerString == "7.1")
+	return "NOUGAT_MR1";
+  else if (Pos("8.0", VerString) == 1)
+	return "OREO";
+  else if (Pos("8.1", VerString) == 1)
+	return "OREO_MR1";
+  else if (VerString == "9")
+	return "PIE";
+  else if (VerString == "10")
+	return "ANDROID10";
+  else if (VerString == "11")
+	return "ANDROID11";
   else return "UNKNOWN";
 };
 #endif

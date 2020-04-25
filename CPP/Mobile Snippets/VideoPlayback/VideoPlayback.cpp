@@ -16,14 +16,14 @@
 #pragma hdrstop
 #include <System.StartUpCopy.hpp>
 //---------------------------------------------------------------------------
-USEFORM("VideoForm.cpp", VideoPlayBackForm);
+USEFORM("uMain.cpp", frmMain);
 //---------------------------------------------------------------------------
 extern "C" int FMXmain()
 {
 	try
 	{
 		Application->Initialize();
-		Application->CreateForm(__classid(TVideoPlayBackForm), &VideoPlayBackForm);
+		Application->CreateForm(__classid(TfrmMain), &frmMain);
 		Application->Run();
 	}
 	catch (Exception &exception)

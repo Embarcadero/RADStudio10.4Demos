@@ -76,7 +76,7 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <Debugger_HostApplication>$(BDS)\bin\EMSDevServer.exe</Debugger_HostApplication>
         <Debugger_RunParams>-l&quot;$(TargetName)&quot;</Debugger_RunParams>
-        <Debugger_DebugSourcePath>C:\dev\tp\runtime\data\meap\hosting\;C:\dev\tp\runtime\data\meap\server\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
+
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>

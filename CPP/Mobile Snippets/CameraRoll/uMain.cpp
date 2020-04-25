@@ -28,7 +28,8 @@ TCameraRollForm *CameraRollForm;
 __fastcall TCameraRollForm::TCameraRollForm(TComponent *Owner) : TForm(Owner)
 {
 #ifdef __ANDROID__
-    FPermissionReadExternalStorage = JStringToString(TJManifest_permission::JavaClass->READ_EXTERNAL_STORAGE);
+	FPermissionReadExternalStorage = JStringToString(TJManifest_permission::JavaClass->READ_EXTERNAL_STORAGE);
+	FPermissionWriteExternalStorage = JStringToString(TJManifest_permission::JavaClass->WRITE_EXTERNAL_STORAGE);
 #endif
 }
 //---------------------------------------------------------------------------
@@ -40,20 +41,29 @@ void __fastcall TCameraRollForm::TakePhotoFromLibraryAction1DidFinishTaking(TBit
 //---------------------------------------------------------------------------
 void __fastcall TCameraRollForm::DisplayRationale(TObject *Sender, const DynamicArray<String> APermissions, const _di_TProc APostRationaleProc)
 {
-    // Show an explanation to the user *asynchronously* - don't block this thread waiting for the user's response!
-    // After the user sees the explanation, invoke the post-rationale routine to request the permissions
-    TDialogService::ShowMessage("The app needs to read a photo file from your device to show it to you",
-        [APostRationaleProc](TModalResult AKey)
+	String RationaleMsg;
+
+	for (int i = 0; i < APermissions.Length; i++) {
+		if (APermissions[i] == FPermissionReadExternalStorage)
+			RationaleMsg = RationaleMsg + "The app needs to load photo files from your device to show it to you";
+	}
+
+	// Show an explanation to the user *asynchronously* - don't block this thread waiting for the user's response!
+	// After the user sees the explanation, invoke the post-rationale routine to request the permissions
+	TDialogService::ShowMessage(RationaleMsg,
+		[APostRationaleProc](TModalResult AKey)
         {
-            APostRationaleProc->Invoke();
+			APostRationaleProc->Invoke();
         });
 }
 //---------------------------------------------------------------------------
 void __fastcall TCameraRollForm::LoadPicturePermissionRequestResult(TObject *Sender, const DynamicArray<String> APermissions, const DynamicArray<TPermissionStatus> AGrantResults)
 {
-    // 1 permission involved: READ_EXTERNAL_STORAGE
-	if ((AGrantResults.Length == 1) && (AGrantResults[0] == TPermissionStatus::Granted))
-        TakePhotoFromLibraryAction1->Execute();
+	// 2 permissions involved: READ_EXTERNAL_STORAGE and WRITE_EXTERNAL_STORAGE
+	if ((AGrantResults.Length == 2) &&
+		(AGrantResults[0] == TPermissionStatus::Granted) &&
+		(AGrantResults[1] == TPermissionStatus::Granted))
+		TakePhotoFromLibraryAction1->Execute();
 	else
 		TDialogService::ShowMessage("Cannot load the photo because the required permission is not granted");
 }
@@ -61,10 +71,11 @@ void __fastcall TCameraRollForm::LoadPicturePermissionRequestResult(TObject *Sen
 void __fastcall TCameraRollForm::btnPhotoLibraryClick(TObject *Sender)
 {
     DynamicArray<String> permissions;
-    permissions.Length = 1;
-    permissions[0] = FPermissionReadExternalStorage;
+	permissions.Length = 2;
+	permissions[0] = FPermissionReadExternalStorage;
+	permissions[1] = FPermissionWriteExternalStorage;
 
-    PermissionsService()->RequestPermissions(permissions, LoadPicturePermissionRequestResult, DisplayRationale);
+	PermissionsService()->RequestPermissions(permissions, LoadPicturePermissionRequestResult, DisplayRationale);
 }
 //---------------------------------------------------------------------------
 

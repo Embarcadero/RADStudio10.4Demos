@@ -49,6 +49,7 @@ __published:	// IDE-managed Components
 	TListBoxItem *lbLongitude;
 	TToolBar *ToolBar1;
 	TLabel *Label1;
+	TLayout *Layout1;
 
 	void __fastcall swLocationSensorActiveSwitch(TObject *Sender);
 	void __fastcall Button1Click(TObject *Sender);

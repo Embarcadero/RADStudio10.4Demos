@@ -120,7 +120,7 @@
         <BorlandProject>
             <Delphi.Personality>
                 <Language>
-                    <Language Name="RootDir">C:\dev\tpdemos\Object Pascal\Database\FireDAC\Samples\Phys Layer\IFDPhysCommand\Async\</Language>
+
                 </Language>
                 <Source>
                     <Source Name="MainSource">IFDPhys_Async.dpr</Source>

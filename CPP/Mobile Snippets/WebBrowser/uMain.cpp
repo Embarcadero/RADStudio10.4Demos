@@ -16,6 +16,12 @@
 // ---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
+#pragma resource ("*.XLgXhdpiTb.fmx", _PLAT_ANDROID)
+#pragma resource ("*.SmXhdpiPh.fmx", _PLAT_ANDROID)
+#pragma resource ("*.NmXhdpiPh.fmx", _PLAT_ANDROID)
+#pragma resource ("*.LgXhdpiPh.fmx", _PLAT_ANDROID)
+#pragma resource ("*.LgXhdpiTb.fmx", _PLAT_ANDROID)
+
 TForm2 *Form2;
 
 // ---------------------------------------------------------------------------
@@ -40,7 +46,8 @@ void __fastcall TForm2::btnGOClick(TObject *Sender) {
 	WebBrowser1->URL = edtURL->Text;
 }
 // ---------------------------------------------------------------------------
-void __fastcall TForm2::edtURLKeyUp(TObject *Sender, WORD &Key, System::WideChar &KeyChar,
+
+void __fastcall TForm2::edtURLKeyDown(TObject *Sender, WORD &Key, System::WideChar &KeyChar,
           TShiftState Shift)
 {
   if (Key == vkReturn){

@@ -23,6 +23,7 @@
 #include <System.Sensors.hpp>
 #include <FMX.MobilePreview.hpp>
 #include <System.Sensors.Components.hpp>
+#include <FMX.Controls.Presentation.hpp>
 //---------------------------------------------------------------------------
 class TAccelerometerForm : public TForm
 {
@@ -42,6 +43,7 @@ __published:	// IDE-managed Components
 	TListBoxItem *lbMotion;
 	TListBoxItem *lbSpeed;
 	TMotionSensor *MotionSensor1;
+	TLayout *Layout1;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall swAccelerometerSensorActiveSwitch(TObject *Sender);
 	void __fastcall Timer1Timer(TObject *Sender);

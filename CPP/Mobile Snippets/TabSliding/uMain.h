@@ -23,6 +23,7 @@
 #include <FMX.Types.hpp>
 #include <System.Actions.hpp>
 #include <FMX.MobilePreview.hpp>
+#include <FMX.Controls.Presentation.hpp>
 //---------------------------------------------------------------------------
 class TTabSlidingForm : public TForm
 {
@@ -36,9 +37,10 @@ __published:	// IDE-managed Components
 	TLabel *Label1;
 	TGestureManager *GestureManager1;
 	TActionList *TabActionList;
-	TChangeTabAction *ChangeTabActionPrev;
-	TChangeTabAction *ChangeTabActionNext;
-	void __fastcall ChangeTabActionPrevUpdate(TObject *Sender);
+	TNextTabAction *ChangeTabActionNext;
+	TPreviousTabAction *ChangeTabActionPrev;
+	void __fastcall FormKeyUp(TObject *Sender, WORD &Key, System::WideChar &KeyChar,
+          TShiftState Shift);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TTabSlidingForm(TComponent* Owner);

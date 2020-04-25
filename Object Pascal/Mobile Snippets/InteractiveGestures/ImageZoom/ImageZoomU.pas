@@ -41,6 +41,9 @@ implementation
 {$R *.fmx}
 {$R *.LgXhdpiPh.fmx ANDROID}
 
+uses
+  System.Math;
+
 procedure TPinchZoom.FormGesture(Sender: TObject;
   const EventInfo: TGestureEventInfo; var Handled: Boolean);
 var
@@ -60,8 +63,8 @@ begin
         LImage := TImage(LObj.GetObject);
         LImageCenter := LImage.Position.Point + PointF(LImage.Width / 2,
           LImage.Height / 2);
-        LImage.Width := LImage.Width + (EventInfo.Distance - FLastDistance);
-        LImage.Height := LImage.Height + (EventInfo.Distance - FLastDistance);
+        LImage.Width := Max(LImage.Width + (EventInfo.Distance - FLastDistance), 10);
+        LImage.Height := Max(LImage.Height + (EventInfo.Distance - FLastDistance), 10);
         LImage.Position.X := LImageCenter.X - LImage.Width / 2;
         LImage.Position.Y := LImageCenter.Y - LImage.Height / 2;
       end;

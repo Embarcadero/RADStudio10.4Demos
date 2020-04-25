@@ -92,19 +92,21 @@ void __fastcall TOrientationSensorForm::swOrientationSensorActiveSwitch(TObject 
 
 void __fastcall TOrientationSensorForm::Timer1Timer(TObject *Sender)
 {
-	// get the data from the sensor
-	lbTiltX->Text = lbTiltX->Text.sprintf(L"Tilt X: %f",
-		OrientationSensor1->Sensor->TiltX);
-	lbTiltY->Text = lbTiltY->Text.sprintf(L"Tilt Y: %f",
-		OrientationSensor1->Sensor->TiltY);
-	lbTiltZ->Text = lbTiltZ->Text.sprintf(L"Tilt Z: %f",
-		OrientationSensor1->Sensor->TiltZ);
-	lbHeadingX->Text = lbHeadingX->Text.sprintf(L"Heading X: %f",
-		OrientationSensor1->Sensor->HeadingX);
-	lbHeadingY->Text = lbHeadingY->Text.sprintf(L"Heading Y: %f",
-		OrientationSensor1->Sensor->HeadingY);
-	lbHeadingZ->Text = lbHeadingZ->Text.sprintf(L"Heading Z: %f",
-		OrientationSensor1->Sensor->HeadingZ);
+	if (OrientationSensor1->Sensor) {
+		// get the data from the sensor
+		lbTiltX->Text = lbTiltX->Text.sprintf(L"Tilt X: %f",
+			OrientationSensor1->Sensor->TiltX);
+		lbTiltY->Text = lbTiltY->Text.sprintf(L"Tilt Y: %f",
+			OrientationSensor1->Sensor->TiltY);
+		lbTiltZ->Text = lbTiltZ->Text.sprintf(L"Tilt Z: %f",
+			OrientationSensor1->Sensor->TiltZ);
+		lbHeadingX->Text = lbHeadingX->Text.sprintf(L"Heading X: %f",
+			OrientationSensor1->Sensor->HeadingX);
+		lbHeadingY->Text = lbHeadingY->Text.sprintf(L"Heading Y: %f",
+			OrientationSensor1->Sensor->HeadingY);
+		lbHeadingZ->Text = lbHeadingZ->Text.sprintf(L"Heading Z: %f",
+			OrientationSensor1->Sensor->HeadingZ);
+	}
 }
 //---------------------------------------------------------------------------
 

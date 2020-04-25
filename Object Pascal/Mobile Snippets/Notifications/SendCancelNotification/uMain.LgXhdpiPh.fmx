@@ -26,14 +26,14 @@ inherited NotificationsForm_LgXhdpiPh: TNotificationsForm_LgXhdpiPh
       Size.Height = 48.000000000000000000
     end
     inherited SpeedButton2: TSpeedButton
-      Position.X = 284.000000000000000000
+      Position.X = 250.000000000000000000
       Size.Height = 48.000000000000000000
     end
   end
   inherited Memo1: TMemo
-    Size.Width = 417.000000000000000000
-    Size.Height = 473.000000000000000000
-    Viewport.Width = 409.000000000000000000
-    Viewport.Height = 465.000000000000000000
+    Size.Width = 418.000000000000000000
+    Size.Height = 485.000000000000000000
+    Viewport.Width = 418.000000000000000000
+    Viewport.Height = 485.000000000000000000
   end
 end

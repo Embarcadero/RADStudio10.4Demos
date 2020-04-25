@@ -79,7 +79,7 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppEnableHighDPI>true</AppEnableHighDPI>
-        <Debugger_DebugSourcePath>C:\dev\TP\runtime\data\cloud\;c:\dev\tp\runtime\rtl\net\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
+
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">

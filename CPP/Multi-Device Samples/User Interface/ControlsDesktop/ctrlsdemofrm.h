@@ -47,6 +47,9 @@
 #include <System.Bindings.Outputs.hpp>
 #include <System.Rtti.hpp>
 #include <FMX.ScrollBox.hpp>
+#include <System.Threading.hpp>
+#include <FMX.Graphics.hpp>
+#include <System.UITypes.hpp>
 //---------------------------------------------------------------------------
 class TfrmCtrlsDemo : public TForm
 {
@@ -316,6 +319,7 @@ __published:	// IDE-managed Components
 	TEdit *EditE4;
 	TTrackBar *TrackBarE4;
 	TEdit *Edit1;
+	TLayout *ControlLayout;
 	void __fastcall MenuItem6Click(TObject *Sender);
 	void __fastcall MenuItem4Click(TObject *Sender);
 	void __fastcall MenuItem2Click(TObject *Sender);
@@ -343,7 +347,11 @@ __published:	// IDE-managed Components
 	void __fastcall DropTarget1DragOver(TObject *Sender, const TDragObject &Data, const TPointF &Point,
           TDragOperation &Operation);
 	void __fastcall DropTarget1Dropped(TObject *Sender, const TDragObject &Data, const TPointF &Point);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall ControlLayoutResize(TObject *Sender);
 private:	// User declarations
+	float FSavedWidth;
+	float FSavedHeight;
 	TViewport3D *FViewport;
 	TLayer3D *FContainer;
 	void __fastcall SwitchTo3D();

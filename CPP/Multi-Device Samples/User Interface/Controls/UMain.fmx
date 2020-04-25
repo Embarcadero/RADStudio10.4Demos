@@ -18,6 +18,19 @@ object Form1: TForm1
     TabIndex = 5
     TabOrder = 0
     TabPosition = Bottom
+    Sizes = (
+      598s
+      310s
+      598s
+      310s
+      598s
+      310s
+      598s
+      310s
+      598s
+      310s
+      598s
+      310s)
     object ToolBarPage: TTabItem
       CustomIcon = <
         item
@@ -26,6 +39,7 @@ object Form1: TForm1
       Size.Width = 99.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
+      StyleLookup = ''
       TabOrder = 0
       Text = 'ToolBars'
       ExplicitSize.cx = 100.000000000000000000
@@ -231,12 +245,13 @@ object Form1: TForm1
       Size.Width = 99.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
+      StyleLookup = ''
       TabOrder = 0
       Text = 'ToolButtons'
       ExplicitSize.cx = 100.000000000000000000
       ExplicitSize.cy = 49.000000000000000000
       object ToolBar5: TToolBar
-        Size.Width = 50.000000000000000000
+        Size.Width = 598.000000000000000000
         Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
@@ -330,7 +345,7 @@ object Form1: TForm1
       end
       object ToolBar6: TToolBar
         Position.Y = 192.000000000000000000
-        Size.Width = 50.000000000000000000
+        Size.Width = 598.000000000000000000
         Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
@@ -391,7 +406,7 @@ object Form1: TForm1
       end
       object ToolBar7: TToolBar
         Position.Y = 144.000000000000000000
-        Size.Width = 50.000000000000000000
+        Size.Width = 598.000000000000000000
         Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 2
@@ -461,7 +476,7 @@ object Form1: TForm1
       end
       object ToolBar8: TToolBar
         Position.Y = 96.000000000000000000
-        Size.Width = 50.000000000000000000
+        Size.Width = 598.000000000000000000
         Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 3
@@ -565,7 +580,7 @@ object Form1: TForm1
       end
       object ToolBar9: TToolBar
         Position.Y = 48.000000000000000000
-        Size.Width = 50.000000000000000000
+        Size.Width = 598.000000000000000000
         Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 4
@@ -666,6 +681,7 @@ object Form1: TForm1
       Size.Width = 99.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
+      StyleLookup = ''
       TabOrder = 0
       Text = 'Tabs'
       ExplicitSize.cx = 100.000000000000000000
@@ -673,19 +689,28 @@ object Form1: TForm1
       object TabControl2: TTabControl
         Align = Top
         FullSize = True
-        Size.Width = 50.000000000000000000
+        Size.Width = 598.000000000000000000
         Size.Height = 57.000000000000000000
         Size.PlatformDefault = False
         TabHeight = 49.000000000000000000
         TabIndex = 0
         TabOrder = 0
         TabPosition = Bottom
+        Sizes = (
+          598s
+          8s
+          598s
+          8s
+          598s
+          8s
+          598s
+          8s)
         object TabItem1: TTabItem
           CustomIcon = <
             item
             end>
           IsSelected = True
-          Size.Width = 14.000000000000000000
+          Size.Width = 149.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'tabitemcontacts'
@@ -699,7 +724,7 @@ object Form1: TForm1
             item
             end>
           IsSelected = False
-          Size.Width = 12.000000000000000000
+          Size.Width = 149.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'tabitemsearch'
@@ -713,7 +738,7 @@ object Form1: TForm1
             item
             end>
           IsSelected = False
-          Size.Width = 12.000000000000000000
+          Size.Width = 149.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'tabitemmostrecent'
@@ -727,7 +752,7 @@ object Form1: TForm1
             item
             end>
           IsSelected = False
-          Size.Width = 12.000000000000000000
+          Size.Width = 151.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'tabitemdownloads'
@@ -741,19 +766,28 @@ object Form1: TForm1
         Align = Top
         FullSize = True
         Position.Y = 57.000000000000000000
-        Size.Width = 50.000000000000000000
+        Size.Width = 598.000000000000000000
         Size.Height = 56.000000000000000000
         Size.PlatformDefault = False
         TabHeight = 49.000000000000000000
         TabIndex = 1
         TabOrder = 1
         TabPosition = Bottom
+        Sizes = (
+          598s
+          7s
+          598s
+          7s
+          598s
+          7s
+          598s
+          7s)
         object TabItem5: TTabItem
           CustomIcon = <
             item
             end>
           IsSelected = False
-          Size.Width = 12.000000000000000000
+          Size.Width = 149.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'tabitemrecent'
@@ -767,7 +801,7 @@ object Form1: TForm1
             item
             end>
           IsSelected = True
-          Size.Width = 14.000000000000000000
+          Size.Width = 149.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'tabitemtoprated'
@@ -781,7 +815,7 @@ object Form1: TForm1
             item
             end>
           IsSelected = False
-          Size.Width = 12.000000000000000000
+          Size.Width = 149.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'tabitemmostviewed'
@@ -795,7 +829,7 @@ object Form1: TForm1
             item
             end>
           IsSelected = False
-          Size.Width = 12.000000000000000000
+          Size.Width = 151.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'tabitemfeatured'
@@ -809,19 +843,28 @@ object Form1: TForm1
         Align = Top
         FullSize = True
         Position.Y = 113.000000000000000000
-        Size.Width = 50.000000000000000000
+        Size.Width = 598.000000000000000000
         Size.Height = 56.000000000000000000
         Size.PlatformDefault = False
         TabHeight = 49.000000000000000000
         TabIndex = 0
         TabOrder = 2
         TabPosition = Bottom
+        Sizes = (
+          598s
+          7s
+          598s
+          7s
+          598s
+          7s
+          598s
+          7s)
         object TabItem2: TTabItem
           CustomIcon = <
             item
             end>
           IsSelected = True
-          Size.Width = 14.000000000000000000
+          Size.Width = 149.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'tabitemmore'
@@ -835,7 +878,7 @@ object Form1: TForm1
             item
             end>
           IsSelected = False
-          Size.Width = 12.000000000000000000
+          Size.Width = 149.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'tabitemfavorites'
@@ -849,7 +892,7 @@ object Form1: TForm1
             item
             end>
           IsSelected = False
-          Size.Width = 12.000000000000000000
+          Size.Width = 149.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'tabitemhistory'
@@ -863,7 +906,7 @@ object Form1: TForm1
             item
             end>
           IsSelected = False
-          Size.Width = 12.000000000000000000
+          Size.Width = 151.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'tabitembookmarks'
@@ -877,13 +920,24 @@ object Form1: TForm1
         Align = Top
         FullSize = True
         Position.Y = 169.000000000000000000
-        Size.Width = 50.000000000000000000
+        Size.Width = 598.000000000000000000
         Size.Height = 64.000000000000000000
         Size.PlatformDefault = False
         TabHeight = 49.000000000000000000
         TabIndex = 0
         TabOrder = 3
         TabPosition = Dots
+        Sizes = (
+          598s
+          64s
+          598s
+          64s
+          598s
+          64s
+          598s
+          64s
+          598s
+          64s)
         object TabItem13: TTabItem
           CustomIcon = <
             item
@@ -892,6 +946,7 @@ object Form1: TForm1
           Size.Width = 8.000000000000000000
           Size.Height = 8.000000000000000000
           Size.PlatformDefault = False
+          StyleLookup = ''
           TabOrder = 0
           Text = 'TabItem13'
           ExplicitSize.cx = 8.000000000000000000
@@ -905,6 +960,7 @@ object Form1: TForm1
           Size.Width = 8.000000000000000000
           Size.Height = 8.000000000000000000
           Size.PlatformDefault = False
+          StyleLookup = ''
           TabOrder = 0
           Text = 'TabItem14'
           ExplicitSize.cx = 8.000000000000000000
@@ -918,6 +974,7 @@ object Form1: TForm1
           Size.Width = 8.000000000000000000
           Size.Height = 8.000000000000000000
           Size.PlatformDefault = False
+          StyleLookup = ''
           TabOrder = 0
           Text = 'TabItem16'
           ExplicitSize.cx = 8.000000000000000000
@@ -931,6 +988,7 @@ object Form1: TForm1
           Size.Width = 8.000000000000000000
           Size.Height = 8.000000000000000000
           Size.PlatformDefault = False
+          StyleLookup = ''
           TabOrder = 0
           Text = 'TabItem15'
           ExplicitSize.cx = 8.000000000000000000
@@ -944,6 +1002,7 @@ object Form1: TForm1
           Size.Width = 8.000000000000000000
           Size.Height = 8.000000000000000000
           Size.PlatformDefault = False
+          StyleLookup = ''
           TabOrder = 0
           Text = 'TabItem17'
           ExplicitSize.cx = 8.000000000000000000
@@ -959,6 +1018,7 @@ object Form1: TForm1
       Size.Width = 99.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
+      StyleLookup = ''
       TabOrder = 0
       Text = 'ListBoxes'
       ExplicitSize.cx = 100.000000000000000000
@@ -966,7 +1026,7 @@ object Form1: TForm1
       object ListBox2: TListBox
         Align = Left
         Size.Width = 233.000000000000000000
-        Size.Height = 50.000000000000000000
+        Size.Height = 310.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         ShowSizeGrip = True
@@ -975,7 +1035,7 @@ object Form1: TForm1
         DefaultItemStyles.GroupHeaderStyle = ''
         DefaultItemStyles.GroupFooterStyle = ''
         Viewport.Width = 228.000000000000000000
-        Viewport.Height = 0.000000000000000000
+        Viewport.Height = 214.000000000000000000
         object ListBoxGroupHeader2: TListBoxGroupHeader
           Size.Width = 228.000000000000000000
           Size.Height = 30.000000000000000000
@@ -1079,7 +1139,8 @@ object Form1: TForm1
       end
       object ListBox3: TListBox
         Align = Client
-        Size.Height = 50.000000000000000000
+        Size.Width = 365.000000000000000000
+        Size.Height = 310.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = 'transparentlistboxstyle'
         TabOrder = 1
@@ -1088,10 +1149,10 @@ object Form1: TForm1
         DefaultItemStyles.GroupHeaderStyle = ''
         DefaultItemStyles.GroupFooterStyle = ''
         GroupingKind = Grouped
-        Viewport.Width = 45.000000000000000000
-        Viewport.Height = 2.000000000000000000
+        Viewport.Width = 360.000000000000000000
+        Viewport.Height = 262.000000000000000000
         object ListBoxGroupHeader1: TListBoxGroupHeader
-          Size.Width = 45.000000000000000000
+          Size.Width = 360.000000000000000000
           Size.Height = 56.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
@@ -1101,7 +1162,7 @@ object Form1: TForm1
           ItemData.Detail = 'Detail'
           ItemData.Accessory = aMore
           Position.Y = 56.000000000000000000
-          Size.Width = 45.000000000000000000
+          Size.Width = 360.000000000000000000
           Size.Height = 44.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'listboxitemrightdetail'
@@ -1112,7 +1173,7 @@ object Form1: TForm1
           ItemData.Detail = 'Detail'
           ItemData.Accessory = aCheckmark
           Position.Y = 100.000000000000000000
-          Size.Width = 45.000000000000000000
+          Size.Width = 360.000000000000000000
           Size.Height = 44.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'listboxitembottomdetail'
@@ -1121,7 +1182,7 @@ object Form1: TForm1
         end
         object ListBoxGroupHeader4: TListBoxGroupHeader
           Position.Y = 144.000000000000000000
-          Size.Width = 45.000000000000000000
+          Size.Width = 360.000000000000000000
           Size.Height = 56.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 3
@@ -1130,7 +1191,7 @@ object Form1: TForm1
         object ListBoxItem22: TListBoxItem
           IsChecked = True
           Position.Y = 200.000000000000000000
-          Size.Width = 45.000000000000000000
+          Size.Width = 360.000000000000000000
           Size.Height = 44.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'listboxitemnodetail'
@@ -1172,7 +1233,7 @@ object Form1: TForm1
         object ListBoxItem23: TListBoxItem
           ItemData.Detail = 'Detail'
           Position.Y = 244.000000000000000000
-          Size.Width = 45.000000000000000000
+          Size.Width = 360.000000000000000000
           Size.Height = 44.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'listboxitemleftdetail'
@@ -1182,7 +1243,7 @@ object Form1: TForm1
         object ListBoxItem24: TListBoxItem
           Selectable = False
           Position.Y = 288.000000000000000000
-          Size.Width = 45.000000000000000000
+          Size.Width = 360.000000000000000000
           Size.Height = 44.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'listboxitemnodetail'
@@ -1192,7 +1253,7 @@ object Form1: TForm1
             Align = Right
             IsChecked = False
             Margins.Right = 10.000000000000000000
-            Position.X = -9.000000000000000000
+            Position.X = 306.000000000000000000
             Position.Y = 9.000000000000000000
             Size.Width = 44.000000000000000000
             Size.Height = 26.000000000000000000
@@ -1206,7 +1267,7 @@ object Form1: TForm1
         end
         object ListBoxItem25: TListBoxItem
           Position.Y = 332.000000000000000000
-          Size.Width = 45.000000000000000000
+          Size.Width = 360.000000000000000000
           Size.Height = 44.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'listboxitemnodetail'
@@ -1215,7 +1276,7 @@ object Form1: TForm1
         end
         object ListBoxGroupFooter1: TListBoxGroupFooter
           Position.Y = 376.000000000000000000
-          Size.Width = 45.000000000000000000
+          Size.Width = 360.000000000000000000
           Size.Height = 56.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'listboxgroupheader'
@@ -1224,7 +1285,7 @@ object Form1: TForm1
         end
         object ListBoxItem7: TListBoxItem
           Position.Y = 432.000000000000000000
-          Size.Width = 45.000000000000000000
+          Size.Width = 360.000000000000000000
           Size.Height = 44.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'listboxitemnodetail'
@@ -1257,6 +1318,7 @@ object Form1: TForm1
       Size.Width = 99.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
+      StyleLookup = ''
       TabOrder = 0
       Text = 'Controls'
       ExplicitSize.cx = 100.000000000000000000
@@ -1422,7 +1484,7 @@ object Form1: TForm1
         TabOrder = 15
         Text = '-'
         TextSettings.Font.Size = 30.000000000000000000
-        TextSettings.Font.Style = [fsBold]
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
       end
       object Button8: TButton
         Position.X = 55.000000000000000000
@@ -1434,7 +1496,7 @@ object Form1: TForm1
         TabOrder = 16
         Text = '+'
         TextSettings.Font.Size = 30.000000000000000000
-        TextSettings.Font.Style = [fsBold]
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
       end
       object SpeedButton73: TSpeedButton
         Position.X = 304.000000000000000000
@@ -1461,6 +1523,7 @@ object Form1: TForm1
       Size.Width = 103.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
+      StyleLookup = ''
       TabOrder = 0
       Text = 'Editors'
       ExplicitSize.cx = 98.000000000000000000
@@ -1541,7 +1604,6 @@ object Form1: TForm1
         end
       end
       object ComboBox1: TComboBox
-        DisableFocusEffect = False
         ItemIndex = 0
         ListBoxResource = 'transparentlistboxstyle'
         Position.X = 17.000000000000000000
@@ -1555,7 +1617,6 @@ object Form1: TForm1
           Size.Width = 19.000000000000000000
           Size.Height = 19.000000000000000000
           Size.PlatformDefault = False
-          TabOrder = 0
           Text = 'ListBoxItem1'
         end
         object ListBoxItem2: TListBoxItem
@@ -1563,7 +1624,7 @@ object Form1: TForm1
           Size.Width = 19.000000000000000000
           Size.Height = 19.000000000000000000
           Size.PlatformDefault = False
-          TabOrder = 1
+          TabOrder = 0
           Text = 'ListBoxItem2'
         end
         object ListBoxItem3: TListBoxItem
@@ -1571,7 +1632,7 @@ object Form1: TForm1
           Size.Width = 19.000000000000000000
           Size.Height = 19.000000000000000000
           Size.PlatformDefault = False
-          TabOrder = 2
+          TabOrder = 1
           Text = 'ListBoxItem3'
         end
         object ListBoxItem4: TListBoxItem
@@ -1579,7 +1640,7 @@ object Form1: TForm1
           Size.Width = 19.000000000000000000
           Size.Height = 19.000000000000000000
           Size.PlatformDefault = False
-          TabOrder = 3
+          TabOrder = 2
           Text = 'ListBoxItem4'
         end
         object ListBoxItem5: TListBoxItem
@@ -1587,7 +1648,7 @@ object Form1: TForm1
           Size.Width = 19.000000000000000000
           Size.Height = 19.000000000000000000
           Size.PlatformDefault = False
-          TabOrder = 4
+          TabOrder = 3
           Text = 'ListBoxItem5'
         end
         object ListBoxItem6: TListBoxItem
@@ -1595,7 +1656,7 @@ object Form1: TForm1
           Size.Width = 19.000000000000000000
           Size.Height = 19.000000000000000000
           Size.PlatformDefault = False
-          TabOrder = 5
+          TabOrder = 4
           Text = 'ListBoxItem6'
         end
       end
@@ -1647,7 +1708,8 @@ object Form1: TForm1
         Size.PlatformDefault = False
       end
       object DateEdit1: TDateEdit
-        Date = 41698.000000000000000000
+        Date = 43909.000000000000000000
+        TodayDefault = True
         Position.X = 16.000000000000000000
         Position.Y = 168.000000000000000000
         Size.Width = 129.000000000000000000

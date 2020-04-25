@@ -37,8 +37,8 @@ void __fastcall TPinchZoom::FormGesture(TObject *Sender, const TGestureEventInfo
 				TImage * LImage = dynamic_cast<TImage*>(LObj->GetObject());
 				TPointF LImageCenter = LImage->Position->Point + PointF(LImage->Width / 2,
 					LImage->Height / 2);
-				LImage->Width = LImage->Width + (EventInfo.Distance - FLastDistance);
-				LImage->Height = LImage->Height + (EventInfo.Distance - FLastDistance);
+				LImage->Width = Max((int)(LImage->Width + (EventInfo.Distance - FLastDistance)),5);
+				LImage->Height = Max((int)(LImage->Height + (EventInfo.Distance - FLastDistance)),5);
 				LImage->Position->X = LImageCenter.X - LImage->Width / 2;
 				LImage->Position->Y = LImageCenter.Y - LImage->Height / 2;
 			}

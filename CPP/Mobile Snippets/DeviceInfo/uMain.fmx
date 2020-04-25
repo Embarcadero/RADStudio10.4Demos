@@ -2,8 +2,8 @@ object Form2: TForm2
   Left = 0
   Top = 0
   Caption = 'Form2'
-  ClientHeight = 417
-  ClientWidth = 320
+  ClientHeight = 567
+  ClientWidth = 384
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop, iPhone, iPad]
@@ -12,7 +12,7 @@ object Form2: TForm2
     Align = Top
     Margins.Top = 10.000000000000000000
     Position.Y = 54.000000000000000000
-    Size.Width = 320.000000000000000000
+    Size.Width = 384.000000000000000000
     Size.Height = 175.000000000000000000
     Size.PlatformDefault = False
     StyleLookup = 'transparentlistboxstyle'
@@ -23,9 +23,10 @@ object Form2: TForm2
     DefaultItemStyles.GroupHeaderStyle = ''
     DefaultItemStyles.GroupFooterStyle = ''
     GroupingKind = Grouped
+    Viewport.Width = 384.000000000000000000
+    Viewport.Height = 175.000000000000000000
     object lbOSName: TListBoxItem
-      Height = 44.000000000000000000
-      Size.Width = 320.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'
@@ -33,9 +34,8 @@ object Form2: TForm2
       Text = 'OS Name:'
     end
     object lbDeviceType: TListBoxItem
-      Height = 44.000000000000000000
       Position.Y = 44.000000000000000000
-      Size.Width = 320.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'
@@ -43,9 +43,8 @@ object Form2: TForm2
       Text = 'Device Type:'
     end
     object lbOSVersion: TListBoxItem
-      Height = 44.000000000000000000
       Position.Y = 88.000000000000000000
-      Size.Width = 320.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'
@@ -54,13 +53,13 @@ object Form2: TForm2
     end
   end
   object ToolBar1: TToolBar
-    Size.Width = 320.000000000000000000
+    Size.Width = 384.000000000000000000
     Size.Height = 44.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
     object Label1: TLabel
       Align = Contents
-      Size.Width = 320.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'toollabel'
@@ -71,7 +70,7 @@ object Form2: TForm2
       Align = Right
       Anchors = []
       Margins.Right = 5.000000000000000000
-      Position.X = 271.000000000000000000
+      Position.X = 335.000000000000000000
       Size.Width = 44.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False

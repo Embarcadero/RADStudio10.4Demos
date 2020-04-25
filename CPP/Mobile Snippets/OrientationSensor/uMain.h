@@ -22,6 +22,7 @@
 #include <FMX.Types.hpp>
 #include <FMX.MobilePreview.hpp>
 #include <System.Sensors.Components.hpp>
+#include <FMX.Controls.Presentation.hpp>
 //---------------------------------------------------------------------------
 class TOrientationSensorForm : public TForm
 {
@@ -42,6 +43,7 @@ __published:	// IDE-managed Components
 	TSpeedButton *TiltButton;
 	TSpeedButton *HeadingButton;
 	TTimer *Timer1;
+	TLayout *Layout2;
 	void __fastcall FormActivate(TObject *Sender);
 	void __fastcall HeadingButtonClick(TObject *Sender);
 	void __fastcall TiltButtonClick(TObject *Sender);

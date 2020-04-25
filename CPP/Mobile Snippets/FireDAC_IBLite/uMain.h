@@ -78,6 +78,7 @@ __published:	// IDE-managed Components
 private:	// User declarations
 	void __fastcall OnIdle(System::TObject* Sender, bool &Done);
 	_di_TInputCloseQueryProc listQueryProc;
+	bool FSingleIdle;
 public:		// User declarations
 	__fastcall TTIBLiteForm(TComponent* Owner);
 };

@@ -16,7 +16,8 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, System.Permissions,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.Media, FMX.StdCtrls,
-  FMX.Objects, System.Actions, FMX.ActnList, FMX.Controls.Presentation;
+  FMX.Objects, System.Actions, FMX.ActnList, FMX.Controls.Presentation,
+  FMX.Effects, FMX.Filter.Effects;
 
 const
 {$IF DEFINED(ANDROID) OR DEFINED(IOS)}
@@ -27,6 +28,8 @@ const
 
 type
   TAudioRecPlayForm = class(TForm)
+    InvertEffect1: TInvertEffect;
+    InvertEffect2: TInvertEffect;
   private var
     FMicrophone: TAudioCaptureDevice;
   private
@@ -64,6 +67,9 @@ type
 implementation
 
 uses
+  {$IFDEF IOS}
+  iOSapi.UIKit, FMX.Helpers.iOS,
+  {$ENDIF}
   System.IOUtils, FMX.DialogService;
 
 {$R *.fmx}
@@ -187,6 +193,14 @@ end;
 procedure TAudioRecPlayForm.FormCreate(Sender: TObject);
 begin
   FMicrophone := TCaptureDeviceManager.Current.DefaultAudioCaptureDevice;
+
+  {$IFDEF IOS}
+    if GetUserInterfaceStyle = UIUserInterfaceStyleDark then
+    begin
+      InvertEffect1.Enabled := True;
+      InvertEffect2.Enabled := True;
+    end;
+  {$ENDIF}
 end;
 
 function TAudioRecPlayForm.HasMicrophone: Boolean;

@@ -59,10 +59,10 @@ void __fastcall TPhoneDialerForm::btnGetCarrierInfoClick(TObject *Sender)
 	if (FPhoneDialerService != NULL)
     {
 		/* if yes, then update the labels with the retrieved information */
-		CarrierNameItem->ItemData->Detail = Format("Carrier Name: %s", ARRAYOFCONST((FPhoneDialerService->GetCarrier()->GetCarrierName())));
-		CountryCodeItem->ItemData->Detail = Format("ISO Country Code: %s", ARRAYOFCONST((FPhoneDialerService->GetCarrier()->GetIsoCountryCode())));
-		NetworkCodeItem->ItemData->Detail = Format("Network Code: %s", ARRAYOFCONST((FPhoneDialerService->GetCarrier()->GetMobileCountryCode())));
-		MobileNetworkItem->ItemData->Detail = Format("Mobile Network: %s", ARRAYOFCONST((FPhoneDialerService->GetCarrier()->GetMobileNetwork())));
+		CarrierNameItem->ItemData->Detail = FPhoneDialerService->GetCarrier()->GetCarrierName();
+		CountryCodeItem->ItemData->Detail = FPhoneDialerService->GetCarrier()->GetIsoCountryCode();
+		NetworkCodeItem->ItemData->Detail = FPhoneDialerService->GetCarrier()->GetMobileCountryCode();
+		MobileNetworkItem->ItemData->Detail = FPhoneDialerService->GetCarrier()->GetMobileNetwork();
 	}
 	else
     {
@@ -77,7 +77,7 @@ void __fastcall TPhoneDialerForm::btnMakeCallClick(TObject *Sender)
     {
 		/* if the Telephone Number is entered in the edit box then make the call, else display an error message */
 		if (edtTelephoneNumber->Text != "")
-        {
+		{
             DynamicArray<String> permissions;
             permissions.Length = 1;
             permissions[0] = FCallPhonePermission;

@@ -13,7 +13,7 @@ object WebBrowserForm: TWebBrowserForm
     Size.PlatformDefault = False
     TabOrder = 1
     object btnGO: TButton
-      Align = Right
+      Align = FitRight
       Margins.Right = 5.000000000000000000
       Position.X = 331.000000000000000000
       Size.Width = 48.000000000000000000
@@ -24,18 +24,26 @@ object WebBrowserForm: TWebBrowserForm
       Text = 'GO'
       OnClick = btnGOClick
     end
-    object edtURL: TClearingEdit
+    object edtURL: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       Align = Contents
-      TabOrder = 1
       KeyboardType = URL
-      Text = 'http://www.embarcadero.com'
+      Text = 'https://www.embarcadero.com'
       Margins.Left = 6.000000000000000000
       Margins.Top = 6.000000000000000000
       Margins.Right = 75.000000000000000000
       Size.Width = 303.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
+      TextPrompt = 'Enter web address'
+      OnKeyDown = edtURLKeyDown
+      object ClearEditButton1: TClearEditButton
+        CanFocus = False
+        Cursor = crArrow
+        Size.Width = 32.000000000000000000
+        Size.Height = 30.000000000000000000
+        Size.PlatformDefault = False
+      end
     end
   end
   object StatusBar1: TStatusBar

@@ -1,0 +1,27 @@
+inherited Form2_SmXhdpiPh: TForm2_SmXhdpiPh
+  ClientHeight = 375
+  ClientWidth = 250
+  DesignerMasterStyle = 3
+  inherited WebBrowser1: TWebBrowser
+    Size.Width = 250.000000000000000000
+    Size.Height = 283.000000000000000000
+  end
+  inherited ToolBar1: TToolBar
+    Size.Width = 250.000000000000000000
+    inherited btnGO: TButton
+      Margins.Top = 5.000000000000000000
+      Position.X = 202.000000000000000000
+      Position.Y = 5.000000000000000000
+    end
+    inherited edtURL: TEdit
+      Size.Width = 169.000000000000000000
+    end
+  end
+  inherited StatusBar1: TStatusBar
+    Position.Y = 331.000000000000000000
+    Size.Width = 250.000000000000000000
+    inherited btnForward: TButton
+      Position.X = 197.000000000000000000
+    end
+  end
+end

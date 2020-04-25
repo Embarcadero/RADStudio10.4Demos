@@ -32,7 +32,8 @@ object DatePickerForm: TDatePickerForm
       TabOrder = 0
       Text = 'Pick a Date'
       object DateEdit1: TDateEdit
-        Date = 41698.000000000000000000
+        Date = 43908.000000000000000000
+        TodayDefault = True
         OnChange = DateEdit1Change
         Position.X = 216.000000000000000000
         Position.Y = 8.000000000000000000

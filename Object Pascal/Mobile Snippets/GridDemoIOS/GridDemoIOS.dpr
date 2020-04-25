@@ -16,7 +16,6 @@ program GridDemoIOS;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  FMX.Grid.iOS,
   UnitMain in 'UnitMain.pas' {FormMain};
 
 {$R *.res}

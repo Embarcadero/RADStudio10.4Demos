@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 // This software is Copyright (c) 2015 Embarcadero Technologies, Inc.
 // You may only use this software if you are an authorized licensee
@@ -7,15 +7,17 @@
 // the software license agreement that comes with the Embarcadero Products
 // and is subject to that software license agreement.
 
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 unit uMain;
 
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.TabControl, FMX.Media, FMX.Objects,
+  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.TabControl,
+  FMX.Media, FMX.Objects,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts, FMX.ListBox;
 
 type
@@ -43,7 +45,8 @@ type
     tbProcess: TTrackBar;
     procedure bPlayClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure ListBox1ItemClick(const Sender: TCustomListBox; const Item: TListBoxItem);
+    procedure ListBox1ItemClick(const Sender: TCustomListBox;
+      const Item: TListBoxItem);
     procedure bStopClick(Sender: TObject);
     procedure bToTheStartClick(Sender: TObject);
     procedure tbVolumeChange(Sender: TObject);
@@ -79,19 +82,39 @@ const
 {$R *.fmx}
 
 procedure TfrmMain.b10SecBackwardClick(Sender: TObject);
+var
+  LState: TMediaState;
 begin
+  LState := MediaPlayer1.State;
   if MediaPlayer1.CurrentTime > TenSecond then
-    MediaPlayer1.CurrentTime := MediaPlayer1.CurrentTime - TenSecond
+  begin
+    if LState = TMediaState.Playing then
+      MediaPlayer1.Stop;
+    MediaPlayer1.CurrentTime := MediaPlayer1.CurrentTime - TenSecond;
+    if LState = TMediaState.Playing then
+      MediaPlayer1.Play;
+  end
   else
     MediaPlayer1.CurrentTime := 0;
 end;
 
 procedure TfrmMain.b10SecForwardClick(Sender: TObject);
+var
+  LState: TMediaState;
 begin
+  LState := MediaPlayer1.State;
   if MediaPlayer1.CurrentTime < (MediaPlayer1.Duration - TenSecond) then
-    MediaPlayer1.CurrentTime := MediaPlayer1.CurrentTime + TenSecond
+  begin
+    if LState = TMediaState.Playing then
+      MediaPlayer1.Stop;
+    MediaPlayer1.CurrentTime := MediaPlayer1.CurrentTime + TenSecond;
+    if LState = TMediaState.Playing then
+      MediaPlayer1.Play;
+  end
   else
+  begin
     MediaPlayer1.CurrentTime := MediaPlayer1.Duration;
+  end;
 end;
 
 procedure TfrmMain.bChangeParentsVisibleClick(Sender: TObject);
@@ -122,6 +145,7 @@ end;
 procedure TfrmMain.bToTheEndClick(Sender: TObject);
 begin
   MediaPlayer1.CurrentTime := MediaPlayer1.Duration;
+  MediaPlayer1.Stop;
 end;
 
 procedure TfrmMain.bToTheStartClick(Sender: TObject);
@@ -136,7 +160,11 @@ var
   Attr: Integer;
 begin
   Path := TPath.Combine(FLibraryPath, '*.mp4');
+{$IFDEF MSWINDOWS}
   Attr := faReadOnly + faArchive;
+{$ELSE}
+  Attr := 0;
+{$ENDIF}
   FindFirst(Path, Attr, F);
   if F.name <> '' then
   begin
@@ -157,16 +185,19 @@ end;
 function TfrmMain.GetPathWithVideo: string;
 begin
   case TOSVersion.Platform of
-    TOSVersion.TPlatform.pfWindows: Result := '..\..\MP4\';
-    TOSVersion.TPlatform.pfMacOS: Result := TPath.GetFullPath( '../Resources/StartUp');
-    TOSVersion.TPlatform.pfiOS,
-    TOSVersion.TPlatform.pfAndroid: Result := TPath.GetDocumentsPath;
-    TOSVersion.TPlatform.pfWinRT,
-    TOSVersion.TPlatform.pfLinux: raise Exception.Create('Unexpected platform');
+    TOSVersion.TPlatform.pfWindows:
+      Result := '..\..\MP4\';
+    TOSVersion.TPlatform.pfMacOS:
+      Result := TPath.GetFullPath('../Resources/StartUp');
+    TOSVersion.TPlatform.pfiOS, TOSVersion.TPlatform.pfAndroid:
+      Result := TPath.GetDocumentsPath;
+    TOSVersion.TPlatform.pfWinRT, TOSVersion.TPlatform.pfLinux:
+      raise Exception.Create('Unexpected platform');
   end;
 end;
 
-procedure TfrmMain.ListBox1ItemClick(const Sender: TCustomListBox; const Item: TListBoxItem);
+procedure TfrmMain.ListBox1ItemClick(const Sender: TCustomListBox;
+  const Item: TListBoxItem);
 begin
   MediaPlayer1.Stop;
   MediaPlayer1.FileName := TPath.Combine(FLibraryPath, Item.Text);

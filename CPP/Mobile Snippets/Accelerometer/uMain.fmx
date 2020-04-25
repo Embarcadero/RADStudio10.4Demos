@@ -45,38 +45,41 @@ object AccelerometerForm: TAccelerometerForm
     DefaultItemStyles.GroupHeaderStyle = ''
     DefaultItemStyles.GroupFooterStyle = ''
     GroupingKind = Grouped
+    Viewport.Width = 384.000000000000000000
+    Viewport.Height = 509.000000000000000000
     object lbAccelerometerSensor: TListBoxItem
       Selectable = False
-      Height = 44.000000000000000000
-      Size.Width = 344.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'
       TabOrder = 0
       Text = 'Accelerometer Sensor:'
-      object swAccelerometerSensorActive: TSwitch
+      object Layout1: TLayout
         Align = Right
-        Anchors = []
-        IsChecked = False
-        Margins.Right = 5.000000000000000000
-        Position.X = 263.000000000000000000
-        Position.Y = 9.000000000000000000
-        Size.Width = 76.000000000000000000
-        Size.Height = 26.000000000000000000
+        Position.X = 312.000000000000000000
+        Size.Width = 72.000000000000000000
+        Size.Height = 44.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 0
-        TouchTargetExpansion.Left = 6.000000000000000000
-        TouchTargetExpansion.Top = 6.000000000000000000
-        TouchTargetExpansion.Right = 6.000000000000000000
-        TouchTargetExpansion.Bottom = 6.000000000000000000
-        OnSwitch = swAccelerometerSensorActiveSwitch
+        object swAccelerometerSensorActive: TSwitch
+          Align = Center
+          IsChecked = False
+          Margins.Right = 5.000000000000000000
+          Size.Width = 44.000000000000000000
+          Size.Height = 26.000000000000000000
+          Size.PlatformDefault = False
+          TouchTargetExpansion.Left = 6.000000000000000000
+          TouchTargetExpansion.Top = 6.000000000000000000
+          TouchTargetExpansion.Right = 6.000000000000000000
+          TouchTargetExpansion.Bottom = 6.000000000000000000
+          OnSwitch = swAccelerometerSensorActiveSwitch
+        end
       end
     end
     object lbAccelerationX: TListBoxItem
       Selectable = False
-      Height = 44.000000000000000000
       Position.Y = 44.000000000000000000
-      Size.Width = 344.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'
@@ -85,9 +88,8 @@ object AccelerometerForm: TAccelerometerForm
     end
     object lbAccelerationY: TListBoxItem
       Selectable = False
-      Height = 44.000000000000000000
       Position.Y = 88.000000000000000000
-      Size.Width = 344.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'
@@ -96,9 +98,8 @@ object AccelerometerForm: TAccelerometerForm
     end
     object lbAccelerationZ: TListBoxItem
       Selectable = False
-      Height = 44.000000000000000000
       Position.Y = 132.000000000000000000
-      Size.Width = 344.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'
@@ -107,9 +108,8 @@ object AccelerometerForm: TAccelerometerForm
     end
     object lbAngleAccelX: TListBoxItem
       Selectable = False
-      Height = 44.000000000000000000
       Position.Y = 176.000000000000000000
-      Size.Width = 344.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'
@@ -118,9 +118,8 @@ object AccelerometerForm: TAccelerometerForm
     end
     object lbAngleAccelY: TListBoxItem
       Selectable = False
-      Height = 44.000000000000000000
       Position.Y = 220.000000000000000000
-      Size.Width = 344.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'
@@ -129,9 +128,8 @@ object AccelerometerForm: TAccelerometerForm
     end
     object lbAngleAccelZ: TListBoxItem
       Selectable = False
-      Height = 44.000000000000000000
       Position.Y = 264.000000000000000000
-      Size.Width = 344.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'
@@ -140,9 +138,8 @@ object AccelerometerForm: TAccelerometerForm
     end
     object lbMotion: TListBoxItem
       Selectable = False
-      Height = 44.000000000000000000
       Position.Y = 308.000000000000000000
-      Size.Width = 344.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'
@@ -151,9 +148,8 @@ object AccelerometerForm: TAccelerometerForm
     end
     object lbSpeed: TListBoxItem
       Selectable = False
-      Height = 44.000000000000000000
       Position.Y = 352.000000000000000000
-      Size.Width = 344.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'

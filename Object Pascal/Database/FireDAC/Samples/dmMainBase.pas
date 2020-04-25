@@ -27,7 +27,7 @@ uses
   FireDAC.Phys.MSAcc, FireDAC.Phys.MySQL, FireDAC.Phys, FireDAC.Phys.ASA, FireDAC.Phys.ADS, 
     FireDAC.Phys.IB, FireDAC.Phys.FB, FireDAC.Phys.PG, FireDAC.Phys.SQLite, FireDAC.Phys.ODBC,
     FireDAC.Phys.Oracle, FireDAC.Phys.DB2, FireDAC.Phys.MSSQL, FireDAC.Phys.Infx, 
-    FireDAC.Phys.TDBX, FireDAC.Phys.TData,
+    FireDAC.Phys.TDBX, FireDAC.Phys.TData, FireDAC.Phys.SQLiteWrapper.Stat, 
   FireDAC.VCLUI.Error, FireDAC.VCLUI.Login, FireDAC.VCLUI.Async, FireDAC.VCLUI.Wait,
   FireDAC.Comp.UI, FireDAC.UI.Intf, FireDAC.Stan.Error;
 

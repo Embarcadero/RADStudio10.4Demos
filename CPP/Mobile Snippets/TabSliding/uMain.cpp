@@ -25,17 +25,14 @@ __fastcall TTabSlidingForm::TTabSlidingForm(TComponent* Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TTabSlidingForm::ChangeTabActionPrevUpdate(TObject *Sender)
-{
-	if(TabControl1->TabIndex < TabControl1->TabCount - 1)
-		ChangeTabActionNext->Tab = TabControl1->Tabs[TabControl1->TabIndex + 1];
-	else
-		ChangeTabActionNext->Tab = NULL;
 
-	if (TabControl1->TabIndex > 0)
-		ChangeTabActionPrev->Tab = TabControl1->Tabs[TabControl1->TabIndex - 1];
-	else
-		ChangeTabActionPrev->Tab = NULL;
+void __fastcall TTabSlidingForm::FormKeyUp(TObject *Sender, WORD &Key, System::WideChar &KeyChar,
+          TShiftState Shift)
+{
+		  if (Key == vkHardwareBack && TabControl1->TabIndex > 0) {
+			TabControl1->TabIndex = (TabControl1->TabIndex - 1) % TabControl1->TabCount;
+            Key = 0;
+		  }
 }
 //---------------------------------------------------------------------------
 

@@ -63,14 +63,14 @@
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
-        <Debugger_DebugSourcePath>d:\tp.main\runtime\vcl\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
+
         <DCC_Warnings>error</DCC_Warnings>
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
         <DCC_Optimize>false</DCC_Optimize>
         <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <Debugger_DebugSourcePath>d:\tp.main\runtime\data\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
+
         <Manifest_File>None</Manifest_File>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">

@@ -37,34 +37,38 @@ object OrientationSensorForm: TOrientationSensorForm
     DefaultItemStyles.GroupHeaderStyle = ''
     DefaultItemStyles.GroupFooterStyle = ''
     GroupingKind = Grouped
+    Viewport.Width = 384.000000000000000000
+    Viewport.Height = 448.000000000000000000
     object lbOrientationSensor: TListBoxItem
-      Height = 44.000000000000000000
-      Size.Width = 344.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'
       TabOrder = 0
       Text = 'Orientation Sensor:'
-      object swOrientationSensorActive: TSwitch
-        Anchors = [akTop, akRight]
-        IsChecked = False
-        Position.X = 256.000000000000000000
-        Position.Y = 9.000000000000000000
-        Size.Width = 76.000000000000000000
-        Size.Height = 26.000000000000000000
+      object Layout2: TLayout
+        Align = Right
+        Position.X = 312.000000000000000000
+        Size.Width = 72.000000000000000000
+        Size.Height = 44.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 0
-        TouchTargetExpansion.Left = 6.000000000000000000
-        TouchTargetExpansion.Top = 6.000000000000000000
-        TouchTargetExpansion.Right = 6.000000000000000000
-        TouchTargetExpansion.Bottom = 6.000000000000000000
-        OnSwitch = swOrientationSensorActiveSwitch
+        object swOrientationSensorActive: TSwitch
+          Align = Center
+          IsChecked = False
+          Size.Width = 44.000000000000000000
+          Size.Height = 26.000000000000000000
+          Size.PlatformDefault = False
+          TouchTargetExpansion.Left = 6.000000000000000000
+          TouchTargetExpansion.Top = 6.000000000000000000
+          TouchTargetExpansion.Right = 6.000000000000000000
+          TouchTargetExpansion.Bottom = 6.000000000000000000
+          OnSwitch = swOrientationSensorActiveSwitch
+        end
       end
     end
     object lbTiltX: TListBoxItem
-      Height = 44.000000000000000000
       Position.Y = 44.000000000000000000
-      Size.Width = 344.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'
@@ -72,9 +76,8 @@ object OrientationSensorForm: TOrientationSensorForm
       Text = 'Tilt X:'
     end
     object lbTiltY: TListBoxItem
-      Height = 44.000000000000000000
       Position.Y = 88.000000000000000000
-      Size.Width = 344.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'
@@ -82,9 +85,8 @@ object OrientationSensorForm: TOrientationSensorForm
       Text = 'Tilt Y:'
     end
     object lbTiltZ: TListBoxItem
-      Height = 44.000000000000000000
       Position.Y = 132.000000000000000000
-      Size.Width = 344.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'
@@ -92,9 +94,8 @@ object OrientationSensorForm: TOrientationSensorForm
       Text = 'Tilt Z:'
     end
     object lbHeadingX: TListBoxItem
-      Height = 44.000000000000000000
       Position.Y = 176.000000000000000000
-      Size.Width = 344.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'
@@ -102,9 +103,8 @@ object OrientationSensorForm: TOrientationSensorForm
       Text = 'Heading X:'
     end
     object lbHeadingY: TListBoxItem
-      Height = 44.000000000000000000
       Position.Y = 220.000000000000000000
-      Size.Width = 344.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'
@@ -112,9 +112,8 @@ object OrientationSensorForm: TOrientationSensorForm
       Text = 'Heading Y:'
     end
     object lbHeadingZ: TListBoxItem
-      Height = 44.000000000000000000
       Position.Y = 264.000000000000000000
-      Size.Width = 344.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'

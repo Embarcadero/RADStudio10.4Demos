@@ -49,6 +49,7 @@ type
     procedure TaskListBeforeConnect(Sender: TObject);
   private
     { Private declarations }
+    FSingleIdle: Boolean;
     procedure OnIdle(Sender: TObject; var ADone: Boolean);
   public
     { Public declarations }
@@ -121,27 +122,32 @@ end;
 
 procedure TIBLiteForm.FormCreate(Sender: TObject);
 begin
-  try
-    // For unidirectional dataset, don't refill automatically when dataset is activated
-    // because dataset is reactivated everytime use DataSet.First.
-    LinkFillControlToField1.AutoActivate := False;
-    LinkFillControlToField1.AutoFill := False;
     Application.OnIdle := OnIdle;
-    FireTaskList.Connected := True;
-    FDTableTask.Active := True;
-    LinkFillControlToField1.BindList.FillList;
-  except
-    on e: Exception do
-    begin
-      ShowMessage(e.Message);
-    end;
-  end;
 end;
 
 
 procedure TIBLiteForm.OnIdle(Sender: TObject; var ADone: Boolean);
 begin
   DeleteButton.Visible := ListView1.Selected <> nil;
+
+  if not FSingleIdle then
+  begin
+    try
+      // For unidirectional dataset, don't refill automatically when dataset is activated
+      // because dataset is reactivated everytime use DataSet.First.
+      LinkFillControlToField1.AutoActivate := False;
+      LinkFillControlToField1.AutoFill := False;
+      FireTaskList.Connected := True;
+      FDTableTask.Active := True;
+      LinkFillControlToField1.BindList.FillList;
+    except
+      on e: Exception do
+      begin
+        ShowMessage(e.Message);
+      end;
+    end;
+    FSingleIdle := True;
+  end;
 end;
 
 procedure TIBLiteForm.TaskListBeforeConnect(Sender: TObject);

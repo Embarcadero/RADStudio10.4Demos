@@ -35,6 +35,7 @@ type
     lbMotion: TListBoxItem;
     lbSpeed: TListBoxItem;
     MotionSensor1: TMotionSensor;
+    Layout1: TLayout;
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure swAccelerometerSensorActiveSwitch(Sender: TObject);
@@ -86,52 +87,53 @@ var
   LProp: TCustomMotionSensor.TProperty;
 
 begin
-  for LProp in MotionSensor1.Sensor.AvailableProperties do
-  begin
-    { get the data from the sensor }
-    case LProp of
-      TCustomMotionSensor.TProperty.AccelerationX:
-      begin
-        lbAccelerationX.Visible := True;
-        lbAccelerationX.Text := Format('Acceleration X: %6.2f', [MotionSensor1.Sensor.AccelerationX]);
-      end;
-      TCustomMotionSensor.TProperty.AccelerationY:
-      begin
-        lbAccelerationY.Visible := True;
-        lbAccelerationY.Text := Format('Acceleration Y: %6.2f', [MotionSensor1.Sensor.AccelerationY]);
-      end;
-      TCustomMotionSensor.TProperty.AccelerationZ:
-      begin
-        lbAccelerationZ.Visible := True;
-        lbAccelerationZ.Text := Format('Acceleration Z: %6.2f', [MotionSensor1.Sensor.AccelerationZ]);
-      end;
-      TCustomMotionSensor.TProperty.AngleAccelX:
-      begin
-        lbAngleAccelX.Visible := True;
-        lbAngleAccelX.Text := Format('Angle X: %6.2f', [MotionSensor1.Sensor.AngleAccelX]);
-      end;
-      TCustomMotionSensor.TProperty.AngleAccelY:
-      begin
-        lbAngleAccelY.Visible := True;
-        lbAngleAccelY.Text := Format('Angle Y: %6.2f', [MotionSensor1.Sensor.AngleAccelY]);
-      end;
-      TCustomMotionSensor.TProperty.AngleAccelZ:
-      begin
-        lbAngleAccelZ.Visible := True;
-        lbAngleAccelZ.Text := Format('Angle Z: %6.2f', [MotionSensor1.Sensor.AngleAccelZ]);
-      end;
-      TCustomMotionSensor.TProperty.Motion:
-      begin
-        lbMotion.Visible := True;
-        lbMotion.Text := Format('Motion: %6.2f', [MotionSensor1.Sensor.Motion]);
-      end;
-      TCustomMotionSensor.TProperty.Speed:
-      begin
-        lbSpeed.Visible := True;
-        lbSpeed.Text := Format('Speed: %6.2f', [MotionSensor1.Sensor.Speed]);
+  if MotionSensor1.Sensor<>nil then
+    for LProp in MotionSensor1.Sensor.AvailableProperties do
+    begin
+      { get the data from the sensor }
+      case LProp of
+        TCustomMotionSensor.TProperty.AccelerationX:
+        begin
+          lbAccelerationX.Visible := True;
+          lbAccelerationX.Text := Format('Acceleration X: %6.2f', [MotionSensor1.Sensor.AccelerationX]);
+        end;
+        TCustomMotionSensor.TProperty.AccelerationY:
+        begin
+          lbAccelerationY.Visible := True;
+          lbAccelerationY.Text := Format('Acceleration Y: %6.2f', [MotionSensor1.Sensor.AccelerationY]);
+        end;
+        TCustomMotionSensor.TProperty.AccelerationZ:
+        begin
+          lbAccelerationZ.Visible := True;
+          lbAccelerationZ.Text := Format('Acceleration Z: %6.2f', [MotionSensor1.Sensor.AccelerationZ]);
+        end;
+        TCustomMotionSensor.TProperty.AngleAccelX:
+        begin
+          lbAngleAccelX.Visible := True;
+          lbAngleAccelX.Text := Format('Angle X: %6.2f', [MotionSensor1.Sensor.AngleAccelX]);
+        end;
+        TCustomMotionSensor.TProperty.AngleAccelY:
+        begin
+          lbAngleAccelY.Visible := True;
+          lbAngleAccelY.Text := Format('Angle Y: %6.2f', [MotionSensor1.Sensor.AngleAccelY]);
+        end;
+        TCustomMotionSensor.TProperty.AngleAccelZ:
+        begin
+          lbAngleAccelZ.Visible := True;
+          lbAngleAccelZ.Text := Format('Angle Z: %6.2f', [MotionSensor1.Sensor.AngleAccelZ]);
+        end;
+        TCustomMotionSensor.TProperty.Motion:
+        begin
+          lbMotion.Visible := True;
+          lbMotion.Text := Format('Motion: %6.2f', [MotionSensor1.Sensor.Motion]);
+        end;
+        TCustomMotionSensor.TProperty.Speed:
+        begin
+          lbSpeed.Visible := True;
+          lbSpeed.Text := Format('Speed: %6.2f', [MotionSensor1.Sensor.Speed]);
+        end;
       end;
     end;
-  end;
 end;
 
 end.

@@ -23,16 +23,18 @@ object Form2: TForm2
     DefaultItemStyles.GroupHeaderStyle = ''
     DefaultItemStyles.GroupFooterStyle = ''
     GroupingKind = Grouped
+    Viewport.Width = 384.000000000000000000
+    Viewport.Height = 93.000000000000000000
     object ListBoxItem5: TListBoxItem
-      Height = 44.000000000000000000
-      Size.Width = 344.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'
       TabOrder = 0
       Text = 'Pick a Date'
       object DateEdit1: TDateEdit
-        Date = 41698.000000000000000000
+        Date = 43909.000000000000000000
+        TodayDefault = True
         OnChange = DateEdit1Change
         Position.X = 224.000000000000000000
         Position.Y = 8.000000000000000000
@@ -44,9 +46,8 @@ object Form2: TForm2
       end
     end
     object ListBoxItem6: TListBoxItem
-      Height = 44.000000000000000000
       Position.Y = 44.000000000000000000
-      Size.Width = 344.000000000000000000
+      Size.Width = 384.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'listboxitemnodetail'

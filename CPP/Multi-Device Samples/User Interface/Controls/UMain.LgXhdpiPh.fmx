@@ -5,6 +5,19 @@ inherited Form1_LgXhdpiPh: TForm1_LgXhdpiPh
   inherited TabControl1: TTabControl
     Size.Width = 450.000000000000000000
     Size.Height = 695.000000000000000000
+    Sizes = (
+      450s
+      646s
+      450s
+      646s
+      450s
+      646s
+      450s
+      646s
+      450s
+      646s
+      450s
+      646s)
     inherited ToolBarPage: TTabItem
       Size.Width = 75.000000000000000000
       ExplicitSize.cx = 100.000000000000000000
@@ -46,6 +59,7 @@ inherited Form1_LgXhdpiPh: TForm1_LgXhdpiPh
           end
           inherited SpeedButton3: TSpeedButton
             Position.X = 388.000000000000000000
+            Size.Height = 42.000000000000000000
           end
         end
       end
@@ -54,66 +68,135 @@ inherited Form1_LgXhdpiPh: TForm1_LgXhdpiPh
       Size.Width = 75.000000000000000000
       ExplicitSize.cx = 100.000000000000000000
       ExplicitSize.cy = 49.000000000000000000
+      inherited ToolBar5: TToolBar
+        Size.Width = 450.000000000000000000
+      end
+      inherited ToolBar6: TToolBar
+        Size.Width = 450.000000000000000000
+      end
+      inherited ToolBar7: TToolBar
+        Size.Width = 450.000000000000000000
+      end
+      inherited ToolBar8: TToolBar
+        Size.Width = 450.000000000000000000
+      end
+      inherited ToolBar9: TToolBar
+        Size.Width = 450.000000000000000000
+      end
     end
     inherited Tabs: TTabItem
       Size.Width = 75.000000000000000000
       ExplicitSize.cx = 100.000000000000000000
       ExplicitSize.cy = 49.000000000000000000
       inherited TabControl2: TTabControl
+        Size.Width = 450.000000000000000000
+        Sizes = (
+          450s
+          8s
+          450s
+          8s
+          450s
+          8s
+          450s
+          8s)
         inherited TabItem1: TTabItem
+          Size.Width = 112.000000000000000000
           ExplicitSize.cx = 150.000000000000000000
           ExplicitSize.cy = 49.000000000000000000
         end
         inherited TabItem10: TTabItem
+          Size.Width = 112.000000000000000000
           ExplicitSize.cx = 150.000000000000000000
           ExplicitSize.cy = 49.000000000000000000
         end
         inherited TabItem11: TTabItem
+          Size.Width = 112.000000000000000000
           ExplicitSize.cx = 150.000000000000000000
           ExplicitSize.cy = 49.000000000000000000
         end
         inherited TabItem12: TTabItem
+          Size.Width = 114.000000000000000000
           ExplicitSize.cx = 146.000000000000000000
           ExplicitSize.cy = 49.000000000000000000
         end
       end
       inherited TabControl3: TTabControl
+        Size.Width = 450.000000000000000000
+        Sizes = (
+          450s
+          7s
+          450s
+          7s
+          450s
+          7s
+          450s
+          7s)
         inherited TabItem5: TTabItem
+          Size.Width = 112.000000000000000000
           ExplicitSize.cx = 150.000000000000000000
           ExplicitSize.cy = 49.000000000000000000
         end
         inherited TabItem6: TTabItem
+          Size.Width = 112.000000000000000000
           ExplicitSize.cx = 150.000000000000000000
           ExplicitSize.cy = 49.000000000000000000
         end
         inherited TabItem7: TTabItem
+          Size.Width = 112.000000000000000000
           ExplicitSize.cx = 150.000000000000000000
           ExplicitSize.cy = 49.000000000000000000
         end
         inherited TabItem8: TTabItem
+          Size.Width = 114.000000000000000000
           ExplicitSize.cx = 146.000000000000000000
           ExplicitSize.cy = 49.000000000000000000
         end
       end
       inherited TabControl4: TTabControl
+        Size.Width = 450.000000000000000000
+        Sizes = (
+          450s
+          7s
+          450s
+          7s
+          450s
+          7s
+          450s
+          7s)
         inherited TabItem2: TTabItem
+          Size.Width = 112.000000000000000000
           ExplicitSize.cx = 150.000000000000000000
           ExplicitSize.cy = 49.000000000000000000
         end
         inherited TabItem3: TTabItem
+          Size.Width = 112.000000000000000000
           ExplicitSize.cx = 150.000000000000000000
           ExplicitSize.cy = 49.000000000000000000
         end
         inherited TabItem4: TTabItem
+          Size.Width = 112.000000000000000000
           ExplicitSize.cx = 150.000000000000000000
           ExplicitSize.cy = 49.000000000000000000
         end
         inherited TabItem9: TTabItem
+          Size.Width = 114.000000000000000000
           ExplicitSize.cx = 146.000000000000000000
           ExplicitSize.cy = 49.000000000000000000
         end
       end
       inherited TabControl5: TTabControl
+        Size.Width = 450.000000000000000000
+        Sizes = (
+          450s
+          64s
+          450s
+          64s
+          450s
+          64s
+          450s
+          64s
+          450s
+          64s)
         inherited TabItem13: TTabItem
           ExplicitSize.cx = 8.000000000000000000
           ExplicitSize.cy = 8.000000000000000000
@@ -141,19 +224,22 @@ inherited Form1_LgXhdpiPh: TForm1_LgXhdpiPh
       ExplicitSize.cx = 100.000000000000000000
       ExplicitSize.cy = 49.000000000000000000
       inherited ListBox2: TListBox
+        Size.Height = 646.000000000000000000
         Viewport.Width = 233.000000000000000000
-        Viewport.Height = 310.000000000000000000
+        Viewport.Height = 646.000000000000000000
       end
       inherited ListBox3: TListBox
-        Viewport.Width = 365.000000000000000000
-        Viewport.Height = 310.000000000000000000
+        Size.Width = 217.000000000000000000
+        Size.Height = 646.000000000000000000
+        Viewport.Width = 217.000000000000000000
+        Viewport.Height = 646.000000000000000000
         inherited ListBoxItem24: TListBoxItem
           inherited Switch2: TSwitch
             Size.Height = 44.000000000000000000
           end
         end
         inherited ListBoxHeader2: TListBoxHeader
-          Size.Width = 621.000000000000000000
+          Size.Width = 217.000000000000000000
         end
       end
     end
@@ -161,14 +247,20 @@ inherited Form1_LgXhdpiPh: TForm1_LgXhdpiPh
       Size.Width = 75.000000000000000000
       ExplicitSize.cx = 100.000000000000000000
       ExplicitSize.cy = 49.000000000000000000
+      inherited Button7: TButton
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+      end
+      inherited Button8: TButton
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+      end
     end
     inherited TabItem18: TTabItem
       Size.Width = 75.000000000000000000
       ExplicitSize.cx = 98.000000000000000000
       ExplicitSize.cy = 49.000000000000000000
       inherited Memo1: TMemo
-        Viewport.Width = 145.000000000000000000
-        Viewport.Height = 129.000000000000000000
+        Viewport.Width = 153.000000000000000000
+        Viewport.Height = 137.000000000000000000
       end
     end
   end

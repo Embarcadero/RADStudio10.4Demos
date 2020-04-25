@@ -10,7 +10,6 @@
 //---------------------------------------------------------------------------
 
 #include <fmx.h>
-#include <cmath>
 #pragma hdrstop
 
 #include "ImageRotationU.h"

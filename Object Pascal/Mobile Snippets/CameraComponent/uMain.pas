@@ -20,9 +20,9 @@ uses
 
 type
   TCameraComponentForm = class(TForm)
-  private const
-    PermissionCamera = 'android.permission.CAMERA';
   private
+    FPermissionCamera: string;
+    procedure OnIdle(Sender: TObject; var ADone: Boolean);
     procedure GetImage;
     procedure AccessCameraPermissionRequestResult(Sender: TObject; const APermissions: TArray<string>; const AGrantResults: TArray<TPermissionStatus>);
     procedure ActivateCameraPermissionRequestResult(Sender: TObject; const APermissions: TArray<string>; const AGrantResults: TArray<TPermissionStatus>);
@@ -77,32 +77,81 @@ type
     procedure cbPriorityChange(Sender: TObject);
     procedure CameraComponentSampleBufferReady(Sender: TObject; const ATime: TMediaTime);
     procedure tbControlChange(Sender: TObject);
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
   end;
 
 implementation
 
 uses
+{$IFDEF ANDROID}
+  Androidapi.Helpers,
+  Androidapi.JNI.JavaTypes,
+  Androidapi.JNI.Os,
+{$ENDIF}
   FMX.DialogService;
 
 {$R *.fmx}
+
+constructor TCameraComponentForm.Create(AOwner: TComponent);
+begin
+  inherited Create(AOwner);
+{$IFDEF ANDROID}
+  FPermissionCamera := JStringToString(TJManifest_permission.JavaClass.CAMERA);
+{$ENDIF}
+end;
+
+destructor TCameraComponentForm.Destroy;
+begin
+  inherited Destroy;
+end;
+
+function SortStringList(List: TStringList; AIndex1, AIndex2: Integer): Integer;
+var
+  L1, L2: Integer;
+begin
+  L1 := StrToIntDef(List.Names[AIndex1], 0);
+  L2 := StrToIntDef(List.Names[AIndex2], 0);
+  Result := L2 - L1;
+end;
 
 procedure TCameraComponentForm.FillResolutions;
 begin
   cbResolutions.Clear;
 
-  for var CaptureSetting in CameraComponent.AvailableCaptureSettings do
-  begin
-    cbResolutions.Items.Add(CaptureSetting.Width.ToString + ' x ' +
-      CaptureSetting.Height.ToString + ' x ' + CaptureSetting.FrameRate.ToString);
+  var SL := TStringList.Create;
+  try
+    for var LCaptureSetting in CameraComponent.AvailableCaptureSettings do
+    begin
+      if lbiResolution.IsSelected then
+        SL.AddPair(LCaptureSetting.Width.ToString,LCaptureSetting.Width.ToString + ' x ' +
+        LCaptureSetting.Height.ToString + ' x '  + LCaptureSetting.FrameRate.ToString);
+
+      if lbiFrameRate.IsSelected then
+        SL.AddPair(LCaptureSetting.FrameRate.ToString + LCaptureSetting.Width.ToString,LCaptureSetting.Width.ToString + ' x ' +
+        LCaptureSetting.Height.ToString + ' x ' + LCaptureSetting.FrameRate.ToString);
+    end;
+
+    SL.CustomSort(SortStringList);
+
+    for var LIndex := 0 to SL.Count-1 do
+      cbResolutions.Items.Add(SL.ValueFromIndex[LIndex]);
+  finally
+    SL.Free;
   end;
 
   cbResolutions.ItemIndex := 0;
 end;
 
+procedure TCameraComponentForm.OnIdle(Sender: TObject; var ADone: Boolean);
+begin
+  PermissionsService.RequestPermissions([FPermissionCamera], AccessCameraPermissionRequestResult, DisplayRationale);
+end;
+
 procedure TCameraComponentForm.FormCreate(Sender: TObject);
 begin
-  PermissionsService.RequestPermissions([PermissionCamera], AccessCameraPermissionRequestResult, DisplayRationale);
-
+  Application.OnIdle := OnIdle;
   {
     Add platform service to see camera state. This is needed to enable or disable the camera when the application
     goes to background.
@@ -245,7 +294,7 @@ end;
 
 procedure TCameraComponentForm.btnStartCameraClick(Sender: TObject);
 begin
-  PermissionsService.RequestPermissions([PermissionCamera], ActivateCameraPermissionRequestResult, DisplayRationale);
+  PermissionsService.RequestPermissions([FPermissionCamera], ActivateCameraPermissionRequestResult, DisplayRationale);
 end;
 
 procedure TCameraComponentForm.btnStopCameraClick(Sender: TObject);

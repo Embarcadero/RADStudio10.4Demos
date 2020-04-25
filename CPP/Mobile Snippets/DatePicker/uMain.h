@@ -22,6 +22,7 @@
 #include <FMX.StdCtrls.hpp>
 #include <FMX.Types.hpp>
 #include <FMX.MobilePreview.hpp>
+#include <FMX.Controls.Presentation.hpp>
 
 // ---------------------------------------------------------------------------
 class TForm2 : public TForm {

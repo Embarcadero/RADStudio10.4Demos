@@ -17,7 +17,7 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   ComCtrls, IBX.IBServices, StdCtrls, ActnList, Menus, Grids, ExtCtrls, DB,
   IBX.IBSQL, IBX.IBDatabase, IBX.IBDatabaseInfo, IBX.IBIntf, System.Actions,
-  System.UITypes;
+  System.UITypes, IBX.IBUtils;
 
 type
   TfrmAdminTool = class(TForm)

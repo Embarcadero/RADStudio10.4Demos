@@ -31,6 +31,7 @@ TfrmCtrlsDemo *frmCtrlsDemo;
 __fastcall TfrmCtrlsDemo::TfrmCtrlsDemo(TComponent* Owner)
 	: TForm(Owner)
 {
+
 }
 //---------------------------------------------------------------------------
 void __fastcall TfrmCtrlsDemo::MenuItem6Click(TObject *Sender)
@@ -111,20 +112,30 @@ void __fastcall TfrmCtrlsDemo::SwitchTo3D()
 	if (FContainer != NULL)
 	  delete FViewport;
 	FViewport = new TViewport3D(this);
+	FViewport->Parent = this;
 	FViewport->Align = TAlignLayout::Client;
 	FViewport->Color = TAlphaColorRec::Null;
-	FViewport->Parent = this;
 
-	FContainer = new TLayer3D(this);
+	FContainer = new TLayer3D(FViewport);
+	FContainer->Parent = FViewport;
 	FContainer->Projection = TProjection::Screen;
 	FContainer->Align = TAlignLayout::Client;
-	FContainer->Parent = FViewport;
 
-	TImage *img = new TImage(this);
-	img->Bitmap->Assign(ControlRoot->MakeScreenshot());
-	img->Parent = FContainer;
-	img->Align = TAlignLayout::Client;
+	TImage *img = new TImage(NULL);
+	img->Height = FSavedHeight;
+	img->Width = FSavedWidth;
 	img->Margins = ControlRoot->Margins;
+	img->WrapMode = TImageWrapMode::Original;
+	img->Scale->X = ScaleTrack->Value;
+	img->Scale->Y = ScaleTrack->Value;
+	img->Bitmap->Height = (int)(FSavedHeight);
+	img->Bitmap->Width = (int)(FSavedWidth);
+	TBitmap *LScreenShot = new TBitmap();
+	LScreenShot = ControlRoot->MakeScreenshot();
+	img->Bitmap->CopyFromBitmap(LScreenShot);
+	img->Margins = ControlRoot->Margins;
+	delete LScreenShot;
+	img->Parent = FContainer;
 
 	ControlRoot->Visible = false;
 }
@@ -137,6 +148,8 @@ void __fastcall TfrmCtrlsDemo::SwitchTo2D()
 //---------------------------------------------------------------------------
 void __fastcall TfrmCtrlsDemo::Button1Click(TObject *Sender)
 {
+	FSavedHeight = ControlRoot->Height;
+	FSavedWidth = ControlRoot->Width;
 	((TButton *)Sender)->Enabled = false;
 	SwitchTo3D();
 	if (FContainer != NULL)
@@ -146,6 +159,9 @@ void __fastcall TfrmCtrlsDemo::Button1Click(TObject *Sender)
 		TAnimator::AnimateFloatWait(FContainer, "RotationAngle.X", 360, 2 , TAnimationType::InOut, TInterpolationType::Back);
 	}
 	SwitchTo2D();
+	ControlRoot->Height = FSavedHeight;
+	ControlRoot->Width = FSavedWidth;
+	ControlLayoutResize(this);
 	((TButton *)Sender)->Enabled = true;
 }
 //---------------------------------------------------------------------------
@@ -277,6 +293,20 @@ void __fastcall TfrmCtrlsDemo::DropTarget1Dropped(TObject *Sender, const TDragOb
 		Edit1->Text = Data.Source->ClassName();
 	else
 		Edit1->Text = Data.Files[0];
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmCtrlsDemo::FormClose(TObject *Sender, TCloseAction &Action)
+{
+  if (FViewport != NULL)
+	  delete FViewport;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmCtrlsDemo::ControlLayoutResize(TObject *Sender)
+{
+  ControlRoot->Width = ControlLayout->Width - ControlRoot->Padding->Right;
+  ControlRoot->Height = ControlLayout->Height - ControlRoot->Padding->Bottom;
 }
 //---------------------------------------------------------------------------
 

@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 // This software is Copyright (c) 2015 Embarcadero Technologies, Inc.
 // You may only use this software if you are an authorized licensee
@@ -7,7 +7,7 @@
 // the software license agreement that comes with the Embarcadero Products
 // and is subject to that software license agreement.
 
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 program VideoPlayerTest;
 
@@ -22,4 +22,5 @@ begin
   Application.Initialize;
   Application.CreateForm(TfrmMain, frmMain);
   Application.Run;
+
 end.

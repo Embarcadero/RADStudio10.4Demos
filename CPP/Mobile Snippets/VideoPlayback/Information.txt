@@ -1,9 +1,0 @@
-Title: VideoPlayback
-
-Brief Description: This code snippet shows you how to play back an existing video clip on your iOS device. 
-
-Language: C++
-
-Platforms supported: iOS, Android
-
-Keywords: video, playback, play, iOS, Android

@@ -77,10 +77,8 @@ void __fastcall TForm2::LocationSensor1LocationChanged(TObject *Sender, const TL
 	lbLatitude->Text = "Latitude: " + latitude;
 	lbLongitude->Text = "Longitude: " + longitude;
 
-	TVarRec params[] = { lbLatitude->Text, lbLongitude->Text };
-
-    // and track the location via Google Maps
-	WebBrowser1->Navigate(Format("https://maps.google.com/maps?q=%s,%s", params, 2));
+	// and track the location via Google Maps
+	WebBrowser1->Navigate(Format("https://maps.google.com/maps?q=%s,%s", ARRAYOFCONST((latitude, longitude))));
 }
 // ---------------------------------------------------------------------------
 void __fastcall TForm2::nbAccuracyChange(TObject *Sender)

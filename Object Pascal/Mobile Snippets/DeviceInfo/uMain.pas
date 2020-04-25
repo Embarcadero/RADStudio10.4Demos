@@ -83,10 +83,10 @@ begin
     Result := 'HONEYCOMB_MR1'
   else if VerString = '3.2' then
     Result := 'HONEYCOMB_MR2'
-  else if VerString = '4.0' then
-    Result := 'ICE_CREAM_SANDWICH'
   else if VerString = '4.0.3' then
     Result := 'ICE_CREAM_SANDWICH_MR1'
+  else if Pos('4.0',VerString) = 1 then
+    Result := 'ICE_CREAM_SANDWICH'
   else if VerString = '4.1' then
     Result := 'JELLY_BEAN'
   else if VerString = '4.2' then
@@ -95,6 +95,26 @@ begin
     Result := 'JELLY_BEAN_MR2'
   else if Pos('4.4',VerString) = 1 then
     Result := 'KITKAT'
+  else if VerString = '5.0' then
+    Result := 'LOLLIPOP'
+  else if VerString = '5.1' then
+    Result := 'LOLLIPOP_MR1'
+  else if VerString = '6.0' then
+    Result := 'MARSHMALLOW'
+  else if VerString = '7.0' then
+    Result := 'NOUGAT'
+  else if VerString = '7.1' then
+    Result := 'NOUGAT_MR1'
+  else if Pos('8.0',VerString) = 1 then
+    Result := 'OREO'
+  else if Pos('8.1',VerString) = 1 then
+    Result := 'OREO_MR1'
+  else if VerString = '9' then
+    Result := 'PIE'
+  else if VerString = '10' then
+    Result := 'ANDROID10'
+  else if VerString = '11' then
+    Result := 'ANDROID11'
   else Result := 'UNKNOWN';
 end;
 
