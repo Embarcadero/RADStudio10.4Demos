@@ -24,25 +24,28 @@
 #include <FMX.Edit.hpp>
 #include <list>
 //---------------------------------------------------------------------------
+const Integer DISCOVERY_TIMEOUT = 20000;
+const String LOCATION_PERMISSION = "android.permission.ACCESS_FINE_LOCATION";
+const Integer BEACON_TYPE_POSITION = 2;
+const Integer BEACON_GUID_POSITION = 4;
+const Integer BEACON_MAJOR_POSITION = 20;
+const Integer BEACON_MINOR_POSITION = 22;
+const Integer MARK_POSITION = 9;
+const Integer UUID_LENGTH = 16;
+const Word BEACON_ST_TYPE = 0x0215;
 
-  //TSCANRESPONSE POSITIONS
-const  Integer BEACON_TYPE_POSITION = 2;
-const  Integer BEACON_GUID_POSITION = 4;
-const  Integer BEACON_MAJOR_POSITION = 20;
-const  Integer BEACON_MINOR_POSITION = 22;
-const  Word BEACON_ST_TYPE = 0x0215;
-
-  struct TBeaconDevice{
-    TBluetoothLEDevice* ADevice;
+struct TBeaconDevice{
+	TBluetoothLEDevice* ADevice;
 	TGUID GUID;
 	Word Major;
 	Word Minor;
 	Integer TxPower;
 	Integer Rssi;
 	Double Distance;
-	System::Boolean Alt;
-  };
-  typedef std::list<TBeaconDevice> TBeaconDeviceList;
+	bool Alt;
+};
+
+typedef std::list<TBeaconDevice> TBeaconDeviceList;
 
 class MyThreadProcedure : public TCppInterfacedObject<TThreadProcedure>
 {
@@ -53,26 +56,27 @@ private:
 	TBluetoothLEDevice* const ADevice;
 	int Rssi;
 	TScanResponse* const ScanResponse;
+
 	bool __fastcall DecodeScanResponse(TScanResponse* const ScanResponse, TBeaconDevice &BeaconDevice);
 };
 
 class TForm2 : public TForm
 {
-__published:	// IDE-managed Components
+__published:
 	TPanel *Panel1;
 	TButton *Button1;
 	TButton *Button2;
 	TListBox *ListBox1;
+
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall Button2Click(TObject *Sender);
-private:	// User declarations
-  TBluetoothLEManager* FManager;
-  TBeaconDeviceList BeaconDeviceList;
+	void __fastcall FormCreate(TObject *Sender);
+private:
+	TBluetoothLEManager* FManager;
+	TBeaconDeviceList FBeaconDeviceList;
 
-  void __fastcall DiscoverLEDevice(System::TObject* const Sender, TBluetoothLEDevice* const ADevice, int Rssi, TScanResponse* const ScanResponse);
-
-
-public:		// User declarations
+	void __fastcall DiscoverLEDevice(System::TObject* const Sender, TBluetoothLEDevice* const ADevice, int Rssi, TScanResponse* const ScanResponse);
+public:
 	__fastcall TForm2(TComponent* Owner);
 
 	friend class MyThreadProcedure;

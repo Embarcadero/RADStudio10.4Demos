@@ -23,16 +23,18 @@ uses
   FMX.ListBox, System.Math;
 
 const
-  //TSCANRESPONSE POSITIONS
+  DISCOVERY_TIMEOUT = 20000;
+  LOCATION_PERMISSION = 'android.permission.ACCESS_FINE_LOCATION';
   BEACON_TYPE_POSITION = 2;
   BEACON_GUID_POSITION = 4;
   BEACON_MAJOR_POSITION = 20;
   BEACON_MINOR_POSITION = 22;
+  MARK_POSITION = 9;
+  UUID_LENGTH = 16;
   BEACON_ST_TYPE: Word = $0215;
 
 type
-
- TBeaconDevice = Record
+  TBeaconDevice = record
     Device: TBluetoothLEDevice;
     GUID: TGUID;
     Major: Word;
@@ -42,24 +44,24 @@ type
     Distance: Double;
     Alt: Boolean;
   end;
+
   TBeaconDeviceList = TList<TBeaconDevice>;
 
-type
   TForm4 = class(TForm)
+  private
+    FManager: TBluetoothLEManager;
+    FBeaconDeviceList: TBeaconDeviceList;
+
+    procedure DiscoverLEDevice(const Sender: TObject; const ADevice: TBluetoothLEDevice; Rssi: Integer; const ScanResponse: TScanResponse);
+  published
     Panel1: TPanel;
     Button1: TButton;
     Button2: TButton;
     ListBox1: TListBox;
+
+    procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
-    procedure FormShow(Sender: TObject);
     procedure Button2Click(Sender: TObject);
-  private
-    { Private declarations }
-    FManager: TBluetoothLEManager;
-    BeaconDeviceList: TBeaconDeviceList;
-  public
-    { Public declarations }
-    procedure DiscoverLEDevice(const Sender: TObject; const ADevice: TBluetoothLEDevice; Rssi: Integer; const ScanResponse: TScanResponse);
   end;
 
 var
@@ -69,14 +71,39 @@ implementation
 
 {$R *.fmx}
 
+uses
+  System.Permissions,
+  FMX.DialogService;
+
+procedure TForm4.FormCreate(Sender: TObject);
+begin
+  FManager := TBluetoothLEManager.Current;
+  FManager.OnDiscoverLeDevice := DiscoverLEDevice;
+
+  FBeaconDeviceList := TBeaconDeviceList.Create;
+end;
+
 procedure TForm4.Button1Click(Sender: TObject);
 begin
-  if FManager = nil then
-  begin
-    FManager :=  TBluetoothLEManager.Current;
-    FManager.OnDiscoverLeDevice := DiscoverLEDevice;
-  end;
-  FManager.StartDiscovery(20000);
+  FBeaconDeviceList.Clear;
+
+  if PermissionsService.DefaultService.IsPermissionGranted(LOCATION_PERMISSION) then
+    FManager.StartDiscovery(DISCOVERY_TIMEOUT)
+  else
+    PermissionsService.DefaultService.RequestPermissions([LOCATION_PERMISSION],
+      procedure(const Permissions: TArray<string>; const GrantResults: TArray<TPermissionStatus>)
+      begin
+        if (Length(GrantResults) = 1) and (GrantResults[0] = TPermissionStatus.Granted) then
+          FManager.StartDiscovery(DISCOVERY_TIMEOUT);
+      end,
+      procedure(const Permissions: TArray<string>; const PostRationaleProc: TProc)
+      begin
+        TDialogService.ShowMessage('Please grant the location permission in order to be discover nearby Bluetooth devices',
+          procedure(const AResult: TModalResult)
+          begin
+            PostRationaleProc;
+          end);
+      end);
 end;
 
 procedure TForm4.Button2Click(Sender: TObject);
@@ -84,39 +111,11 @@ begin
   FManager.CancelDiscovery;
 end;
 
-procedure TForm4.DiscoverLEDevice(const Sender: TObject; const ADevice: TBluetoothLEDevice;
-          Rssi: Integer; const ScanResponse: TScanResponse);
-
-  procedure BinToHex(Buffer: TBytes; Text: PChar; BufSize: Integer);
-  const
-    Convert: array[0..15] of WideChar = '0123456789ABCDEF';
-  var
-    I: Integer;
-  begin
-    for I := 0 to BufSize - 1 do
-    begin
-      Text[0] := Convert[Buffer[I] shr 4];
-      Text[1] := Convert[Buffer[I] and $F];
-      Inc(Text, 2);
-    end;
-  end;
+procedure TForm4.DiscoverLEDevice(const Sender: TObject; const ADevice: TBluetoothLEDevice; Rssi: Integer; const ScanResponse: TScanResponse);
 
   function DecodeScanResponse: TBeaconDevice;
-  const
-    GUID_LENGTH = 16;
-    MARK_POSITION = 9;
-  var
-    LSTBuff: string;
   begin
-    SetLength(LSTBuff, GUID_LENGTH * 2);
-    BinToHex(@ScanResponse.Items[TScanResponseKey.ManufacturerSpecificData][BEACON_GUID_POSITION], PChar(LSTBuff), GUID_LENGTH);
-    LSTBuff := '{' + LSTBuff + '}';
-    LSTBuff.Insert(MARK_POSITION,'-');
-    LSTBuff.Insert(MARK_POSITION + 5,'-');
-    LSTBuff.Insert(MARK_POSITION + 10,'-');
-    LSTBuff.Insert(MARK_POSITION + 15,'-');
-    Result.GUID := TGUID.Create(LSTBuff);
-
+    Result.GUID := TGUID.Create(ScanResponse.Items[TScanResponseKey.ManufacturerSpecificData], BEACON_GUID_POSITION, TEndian.Big);
 
     WordRec(Result.Major).Hi := ScanResponse.Items[TScanResponseKey.ManufacturerSpecificData][BEACON_MAJOR_POSITION];
     WordRec(Result.Major).Lo := ScanResponse.Items[TScanResponseKey.ManufacturerSpecificData][BEACON_MAJOR_POSITION + 1];
@@ -135,9 +134,10 @@ procedure TForm4.DiscoverLEDevice(const Sender: TObject; const ADevice: TBluetoo
                           [length(ScanResponse.Items[TScanResponseKey.ManufacturerSpecificData]) - 2]);
       Result.Alt := True;
     end;
-      Result.Rssi := Rssi;
-      Result.Distance := FManager.RssiToDistance(Rssi, Result.TxPower, 0.5);
-      Result.Device := ADevice;
+
+    Result.Rssi := Rssi;
+    Result.Distance := FManager.RssiToDistance(Rssi, Result.TxPower, 0.5);
+    Result.Device := ADevice;
   end;
 
 var
@@ -153,13 +153,13 @@ begin
       exit;
     LBeaconDevice := DecodeScanResponse;
     NewBeacon := 0;
-    if BeaconDeviceList.Count > 0 then
+    if FBeaconDeviceList.Count > 0 then
     begin
-      for I := 0 to BeaconDeviceList.count-1 do
-        if ((BeaconDeviceList[I].GUID = LBeaconDevice.GUID) and (BeaconDeviceList[I].Major = LBeaconDevice.Major)
-          and (BeaconDeviceList[I].Minor = LBeaconDevice.Minor)) then
+      for I := 0 to FBeaconDeviceList.count-1 do
+        if ((FBeaconDeviceList[I].GUID = LBeaconDevice.GUID) and (FBeaconDeviceList[I].Major = LBeaconDevice.Major)
+          and (FBeaconDeviceList[I].Minor = LBeaconDevice.Minor)) then
         begin
-          BeaconDeviceList[I] := LBeaconDevice;
+          FBeaconDeviceList[I] := LBeaconDevice;
           NewBeacon := I+1;
           Break;
         end;
@@ -169,7 +169,7 @@ begin
     begin
       if NewBeacon = 0 then
       begin
-        BeaconDeviceList.Add(LBeaconDevice);
+        FBeaconDeviceList.Add(LBeaconDevice);
         ListBox1.Items.Add('-------------------------------------');
         ScanData := 'Beacon Found: ' + Adevice.DeviceName;
         if LBeaconDevice.Alt then
@@ -197,12 +197,6 @@ begin
       end;
     end);
   end;
-
-end;
-
-procedure TForm4.FormShow(Sender: TObject);
-begin
-  BeaconDeviceList := TBeaconDeviceList.Create;
 end;
 
 end.
