@@ -16,7 +16,7 @@ uses
   FireDAC.Stan.StorageJSON, FireDAC.Stan.StorageXML,
   Vcl.WinXPanels, System.Actions, Vcl.ActnList, Vcl.Themes,
   Vcl.BaseImageCollection, Vcl.ImageCollection, System.ImageList, Vcl.ImgList,
-  Vcl.VirtualImageList, Vcl.VirtualImage, System.IOUtils;
+  Vcl.VirtualImageList, Vcl.VirtualImage, System.IOUtils, Vcl.TitleBarCtrls;
 
 type
   TMainForm = class(TForm)
