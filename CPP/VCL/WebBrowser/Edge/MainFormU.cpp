@@ -155,7 +155,7 @@ void __fastcall TfrmMain::mniViewGetBoundsClick(TObject *Sender)
     // One uses the WebView2 interface, one uses VCL control methods
 #define ONE_POSSIBLE_WAY
 #ifdef ONE_POSSIBLE_WAY
-    Webview2::tagRECT Bounds;
+    tagRECT Bounds;
     EdgeBrowser->HostInterface->Get_Bounds(Bounds);
     String Msg = String().sprintf(L"Left:\t%d\nTop:\t%d\nRight:\t%d\nBottom:\t%d\n",
         Bounds.left, Bounds.top, Bounds.right, Bounds.bottom);
