@@ -52,7 +52,7 @@ __fastcall TForm6::TForm6(TComponent* Owner)
 	: TForm(Owner)
 {
 #ifdef __ANDROID__
-    FLocationPermission = JStringToString(TJManifest_permission::JavaClass->ACCESS_COARSE_LOCATION);
+    FLocationPermission = JStringToString(TJManifest_permission::JavaClass->ACCESS_FINE_LOCATION);
 #endif
 }
 //---------------------------------------------------------------------------
@@ -69,7 +69,7 @@ void __fastcall TForm6::DisplayRationale(TObject* Sender, const TStringDynArray 
 //---------------------------------------------------------------------------
 void __fastcall TForm6::RequestPermissionsResult(TObject* Sender, const System::TArray__1<String> APermissions, const System::TArray__1<TPermissionStatus> AGrantResults)
 {
-    // 1 permission involved: ACCESS_COARSE_LOCATION
+    // 1 permission involved: ACCESS_FINE_LOCATION
 	if ((AGrantResults.Length == 1) && (AGrantResults[0] == TPermissionStatus::Granted))
 		StartBLEDiscovery();
 	else

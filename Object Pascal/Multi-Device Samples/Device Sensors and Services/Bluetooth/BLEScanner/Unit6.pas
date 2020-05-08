@@ -143,7 +143,7 @@ end;
 procedure TForm6.FormCreate(Sender: TObject);
 begin
 {$IFDEF ANDROID}
-  FLocationPermission := JStringToString(TJManifest_permission.JavaClass.ACCESS_COARSE_LOCATION);
+  FLocationPermission := JStringToString(TJManifest_permission.JavaClass.ACCESS_FINE_LOCATION);
 {$ENDIF}
 end;
 
@@ -182,7 +182,7 @@ end;
 
 procedure TForm6.RequestPermissionsResult(Sender: TObject; const APermissions: TArray<string>; const AGrantResults: TArray<TPermissionStatus>);
 begin
-  // 1 permissions involved: ACCESS_COARSE_LOCATION
+  // 1 permissions involved: ACCESS_FINE_LOCATION
   if (Length(AGrantResults) = 1) and (AGrantResults[0] = TPermissionStatus.Granted) then
     StartBLEDiscovery
   else
