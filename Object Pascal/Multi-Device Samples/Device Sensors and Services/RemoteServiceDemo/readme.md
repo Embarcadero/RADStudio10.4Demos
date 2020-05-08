@@ -17,13 +17,13 @@ This demo shows two Android applications that use a remote Android service to pr
 * [4.2 App Remote Host](#App_Remote_Host)
 
 * [4.2.1 Bind Button](#Bind_Button)
-* [4.2.2 UnBind Button](#UnBind_Button)
+* [4.2.2 Unbind Button](#Unbind_Button)
 * [4.2.3 Get Data](#Get_Data)
 
 * [4.3 App Remote External](#App_Remote_External)
 
 * [4.3.1 Bind Button](#Bind_Button_2)
-* [4.3.2 UnBind Button](#UnBind_Button_2)
+* [4.3.2 Unbind Button](#Unbind_Button_2)
 * [4.3.3 Get Data](#Get_Data_2)
 
 * [5 Uses](#Uses)
@@ -33,7 +33,7 @@ This demo shows two Android applications that use a remote Android service to pr
 ## Location 
 
 You can find the **Remote Service** sample project at:
-* **Start | Programs | Embarcadero RAD Studio Rio | Samples**, and then navigate to:
+* **Start | Programs | Embarcadero RAD Studio 10.4 | Samples**, and then navigate to:
 
 * `Object Pascal\Multi-Device Samples\Device Sensors and Services\RemoteServiceDemo`
 
@@ -41,20 +41,20 @@ You can find the **Remote Service** sample project at:
 
 ## Description 
 
-This sample demonstrates how to use remote Android services from local and remote applications, to present a message in the screen. We understand local application as the application that contains the service, and remote application as the application that access a service hosted in a different application.The Remote Service demo consists of one remote service and two applications, the app that contains the service and an external application:
+This sample demonstrates how to use remote Android services from local and remote applications, to present a message in the screen. We understand local application as the application that contains the service, and remote application as the application that access a service hosted in a different application. The Remote Service demo consists of one remote service and two applications, the app that contains the service and an external application:
 
 * **Remote Service**: This is a [remote Android service](http://docwiki.embarcadero.com/RADStudio/en/Android_Service) project. It consists of a Data Module without visual components, the functionality for this demo is included in the code.
 
 * **App Remote Host**: This is a [Multi-Device](http://docwiki.embarcadero.com/RADStudio/en/HD_Multi-Device_Application) application that contains the service. The application provides three buttons:
 
-* **Bind**: To bind to the service. After binding to the service, the **Get Data** button is enabled.
-* **UnBind**: To unbind to the service. After unbinding from the service, the **Get Data** button is disabled.
+* **Bind**: To bind to the service. After binding to the service, the **Unbind** and **Get Data** buttons are enabled and the **Bind** button is disabled.
+* **Unbind**: To unbind to the service. After unbinding from the service, the **Unbind** and **Get Data** buttons are disabled and the **Bind** button is enabled.
 * **Get Data**: To get data from the service hosted in the application.
 
 * **App Remote External**: This is a [Multi-Device](http://docwiki.embarcadero.com/RADStudio/en/HD_Multi-Device_Application) application that uses a remote service connection to bind to the service included in the **App Remote Host** application. The application provides three buttons:
 
-* **Bind**: To bind to the remote service. After binding to the service, the **Get Data** button is enabled.
-* **UnBind**: To unbind to the remote service. After unbinding from the service, the **Get Data** button is disabled.
+* **Bind**: To bind to the remote service. After binding to the service, the **Unbind** and **Get Data** buttons are enabled and the **Bind** button is disabled.
+* **Unbind**: To unbind to the remote service. After unbinding from the service, the **Unbind** and **Get Data** buttons are disabled and the **Bind** button is enabled.
 * **Get Data**: To get data from the remote service.
 
 ## How to Use the Sample 
@@ -70,13 +70,13 @@ To open the projects:
 
 1.  Press **F9** or choose **Run > Run** to deploy the application to the same Android device.
 In the **AppRemoteHost**:
-1.  Click **Bind** to bind to the local service.**Note:** You can bind to the service from the application that hosts the service and by the external application.
-2.  Click **Get Data** to show the message in the screen.**Note:****Get Data** only appears enabled while the application is bound to the service.
-3.  Click **UnBind** to unbind from the service.
+1.  Click **Bind** to bind to the local service. **Note:** You can bind to the service from the application that hosts the service and by the external application.
+2.  Click **Get Data** to show the message in the screen. **Note:** **Get Data** only appears enabled while the application is bound to the service.
+3.  Click **Unbind** to unbind from the service.
 In the **AppRemoteExternal**:
-1.  Click **Bind** to bind to the remote service hosted in **AppRemoteHost**.**Note:** You can bind to the service from the application that hosts the service and by the external application.
-2.  Click **Get Data** to show the message in the screen.**Note:****Get Data** only appears enabled while the application is bound to the service.
-3.  Click **UnBind** to unbind from the service.
+1.  Click **Bind** to bind to the remote service hosted in **AppRemoteHost**. **Note:** You can bind to the service from the application that hosts the service and by the external application.
+2.  Click **Get Data** to show the message in the screen. **Note:** **Get Data** only appears enabled while the application is bound to the service.
+3.  Click **Unbind** to unbind from the service.
 
 ## Implementation 
 
@@ -120,7 +120,7 @@ The **OnHandleMessage** event of the Data Module triggers a handler instance tha
 
 It stablishes the connection to **RemoteService** with `TRemoteServiceConnection.BindService('APackageName', AServiceName)`. If the service is not started, it also starts it. 
 ```
-procedure TForm1.Button3Click(Sender: TObject);
+procedure TForm1.ButtonBindClick(Sender: TObject);
 begin
   FServiceConnection.BindService('com.embarcadero.AppRemoteHost',
     'com.embarcadero.services.RemoteService');
@@ -129,15 +129,19 @@ end;
 ```
 
 
-The **OnConnected** event fires when you are connected to the service.The **OnConnected** calls the **OnServiceConnected** procedure with the Service Messenger (JMessenger), and enables the **Get Data** button. 
+The **OnConnected** event fires when you are connected to the service. The **OnConnected** calls the **OnServiceConnected** procedure, which enables the **Unbind** and **Get Data** buttons and disables the **Bind** button.
 
-#### UnBind Button 
+#### Unbind Button 
 
 It unbinds from the service with `TRemoteServiceConnection.UnbindService`. It does not stop the service when it is bound to other applications.
 ```
-procedure TForm1.Button4Click(Sender: TObject);
+procedure TForm1.ButtonUnbindClick(Sender: TObject);
 begin
   FServiceConnection.UnbindService;
+  
+  ButtonBind.Enabled := True;
+  ButtonUnbind.Enabled := False;
+  ButtonGetData.Enabled := False;
 end;
 
 ```
@@ -148,7 +152,7 @@ end;
 
 **Get Data** establishes the connection with the service messenger. The local messenger and the service messenger establishes the interaction using a verification code `GET_STRING = 123`.
 ```
-procedure TForm1.Button2Click(Sender: TObject);
+procedure TForm1.ButtonGetDataClick(Sender: TObject);
 var
   LMessage: JMessage;
 const
@@ -172,7 +176,7 @@ The **OnHandleMessage** procedure presents the message from the service in the s
 
 It stablishes the connection to **RemoteService** with `TRemoteServiceConnection.BindService('APackageName', AServiceName)`. If the service is not started, it also starts it. 
 ```
-procedure TForm1.Button3Click(Sender: TObject);
+procedure TForm1.ButtonBindClick(Sender: TObject);
 begin
   FServiceConnection.BindService('com.embarcadero.AppRemoteHost',
     'com.embarcadero.services.RemoteService');
@@ -181,13 +185,13 @@ end;
 ```
 
 
-The **OnConnected** event fires when you are connected to the service.The **OnConnected** calls the **OnServiceConnected** procedure with the Service Messenger (JMessenger), and enables the **Get Data** button. 
+The **OnConnected** event fires when you are connected to the service. The **OnConnected** calls the **OnServiceConnected** procedure, which enables the **Unbind** and **Get Data** buttons and disables the **Bind** button. The **OnDisconnected** event fires when you are unexpectedly disconnected from the service, this typically happens when the process hosting the service has crashed or been killed. The **OnDisconnected** calls the **OnServiceDisconnected** procedure, which disables the **Unbind** and **Get Data** buttons and enables the **Bind** button.
 
-#### UnBind Button 
+#### Unbind Button 
 
 It unbinds from the service with `TRemoteServiceConnection.UnbindService`. It does not stop the service when it is bound to other applications.
 ```
-procedure TForm1.Button4Click(Sender: TObject);
+procedure TForm1.ButtonUnbindClick(Sender: TObject);
 begin
   FServiceConnection.UnbindService;
 end;
@@ -200,7 +204,7 @@ end;
 
 **Get Data** establishes the connection with the service messenger. The local messenger and the service messenger establishes the interaction using a verification code `GET_STRING = 123`.
 ```
-procedure TForm1.Button2Click(Sender: TObject);
+procedure TForm1.ButtonGetDataClick(Sender: TObject);
 var
   LMessage: JMessage;
 const

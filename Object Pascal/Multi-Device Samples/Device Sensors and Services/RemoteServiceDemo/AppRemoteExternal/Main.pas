@@ -22,25 +22,26 @@ uses
 
 type
   TMainForm = class(TForm)
-    Label1: TLabel;
-    Panel4: TPanel;
-    Panel5: TPanel;
-    Button3: TButton;
-    Button4: TButton;
-    Panel2: TPanel;
-    Button2: TButton;
-    procedure Button3Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
-    procedure Button4Click(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
-
   private
     FServiceConnection: TRemoteServiceConnection;
+
     procedure OnServiceConnected(const ServiceMessenger: JMessenger);
+    procedure OnServiceDisconnected;
     procedure OnHandleMessage(const AMessage: JMessage);
-  public
-    { Public declarations }
+  published
+    LabelHeader: TLabel;
+    PanelBind: TPanel;
+    ButtonBind: TButton;
+    PanelUnbind: TPanel;
+    ButtonUnbind: TButton;
+    PanelGetData: TPanel;
+    ButtonGetData: TButton;
+
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure ButtonBindClick(Sender: TObject);
+    procedure ButtonUnbindClick(Sender: TObject);
+    procedure ButtonGetDataClick(Sender: TObject);
   end;
 
 var
@@ -48,15 +49,14 @@ var
 
 implementation
 
+{$R *.fmx}
+
 uses
   AndroidApi.Helpers,
   Androidapi.JNI.JavaTypes,
   Androidapi.JNI.Widget;
 
-{$R *.fmx}
-
-
-procedure TMainForm.Button2Click(Sender: TObject);
+procedure TMainForm.ButtonGetDataClick(Sender: TObject);
 var
   LMessage: JMessage;
 const
@@ -67,22 +67,26 @@ begin
   FServiceConnection.ServiceMessenger.send(LMessage);
 end;
 
-procedure TMainForm.Button3Click(Sender: TObject);
+procedure TMainForm.ButtonBindClick(Sender: TObject);
 begin
   FServiceConnection.BindService('com.embarcadero.AppRemoteHost',
     'com.embarcadero.services.RemoteService');
 end;
 
-procedure TMainForm.Button4Click(Sender: TObject);
+procedure TMainForm.ButtonUnbindClick(Sender: TObject);
 begin
-  if FServiceConnection <> nil then
-    FServiceConnection.UnbindService;
+  FServiceConnection.UnbindService;
+
+  ButtonBind.Enabled := True;
+  ButtonUnbind.Enabled := False;
+  ButtonGetData.Enabled := False;
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   FServiceConnection := TRemoteServiceConnection.Create;
   FServiceConnection.OnConnected := OnServiceConnected;
+  FServiceConnection.OnDisconnected := OnServiceDisconnected;
   FServiceConnection.OnHandleMessage := OnHandleMessage;
 end;
 
@@ -93,9 +97,17 @@ end;
 
 procedure TMainForm.OnServiceConnected(const ServiceMessenger: JMessenger);
 begin
-  Button2.Enabled := True;
+  ButtonBind.Enabled := False;
+  ButtonUnbind.Enabled := True;
+  ButtonGetData.Enabled := True;
 end;
 
+procedure TMainForm.OnServiceDisconnected;
+begin
+  ButtonBind.Enabled := True;
+  ButtonUnbind.Enabled := False;
+  ButtonGetData.Enabled := False;
+end;
 
 procedure TMainForm.OnHandleMessage(const AMessage: JMessage);
 const

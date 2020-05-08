@@ -16,8 +16,7 @@ program AppRemoteHost;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  Unit1 in 'Unit1.pas' {Form1},
-  RemoteServiceUnit in '..\RemoteService\RemoteServiceUnit.pas' {RemoteServiceDM: TAndroidService};
+  Unit1 in 'Unit1.pas' {Form1};
 
 {$R *.res}
 

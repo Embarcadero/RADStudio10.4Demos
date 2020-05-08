@@ -10,7 +10,7 @@ object MainForm: TMainForm
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   DesignerMasterStyle = 3
-  object Label1: TLabel
+  object LabelHeader: TLabel
     Align = MostTop
     Size.Width = 567.000000000000000000
     Size.Height = 49.000000000000000000
@@ -18,14 +18,14 @@ object MainForm: TMainForm
     TextSettings.HorzAlign = Center
     Text = 'Remote Service External APK'
   end
-  object Panel4: TPanel
+  object PanelBind: TPanel
     Align = Top
     Position.Y = 49.000000000000000000
     Size.Width = 567.000000000000000000
     Size.Height = 80.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 4
-    object Button3: TButton
+    object ButtonBind: TButton
       Align = Center
       Margins.Left = 5.000000000000000000
       Margins.Top = 5.000000000000000000
@@ -36,18 +36,19 @@ object MainForm: TMainForm
       Size.PlatformDefault = False
       TabOrder = 0
       Text = 'Bind'
-      OnClick = Button3Click
+      OnClick = ButtonBindClick
     end
   end
-  object Panel5: TPanel
+  object PanelUnbind: TPanel
     Align = Top
     Position.Y = 129.000000000000000000
     Size.Width = 567.000000000000000000
     Size.Height = 56.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 3
-    object Button4: TButton
+    object ButtonUnbind: TButton
       Align = Center
+      Enabled = False
       Margins.Left = 5.000000000000000000
       Margins.Top = 5.000000000000000000
       Margins.Right = 5.000000000000000000
@@ -57,17 +58,17 @@ object MainForm: TMainForm
       Size.PlatformDefault = False
       TabOrder = 0
       Text = 'Unbind'
-      OnClick = Button4Click
+      OnClick = ButtonUnbindClick
     end
   end
-  object Panel2: TPanel
+  object PanelGetData: TPanel
     Align = Top
     Position.Y = 185.000000000000000000
     Size.Width = 567.000000000000000000
     Size.Height = 72.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2
-    object Button2: TButton
+    object ButtonGetData: TButton
       Align = Center
       Enabled = False
       Margins.Left = 5.000000000000000000
@@ -79,7 +80,7 @@ object MainForm: TMainForm
       Size.PlatformDefault = False
       TabOrder = 0
       Text = 'Get Data'
-      OnClick = Button2Click
+      OnClick = ButtonGetDataClick
     end
   end
 end
