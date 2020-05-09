@@ -113,7 +113,6 @@ __published:    // IDE-managed Components
     void __fastcall EdgeBrowserHistoryChanged(TCustomEdgeBrowser* Sender);
     void __fastcall EdgeBrowserNavigationStarting(TCustomEdgeBrowser* Sender, TNavigationStartingEventArgs* Args);
     void __fastcall EdgeBrowserNavigationCompleted(TCustomEdgeBrowser* Sender, bool IsSuccess, TOleEnum WebErrorStatus);
-    void __fastcall EdgeBrowserNewVersionAvailable(TCustomEdgeBrowser* Sender, const String NewVersion);
     void __fastcall EdgeBrowserNewWindowRequested(TCustomEdgeBrowser* Sender, TNewWindowRequestedEventArgs *Args);
     void __fastcall EdgeBrowserPermissionRequested(TCustomEdgeBrowser* Sender, TPermissionRequestedEventArgs *Args);
     void __fastcall EdgeBrowserProcessFailed(TCustomEdgeBrowser* Sender, TOleEnum FailureType);
@@ -123,6 +122,8 @@ __published:    // IDE-managed Components
     void __fastcall EdgeBrowserWebResourceRequested(TCustomEdgeBrowser* Sender, TWebResourceRequestedEventArgs *Args);
     void __fastcall EdgeBrowserWindowCloseRequested(TObject *Sender);
     void __fastcall EdgeBrowserZoomFactorChanged(TCustomEdgeBrowser* Sender, double AZoom);
+    void __fastcall EdgeBrowserFrameNavigationCompleted(TCustomEdgeBrowser *Sender, bool IsSuccess, TOleEnum WebErrorStatus);
+
 private:    // User declarations
     bool FAllowFullScreen;
     bool FBlockImages;

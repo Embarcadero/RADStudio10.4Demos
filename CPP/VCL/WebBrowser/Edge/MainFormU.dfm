@@ -97,10 +97,10 @@ object frmMain: TfrmMain
       OnDocumentTitleChanged = EdgeBrowserDocumentTitleChanged
       OnExecuteScript = EdgeBrowserExecuteScript
       OnFrameNavigationStarting = EdgeBrowserFrameNavigationStarting
+      OnFrameNavigationCompleted = EdgeBrowserFrameNavigationCompleted
       OnHistoryChanged = EdgeBrowserHistoryChanged
       OnNavigationStarting = EdgeBrowserNavigationStarting
       OnNavigationCompleted = EdgeBrowserNavigationCompleted
-      OnNewVersionAvailable = EdgeBrowserNewVersionAvailable
       OnNewWindowRequested = EdgeBrowserNewWindowRequested
       OnPermissionRequested = EdgeBrowserPermissionRequested
       OnProcessFailed = EdgeBrowserProcessFailed

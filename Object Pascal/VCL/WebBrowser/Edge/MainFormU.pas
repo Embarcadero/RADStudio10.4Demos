@@ -104,7 +104,6 @@ type
     procedure EdgeBrowserHistoryChanged(Sender: TCustomEdgeBrowser);
     procedure EdgeBrowserNavigationStarting(Sender: TCustomEdgeBrowser; Args: TNavigationStartingEventArgs);
     procedure EdgeBrowserNavigationCompleted(Sender: TCustomEdgeBrowser; IsSuccess: Boolean; WebErrorStatus: TOleEnum);
-    procedure EdgeBrowserNewVersionAvailable(Sender: TCustomEdgeBrowser; const NewVersion: string);
     procedure EdgeBrowserNewWindowRequested(Sender: TCustomEdgeBrowser; Args: TNewWindowRequestedEventArgs);
     procedure EdgeBrowserPermissionRequested(Sender: TCustomEdgeBrowser; Args: TPermissionRequestedEventArgs);
     procedure EdgeBrowserProcessFailed(Sender: TCustomEdgeBrowser; FailureType: TOleEnum);
@@ -114,6 +113,8 @@ type
     procedure EdgeBrowserWebResourceRequested(Sender: TCustomEdgeBrowser; Args: TWebResourceRequestedEventArgs);
     procedure EdgeBrowserWindowCloseRequested(Sender: TObject);
     procedure EdgeBrowserZoomFactorChanged(Sender: TCustomEdgeBrowser; AZoomFactor: Double);
+    procedure EdgeBrowserFrameNavigationCompleted(Sender: TCustomEdgeBrowser; IsSuccess: Boolean;
+      WebErrorStatus: TOleEnum);
   private
     { Private declarations }
     FAllowFullScreen: Boolean;
@@ -292,7 +293,7 @@ begin
 {$DEFINE ONE_POSSIBLE_WAY}
 {$IFDEF ONE_POSSIBLE_WAY}
   var Bounds: tagRect;
-  EdgeBrowser.HostInterface.Get_Bounds(Bounds);
+  EdgeBrowser.ControllerInterface.Get_Bounds(Bounds);
 {$ELSE}
   var Bounds := EdgeBrowser.BoundsRect;
   Bounds.TopLeft := EdgeBrowser.ClientToScreen(Bounds.TopLeft);
@@ -482,7 +483,7 @@ begin
     tbReload.Enabled := True;
     tbGo.Enabled := True;
     edtAddress.Enabled := True;
-    Sender.AddWebResourceRequestedFilter('*', CORE_WEBVIEW2_WEB_RESOURCE_CONTEXT_IMAGE);
+    Sender.AddWebResourceRequestedFilter('*', COREWEBVIEW2_WEB_RESOURCE_CONTEXT_IMAGE);
   end
   else
   begin
@@ -538,6 +539,21 @@ begin
 end;
 
 // This handler will prevent a frame from navigating to a blocked domain.
+procedure TfrmMain.EdgeBrowserFrameNavigationCompleted(Sender: TCustomEdgeBrowser; IsSuccess: Boolean;
+  WebErrorStatus: TOleEnum);
+begin
+{$IFDEF DEBUG}
+  OutputDebugString('EdgeBrowser OnFrameNavigationCompleted');
+{$ENDIF}
+  if not IsSuccess and (WebErrorStatus = COREWEBVIEW2_WEB_ERROR_STATUS_DISCONNECTED) then
+  begin
+    // Do something here if you want to handle a specific error case.
+    // In most cases this isn't necessary, because the WebView will
+    // display its own error page automatically.
+  end;
+  tbCancel.Enabled := False;
+end;
+
 procedure TfrmMain.EdgeBrowserFrameNavigationStarting(Sender: TCustomEdgeBrowser;
   Args: TNavigationStartingEventArgs);
 begin
@@ -565,7 +581,7 @@ begin
 {$IFDEF DEBUG}
   OutputDebugString('EdgeBrowser OnNavigationCompleted');
 {$ENDIF}
-  if not IsSuccess and (WebErrorStatus = CORE_WEBVIEW2_WEB_ERROR_STATUS_DISCONNECTED) then
+  if not IsSuccess and (WebErrorStatus = COREWEBVIEW2_WEB_ERROR_STATUS_DISCONNECTED) then
   begin
     // Do something here if you want to handle a specific error case.
     // In most cases this isn't necessary, because the WebView will
@@ -602,47 +618,6 @@ begin
   CoTaskMemFree(Uri);
 end;
 
-procedure TfrmMain.EdgeBrowserNewVersionAvailable(Sender: TCustomEdgeBrowser; const NewVersion: string);
-begin
-{$IFDEF DEBUG}
-  OutputDebugString('EdgeBrowser OnNewVersionAvailable');
-{$ENDIF}
-  var Msg := Format('We detected there is a new version for the browser.'#10#10+
-    'Version number: %s'#10#10, [NewVersion]);
-  if EdgeBrowser.WebViewCreated then
-    Msg := Msg + 'Do you want to restart the app?'#10#10+
-      'Click No if you only want to re-create the webviews. '#10 +
-      'Click Cancel for no action.'#10;
-  var Response := Application.MessageBox(PChar(Msg), 'New available version',
-    IfThen(EdgeBrowser.WebViewCreated, MB_YESNOCANCEL, MB_OK));
-  if Response = IDYES then
-  begin
-    // Restart app
-    EdgeBrowser.CloseBrowserProcess;
-    var Args := GetCommandLine;
-    var StartupInfo: TStartupInfo;
-    FillChar(StartupInfo, SizeOf(TStartupInfo), 0);
-    var ProcessInfo: TProcessInformation;
-    FillChar(ProcessInfo, SizeOf(TProcessInformation), 0);
-    if not CreateProcess(
-      nil, Args,
-      nil,   // default process attributes
-      nil,   // default thread attributes
-      False, // do not inherit handles
-      0,
-      nil,   // no environment
-      nil,   // default current directory
-      StartupInfo, ProcessInfo) then
-    begin
-      // Log some error information if desired
-    end;
-    // Terminate this current process
-    Application.Terminate;
-  end
-  else
-    EdgeBrowser.ReinitializeWebViewWithNewBrowser
-end;
-
 procedure TfrmMain.EdgeBrowserNewWindowRequested(Sender: TCustomEdgeBrowser; Args: TNewWindowRequestedEventArgs);
 begin
 {$IFDEF DEBUG}
@@ -655,15 +630,15 @@ end;
 procedure TfrmMain.EdgeBrowserPermissionRequested(Sender: TCustomEdgeBrowser;
   Args: TPermissionRequestedEventArgs);
 
-  function NameOfPermissionType(PermissionType: CORE_WEBVIEW2_PERMISSION_KIND): string;
+  function NameOfPermissionType(PermissionType: COREWEBVIEW2_PERMISSION_KIND): string;
   begin
     case PermissionType of
-      CORE_WEBVIEW2_PERMISSION_KIND_MICROPHONE: Result := 'Microphone';
-      CORE_WEBVIEW2_PERMISSION_KIND_CAMERA: Result := 'Camera';
-      CORE_WEBVIEW2_PERMISSION_KIND_GEOLOCATION: Result := 'Geolocation';
-      CORE_WEBVIEW2_PERMISSION_KIND_NOTIFICATIONS: Result := 'Notifications';
-      CORE_WEBVIEW2_PERMISSION_KIND_OTHER_SENSORS: Result := 'Generic Sensors';
-      CORE_WEBVIEW2_PERMISSION_KIND_CLIPBOARD_READ: Result := 'Clipboard Read';
+      COREWEBVIEW2_PERMISSION_KIND_MICROPHONE: Result := 'Microphone';
+      COREWEBVIEW2_PERMISSION_KIND_CAMERA: Result := 'Camera';
+      COREWEBVIEW2_PERMISSION_KIND_GEOLOCATION: Result := 'Geolocation';
+      COREWEBVIEW2_PERMISSION_KIND_NOTIFICATIONS: Result := 'Notifications';
+      COREWEBVIEW2_PERMISSION_KIND_OTHER_SENSORS: Result := 'Generic Sensors';
+      COREWEBVIEW2_PERMISSION_KIND_CLIPBOARD_READ: Result := 'Clipboard Read';
     else
       Result := 'Unknown resources';
     end;
@@ -682,7 +657,7 @@ begin
   // This _looks_ like a bug in the (pre-release) version of WebView2 used to set up this demo.
 
   var Uri: PChar;
-  var PermissionType: CORE_WEBVIEW2_PERMISSION_KIND;
+  var PermissionType: COREWEBVIEW2_PERMISSION_KIND;
   var UserInitiated: Integer;
   if Succeeded(Args.ArgsInterface.Get_uri(Uri)) and
      Succeeded(Args.ArgsInterface.Get_PermissionKind(PermissionType)) and
@@ -695,12 +670,12 @@ begin
     else
       Msg := Msg + 'This request did not come from a user gesture.';
     var Response := Application.MessageBox(PChar(Msg), 'Permission Request', MB_YESNO or MB_ICONWARNING);
-    var State: CORE_WEBVIEW2_PERMISSION_STATE;
+    var State: COREWEBVIEW2_PERMISSION_STATE;
     case Response of
       IDYES:
-        State := CORE_WEBVIEW2_PERMISSION_STATE_ALLOW;
+        State := COREWEBVIEW2_PERMISSION_STATE_ALLOW;
       else
-        State := CORE_WEBVIEW2_PERMISSION_STATE_DENY;
+        State := COREWEBVIEW2_PERMISSION_STATE_DENY;
     end;
     Args.ArgsInterface.Set_State(State);
     CoTaskMemFree(Uri);
@@ -712,7 +687,7 @@ begin
 {$IFDEF DEBUG}
   OutputDebugString('EdgeBrowser OnProcessFailed');
 {$ENDIF}
-  if FailureType = CORE_WEBVIEW2_PROCESS_FAILED_KIND_BROWSER_PROCESS_EXITED then
+  if FailureType = COREWEBVIEW2_PROCESS_FAILED_KIND_BROWSER_PROCESS_EXITED then
   begin
     var Button := Application.MessageBox(
       'Browser process exited unexpectedly. Recreate webview?',
@@ -732,7 +707,7 @@ begin
   // Go to a page with Javascript dialogs, e.g.:
   // https://www.tutorialspoint.com/javascript/javascript_dialog_boxes.htm
   var Uri, Msg, DefaultText: PChar;
-  var DialogType: CORE_WEBVIEW2_SCRIPT_DIALOG_KIND;
+  var DialogType: COREWEBVIEW2_SCRIPT_DIALOG_KIND;
   if Succeeded(Args.ArgsInterface.Get_uri(Uri)) and
      Succeeded(Args.ArgsInterface.Get_Kind(DialogType)) and
      Succeeded(Args.ArgsInterface.Get_Message(Msg)) and
@@ -740,12 +715,12 @@ begin
   begin
     var Prompt := Format('The page at ''%s'' says:'#10#10'%s', [Uri, Msg]);
     case DialogType of
-      CORE_WEBVIEW2_SCRIPT_DIALOG_KIND_ALERT:
+      COREWEBVIEW2_SCRIPT_DIALOG_KIND_ALERT:
         Application.MessageBox(PChar(Prompt), 'Script Dialog', MB_OK or MB_ICONWARNING);
-      CORE_WEBVIEW2_SCRIPT_DIALOG_KIND_CONFIRM:
+      COREWEBVIEW2_SCRIPT_DIALOG_KIND_CONFIRM:
         if Application.MessageBox(PChar(Prompt), 'Script Dialog', MB_YESNO or MB_ICONQUESTION) = IDYES then
           Args.ArgsInterface.Accept;
-      CORE_WEBVIEW2_SCRIPT_DIALOG_KIND_PROMPT:
+      COREWEBVIEW2_SCRIPT_DIALOG_KIND_PROMPT:
       begin
         var Value: string := DefaultText;
         if InputQuery('Script dialog', Prompt, Value) then
@@ -786,11 +761,11 @@ begin
   // Go to any site that uses image references, e.g. google.com (but not bing.com)
   if FBlockImages then
   begin
-    var ResourceContext: CORE_WEBVIEW2_WEB_RESOURCE_CONTEXT;
+    var ResourceContext: COREWEBVIEW2_WEB_RESOURCE_CONTEXT;
     if Succeeded(Args.ArgsInterface.Get_resourceContext(ResourceContext)) then
     begin
       // Ensure that the type is image
-      if ResourceContext = CORE_WEBVIEW2_WEB_RESOURCE_CONTEXT_IMAGE then
+      if ResourceContext = COREWEBVIEW2_WEB_RESOURCE_CONTEXT_IMAGE then
       begin
         // Override the response with an empty one to block the image.
         // If put_Response is not called, the request will continue as normal.

@@ -156,7 +156,7 @@ void __fastcall TfrmMain::mniViewGetBoundsClick(TObject *Sender)
 #define ONE_POSSIBLE_WAY
 #ifdef ONE_POSSIBLE_WAY
     tagRECT Bounds;
-    EdgeBrowser->HostInterface->Get_Bounds(Bounds);
+    EdgeBrowser->ControllerInterface->Get_Bounds(Bounds);
     String Msg = String().sprintf(L"Left:\t%d\nTop:\t%d\nRight:\t%d\nBottom:\t%d\n",
         Bounds.left, Bounds.top, Bounds.right, Bounds.bottom);
     Application->MessageBox(Msg.c_str(), L"WebView Bounds", MB_OK | MB_ICONINFORMATION);
@@ -457,6 +457,21 @@ void __fastcall TfrmMain::EdgeBrowserFrameNavigationStarting(TCustomEdgeBrowser*
     CoTaskMemFree(Uri);
 }
 
+void __fastcall TfrmMain::EdgeBrowserFrameNavigationCompleted(TCustomEdgeBrowser *Sender, bool IsSuccess, TOleEnum WebErrorStatus)
+
+{
+#ifdef _DEBUG
+    OutputDebugString(L"EdgeBrowser OnFrameNavigationCompleted");
+#endif
+    if (!IsSuccess && WebErrorStatus == COREWEBVIEW2_WEB_ERROR_STATUS_DISCONNECTED)
+    {
+        // Do something here if you want to handle a specific error case.
+        // In most cases this isn't necessary, because the WebView will
+        // display its own error page automatically.
+    }
+    tbCancel->Enabled = False;
+}
+
 void __fastcall TfrmMain::EdgeBrowserHistoryChanged(TCustomEdgeBrowser* Sender)
 {
 #ifdef _DEBUG
@@ -506,64 +521,13 @@ void __fastcall TfrmMain::EdgeBrowserNavigationCompleted(TCustomEdgeBrowser* Sen
 #ifdef _DEBUG
     OutputDebugString(L"EdgeBrowser OnNavigationCompleted");
 #endif
-    if (!IsSuccess && WebErrorStatus == CORE_WEBVIEW2_WEB_ERROR_STATUS_DISCONNECTED)
+    if (!IsSuccess && WebErrorStatus == COREWEBVIEW2_WEB_ERROR_STATUS_DISCONNECTED)
     {
         // Do something here if you want to handle a specific error case.
         // In most cases this isn't necessary, because the WebView will
         // display its own error page automatically.
     }
     tbCancel->Enabled = False;
-}
-
-void __fastcall TfrmMain::EdgeBrowserNewVersionAvailable(TCustomEdgeBrowser* Sender, const String NewVersion)
-{
-#ifdef _DEBUG
-    OutputDebugString(L"EdgeBrowser OnNewVersionAvailable");
-#endif
-    String message = L"We detected there is a new version for the browser.";
-    message += L"\n\nVersion number: ";
-    message += NewVersion;
-    message += L"\n\n";
-    if (EdgeBrowser->WebViewCreated)
-    {
-        message += L"Do you want to restart the app?\n\n";
-        message += L"Click No if you only want to re-create the webviews.\n";
-        message += L"Click Cancel for no action.\n";
-    }
-    int response = Application->MessageBox(
-        message.c_str(), L"New available version",
-        EdgeBrowser->WebViewCreated ? MB_YESNOCANCEL : MB_OK);
-
-    if (response == IDYES)
-    {
-        // Restart app
-        EdgeBrowser->CloseBrowserProcess();
-        // Get the command line arguments used to start this app
-        // so we can re-create the process with them
-        LPWSTR args = GetCommandLineW();
-
-        STARTUPINFOW startup_info = {0};
-        startup_info.cb = sizeof(startup_info);
-        PROCESS_INFORMATION temp_process_info = {};
-        // Start a new process
-        if (!::CreateProcess(
-                NULL, args,
-                NULL, // default process attributes
-                NULL, // default thread attributes
-                FALSE,   // do not inherit handles
-                0,
-                NULL, // no environment
-                NULL, // default current directory
-                &startup_info, &temp_process_info))
-        {
-            // Log some error information if desired
-        }
-
-        // Terminate this current process
-        Application->Terminate();
-    }
-    else if (response == IDNO)
-        EdgeBrowser->ReinitializeWebViewWithNewBrowser();
 }
 
 void __fastcall TfrmMain::EdgeBrowserNewWindowRequested(TCustomEdgeBrowser* Sender,
@@ -576,21 +540,21 @@ void __fastcall TfrmMain::EdgeBrowserNewWindowRequested(TCustomEdgeBrowser* Send
         Args->ArgsInterface->Set_Handled(true);
 }
 
-static PCWSTR NameOfPermissionType(CORE_WEBVIEW2_PERMISSION_KIND type)
+static PCWSTR NameOfPermissionType(COREWEBVIEW2_PERMISSION_KIND type)
 {
     switch (type)
     {
-    case CORE_WEBVIEW2_PERMISSION_KIND_MICROPHONE:
+    case COREWEBVIEW2_PERMISSION_KIND_MICROPHONE:
         return L"Microphone";
-    case CORE_WEBVIEW2_PERMISSION_KIND_CAMERA:
+    case COREWEBVIEW2_PERMISSION_KIND_CAMERA:
         return L"Camera";
-    case CORE_WEBVIEW2_PERMISSION_KIND_GEOLOCATION:
+    case COREWEBVIEW2_PERMISSION_KIND_GEOLOCATION:
         return L"Geolocation";
-    case CORE_WEBVIEW2_PERMISSION_KIND_NOTIFICATIONS:
+    case COREWEBVIEW2_PERMISSION_KIND_NOTIFICATIONS:
         return L"Notifications";
-    case CORE_WEBVIEW2_PERMISSION_KIND_OTHER_SENSORS:
+    case COREWEBVIEW2_PERMISSION_KIND_OTHER_SENSORS:
         return L"Generic Sensors";
-    case CORE_WEBVIEW2_PERMISSION_KIND_CLIPBOARD_READ:
+    case COREWEBVIEW2_PERMISSION_KIND_CLIPBOARD_READ:
         return L"Clipboard Read";
     default:
         return L"Unknown resources";
@@ -612,7 +576,7 @@ void __fastcall TfrmMain::EdgeBrowserPermissionRequested(TCustomEdgeBrowser* Sen
     // This _looks_ like a bug in the (pre-release) version of WebView2 used to set up this demo.
 
     WideChar *Uri;
-    CORE_WEBVIEW2_PERMISSION_KIND Kind = CORE_WEBVIEW2_PERMISSION_KIND_UNKNOWN_PERMISSION;
+    COREWEBVIEW2_PERMISSION_KIND Kind = COREWEBVIEW2_PERMISSION_KIND_UNKNOWN_PERMISSION;
     BOOL UserInitiated = FALSE;
 
     if (SUCCEEDED(Args->ArgsInterface->Get_uri(Uri)) &&
@@ -629,10 +593,10 @@ void __fastcall TfrmMain::EdgeBrowserPermissionRequested(TCustomEdgeBrowser* Sen
             : L"This request did not come from a user gesture.");
         int Response = Application->MessageBox(Msg.c_str(), L"Permission Request",
                                    MB_YESNO | MB_ICONWARNING);
-        CORE_WEBVIEW2_PERMISSION_STATE State =
+        COREWEBVIEW2_PERMISSION_STATE State =
             Response == IDYES
-              ? CORE_WEBVIEW2_PERMISSION_STATE_ALLOW
-              : CORE_WEBVIEW2_PERMISSION_STATE_DENY;
+              ? COREWEBVIEW2_PERMISSION_STATE_ALLOW
+              : COREWEBVIEW2_PERMISSION_STATE_DENY;
         Args->ArgsInterface->Set_State(State);
         CoTaskMemFree(Uri);
     }
@@ -644,7 +608,7 @@ void __fastcall TfrmMain::EdgeBrowserProcessFailed(TCustomEdgeBrowser* Sender,
 #ifdef _DEBUG
     OutputDebugString(L"EdgeBrowser OnProcessFailed");
 #endif
-    if (FailureType == CORE_WEBVIEW2_PROCESS_FAILED_KIND_BROWSER_PROCESS_EXITED)
+    if (FailureType == COREWEBVIEW2_PROCESS_FAILED_KIND_BROWSER_PROCESS_EXITED)
     {
         int button = Application->MessageBox(
             L"Browser process exited unexpectedly. Recreate webview?",
@@ -665,7 +629,7 @@ void __fastcall TfrmMain::EdgeBrowserScriptDialogOpening(TCustomEdgeBrowser* Sen
     // Go to a page with Javascript dialogs, e.g.:
     // https://www.tutorialspoint.com/javascript/javascript_dialog_boxes.htm
     WideChar *Uri;
-    CORE_WEBVIEW2_SCRIPT_DIALOG_KIND Type;
+    COREWEBVIEW2_SCRIPT_DIALOG_KIND Type;
     WideChar *Message;
     WideChar *DefaultText;
 
@@ -677,15 +641,15 @@ void __fastcall TfrmMain::EdgeBrowserScriptDialogOpening(TCustomEdgeBrowser* Sen
         String Prompt = String().sprintf(L"The page at '%s' says:\n\n%s", Uri, Message);
         switch (Type)
         {
-        case CORE_WEBVIEW2_SCRIPT_DIALOG_KIND_ALERT:
+        case COREWEBVIEW2_SCRIPT_DIALOG_KIND_ALERT:
             Application->MessageBox(Prompt.c_str(), L"Script Dialog", MB_OK | MB_ICONWARNING);
             break;
-        case CORE_WEBVIEW2_SCRIPT_DIALOG_KIND_CONFIRM:
+        case COREWEBVIEW2_SCRIPT_DIALOG_KIND_CONFIRM:
             if (Application->MessageBox(Prompt.c_str(), L"Script Dialog",
                     MB_YESNO | MB_ICONQUESTION) == IDYES)
                 Args->ArgsInterface->Accept();
             break;
-        case CORE_WEBVIEW2_SCRIPT_DIALOG_KIND_PROMPT:
+        case COREWEBVIEW2_SCRIPT_DIALOG_KIND_PROMPT:
         {
             String Value = DefaultText;
             if (InputQuery(L"Script dialog", Prompt, Value))
@@ -726,12 +690,12 @@ void __fastcall TfrmMain::EdgeBrowserWebResourceRequested(TCustomEdgeBrowser* Se
     // Go to any site that uses image references (e.g. google.com, not bing.com)
     if (FBlockImages)
     {
-        CORE_WEBVIEW2_WEB_RESOURCE_CONTEXT ResourceContext;
+        COREWEBVIEW2_WEB_RESOURCE_CONTEXT ResourceContext;
         if (SUCCEEDED(
             Args->ArgsInterface->Get_ResourceContext(ResourceContext)))
         {
             // Ensure that the type is image
-            if (ResourceContext != CORE_WEBVIEW2_WEB_RESOURCE_CONTEXT_IMAGE)
+            if (ResourceContext != COREWEBVIEW2_WEB_RESOURCE_CONTEXT_IMAGE)
                 return;
             // Override the response with an empty one to block the image.
             // If Set_Response is not called, the request will continue as normal.
