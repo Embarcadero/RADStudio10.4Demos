@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{09539400-231E-4B53-A3AB-37DA4BC21A3F}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Application\ForegroundLocationTrackingApplication.dproj">
+            <Dependencies>Service\ForegroundLocationTrackingService.dproj</Dependencies>
+        </Projects>
+        <Projects Include="Service\ForegroundLocationTrackingService.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ForegroundLocationTrackingApplication" DependsOnTargets="ForegroundLocationTrackingService">
+        <MSBuild Projects="Application\ForegroundLocationTrackingApplication.dproj"/>
+    </Target>
+    <Target Name="ForegroundLocationTrackingApplication:Clean" DependsOnTargets="ForegroundLocationTrackingService:Clean">
+        <MSBuild Projects="Application\ForegroundLocationTrackingApplication.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ForegroundLocationTrackingApplication:Make" DependsOnTargets="ForegroundLocationTrackingService:Make">
+        <MSBuild Projects="Application\ForegroundLocationTrackingApplication.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ForegroundLocationTrackingService">
+        <MSBuild Projects="Service\ForegroundLocationTrackingService.dproj"/>
+    </Target>
+    <Target Name="ForegroundLocationTrackingService:Clean">
+        <MSBuild Projects="Service\ForegroundLocationTrackingService.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ForegroundLocationTrackingService:Make">
+        <MSBuild Projects="Service\ForegroundLocationTrackingService.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ForegroundLocationTrackingApplication;ForegroundLocationTrackingService"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ForegroundLocationTrackingApplication:Clean;ForegroundLocationTrackingService:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ForegroundLocationTrackingApplication:Make;ForegroundLocationTrackingService:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
