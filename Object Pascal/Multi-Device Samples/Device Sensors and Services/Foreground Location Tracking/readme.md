@@ -19,7 +19,7 @@ When the application is in the foreground, location updates are presented to the
 
 ## Implementation note
 
-**Android 10** requires the [**foreground service type**](https://developer.android.com/about/versions/10/features#fg-service-types) to be declared in the **AndroidManifest.xml** file. For this reason, this demo application contains a _workaround_ for adding the **foregroundServiceType** attribute in the service declaration:
+**Android 10** requires the [**foreground service type**](https://developer.android.com/about/versions/10/features#fg-service-types) to be declared in the **AndroidManifest.xml** file. For this reason, this demo application uses the **AndroidManifest.template.xml** file as a workaround for adding the **foregroundServiceType** attribute in the service declaration:
 ```
 <service android:name="com.embarcadero.services.ForegroundLocationTrackingService"
     android:exported="false"
