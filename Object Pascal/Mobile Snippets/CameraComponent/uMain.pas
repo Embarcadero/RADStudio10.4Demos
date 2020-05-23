@@ -16,67 +16,35 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, System.Permissions,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls, FMX.Media,
-  FMX.Platform, FMX.Objects, FMX.Layouts, FMX.Memo, FMX.ListBox, FMX.TabControl, FMX.Controls.Presentation;
+  FMX.Objects, FMX.Layouts, FMX.Memo, FMX.ListBox, FMX.TabControl, FMX.Controls.Presentation,
+  System.Actions, FMX.ActnList, System.Messaging;
 
 type
   TCameraComponentForm = class(TForm)
+    btnSettings: TButton;
+    ActionList: TActionList;
+    actStart: TAction;
+    actStop: TAction;
+    actShowSettings: TAction;
+    CameraComponent: TCameraComponent;
+    btnStartStopCamera: TButton;
+    imgCameraView: TImage;
+    tbToolbar: TToolBar;
+    lToolbarTitle: TLabel;
+    procedure actStopExecute(Sender: TObject);
+    procedure actStartExecute(Sender: TObject);
+    procedure ActionListUpdate(Action: TBasicAction; var Handled: Boolean);
+    procedure actShowSettingsExecute(Sender: TObject);
+    { Broadcast }
+    procedure CameraComponentSampleBufferReady(Sender: TObject; const ATime: TMediaTime);
+    procedure ActionListExecute(Action: TBasicAction; var Handled: Boolean);
   private
     FPermissionCamera: string;
-    procedure OnIdle(Sender: TObject; var ADone: Boolean);
-    procedure GetImage;
-    procedure AccessCameraPermissionRequestResult(Sender: TObject; const APermissions: TArray<string>; const AGrantResults: TArray<TPermissionStatus>);
+    FSavedCameraActive: Boolean;
+    procedure DisplayCameraPreviewFrame;
     procedure ActivateCameraPermissionRequestResult(Sender: TObject; const APermissions: TArray<string>; const AGrantResults: TArray<TPermissionStatus>);
     procedure DisplayRationale(Sender: TObject; const APermissions: TArray<string>; const APostRationaleProc: TProc);
-    function AppEvent(AAppEvent: TApplicationEvent; AContext: TObject): Boolean;
-    procedure FillResolutions;
-    procedure ShowCurrentResolution;
-    procedure ChangeQuality(const ANewQuality: TVideoCaptureQuality);
-  published var
-    CameraComponent: TCameraComponent;
-    btnStartCamera: TButton;
-    btnStopCamera: TButton;
-    lblCameraType: TLabel;
-    cbCameraFlashType: TLabel;
-    imgCameraView: TImage;
-    btnFrontCamera: TSpeedButton;
-    btnBackCamera: TSpeedButton;
-    btnOn: TSpeedButton;
-    btnOff: TSpeedButton;
-    btnAuto: TSpeedButton;
-    lblCameraResolution: TLabel;
-    cbResolutions: TComboBox;
-    rCameraType: TRectangle;
-    rFlashType: TRectangle;
-    rCameraResolution: TRectangle;
-    tbControl: TTabControl;
-    tiSettings: TTabItem;
-    tiPreview: TTabItem;
-    pnlCameraResolution: TPanel;
-    btnLowQuality: TButton;
-    btnHighQuality: TButton;
-    btnMediumQuality: TButton;
-    btnPhotoQuality: TButton;
-    cbPriority: TComboBox;
-    lbiResolution: TListBoxItem;
-    lbiFrameRate: TListBoxItem;
-    lblCurrentResolution: TLabel;
-  published
-    procedure btnStartCameraClick(Sender: TObject);
-    procedure btnStopCameraClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
-    procedure btnFrontCameraClick(Sender: TObject);
-    procedure btnBackCameraClick(Sender: TObject);
-    procedure btnOnClick(Sender: TObject);
-    procedure btnOffClick(Sender: TObject);
-    procedure btnAutoClick(Sender: TObject);
-    procedure cbResolutionsChange(Sender: TObject);
-    procedure btnLowQualityClick(Sender: TObject);
-    procedure btnMediumQualityClick(Sender: TObject);
-    procedure btnHighQualityClick(Sender: TObject);
-    procedure btnPhotoQualityClick(Sender: TObject);
-    procedure cbPriorityChange(Sender: TObject);
-    procedure CameraComponentSampleBufferReady(Sender: TObject; const ATime: TMediaTime);
-    procedure tbControlChange(Sender: TObject);
+    procedure ApplicationEventChangedHandler(const Sender: TObject; const AMessage: TMessage);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -90,86 +58,57 @@ uses
   Androidapi.JNI.JavaTypes,
   Androidapi.JNI.Os,
 {$ENDIF}
-  FMX.DialogService;
+  FMX.Platform, FMX.DialogService, uSettings;
 
 {$R *.fmx}
 
 constructor TCameraComponentForm.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
+  TMessageManager.DefaultManager.SubscribeToMessage(TApplicationEventMessage, ApplicationEventChangedHandler);
 {$IFDEF ANDROID}
   FPermissionCamera := JStringToString(TJManifest_permission.JavaClass.CAMERA);
 {$ENDIF}
 end;
 
-destructor TCameraComponentForm.Destroy;
+procedure TCameraComponentForm.ActionListExecute(Action: TBasicAction; var Handled: Boolean);
 begin
-  inherited Destroy;
-end;
-
-function SortStringList(List: TStringList; AIndex1, AIndex2: Integer): Integer;
-var
-  L1, L2: Integer;
-begin
-  L1 := StrToIntDef(List.Names[AIndex1], 0);
-  L2 := StrToIntDef(List.Names[AIndex2], 0);
-  Result := L2 - L1;
-end;
-
-procedure TCameraComponentForm.FillResolutions;
-begin
-  cbResolutions.Clear;
-
-  var SL := TStringList.Create;
-  try
-    for var LCaptureSetting in CameraComponent.AvailableCaptureSettings do
-    begin
-      if lbiResolution.IsSelected then
-        SL.AddPair(LCaptureSetting.Width.ToString,LCaptureSetting.Width.ToString + ' x ' +
-        LCaptureSetting.Height.ToString + ' x '  + LCaptureSetting.FrameRate.ToString);
-
-      if lbiFrameRate.IsSelected then
-        SL.AddPair(LCaptureSetting.FrameRate.ToString + LCaptureSetting.Width.ToString,LCaptureSetting.Width.ToString + ' x ' +
-        LCaptureSetting.Height.ToString + ' x ' + LCaptureSetting.FrameRate.ToString);
-    end;
-
-    SL.CustomSort(SortStringList);
-
-    for var LIndex := 0 to SL.Count-1 do
-      cbResolutions.Items.Add(SL.ValueFromIndex[LIndex]);
-  finally
-    SL.Free;
+  if not PermissionsService.IsPermissionGranted(FPermissionCamera) then
+  begin
+    Handled := True;
+    PermissionsService.RequestPermissions([FPermissionCamera], ActivateCameraPermissionRequestResult, DisplayRationale);
   end;
-
-  cbResolutions.ItemIndex := 0;
 end;
 
-procedure TCameraComponentForm.OnIdle(Sender: TObject; var ADone: Boolean);
+procedure TCameraComponentForm.ActionListUpdate(Action: TBasicAction; var Handled: Boolean);
 begin
-  PermissionsService.RequestPermissions([FPermissionCamera], AccessCameraPermissionRequestResult, DisplayRationale);
-end;
-
-procedure TCameraComponentForm.FormCreate(Sender: TObject);
-begin
-  Application.OnIdle := OnIdle;
-  {
-    Add platform service to see camera state. This is needed to enable or disable the camera when the application
-    goes to background.
-  }
-  var AppEventSvc: IFMXApplicationEventService;
-
-  if TPlatformServices.Current.SupportsPlatformService(IFMXApplicationEventService, AppEventSvc) then
-    AppEventSvc.SetApplicationEventHandler(AppEvent);
-end;
-
-procedure TCameraComponentForm.AccessCameraPermissionRequestResult(Sender: TObject; const APermissions: TArray<string>; const AGrantResults: TArray<TPermissionStatus>);
-begin
-  // 1 permission involved: CAMERA
-  if (Length(AGrantResults) = 1) and (AGrantResults[0] = TPermissionStatus.Granted) then
-    { Fill the resolutions. }
-    FillResolutions
+  if CameraComponent.Active then
+    btnStartStopCamera.Action := actStop
   else
-    TDialogService.ShowMessage('Cannot access the camera because the required permission has not been granted')
+    btnStartStopCamera.Action := actStart;
+end;
+
+procedure TCameraComponentForm.actShowSettingsExecute(Sender: TObject);
+var
+  SavedCameraActive: Boolean;
+begin
+  SavedCameraActive := CameraComponent.Active;
+  SettingsForm.Camera := CameraComponent;
+  CameraComponent.Active := False;
+  SettingsForm.ShowModal(procedure (AResult: TModalResult)
+  begin
+    CameraComponent.Active := SavedCameraActive;
+  end);
+end;
+
+procedure TCameraComponentForm.actStartExecute(Sender: TObject);
+begin
+  CameraComponent.Active := True;
+end;
+
+procedure TCameraComponentForm.actStopExecute(Sender: TObject);
+begin
+  CameraComponent.Active := False;
 end;
 
 procedure TCameraComponentForm.ActivateCameraPermissionRequestResult(Sender: TObject; const APermissions: TArray<string>; const AGrantResults: TArray<TPermissionStatus>);
@@ -179,11 +118,10 @@ begin
   begin
     { Turn on the Camera }
     CameraComponent.Active := True;
-
-    tbControl.TabIndex := 1;
+    FSavedCameraActive := True;
   end
   else
-    TDialogService.ShowMessage('Cannot start the camera because the required permission has not been granted')
+    TDialogService.ShowMessage('Cannot start the camera because the required permission has not been granted');
 end;
 
 // Optional rationale display routine to display permission requirement rationale to the user
@@ -194,216 +132,37 @@ begin
   TDialogService.ShowMessage('The app needs to access the camera in order to work',
     procedure(const AResult: TModalResult)
     begin
-      APostRationaleProc
+      APostRationaleProc;
     end)
 end;
 
-{ Make sure the camera is released if you are going away.}
-
-function TCameraComponentForm.AppEvent(AAppEvent: TApplicationEvent; AContext: TObject): Boolean;
+procedure TCameraComponentForm.ApplicationEventChangedHandler(const Sender: TObject; const AMessage: TMessage);
 begin
-  Result := True;
-
-  case AAppEvent of
+  case TApplicationEventMessage(AMessage).Value.Event of
     TApplicationEvent.WillBecomeInactive:
+    begin
+      FSavedCameraActive := CameraComponent.Active;
       CameraComponent.Active := False;
-    TApplicationEvent.EnteredBackground:
-      CameraComponent.Active := False;
-    TApplicationEvent.WillTerminate:
-      CameraComponent.Active := False;
-  end;
-end;
-
-procedure TCameraComponentForm.btnBackCameraClick(Sender: TObject);
-begin
-  { Select Back Camera }
-  var Active := CameraComponent.Active;
-
-  try
-    CameraComponent.Active := False;
-    CameraComponent.Kind := TCameraKind.BackCamera;
-  finally
-    CameraComponent.Active := Active;
-
-    FillResolutions;
-  end;
-end;
-
-procedure TCameraComponentForm.btnFrontCameraClick(Sender: TObject);
-begin
-  { Select Front Camera }
-  var Active := CameraComponent.Active;
-
-  try
-    CameraComponent.Active := False;
-    CameraComponent.Kind := TCameraKind.FrontCamera;
-  finally
-    CameraComponent.Active := Active;
-
-    FillResolutions;
-  end;
-end;
-
-procedure TCameraComponentForm.btnAutoClick(Sender: TObject);
-begin
-  { Turn on automatic Torch, if supported }
-  if CameraComponent.HasTorch then
-  begin
-    var Active := CameraComponent.Active;
-
-    try
-      CameraComponent.Active := False;
-      CameraComponent.TorchMode := TTorchMode.ModeAuto;
-    finally
-      CameraComponent.Active := Active;
     end;
+    TApplicationEvent.BecameActive:
+      CameraComponent.Active := FSavedCameraActive;
   end;
-end;
-
-procedure TCameraComponentForm.btnOffClick(Sender: TObject);
-begin
-  { Turn off the Torch, if supported }
-  if CameraComponent.HasTorch then
-  begin
-    var Active := CameraComponent.Active;
-
-    try
-      CameraComponent.Active := False;
-      CameraComponent.TorchMode := TTorchMode.ModeOff;
-    finally
-      CameraComponent.Active := Active;
-    end;
-  end;
-end;
-
-procedure TCameraComponentForm.btnOnClick(Sender: TObject);
-begin
-  { Turn on the Torch, if supported }
-  if CameraComponent.HasTorch then
-  begin
-    var Active := CameraComponent.Active;
-
-    try
-      CameraComponent.Active := False;
-      CameraComponent.TorchMode := TTorchMode.ModeOn;
-    finally
-      CameraComponent.Active := Active;
-    end;
-  end;
-end;
-
-procedure TCameraComponentForm.btnStartCameraClick(Sender: TObject);
-begin
-  PermissionsService.RequestPermissions([FPermissionCamera], ActivateCameraPermissionRequestResult, DisplayRationale);
-end;
-
-procedure TCameraComponentForm.btnStopCameraClick(Sender: TObject);
-begin
-  { Turn off the Camera }
-  CameraComponent.Active := False;
-
-  tbControl.TabIndex := 0;
 end;
 
 procedure TCameraComponentForm.CameraComponentSampleBufferReady(Sender: TObject; const ATime: TMediaTime);
 begin
-  TThread.Synchronize(TThread.CurrentThread, GetImage);
-//  imgCameraView.Width := imgCameraView.Bitmap.Width;
-//  imgCameraView.Height := imgCameraView.Bitmap.Height;
+  TThread.Synchronize(TThread.CurrentThread, DisplayCameraPreviewFrame);
 end;
 
-procedure TCameraComponentForm.GetImage;
+destructor TCameraComponentForm.Destroy;
+begin
+  TMessageManager.DefaultManager.Unsubscribe(TApplicationEventMessage, ApplicationEventChangedHandler);
+  inherited;
+end;
+
+procedure TCameraComponentForm.DisplayCameraPreviewFrame;
 begin
   CameraComponent.SampleBufferToBitmap(imgCameraView.Bitmap, True);
-end;
-
-procedure TCameraComponentForm.btnHighQualityClick(Sender: TObject);
-begin
-  ChangeQuality(TVideoCaptureQuality.HighQuality);
-end;
-
-procedure TCameraComponentForm.btnLowQualityClick(Sender: TObject);
-begin
-  ChangeQuality(TVideoCaptureQuality.LowQuality);
-end;
-
-procedure TCameraComponentForm.btnMediumQualityClick(Sender: TObject);
-begin
-  ChangeQuality(TVideoCaptureQuality.MediumQuality);
-end;
-
-procedure TCameraComponentForm.btnPhotoQualityClick(Sender: TObject);
-begin
-  ChangeQuality(TVideoCaptureQuality.PhotoQuality);
-end;
-
-procedure TCameraComponentForm.cbPriorityChange(Sender: TObject);
-begin
-  if lbiResolution.IsSelected then
-    CameraComponent.CaptureSettingPriority := TVideoCaptureSettingPriority.Resolution;
-
-  if lbiFrameRate.IsSelected then
-    CameraComponent.CaptureSettingPriority := TVideoCaptureSettingPriority.FrameRate;
-
-  FillResolutions;
-end;
-
-procedure TCameraComponentForm.cbResolutionsChange(Sender: TObject);
-begin
-  var Active := CameraComponent.Active;
-
-  try
-    CameraComponent.Active := False;
-
-    var CaptureSettings := CameraComponent.AvailableCaptureSettings;
-
-    if Length(CaptureSettings) > 0 then
-      CameraComponent.CaptureSetting := CaptureSettings[cbResolutions.ItemIndex];
-  finally
-    CameraComponent.Active := Active;
-
-    ShowCurrentResolution;
-  end;
-end;
-
-procedure TCameraComponentForm.ChangeQuality(const ANewQuality: TVideoCaptureQuality);
-begin
-  var Active := CameraComponent.Active;
-
-  try
-    CameraComponent.Active := False;
-    CameraComponent.Quality := ANewQuality;
-  finally
-    CameraComponent.Active := Active;
-
-    ShowCurrentResolution;
-  end;
-end;
-
-procedure TCameraComponentForm.ShowCurrentResolution;
-begin
-  var Text: string;
-
-  case CameraComponent.Quality of
-    TVideoCaptureQuality.PhotoQuality: Text := 'Photo';
-    TVideoCaptureQuality.HighQuality: Text := 'High';
-    TVideoCaptureQuality.MediumQuality: Text := 'Medium';
-    TVideoCaptureQuality.LowQuality: Text := 'Low';
-    TVideoCaptureQuality.CaptureSettings: Text := 'Custom';
-  end;
-
-  var CaptureSetting := CameraComponent.CaptureSetting;
-
-  lblCurrentResolution.Text := Text + ' - ' + CaptureSetting.Width.ToString +
-    'x' + CaptureSetting.Height.ToString + ' at ' + CaptureSetting.FrameRate.ToString + ' FPS.';
-end;
-
-procedure TCameraComponentForm.tbControlChange(Sender: TObject);
-begin
-  if tbControl.ActiveTab = tiSettings then
-    CameraComponent.Active := False
-  else
-    CameraComponent.Active := True;
 end;
 
 end.

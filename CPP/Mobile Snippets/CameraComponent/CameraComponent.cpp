@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 // This software is Copyright (c) 2015 Embarcadero Technologies, Inc.
 // You may only use this software if you are an authorized licensee
@@ -7,7 +7,7 @@
 // the software license agreement that comes with the Embarcadero Products
 // and is subject to that software license agreement.
 
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 #include <fmx.h>
 #ifdef _WIN32
@@ -15,32 +15,30 @@
 #endif
 #pragma hdrstop
 #include <System.StartUpCopy.hpp>
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+USEFORM("uSettings.cpp", SettingsForm);
 USEFORM("uMain.cpp", CameraComponentForm);
-//---------------------------------------------------------------------------
-extern "C" int FMXmain()
-{
-	try
-	{
+
+// ---------------------------------------------------------------------------
+extern "C" int FMXmain() {
+	try {
 		Application->Initialize();
-		Application->CreateForm(__classid(TCameraComponentForm), &CameraComponentForm);
+		Application->CreateForm(__classid(TCameraComponentForm),
+			&CameraComponentForm);
+		Application->CreateForm(__classid(TSettingsForm), &SettingsForm);
 		Application->Run();
 	}
-	catch (Exception &exception)
-	{
+	catch (Exception &exception) {
 		Application->ShowException(&exception);
 	}
-	catch (...)
-	{
-		try
-		{
+	catch (...) {
+		try {
 			throw Exception("");
 		}
-		catch (Exception &exception)
-		{
+		catch (Exception &exception) {
 			Application->ShowException(&exception);
 		}
 	}
 	return 0;
 }
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------

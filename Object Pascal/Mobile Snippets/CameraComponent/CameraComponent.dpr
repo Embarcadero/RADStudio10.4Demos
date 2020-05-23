@@ -14,7 +14,8 @@ program CameraComponent;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  uMain in 'uMain.pas' {CameraComponentForm};
+  uMain in 'uMain.pas' {CameraComponentForm},
+  uSettings in 'uSettings.pas' {SettingsForm};
 
 {$R *.res}
 
@@ -23,6 +24,7 @@ begin
 
   Application.Initialize;
   Application.CreateForm(TCameraComponentForm, CameraComponentForm);
+  Application.CreateForm(TSettingsForm, SettingsForm);
   Application.Run;
 
 end.

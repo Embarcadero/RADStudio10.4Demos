@@ -1,0 +1,108 @@
+object SettingsForm: TSettingsForm
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 506
+  ClientWidth = 362
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 3
+  object tbToolbar: TToolBar
+    Size.Width = 362.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    object lTitle: TLabel
+      Align = Contents
+      Size.Width = 362.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'toollabel'
+      TextSettings.HorzAlign = Center
+      Text = 'Settings'
+    end
+    object btnBack: TSpeedButton
+      Align = Left
+      ModalResult = 1
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'backtoolbutton'
+      Text = 'btnBack'
+    end
+  end
+  object lbSettings: TListBox
+    Align = Client
+    Size.Width = 362.000000000000000000
+    Size.Height = 458.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'transparentlistboxstyle'
+    DisableFocusEffect = True
+    DefaultItemStyles.ItemStyle = ''
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    Viewport.Width = 362.000000000000000000
+    Viewport.Height = 458.000000000000000000
+    object lbiKind: TListBoxItem
+      Selectable = False
+      ItemData.Detail = 'Front'
+      ItemData.Accessory = aMore
+      Margins.Top = 16.000000000000000000
+      Position.Y = 16.000000000000000000
+      StyleLookup = 'listboxitemrightdetail'
+      Text = 'Camera kind'
+      OnClick = lbiKindClick
+    end
+    object lbiQualityGroupHeader: TListBoxGroupHeader
+      Position.Y = 60.000000000000000000
+      Size.Width = 362.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Quality'
+    end
+    object lbiResolution: TListBoxItem
+      Selectable = False
+      ItemData.Detail = '1280x720x30'
+      ItemData.Accessory = aMore
+      Position.Y = 90.000000000000000000
+      StyleLookup = 'listboxitemrightdetail'
+      Text = 'Resolution'
+      OnClick = lbiResolutionClick
+    end
+    object lbiPriority: TListBoxItem
+      Selectable = False
+      ItemData.Detail = 'Resolution'
+      ItemData.Accessory = aMore
+      Position.Y = 134.000000000000000000
+      StyleLookup = 'listboxitemrightdetail'
+      Text = 'Priority'
+      OnClick = lbiPriorityClick
+    end
+    object lbiQuality: TListBoxItem
+      Selectable = False
+      ItemData.Detail = 'Low'
+      ItemData.Accessory = aMore
+      Position.Y = 178.000000000000000000
+      StyleLookup = 'listboxitemrightdetail'
+      Text = 'Quality'
+      OnClick = lbiQualityClick
+    end
+    object lbiTorchGroupHeader: TListBoxGroupHeader
+      Position.Y = 222.000000000000000000
+      Size.Width = 362.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Torch'
+    end
+    object lbiTorchMode: TListBoxItem
+      Selectable = False
+      ItemData.Detail = 'On'
+      ItemData.Accessory = aMore
+      Padding.Right = 16.000000000000000000
+      Position.Y = 252.000000000000000000
+      StyleLookup = 'listboxitemrightdetail'
+      Text = 'Torch type'
+      OnClick = lbiTorchModeClick
+    end
+  end
+end
