@@ -3,7 +3,7 @@ object FrmMain: TFrmMain
   Top = 0
   Caption = 'Demo TitlebarPanel'
   ClientHeight = 365
-  ClientWidth = 729
+  ClientWidth = 768
   Color = clBtnFace
   CustomTitleBar.CaptionAlignment = taCenter
   CustomTitleBar.Control = TitleBarPanel1
@@ -39,25 +39,27 @@ object FrmMain: TFrmMain
   object TitleBarPanel1: TTitleBarPanel
     Left = 0
     Top = 0
-    Width = 729
-    Height = 80
+    Width = 768
+    Height = 79
     OnPaint = TitleBarPanel1Paint
     CustomButtons = <
       item
         ButtonType = sbCustom
         Enabled = True
+        Width = 32
         Visible = True
         OnPaint = SystemTitlebarButton1Paint
         OnClick = SystemTitlebarButton1Click
       end>
+    ExplicitWidth = 729
     DesignSize = (
-      729
-      80)
+      768
+      79)
     object ActionMainMenuBar1: TActionMainMenuBar
       Left = 32
-      Top = 3
+      Top = 0
       Width = 217
-      Height = 25
+      Height = 24
       UseSystemFont = False
       ActionManager = ActionManager1
       Align = alNone
@@ -76,7 +78,7 @@ object FrmMain: TFrmMain
       OnPaint = ActionMainMenuBar1Paint
     end
     object ToolBar16: TToolBar
-      Left = 423
+      Left = 478
       Top = 3
       Width = 105
       Height = 25
@@ -89,6 +91,7 @@ object FrmMain: TFrmMain
       Images = VirtualImageList16
       ParentDoubleBuffered = False
       TabOrder = 1
+      ExplicitLeft = 439
       object ToolButton1: TToolButton
         Left = 0
         Top = 0
@@ -165,12 +168,13 @@ object FrmMain: TFrmMain
   end
   object Panel1: TPanel
     Left = 0
-    Top = 80
-    Width = 729
-    Height = 285
+    Top = 79
+    Width = 768
+    Height = 286
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitWidth = 729
     object Label3: TLabel
       Tag = 1
       Left = 12

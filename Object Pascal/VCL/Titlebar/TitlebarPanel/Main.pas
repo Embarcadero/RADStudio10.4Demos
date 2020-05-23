@@ -316,7 +316,7 @@ begin
     LBitmap := TBitmap.Create;
     try
       LBitmap.PixelFormat := pf32bit;
-      LBitmap.SetSize(MulDiv(200, CurrentPPI, Screen.DefaultPixelsPerInch), LRect.Height div 2);
+      LBitmap.SetSize(ScaleValue(200), LRect.Height div 2);
       if Active then
         GradientFillCanvas(LBitmap.Canvas, clWebLightYellow, clWebGreen,
           Rect(0, 0, LBitmap.Width, LBitmap.Height), TGradientDirection.gdHorizontal)
@@ -331,7 +331,8 @@ begin
       BlendFunc.BlendFlags := 0;
       BlendFunc.SourceConstantAlpha := 255;
       BlendFunc.AlphaFormat := AC_SRC_ALPHA;
-      Winapi.Windows.AlphaBlend(Canvas.Handle, (Width - LBitmap.Width) div 2, MulDiv(30, CurrentPPI, Screen.DefaultPixelsPerInch), LBitmap.Width, LBitmap.Height,
+      Winapi.Windows.AlphaBlend(Canvas.Handle, (Width - LBitmap.Width) div 2,
+        ScaleValue(30), LBitmap.Width, LBitmap.Height,
       LBitmap.Canvas.Handle, 0, 0, LBitmap.Width, LBitmap.Height, BlendFunc);
     finally
       LBitmap.Free;
@@ -349,7 +350,7 @@ begin
     LTextFormat := [tfSingleLine, tfVerticalCenter, tfEndEllipsis, tfComposited];
     Include(LTextFormat, AlignStyles[taCenter]);
 
-    Inc(LRect.Top, MulDiv(20, CurrentPPI, Screen.DefaultPixelsPerInch));
+    Inc(LRect.Top, ScaleValue(20));
     s := 'Sample Text OnPaint event';
     TStyleManager.SystemStyle.DrawText(Canvas.Handle,
       TStyleManager.SystemStyle.GetElementDetails(twCaptionActive), s, LRect,
