@@ -22,7 +22,7 @@ uses
   FireDAC.Stan.ExprFuncs, FireDAC.Phys.SQLiteDef, FireDAC.Stan.Async,
   FireDAC.DApt, FireDAC.Stan.StorageJSON, FireDAC.Stan.StorageXML,
   FireDAC.Stan.StorageBin, FireDAC.Phys, FireDAC.Phys.SQLite, FireDAC.Comp.UI,
-  fMainBase, Vcl.ExtCtrls;
+  fMainBase, Vcl.ExtCtrls, FireDAC.Phys.SQLiteWrapper.Stat;
 
 type
   TfrmMainDemo = class(TfrmMainBase)

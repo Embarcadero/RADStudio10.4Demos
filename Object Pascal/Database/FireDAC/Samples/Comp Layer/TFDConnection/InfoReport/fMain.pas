@@ -19,7 +19,7 @@ uses
   FireDAC.UI.Intf, FireDAC.Phys, FireDAC.Phys.MySQL, FireDAC.VCLUI.Wait, FireDAC.Comp.UI, DB,
   FireDAC.Comp.Client, FireDAC.Stan.Consts, FireDAC.Stan.Error, FireDAC.Stan.Pool,
   FireDAC.Stan.Async, FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef,
-  FireDAC.Stan.ExprFuncs, FireDAC.Phys.MySQLDef;
+  FireDAC.Stan.ExprFuncs, FireDAC.Phys.MySQLDef, FireDAC.Phys.SQLiteWrapper.Stat;
 
 type
   TMainForm = class(TForm)

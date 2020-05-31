@@ -22,7 +22,7 @@ uses
   FireDAC.Phys, FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef,
   FireDAC.Stan.ExprFuncs, FireDAC.ConsoleUI.Wait, FireDAC.Stan.Param,
   FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, EMS.DataSetResource;
+  FireDAC.Comp.Client, EMS.DataSetResource, FireDAC.Phys.SQLiteWrapper.Stat;
 
 type
   [ResourceName('Notes')]

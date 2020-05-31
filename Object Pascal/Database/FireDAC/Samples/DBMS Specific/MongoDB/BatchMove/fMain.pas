@@ -25,7 +25,7 @@ uses
   FireDAC.Comp.BatchMove.SQL, FireDAC.Phys.MongoDB, FireDAC.Phys.MongoDBDef,
   System.Rtti, System.JSON.Types, System.JSON.Readers, System.JSON.BSON,
   System.JSON.Builders, FireDAC.Phys.MongoDBWrapper, Vcl.StdCtrls, Vcl.Grids,
-  Vcl.DBGrids, FireDAC.Comp.UI;
+  Vcl.DBGrids, FireDAC.Comp.UI, FireDAC.Phys.SQLiteWrapper.Stat;
 
 type
   TfrmMain = class(TForm)

@@ -26,7 +26,7 @@ uses
     FireDAC.Phys.OracleDef, FireDAC.Phys.SQLiteDef,
   FireDAC.Phys, FireDAC.Phys.MSSQL, FireDAC.Phys.SQLite, FireDAC.Phys.Oracle,
     FireDAC.Phys.PG, FireDAC.Phys.IBBase, FireDAC.Phys.FB, FireDAC.Phys.IB,
-    FireDAC.Phys.IBDef, FireDAC.Phys.ADS, FireDAC.Phys.ODBCBase,
+    FireDAC.Phys.IBDef, FireDAC.Phys.ADS, FireDAC.Phys.ODBCBase, FireDAC.Phys.SQLiteWrapper.Stat,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type

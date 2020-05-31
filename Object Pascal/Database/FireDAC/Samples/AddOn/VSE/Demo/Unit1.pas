@@ -20,7 +20,7 @@ uses
   FireDAC.Stan.Pool, FireDAC.Phys, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   FireDAC.Comp.UI, FireDAC.VCLUI.Wait, FireDAC.Phys.SQLite, FireDAC.Stan.ExprFuncs,
-  FireDAC.Comp.VSE, FireDAC.Comp.VSEXML;
+  FireDAC.Comp.VSE, FireDAC.Comp.VSEXML, FireDAC.Phys.SQLiteWrapper.Stat;
 
 type
   TForm1 = class(TForm)

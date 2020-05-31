@@ -28,7 +28,8 @@ uses
   FireDAC.Comp.BatchMove, FireDAC.Comp.BatchMove.Text, FireDAC.Comp.BatchMove.DataSet,
   FireDAC.Phys.ODBCBase, FireDAC.Phys.MSAcc, Data.Win.ADODB, Datasnap.DBClient,
   Data.Bind.Controls, FireDAC.Phys.SQLiteDef, FireDAC.Phys.MSAccDef,
-  FMX.Controls.Presentation, FMX.ScrollBox;
+  FMX.Controls.Presentation, FMX.ScrollBox, FMX.Grid.Style,
+  FireDAC.Phys.SQLiteWrapper.Stat;
 
 type
   TfrmMain = class(TForm)

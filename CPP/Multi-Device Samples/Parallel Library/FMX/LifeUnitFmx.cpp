@@ -75,7 +75,7 @@ void __fastcall TLifeForm::LifeEngineUpdate(TObject * Sender) {
 // ---------------------------------------------------------------------------
 
 void __fastcall TLifeForm::FormCreate(TObject *Sender) {
-	BoardSize = TSize(500, 500);
+	BoardSize = TSize(1600, 1600);
 	FLifeEngine = new TLifeEngine(BoardSize);
 	FLifeEngine->OnUpdate = LifeEngineUpdate;
 	FLifeBoard = FLifeEngine->LifeBoard;

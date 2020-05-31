@@ -48,6 +48,8 @@
 #include <FireDAC.Phys.SQLiteDef.hpp>
 #include <FMX.Controls.Presentation.hpp>
 #include <System.UITypes.hpp>
+#include <FireDAC.Phys.SQLiteWrapper.Stat.hpp>
+
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------

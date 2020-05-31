@@ -21,7 +21,7 @@ uses
   FireDAC.VCLUI.Wait, FireDAC.Stan.ExprFuncs, FireDAC.Phys.SQLite, FireDAC.Phys.MSAcc,
   FireDAC.Phys.ODBCBase, FireDAC.Comp.UI, FireDAC.Comp.Client, FireDAC.Phys.SQLiteVDataSet,
   Data.DB, FireDAC.Comp.DataSet, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, FireDAC.Phys.MSAccDef,
-  FireDAC.Phys.SQLiteDef;
+  FireDAC.Phys.SQLiteDef, FireDAC.Phys.SQLiteWrapper.Stat;
 
 type
   TfrmMain = class(TForm)

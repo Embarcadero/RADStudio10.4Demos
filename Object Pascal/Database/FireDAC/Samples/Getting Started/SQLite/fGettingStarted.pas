@@ -22,7 +22,7 @@ uses
   FireDAC.Phys, FireDAC.UI.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.VCLUI.Wait, FireDAC.VCLUI.Error, FireDAC.VCLUI.Login,
   FireDAC.Stan.ExprFuncs, FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteWrapper,
-  FireDAC.Phys.SQLiteDef;
+  FireDAC.Phys.SQLiteDef, FireDAC.Phys.SQLiteWrapper.Stat;
 
 type
   TfrmGettingStarted = class(TForm)

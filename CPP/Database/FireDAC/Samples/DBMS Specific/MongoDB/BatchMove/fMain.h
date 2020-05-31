@@ -42,6 +42,7 @@
 #include <Vcl.DBGrids.hpp>
 #include <Vcl.Grids.hpp>
 #include <System.SysUtils.hpp>
+#include <FireDAC.Phys.SQLiteWrapper.Stat.hpp>
 //---------------------------------------------------------------------------
 class TfrmMain : public TForm
 {

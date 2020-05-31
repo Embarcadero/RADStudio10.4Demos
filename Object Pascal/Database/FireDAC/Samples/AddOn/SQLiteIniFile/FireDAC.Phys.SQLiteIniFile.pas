@@ -24,7 +24,7 @@ interface
 uses
   Classes, SysUtils, IniFiles,
   FireDAC.ConsoleUI.Wait, FireDAC.Phys.SQLite, FireDAC.Comp.Client, FireDAC.Phys.SQLiteWrapper,
-  FireDAC.Stan.Async, FireDAC.Stan.Def;     // For Register Object factory
+  FireDAC.Stan.Async, FireDAC.Stan.Def, FireDAC.Phys.SQLiteWrapper.Stat;     // For Register Object factory
 
 type
   TStreamCompressionLevel = (sclNone, sclFastest, sclDefault, sclMax);

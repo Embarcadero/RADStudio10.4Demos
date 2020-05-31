@@ -23,7 +23,8 @@ uses
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.UI.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool,
   FireDAC.Phys, FireDAC.Comp.Client, FireDAC.Comp.DataSet, FireDAC.Stan.ExprFuncs,
   FireDAC.FMXUI.Wait, FireDAC.Comp.UI, FireDAC.Phys.SQLite,
-  FireDAC.Phys.SQLiteDef, FMX.Controls.Presentation;
+  FireDAC.Phys.SQLiteDef, FMX.Controls.Presentation,
+  FireDAC.Phys.SQLiteWrapper.Stat;
 
 type
   TFireDAC_SQLiteForm = class(TForm)

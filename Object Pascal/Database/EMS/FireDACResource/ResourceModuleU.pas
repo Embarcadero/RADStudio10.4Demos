@@ -23,7 +23,7 @@ uses
   FireDAC.Phys.SQLiteDef, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Phys,
   FireDAC.Phys.SQLite, Data.DB, FireDAC.Comp.Client, FireDAC.Comp.UI,
   FireDAC.Stan.StorageJSON, FireDAC.Comp.DataSet, FireDAC.ConsoleUI.Wait,
-  EMS.DataSetResource;
+  EMS.DataSetResource, FireDAC.Phys.SQLiteWrapper.Stat;
 
 type
   [ResourceName('test')]  // Url segment.  For example, use http://localhost:8080/test

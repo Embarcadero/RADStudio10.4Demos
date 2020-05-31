@@ -24,7 +24,7 @@ uses
   FireDAC.Comp.DataSet, FireDAC.Phys.MongoDBDataSet, Vcl.StdCtrls, Vcl.Grids,
   Vcl.DBGrids, FireDAC.Stan.Util, FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef,
   FireDAC.Stan.ExprFuncs, FireDAC.DApt, FireDAC.Phys.SQLiteVDataSet,
-  FireDAC.VCLUI.Wait;
+  FireDAC.VCLUI.Wait, FireDAC.Phys.SQLiteWrapper.Stat;
 
 type
   TForm9 = class(TForm)

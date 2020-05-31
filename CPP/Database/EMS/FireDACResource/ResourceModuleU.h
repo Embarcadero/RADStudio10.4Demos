@@ -40,6 +40,7 @@
 #include <FireDAC.UI.Intf.hpp>
 #include <FireDAC.ConsoleUI.Wait.hpp>
 #include <EMS.DataSetResource.hpp>
+#include <FireDAC.Phys.SQLiteWrapper.Stat.hpp>
 //---------------------------------------------------------------------------
 #pragma explicit_rtti methods (public)
 class TResourceModule : public TDataModule

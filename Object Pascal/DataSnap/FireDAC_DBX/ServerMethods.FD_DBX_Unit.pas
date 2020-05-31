@@ -21,7 +21,7 @@ uses System.SysUtils, System.Classes, System.Json,
   FireDAC.Stan.ExprFuncs, FireDAC.FMXUI.Wait, FireDAC.DatS, FireDAC.DApt.Intf,
   FireDAC.DApt, FireDAC.Stan.Param, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, FireDAC.Stan.StorageJSON, FireDAC.Comp.UI,
-  FireDAC.Stan.StorageBin, System.Generics.Collections;
+  FireDAC.Stan.StorageBin, System.Generics.Collections, FireDAC.Phys.SQLiteWrapper.Stat;
 
 type
   TServerMethods = class(TDSServerModule)

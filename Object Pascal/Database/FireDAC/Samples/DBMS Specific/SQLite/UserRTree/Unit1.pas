@@ -23,6 +23,7 @@ uses
   FireDAC.DApt.Intf, FireDAC.DApt,
   FireDAC.Phys.Intf, FireDAC.Phys,
   FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteCli, FireDAC.Phys.SQLiteWrapper, FireDAC.Phys.SQLiteDef,
+    FireDAC.Phys.SQLiteWrapper.Stat,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type

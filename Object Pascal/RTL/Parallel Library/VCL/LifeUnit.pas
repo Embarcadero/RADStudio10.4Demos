@@ -17,7 +17,7 @@ uses
   Dialogs, ExtCtrls, StdCtrls, LifeEngine;
 
 const
-  BoardSize: TSize = (cx: 500; cy: 500);
+  BoardSize: TSize = (cx: 1600; cy: 1600);
 
 type
   TLifeForm = class(TForm)

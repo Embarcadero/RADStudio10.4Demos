@@ -24,7 +24,7 @@ uses
   FireDAC.Comp.BatchMove, FireDAC.Comp.BatchMove.DataSet, FireDAC.FMXUI.Wait,
   FireDAC.Phys.ODBCBase, FireDAC.Comp.UI, FMX.ScrollBox, FMX.Memo,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
-  FireDAC.Comp.DataSet;
+  FireDAC.Comp.DataSet, FireDAC.Phys.SQLiteWrapper.Stat;
 
 type
   TfrmMain = class(TForm)

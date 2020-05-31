@@ -15,7 +15,7 @@ uses
   FireDAC.DApt.Intf, FireDAC.DApt, System.Rtti, FMX.Grid.Style, FMX.Grid,
   FireDAC.Comp.DataSet, Data.Bind.EngExt, Fmx.Bind.DBEngExt, Fmx.Bind.Grid,
   System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.Components,
-  Data.Bind.Grid, Data.Bind.DBScope;
+  Data.Bind.Grid, Data.Bind.DBScope, FireDAC.Phys.SQLiteWrapper.Stat;
 
 type
   TFrmMain = class(TForm)

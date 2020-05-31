@@ -20,7 +20,7 @@ uses
   FireDAC.UI.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys,
   FireDAC.DApt, FireDAC.VCLUI.Wait, FireDAC.Stan.ExprFuncs, FireDAC.Phys.SQLite,
   FireDAC.Comp.UI, FireDAC.Comp.Client, FireDAC.Phys.SQLiteVDataSet, DB, FireDAC.Comp.DataSet,
-  ComCtrls, Grids, DBGrids, ExtCtrls, DBCtrls;
+  ComCtrls, Grids, DBGrids, ExtCtrls, DBCtrls, FireDAC.Phys.SQLiteWrapper.Stat;
 
 type
   TfrmMain = class(TForm)

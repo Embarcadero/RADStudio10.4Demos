@@ -26,7 +26,7 @@ uses
   FireDAC.Moni.Base, FireDAC.Moni.FlatFile, FireDAC.Moni.RemoteClient,
   FireDAC.Phys.Intf, FireDAC.Phys, FireDAC.Phys.SQLite, FireDAC.Phys.PG, FireDAC.Phys.IB, FireDAC.Phys.ASA,
     FireDAC.Phys.MySQL, FireDAC.Phys.MSAcc, FireDAC.Phys.ODBC, FireDAC.Phys.MSSQL, FireDAC.Phys.ODBCBase,
-    FireDAC.Phys.DB2, FireDAC.Phys.Oracle, FireDAC.Phys.ADS, FireDAC.Phys.FB;
+    FireDAC.Phys.DB2, FireDAC.Phys.Oracle, FireDAC.Phys.ADS, FireDAC.Phys.FB, FireDAC.Phys.SQLiteWrapper.Stat;
 
 type
   TfrmMain = class(TForm)
