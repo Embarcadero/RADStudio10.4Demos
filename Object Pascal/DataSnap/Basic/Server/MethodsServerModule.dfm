@@ -27,8 +27,7 @@ object ServerModule1: TServerModule1
       'LibraryName=dbxint.dll'
       'VendorLib=gds32.dll'
       
-        'Database=C:\Users\Public\Documents\Embarcadero\Studio\19.0\Sampl' +
-        'es\Data\employee.gdb'
+        'Database=..\..\..\..\..\..\Data\employee.gdb'
       'User_Name=sysdba'
       'Password=masterkey'
       'Role=RoleName'
