@@ -29,8 +29,7 @@ object DSServerModule1: TDSServerModule1
       'VendorLibWin64=ibclient64.dll'
       'VendorLibOsx=libgds.dylib'
       
-        'Database=C:\Users\Public\Documents\Embarcadero\Studio\19.0\Sampl' +
-        'es\Data\employee.gdb'
+        'Database=..\..\..\..\..\..\Data\employee.gdb'
       'User_Name=sysdba'
       'Password=masterkey'
       'Role=RoleName'
