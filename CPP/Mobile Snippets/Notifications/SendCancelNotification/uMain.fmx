@@ -1,15 +1,17 @@
 object NotificationsForm: TNotificationsForm
   Left = 0
   Top = 0
-  Caption = 'Form2'
   ClientHeight = 567
   ClientWidth = 384
-  FormFactor.Width = 320
-  FormFactor.Height = 480
-  FormFactor.Devices = [Desktop, iPhone, iPad]
-  DesignerMasterStyle = 0
+  FormFactor.Width = 1920
+  FormFactor.Height = 1022
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 2
   object btnSendScheduledNotification: TButton
+    Action = ActionSendScheduledNotification
     Align = Top
+    Enabled = True
+    ImageIndex = -1
     Margins.Left = 10.000000000000000000
     Margins.Top = 10.000000000000000000
     Margins.Right = 10.000000000000000000
@@ -19,8 +21,6 @@ object NotificationsForm: TNotificationsForm
     Size.Height = 44.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
-    Text = 'Send Scheduled Notification'
-    OnClick = btnSendScheduledNotificationClick
   end
   object ToolBar1: TToolBar
     Size.Width = 384.000000000000000000
@@ -38,7 +38,10 @@ object NotificationsForm: TNotificationsForm
     end
   end
   object btnSendNotificationImmediately: TButton
+    Action = ActionSendNotificationImmediately
     Align = Top
+    Enabled = True
+    ImageIndex = -1
     Margins.Left = 10.000000000000000000
     Margins.Top = 10.000000000000000000
     Margins.Right = 10.000000000000000000
@@ -48,8 +51,6 @@ object NotificationsForm: TNotificationsForm
     Size.Height = 44.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2
-    Text = 'Send Notification Immediately'
-    OnClick = btnSendNotificationImmediatelyClick
   end
   object ToolBar2: TToolBar
     Align = Bottom
@@ -59,42 +60,68 @@ object NotificationsForm: TNotificationsForm
     Size.PlatformDefault = False
     TabOrder = 3
     object SpeedButton1: TSpeedButton
+      Action = ActionCancelScheduled
       Align = Left
+      Enabled = True
+      ImageIndex = -1
       Margins.Left = 5.000000000000000000
       Position.X = 5.000000000000000000
-      Size.Width = 148.000000000000000000
+      Size.Width = 164.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
-      Text = 'Cancel Scheduled'
-      OnClick = SpeedButton1Click
     end
     object SpeedButton2: TSpeedButton
+      Action = ActionCancelAllNotifications
       Align = Right
+      Enabled = True
+      ImageIndex = -1
       Margins.Right = 5.000000000000000000
-      Position.X = 168.000000000000000000
-      Size.Width = 211.000000000000000000
+      Position.X = 184.000000000000000000
+      Size.Width = 195.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
-      Text = 'Cancel All Notifications'
-      OnClick = SpeedButton2Click
     end
   end
   object Memo1: TMemo
     Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
     DataDetectorTypes = []
-    Anchors = [akLeft, akTop, akRight, akBottom]
-    Position.X = 16.000000000000000000
-    Position.Y = 160.000000000000000000
-    Size.Width = 353.000000000000000000
-    Size.Height = 345.000000000000000000
+    Align = Client
+    Margins.Left = 16.000000000000000000
+    Margins.Top = 3.000000000000000000
+    Margins.Right = 16.000000000000000000
+    Margins.Bottom = 3.000000000000000000
+    Size.Width = 352.000000000000000000
+    Size.Height = 365.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 5
-    Viewport.Width = 349.000000000000000000
-    Viewport.Height = 341.000000000000000000
+    Viewport.Width = 344.000000000000000000
+    Viewport.Height = 357.000000000000000000
   end
   object NotificationC: TNotificationCenter
     OnReceiveLocalNotification = NotificationCReceiveLocalNotification
-    Left = 72
-    Top = 136
+    OnPermissionRequestResult = NotificationCPermissionRequestResult
+    Left = 176
+    Top = 272
+  end
+  object ActionList: TActionList
+    OnExecute = ActionListExecute
+    Left = 24
+    Top = 8
+    object ActionSendScheduledNotification: TAction
+      Text = 'Send Scheduled Notification'
+      OnExecute = ActionSendScheduledNotificationExecute
+    end
+    object ActionSendNotificationImmediately: TAction
+      Text = 'Send Notification Immediately'
+      OnExecute = ActionSendNotificationImmediatelyExecute
+    end
+    object ActionCancelScheduled: TAction
+      Text = 'Cancel Scheduled'
+      OnExecute = ActionCancelScheduledExecute
+    end
+    object ActionCancelAllNotifications: TAction
+      Text = 'Cancel All Notifications'
+      OnExecute = ActionCancelAllNotificationsExecute
+    end
   end
 end

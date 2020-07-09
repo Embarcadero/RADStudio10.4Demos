@@ -8,7 +8,10 @@ object NotificationsForm: TNotificationsForm
   FormFactor.Devices = [Desktop]
   DesignerMasterStyle = 2
   object btnSendScheduledNotification: TButton
+    Action = ActionSendScheduledNotification
     Align = Top
+    Enabled = True
+    ImageIndex = -1
     Margins.Left = 10.000000000000000000
     Margins.Top = 10.000000000000000000
     Margins.Right = 10.000000000000000000
@@ -18,8 +21,6 @@ object NotificationsForm: TNotificationsForm
     Size.Height = 44.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
-    Text = 'Send Scheduled Notification'
-    OnClick = btnSendScheduledNotificationClick
   end
   object ToolBar1: TToolBar
     Size.Width = 384.000000000000000000
@@ -37,7 +38,10 @@ object NotificationsForm: TNotificationsForm
     end
   end
   object btnSendNotificationImmediately: TButton
+    Action = ActionSendNotificationImmediately
     Align = Top
+    Enabled = True
+    ImageIndex = -1
     Margins.Left = 10.000000000000000000
     Margins.Top = 10.000000000000000000
     Margins.Right = 10.000000000000000000
@@ -47,8 +51,6 @@ object NotificationsForm: TNotificationsForm
     Size.Height = 44.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2
-    Text = 'Send Notification Immediately'
-    OnClick = btnSendNotificationImmediatelyClick
   end
   object ToolBar2: TToolBar
     Align = Bottom
@@ -58,24 +60,26 @@ object NotificationsForm: TNotificationsForm
     Size.PlatformDefault = False
     TabOrder = 3
     object SpeedButton1: TSpeedButton
+      Action = ActionCancelScheduled
       Align = Left
+      Enabled = True
+      ImageIndex = -1
       Margins.Left = 5.000000000000000000
       Position.X = 5.000000000000000000
       Size.Width = 164.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
-      Text = 'Cancel Scheduled'
-      OnClick = SpeedButton1Click
     end
     object SpeedButton2: TSpeedButton
+      Action = ActionCancelAllNotifications
       Align = Right
+      Enabled = True
+      ImageIndex = -1
       Margins.Right = 5.000000000000000000
       Position.X = 184.000000000000000000
       Size.Width = 195.000000000000000000
       Size.Height = 44.000000000000000000
       Size.PlatformDefault = False
-      Text = 'Cancel All Notifications'
-      OnClick = SpeedButton2Click
     end
   end
   object Memo1: TMemo
@@ -95,7 +99,29 @@ object NotificationsForm: TNotificationsForm
   end
   object NotificationC: TNotificationCenter
     OnReceiveLocalNotification = NotificationCReceiveLocalNotification
+    OnPermissionRequestResult = NotificationCPermissionRequestResult
     Left = 176
     Top = 272
+  end
+  object ActionList: TActionList
+    OnExecute = ActionListExecute
+    Left = 24
+    Top = 8
+    object ActionSendScheduledNotification: TAction
+      Text = 'Send Scheduled Notification'
+      OnExecute = ActionSendScheduledNotificationExecute
+    end
+    object ActionSendNotificationImmediately: TAction
+      Text = 'Send Notification Immediately'
+      OnExecute = ActionSendNotificationImmediatelyExecute
+    end
+    object ActionCancelScheduled: TAction
+      Text = 'Cancel Scheduled'
+      OnExecute = ActionCancelScheduledExecute
+    end
+    object ActionCancelAllNotifications: TAction
+      Text = 'Cancel All Notifications'
+      OnExecute = ActionCancelAllNotificationsExecute
+    end
   end
 end
