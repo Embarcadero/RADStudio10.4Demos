@@ -19,8 +19,6 @@ uses
 {$R *.res}
 
 begin
-  var CameraRollForm: TCameraRollForm;
-
   Application.Initialize;
   Application.CreateForm(TCameraRollForm, CameraRollForm);
   Application.Run;

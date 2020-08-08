@@ -21,24 +21,26 @@ uses
 
 type
   TAccessCameraAppForm = class(TForm)
-  private const
-    PermissionCamera = 'android.permission.CAMERA';
-    PermissionReadExternalStorage = 'android.permission.READ_EXTERNAL_STORAGE';
-    PermissionWriteExternalStorage = 'android.permission.WRITE_EXTERNAL_STORAGE';
-  private
-    procedure DisplayRationale(Sender: TObject; const APermissions: TArray<string>; const APostRationaleProc: TProc);
-    procedure TakePicturePermissionRequestResult(Sender: TObject; const APermissions: TArray<string>; const AGrantResults: TArray<TPermissionStatus>);
-  published var
     alGetFromCamera: TActionList;
     TakePhotoFromCameraAction1: TTakePhotoFromCameraAction;
     imgCameraImage: TImage;
     ToolBar1: TToolBar;
     btnTakePhoto: TButton;
     Label1: TLabel;
-  published
+
     procedure TakePhotoFromCameraAction1DidFinishTaking(Image: TBitmap);
     procedure btnTakePhotoClick(Sender: TObject);
+  private const
+    PermissionCamera = 'android.permission.CAMERA';
+    PermissionReadExternalStorage = 'android.permission.READ_EXTERNAL_STORAGE';
+    PermissionWriteExternalStorage = 'android.permission.WRITE_EXTERNAL_STORAGE';
+
+    procedure DisplayRationale(Sender: TObject; const APermissions: TArray<string>; const APostRationaleProc: TProc);
+    procedure TakePicturePermissionRequestResult(Sender: TObject; const APermissions: TArray<string>; const AGrantResults: TArray<TPermissionStatus>);
   end;
+
+var
+  AccessCameraAppForm: TAccessCameraAppForm;
 
 implementation
 

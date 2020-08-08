@@ -33,6 +33,7 @@ type
     lbiTorchMode: TListBoxItem;
     btnBack: TSpeedButton;
     lTitle: TLabel;
+
     procedure lbiKindClick(Sender: TObject);
     procedure lbiTorchModeClick(Sender: TObject);
     procedure lbiQualityClick(Sender: TObject);
@@ -40,6 +41,7 @@ type
     procedure lbiResolutionClick(Sender: TObject);
   private
     [Weak] FCamera: TCameraComponent;
+
     procedure SetCamera(const Value: TCameraComponent);
     { Refreshing UI }
     function CollectResolutionsTitles: TArray<string>;

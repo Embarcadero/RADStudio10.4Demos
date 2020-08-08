@@ -28,16 +28,6 @@ const
 
 type
   TAudioRecPlayForm = class(TForm)
-    InvertEffect1: TInvertEffect;
-    InvertEffect2: TInvertEffect;
-  private var
-    FMicrophone: TAudioCaptureDevice;
-  private
-    function HasMicrophone: Boolean;
-    function IsMicrophoneRecording: Boolean;
-    procedure RequestPermissionsResult(Sender: TObject; const APermissions: TArray<string>; const AGrantResults: TArray<TPermissionStatus>);
-    procedure DisplayRationale(Sender: TObject; const APermissions: TArray<string>; const APostRationaleProc: TProc);
-  published var
     btnStartRec: TButton;
     btnStopRec: TButton;
     btnStartPlay: TButton;
@@ -53,7 +43,9 @@ type
     actStopRecording: TAction;
     actPlay: TAction;
     actStop: TAction;
-  published
+    InvertEffect1: TInvertEffect;
+    InvertEffect2: TInvertEffect;
+
     procedure FormCreate(Sender: TObject);
     procedure actStartRecordingExecute(Sender: TObject);
     procedure actStopRecordingExecute(Sender: TObject);
@@ -62,7 +54,17 @@ type
     procedure ActionListUpdate(Action: TBasicAction; var Handled: Boolean);
     procedure imgOnClick(Sender: TObject);
     procedure imgOffClick(Sender: TObject);
+  private
+    FMicrophone: TAudioCaptureDevice;
+
+    function HasMicrophone: Boolean;
+    function IsMicrophoneRecording: Boolean;
+    procedure RequestPermissionsResult(Sender: TObject; const APermissions: TArray<string>; const AGrantResults: TArray<TPermissionStatus>);
+    procedure DisplayRationale(Sender: TObject; const APermissions: TArray<string>; const APostRationaleProc: TProc);
   end;
+
+var
+  AudioRecPlayForm: TAudioRecPlayForm;
 
 implementation
 

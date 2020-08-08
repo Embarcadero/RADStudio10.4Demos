@@ -22,7 +22,6 @@ uses
 type
   TLocationForm = class(TForm)
     Layout1: TLayout;
-  published var
     LocationSensor1: TLocationSensor;
     WebBrowser1: TWebBrowser;
     ListBox1: TListBox;
@@ -40,7 +39,7 @@ type
     lbLongitude: TListBoxItem;
     ToolBar1: TToolBar;
     Label1: TLabel;
-  published
+
     procedure LocationSensor1LocationChanged(Sender: TObject; const OldLocation, NewLocation: TLocationCoord2D);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -50,6 +49,9 @@ type
     procedure nbTriggerDistanceChange(Sender: TObject);
     procedure nbAccuracyChange(Sender: TObject);
   end;
+
+var
+  LocationForm: TLocationForm;
 
 implementation
 

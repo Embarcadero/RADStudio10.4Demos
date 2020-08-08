@@ -9,8 +9,6 @@ uses
 {$R *.res}
 
 begin
-  var Form: TLocationTrackingForm;
-
   Application.Initialize;
   Application.CreateForm(TLocationTrackingForm, Form);
   Application.Run;

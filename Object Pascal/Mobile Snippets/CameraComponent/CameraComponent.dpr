@@ -20,8 +20,6 @@ uses
 {$R *.res}
 
 begin
-  var CameraComponentForm: TCameraComponentForm;
-
   Application.Initialize;
   Application.CreateForm(TCameraComponentForm, CameraComponentForm);
   Application.CreateForm(TSettingsForm, SettingsForm);

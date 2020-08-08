@@ -19,8 +19,6 @@ uses
 {$R *.res}
 
 begin
-  var AudioRecPlayForm: TAudioRecPlayForm;
-
   Application.Initialize;
   Application.CreateForm(TAudioRecPlayForm, AudioRecPlayForm);
   Application.Run;

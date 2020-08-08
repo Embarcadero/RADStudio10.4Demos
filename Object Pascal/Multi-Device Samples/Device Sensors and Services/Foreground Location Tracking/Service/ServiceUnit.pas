@@ -10,6 +10,15 @@ type
   TLocationUpdated = procedure(const NewLocation: TLocationCoord2D) of object;
 
   TLocationTrackingServiceModule = class(TAndroidService)
+    LocationSensor: TLocationSensor;
+    NotificationCenter: TNotificationCenter;
+
+    procedure AndroidServiceCreate(Sender: TObject);
+    function AndroidServiceStartCommand(const Sender: TObject; const Intent: JIntent; Flags, StartId: Integer): Integer;
+    function AndroidServiceBind(const Sender: TObject; const AnIntent: JIntent): JIBinder;
+    procedure AndroidServiceRebind(const Sender: TObject; const AnIntent: JIntent);
+    function AndroidServiceUnBind(const Sender: TObject; const AnIntent: JIntent): Boolean;
+    procedure LocationSensorLocationChanged(Sender: TObject; const OldLocation, NewLocation: TLocationCoord2D);
   private const
     NotificationId = -1;
     NotificationChannelId = 'channel_id_foreground_location_tracking';
@@ -31,17 +40,10 @@ type
 
     procedure StartLocationTracking;
     procedure StopLocationTracking;
-  published
-    LocationSensor: TLocationSensor;
-    NotificationCenter: TNotificationCenter;
-
-    procedure AndroidServiceCreate(Sender: TObject);
-    function AndroidServiceStartCommand(const Sender: TObject; const Intent: JIntent; Flags, StartId: Integer): Integer;
-    function AndroidServiceBind(const Sender: TObject; const AnIntent: JIntent): JIBinder;
-    procedure AndroidServiceRebind(const Sender: TObject; const AnIntent: JIntent);
-    function AndroidServiceUnBind(const Sender: TObject; const AnIntent: JIntent): Boolean;
-    procedure LocationSensorLocationChanged(Sender: TObject; const OldLocation, NewLocation: TLocationCoord2D);
   end;
+
+var
+  ServiceModule: TLocationTrackingServiceModule;
 
 implementation
 

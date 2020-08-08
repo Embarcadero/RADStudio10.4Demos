@@ -7,8 +7,6 @@ uses
 {$R *.res}
 
 begin
-  var ServiceModule: TLocationTrackingServiceModule;
-
   Application.Initialize;
   Application.CreateForm(TLocationTrackingServiceModule, ServiceModule);
   Application.Run;

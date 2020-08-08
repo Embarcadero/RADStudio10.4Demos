@@ -9,6 +9,15 @@ uses
 
 type
   TLocationTrackingForm = class(TForm)
+    ToolBarHeader: TToolBar;
+    LabelHeader: TLabel;
+    ButtonStopLocationTracking: TButton;
+    ButtonStartLocationTracking: TButton;
+
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure ButtonStartLocationTrackingClick(Sender: TObject);
+    procedure ButtonStopLocationTrackingClick(Sender: TObject);
   private const
     LocationPermission = 'android.permission.ACCESS_FINE_LOCATION';
   private
@@ -21,17 +30,10 @@ type
     procedure StartLocationTracking;
     procedure StopLocationTracking;
     procedure ServiceLocationUpdated(const NewLocation: TLocationCoord2D);
-  published
-    ToolBarHeader: TToolBar;
-    LabelHeader: TLabel;
-    ButtonStopLocationTracking: TButton;
-    ButtonStartLocationTracking: TButton;
-
-    procedure FormCreate(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
-    procedure ButtonStartLocationTrackingClick(Sender: TObject);
-    procedure ButtonStopLocationTrackingClick(Sender: TObject);
   end;
+
+var
+  Form: TLocationTrackingForm;
 
 implementation
 

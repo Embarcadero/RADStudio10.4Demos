@@ -21,26 +21,29 @@ uses
 
 type
   TCameraRollForm = class(TForm)
-  private
-    FRawBitmap: TBitmap;
-    FPermissionReadExternalStorage,
-    FPermissionWriteExternalStorage: string;
-    procedure DisplayRationale(Sender: TObject; const APermissions: TArray<string>; const APostRationaleProc: TProc);
-    procedure LoadPicturePermissionRequestResult(Sender: TObject; const APermissions: TArray<string>; const AGrantResults: TArray<TPermissionStatus>);
-  published var
     btnPhotoLibrary: TButton;
     imgPhotoLibraryImage: TImage;
     alGetCameraRoll: TActionList;
     TakePhotoFromLibraryAction1: TTakePhotoFromLibraryAction;
     ToolBar1: TToolBar;
     Label1: TLabel;
-  published
+
     procedure TakePhotoFromLibraryAction1DidFinishTaking(Image: TBitmap);
     procedure btnPhotoLibraryClick(Sender: TObject);
+  private
+    FRawBitmap: TBitmap;
+    FPermissionReadExternalStorage: string;
+    FPermissionWriteExternalStorage: string;
+
+    procedure DisplayRationale(Sender: TObject; const APermissions: TArray<string>; const APostRationaleProc: TProc);
+    procedure LoadPicturePermissionRequestResult(Sender: TObject; const APermissions: TArray<string>; const AGrantResults: TArray<TPermissionStatus>);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
   end;
+
+var
+  CameraRollForm: TCameraRollForm;
 
 implementation
 

@@ -19,8 +19,6 @@ uses
 {$R *.res}
 
 begin
-  var AccessCameraAppForm: TAccessCameraAppForm;
-
   Application.Initialize;
   Application.CreateForm(TAccessCameraAppForm, AccessCameraAppForm);
   Application.Run;

@@ -19,8 +19,6 @@ uses
 {$R *.res}
 
 begin
-  var LocationForm: TLocationForm;
-
   Application.Initialize;
   Application.CreateForm(TLocationForm, LocationForm);
   Application.Run;

@@ -31,6 +31,7 @@ type
     imgCameraView: TImage;
     tbToolbar: TToolBar;
     lToolbarTitle: TLabel;
+
     procedure actStopExecute(Sender: TObject);
     procedure actStartExecute(Sender: TObject);
     procedure ActionListUpdate(Action: TBasicAction; var Handled: Boolean);
@@ -41,6 +42,7 @@ type
   private
     FPermissionCamera: string;
     FSavedCameraActive: Boolean;
+
     procedure DisplayCameraPreviewFrame;
     procedure ActivateCameraPermissionRequestResult(Sender: TObject; const APermissions: TArray<string>; const AGrantResults: TArray<TPermissionStatus>);
     procedure DisplayRationale(Sender: TObject; const APermissions: TArray<string>; const APostRationaleProc: TProc);
@@ -49,6 +51,9 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
   end;
+
+var
+  CameraComponentForm: TCameraComponentForm;
 
 implementation
 
