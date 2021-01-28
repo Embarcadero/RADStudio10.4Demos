@@ -10,6 +10,7 @@
 //---------------------------------------------------------------------------
 
 #include <fmx.h>
+#include <System.Permissions.hpp>
 #pragma hdrstop
 
 #include "ProxClient.h"
@@ -60,7 +61,6 @@ void __fastcall TfrmProximityForm::Connect()
 
 void __fastcall TfrmProximityForm::btnScanClick(TObject *Sender)
 {
-  EnableRSSIMonitorize(False);
   DoScan();
 }
 //---------------------------------------------------------------------------
@@ -78,7 +78,6 @@ void __fastcall TfrmProximityForm::CheckDistanceThreshold(int PathLoss)
 void __fastcall TfrmProximityForm::OnDeviceDisconnect(TObject *Sender)
 {
   FBLEDevice = NULL;
-  EnableRSSIMonitorize(False);
   DoScan(); //Restore the connection
 }
 
@@ -150,7 +149,7 @@ void __fastcall TfrmProximityForm::DoDiscoveryEndEvent(TObject *Sender, TBluetoo
 
 void __fastcall TfrmProximityForm::CheckDeviceName()
 {
-  if (FBLEDevice == NULL)
+  if (!FBLEDevice)
 	lblDevice->Text = "Device not found";
   else
 	lblDevice->Text = FBLEDevice->DeviceName;
@@ -158,7 +157,7 @@ void __fastcall TfrmProximityForm::CheckDeviceName()
 
 void __fastcall TfrmProximityForm::tmrReadRSSITimer(TObject *Sender)
 {
-  if (FBLEDevice != NULL) {
+  if (FBLEDevice) {
 	FBLEDevice->ReadRemoteRSSI();
   }
 }
@@ -189,23 +188,31 @@ void __fastcall TfrmProximityForm::RefreshData()
 void __fastcall TfrmProximityForm::DoScan()
 {
   EnableRSSIMonitorize(false);
-  lblDevice->Text = "Scanning for devices";
 
-  TBluetoothUUIDsList *LList = new TBluetoothUUIDsList;
-  try
-  {
-	TBluetoothUUID uuids[3];
-	uuids[0] = LINK_LOSS_SERVICE;
-	uuids[1] = IMMEDIATE_ALERT_SERVICE;
-	uuids[2] = TX_POWER_SERVICE;
+  PermissionsService()->RequestPermissions({ LOCATION_PERMISSION },
+    [this](const DynamicArray<String> Permissions, const DynamicArray<TPermissionStatus> GrantResults)
+    {
+      if (GrantResults.Length == 1 && GrantResults[0] == TPermissionStatus::Granted)
+      {
+        lblDevice->Text = "Scanning for devices";
 
-	LList->AddRange(uuids,3);
-	FBLEManager->StartDiscovery(1500, LList);
-  }
-  __finally
-  {
-      delete LList;
-  }
+        TBluetoothUUIDsList *LList = new TBluetoothUUIDsList;
+        try
+        {
+          TBluetoothUUID uuids[] { LINK_LOSS_SERVICE, IMMEDIATE_ALERT_SERVICE, TX_POWER_SERVICE };
+
+          LList->AddRange(uuids, 3);
+
+          FBLEManager->StartDiscovery(1500, LList);
+        }
+        __finally
+        {
+          delete LList;
+        }
+      }
+      else
+        ShowMessage("BLE scanning requires the location permission");
+    });
 }
 
 void __fastcall TfrmProximityForm::EnableRSSIMonitorize(bool Enabled)

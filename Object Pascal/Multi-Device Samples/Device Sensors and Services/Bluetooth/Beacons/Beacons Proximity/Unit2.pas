@@ -84,6 +84,8 @@ type
     procedure SpinBox1Change(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure sbMajorChange(Sender: TObject);
+  private const
+    LOCATION_PERMISSION = 'android.permission.ACCESS_FINE_LOCATION';
   private
     FBeaconManager: TBeaconManager;
     FLock: TObject;
@@ -114,6 +116,8 @@ implementation
 
 {$R *.fmx}
 
+uses
+  System.Permissions;
 
 type
   TDummyInt = class
@@ -225,10 +229,20 @@ end;
 procedure TForm2.Button1Click(Sender: TObject);
 begin
   CheckManager;
-  if not FBeaconManager.StartScan then
-    ShowMessage('Cannot start to scan beacons')
-  else
-    Timer1.Enabled := True;
+
+  PermissionsService.RequestPermissions([LOCATION_PERMISSION],
+    procedure(const Permissions: TArray<string>; const GrantResults: TArray<TPermissionStatus>)
+    begin
+      if (Length(GrantResults) = 1) and (GrantResults[0] = TPermissionStatus.Granted) then
+      begin
+        if not FBeaconManager.StartScan then
+          ShowMessage('Cannot start to scan beacons')
+        else
+          Timer1.Enabled := True;
+      end
+      else
+        ShowMessage('Beacon scanning requires the location permission');
+    end);
 end;
 
 procedure TForm2.Button2Click(Sender: TObject);

@@ -102,6 +102,8 @@ __published:	// IDE-managed Components
 	void __fastcall sbMajorChange(TObject *Sender);
 	void __fastcall ListBox1Click(TObject *Sender);
 private:	// User declarations
+	const String LOCATION_PERMISSION = "android.permission.ACCESS_FINE_LOCATION";
+
 	TBeaconManager *FBeaconManager;
 	TObject *FLock;
 	TBeaconList FCurrentBeaconList;

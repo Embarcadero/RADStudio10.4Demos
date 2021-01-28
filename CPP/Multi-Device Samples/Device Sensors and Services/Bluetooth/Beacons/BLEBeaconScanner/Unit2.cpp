@@ -53,7 +53,7 @@ void __fastcall TForm2::Button1Click(TObject *Sender)
 			},
 			[](const DynamicArray<String> APermissions, const _di_TProc APostRationaleProc)
 			{
-				TDialogService::ShowMessage(L"Please grant the location permission in order to be discover nearby Bluetooth devices",
+				TDialogService::ShowMessage(L"Please grant the location permission to discover nearby BLE devices",
 					[APostRationaleProc](const TModalResult AResult)
 					{
 						APostRationaleProc->Invoke();

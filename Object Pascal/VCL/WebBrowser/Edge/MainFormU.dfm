@@ -76,44 +76,35 @@ object frmMain: TfrmMain
       OnClick = tbGoClick
     end
   end
-  object pnlWebViewHost: TPanel
+  object EdgeBrowser: TEdgeBrowser
     Left = 0
     Top = 29
     Width = 633
     Height = 262
     Align = alClient
-    BevelOuter = bvNone
     TabOrder = 1
-    object EdgeBrowser: TEdgeBrowser
-      Left = 0
-      Top = 0
-      Width = 633
-      Height = 262
-      Align = alClient
-      TabOrder = 0
-      TabStop = True
-      OnCapturePreviewCompleted = EdgeBrowserCapturePreviewCompleted
-      OnContainsFullScreenElementChanged = EdgeBrowserContainsFullScreenElementChanged
-      OnContentLoading = EdgeBrowserContentLoading
-      OnCreateWebViewCompleted = EdgeBrowserCreateWebViewCompleted
-      OnDevToolsProtocolEventReceived = EdgeBrowserDevToolsProtocolEventReceived
-      OnDocumentTitleChanged = EdgeBrowserDocumentTitleChanged
-      OnExecuteScript = EdgeBrowserExecuteScript
-      OnFrameNavigationStarting = EdgeBrowserFrameNavigationStarting
-      OnFrameNavigationCompleted = EdgeBrowserFrameNavigationCompleted
-      OnHistoryChanged = EdgeBrowserHistoryChanged
-      OnNavigationStarting = EdgeBrowserNavigationStarting
-      OnNavigationCompleted = EdgeBrowserNavigationCompleted
-      OnNewWindowRequested = EdgeBrowserNewWindowRequested
-      OnPermissionRequested = EdgeBrowserPermissionRequested
-      OnProcessFailed = EdgeBrowserProcessFailed
-      OnScriptDialogOpening = EdgeBrowserScriptDialogOpening
-      OnSourceChanged = EdgeBrowserSourceChanged
-      OnWebMessageReceived = EdgeBrowserWebMessageReceived
-      OnWebResourceRequested = EdgeBrowserWebResourceRequested
-      OnWindowCloseRequested = EdgeBrowserWindowCloseRequested
-      OnZoomFactorChanged = EdgeBrowserZoomFactorChanged
-    end
+    TabStop = True
+    OnCapturePreviewCompleted = EdgeBrowserCapturePreviewCompleted
+    OnContainsFullScreenElementChanged = EdgeBrowserContainsFullScreenElementChanged
+    OnContentLoading = EdgeBrowserContentLoading
+    OnCreateWebViewCompleted = EdgeBrowserCreateWebViewCompleted
+    OnDevToolsProtocolEventReceived = EdgeBrowserDevToolsProtocolEventReceived
+    OnDocumentTitleChanged = EdgeBrowserDocumentTitleChanged
+    OnExecuteScript = EdgeBrowserExecuteScript
+    OnFrameNavigationStarting = EdgeBrowserFrameNavigationStarting
+    OnFrameNavigationCompleted = EdgeBrowserFrameNavigationCompleted
+    OnHistoryChanged = EdgeBrowserHistoryChanged
+    OnNavigationStarting = EdgeBrowserNavigationStarting
+    OnNavigationCompleted = EdgeBrowserNavigationCompleted
+    OnNewWindowRequested = EdgeBrowserNewWindowRequested
+    OnPermissionRequested = EdgeBrowserPermissionRequested
+    OnProcessFailed = EdgeBrowserProcessFailed
+    OnScriptDialogOpening = EdgeBrowserScriptDialogOpening
+    OnSourceChanged = EdgeBrowserSourceChanged
+    OnWebMessageReceived = EdgeBrowserWebMessageReceived
+    OnWebResourceRequested = EdgeBrowserWebResourceRequested
+    OnWindowCloseRequested = EdgeBrowserWindowCloseRequested
+    OnZoomFactorChanged = EdgeBrowserZoomFactorChanged
   end
   object MainMenu: TMainMenu
     Left = 272
@@ -155,6 +146,10 @@ object frmMain: TfrmMain
       object mniWindowCreateWebView: TMenuItem
         Caption = 'Create WebView'
         OnClick = mniWindowCreateWebViewClick
+      end
+      object mniWindowCreateWebViewFixedVersion: TMenuItem
+        Caption = 'Create WebView from Fixed Version distribution'
+        OnClick = mniWindowCreateWebViewFixedVersionClick
       end
       object mniWindowCloseWindow: TMenuItem
         Caption = 'Close Window'
@@ -262,11 +257,19 @@ object frmMain: TfrmMain
       end
     end
   end
-  object dlgSaveFile: TSaveDialog
+  object dlgSaveScreenshot: TSaveDialog
     FileName = 'WebView2_Screenshot.png'
     Filter = 'PNG File|*.png'
     Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
-    Left = 384
-    Top = 85
+    Left = 368
+    Top = 77
+  end
+  object dlgLocateWebView2Executable: TOpenDialog
+    DefaultExt = '*.exe'
+    FileName = 'msedgewebview2.exe'
+    Options = [ofHideReadOnly, ofPathMustExist, ofFileMustExist, ofShareAware, ofEnableSizing]
+    Title = 'Locate msedgewebview2.exe in a Fixed Distribution Folder'
+    Left = 488
+    Top = 88
   end
 end

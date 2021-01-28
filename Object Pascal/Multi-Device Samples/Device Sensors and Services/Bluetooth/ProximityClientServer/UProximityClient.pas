@@ -16,7 +16,8 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, System.Math,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls, FMX.Layouts, FMX.Memo, System.Bluetooth,
-  FMX.Controls.Presentation, FMX.Edit, FMX.ListBox, FMX.ScrollBox;
+  FMX.Controls.Presentation, FMX.Edit, FMX.ListBox, FMX.ScrollBox,
+  FMX.Memo.Types;
 
 type
 
@@ -50,6 +51,8 @@ type
     procedure btnScanClick(Sender: TObject);
     procedure tmrReadRSSITimer(Sender: TObject);
     procedure FormShow(Sender: TObject);
+  private const
+    LOCATION_PERMISSION = 'android.permission.ACCESS_FINE_LOCATION';
   private
     { Private declarations }
     FBLEManager: TBluetoothLEManager;
@@ -105,6 +108,9 @@ implementation
 
 {$R *.fmx}
 
+uses
+  System.Permissions;
+
 { TfrmProximityForm }
 
 procedure TfrmProximityForm.Connect;
@@ -120,7 +126,6 @@ end;
 
 procedure TfrmProximityForm.btnScanClick(Sender: TObject);
 begin
-  EnableRSSIMonitorize(False);
   DoScan;
 end;
 
@@ -239,16 +244,28 @@ var
   LList: TBluetoothUUIDsList;
 begin
   EnableRSSIMonitorize(False);
-  lblDevice.Text := 'Scanning for devices';
-  LList := TBluetoothUUIDsList.Create;
-  try
-    LList.Add(LINK_LOSS_SERVICE);
-    LList.Add(IMMEDIATE_ALERT_SERVICE);
-    LList.Add(TX_POWER_SERVICE);
-    FBLEManager.StartDiscovery(1500, LList, False);
-  finally
-    LList.Free;
-  end;
+
+  PermissionsService.RequestPermissions([LOCATION_PERMISSION],
+    procedure(const Permissions: TArray<string>; const GrantResults: TArray<TPermissionStatus>)
+    begin
+      if (Length(GrantResults) = 1) and (GrantResults[0] = TPermissionStatus.Granted) then
+      begin
+        lblDevice.Text := 'Scanning for devices';
+
+        LList := TBluetoothUUIDsList.Create;
+        try
+          LList.Add(LINK_LOSS_SERVICE);
+          LList.Add(IMMEDIATE_ALERT_SERVICE);
+          LList.Add(TX_POWER_SERVICE);
+
+          FBLEManager.StartDiscovery(1500, LList, False);
+        finally
+          LList.Free;
+        end;
+      end
+      else
+        ShowMessage('BLE scanning requires the location permission');
+    end);
 end;
 
 procedure TfrmProximityForm.EnableRSSIMonitorize(Enabled: boolean);
@@ -323,7 +340,6 @@ end;
 procedure TfrmProximityForm.OnDeviceDisconnect(Sender: TObject);
 begin
   FBLEDevice := nil;
-  EnableRSSIMonitorize(False);
   DoScan; //Restore the connection
 end;
 

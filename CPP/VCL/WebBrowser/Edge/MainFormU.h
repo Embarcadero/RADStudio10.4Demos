@@ -19,7 +19,6 @@
 class TfrmMain : public TForm
 {
 __published:    // IDE-managed Components
-    TPanel *pnlWebViewHost;
     TToolBar *tbToolbar;
     TToolButton *tbBack;
     TToolButton *tbForward;
@@ -37,6 +36,7 @@ __published:    // IDE-managed Components
     TMenuItem *mniWindow;
     TMenuItem *mniWindowCreateNewWindow;
     TMenuItem *mniWindowCreateWebView;
+    TMenuItem *mniWindowCreateWebViewFixedVersion;
     TMenuItem *mniWindowCloseWebView;
     TMenuItem *mniWindowCloseWindow;
     TMenuItem *mniView;
@@ -64,9 +64,10 @@ __published:    // IDE-managed Components
     TMenuItem *mniSettingsJavaScriptDialogs;
     TMenuItem *mniSettingsJavaScriptDialogsCustom;
     TMenuItem *mniSettingsJavaScriptDialogsDefault;
-    TSaveDialog *dlgSaveFile;
+	TSaveDialog *dlgSaveScreenshot;
     TMenuItem *mniScriptInjectScript;
     TEdgeBrowser *EdgeBrowser;
+	TOpenDialog *dlgLocateWebView2Executable;
     void __fastcall FormResize(TObject *Sender);
     void __fastcall tbBackClick(TObject *Sender);
     void __fastcall tbForwardClick(TObject *Sender);
@@ -123,6 +124,7 @@ __published:    // IDE-managed Components
     void __fastcall EdgeBrowserWindowCloseRequested(TObject *Sender);
     void __fastcall EdgeBrowserZoomFactorChanged(TCustomEdgeBrowser* Sender, double AZoom);
     void __fastcall EdgeBrowserFrameNavigationCompleted(TCustomEdgeBrowser *Sender, bool IsSuccess, TOleEnum WebErrorStatus);
+    void __fastcall mniWindowCreateWebViewFixedVersionClick(TObject *Sender);
 
 private:    // User declarations
     bool FAllowFullScreen;

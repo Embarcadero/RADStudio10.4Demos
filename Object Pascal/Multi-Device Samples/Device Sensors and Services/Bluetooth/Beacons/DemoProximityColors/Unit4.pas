@@ -27,10 +27,13 @@ type
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+  private const
+    LOCATION_PERMISSION = 'android.permission.ACCESS_FINE_LOCATION';
   private
     FBeaconManager: TBeaconManager;
     FisScanning: Boolean;
     procedure BeaconProximity(const Sender: TObject; const ABeacon: IBeacon; Proximity: TBeaconProximity);
+    procedure StartScan;
   end;
 
 var
@@ -39,6 +42,9 @@ var
 implementation
 
 {$R *.fmx}
+
+uses
+  System.Permissions;
 
 procedure TForm4.BeaconProximity(const Sender: TObject; const ABeacon: IBeacon; Proximity: TBeaconProximity);
 begin
@@ -53,6 +59,25 @@ begin
       Company.Text := 'Estimote';
       BeaconType.Text := 'iBeacon';
       MajorMinor.Text := 'Major: '+ABeacon.Major.ToString+' Minor: '+ABeacon.Minor.ToString;
+    end);
+end;
+
+procedure TForm4.StartScan;
+begin
+  PermissionsService.RequestPermissions([LOCATION_PERMISSION],
+    procedure(const Permissions: TArray<string>; const GrantResults: TArray<TPermissionStatus>)
+    begin
+      if (Length(GrantResults) = 1) and (GrantResults[0] = TPermissionStatus.Granted) then
+      begin
+        FBeaconManager.StartScan();
+        Button1.Text := 'STOP';
+        FisScanning := True;
+      end
+      else
+      begin
+        Button1.Text := 'START';
+        ShowMessage('Beacon scanning requires the location permission');
+      end;
     end);
 end;
 
@@ -81,14 +106,15 @@ begin
     FBeaconManager := TBeaconManager.GetBeaconManager(TBeaconScanMode.Standard);
     FBeaconManager.OnBeaconProximity := BeaconProximity;
   end;
-  GUID := StringToGUID('{B9407F30-F5F8-466E-AFF9-25556B57FE6D}'); //Estimote
-  FBeaconManager.RegisterBeacon(GUID);
 
+  GUID := StringToGUID('{B9407F30-F5F8-466E-AFF9-25556B57FE6D}'); //Estimote
+  
+  FBeaconManager.RegisterBeacon(GUID);
   FBeaconManager.CalcMode := TBeaconCalcMode.Raw;
   FBeaconManager.ScanningTime := 109;
   FBeaconManager.ScanningSleepingTime := 15;
-  FBeaconManager.StartScan;
-  FisScanning := True;
+
+  StartScan;
 end;
 
 procedure TForm4.FormDestroy(Sender: TObject);

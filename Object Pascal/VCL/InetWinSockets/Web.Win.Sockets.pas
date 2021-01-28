@@ -423,12 +423,6 @@ begin
   FOnError := nil;
   FOnReceive := nil;
   FOnSend := nil;
-{$IFDEF MSWINDOWS}
-  RPR;
-{$ENDIF}
-{$IFDEF LINUX}
-  RPR;
-{$ENDIF}
 end;
 
 destructor TBaseSocket.Destroy;

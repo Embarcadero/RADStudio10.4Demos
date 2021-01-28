@@ -10,6 +10,7 @@
 //---------------------------------------------------------------------------
 
 #include <fmx.h>
+#include <System.Permissions.hpp>
 #pragma hdrstop
 
 #include "UHeartRateForm.h"
@@ -304,9 +305,19 @@ void __fastcall TfrmHeartMonitor::DoScan(void) {
 	lblDevice->Text = "";
 	lblBodyLocation->Text = "";
 	lblContactStatus->Text = "";
-	GUID Services[1];
-	Services[0] = HRSERVICE;
-	BluetoothLE1->DiscoverDevices(2500, &Services[0], 0);
+
+	PermissionsService()->RequestPermissions({ LOCATION_PERMISSION },
+		[this](const DynamicArray<String> Permissions, const DynamicArray<TPermissionStatus> GrantResults)
+		{
+			if (GrantResults.Length == 1 && GrantResults[0] == TPermissionStatus::Granted)
+			{
+				GUID Services[] { HRSERVICE };
+
+				BluetoothLE1->DiscoverDevices(2500, &Services[0], 0);
+			}
+			else
+				ShowMessage("BLE scanning requires the location permission");
+		});
 }
 
 //---------------------------------------------------------------------------

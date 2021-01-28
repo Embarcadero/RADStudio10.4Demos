@@ -20,8 +20,8 @@ type
     tbCancel: TToolButton;
     edtAddress: TEdit;
     tbGo: TToolButton;
-    pnlWebViewHost: TPanel;
-    dlgSaveFile: TSaveDialog;
+    dlgSaveScreenshot: TSaveDialog;
+    dlgLocateWebView2Executable: TOpenDialog;
     mniView: TMenuItem;
     mniViewWebViewZoom: TMenuItem;
     mniViewWebViewZoom50Percent: TMenuItem;
@@ -50,6 +50,7 @@ type
     mniWindow: TMenuItem;
     mniWindowCloseWebView: TMenuItem;
     mniWindowCreateWebView: TMenuItem;
+    mniWindowCreateWebViewFixedVersion: TMenuItem;
     mniWindowCreateNewWindow: TMenuItem;
     mniWindowCloseWindow: TMenuItem;
     mniScript: TMenuItem;
@@ -115,6 +116,7 @@ type
     procedure EdgeBrowserZoomFactorChanged(Sender: TCustomEdgeBrowser; AZoomFactor: Double);
     procedure EdgeBrowserFrameNavigationCompleted(Sender: TCustomEdgeBrowser; IsSuccess: Boolean;
       WebErrorStatus: TOleEnum);
+    procedure mniWindowCreateWebViewFixedVersionClick(Sender: TObject);
   private
     { Private declarations }
     FAllowFullScreen: Boolean;
@@ -131,7 +133,7 @@ var
 implementation
 
 uses
-  IdURI, System.Math, System.StrUtils;
+  IdURI, System.Math, System.StrUtils, System.Win.ComObj, System.IOUtils;
 
 {$R *.dfm}
 
@@ -143,10 +145,15 @@ var
 
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
-  EdgeBrowser.Navigate('http://bing.com');
   FAllowFullScreen := True;
   FBlockImages := False;
   HintWnd := THintWindow.Create(Self);
+  // Set a custom user data (cache) folder
+  EdgeBrowser.UserDataFolder := TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'CustomCache');
+  // Note: if you wish you can call EdgeBrowser.CreateWebView here
+  // and initiate navigation with Sender.Navigate('http://bing.com') in the
+  // OnCreateWebViewCompleted handler, TfrmMain.EdgeBrowserCreateWebViewCompleted
+  EdgeBrowser.Navigate('http://bing.com');
 end;
 
 procedure TfrmMain.FormResize(Sender: TObject);
@@ -156,8 +163,8 @@ end;
 
 procedure TfrmMain.mniFileSaveScreenShotClick(Sender: TObject);
 begin
-  if dlgSaveFile.Execute then
-    EdgeBrowser.CapturePreview(dlgSaveFile.FileName)
+  if dlgSaveScreenshot.Execute then
+    EdgeBrowser.CapturePreview(dlgSaveScreenshot.FileName)
 end;
 
 procedure TfrmMain.mniFileGetDocumentTitleClick(Sender: TObject);
@@ -347,15 +354,25 @@ end;
 procedure TfrmMain.mniWindowCreateNewWindowClick(Sender: TObject);
 begin
   var Form := TfrmMain.Create(Application);
-  // Bypass the default behaviour of any form being kept above the main form like a tool window
+  // Bypass the default behaviour of any form being kept above the main form like a tool window.
+  // However by so doing we lose the form if it gets minimised, so stop that possibility.
   SetWindowLongPtr(Form.Handle, GWLP_HWNDPARENT, Application.Handle);
+  Form.BorderIcons := Form.BorderIcons - [biMinimize];
   Form.Show
 end;
 
 procedure TfrmMain.mniWindowCreateWebViewClick(Sender: TObject);
 begin
-  if not EdgeBrowser.WebViewCreated then
-    EdgeBrowser.CreateWebView
+  mniWindowCloseWebView.Click;
+  EdgeBrowser.CreateWebView
+end;
+
+procedure TfrmMain.mniWindowCreateWebViewFixedVersionClick(Sender: TObject);
+begin
+  mniWindowCloseWebView.Click;
+  if dlgLocateWebView2Executable.Execute then
+    EdgeBrowser.BrowserExecutableFolder := TPath.GetDirectoryName(dlgLocateWebView2Executable.FileName);
+  EdgeBrowser.CreateWebView
 end;
 
 procedure TfrmMain.mniWindowCloseWindowClick(Sender: TObject);
@@ -491,9 +508,16 @@ begin
       Application.MessageBox('Could not find Edge installation. ' +
         'Do you have a version installed that''s compatible with this WebView2 SDK version?',
         'Edge initialisation error', MB_OK or MB_ICONERROR)
+    else if AResult = E_FAIL then
+      Application.MessageBox('Failed to initialise Edge loader', 'Edge initialisation error', MB_OK or MB_ICONERROR)
     else
-      Application.MessageBox('Failed to initialise Edge browser control',
-        'Edge initialisation error', MB_OK or MB_ICONERROR)
+      try
+        OleCheck(AResult)
+      except
+        on E: Exception do
+          Application.MessageBox(PChar(Format('Failed to initialise Edge: %s', [E.Message])),
+            'Edge initialisation error', MB_OK or MB_ICONERROR)
+      end;
   end;
 end;
 

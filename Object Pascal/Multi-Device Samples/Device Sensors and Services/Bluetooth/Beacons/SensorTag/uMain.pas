@@ -48,8 +48,11 @@ type
     procedure BluetoothLE1CharacteristicRead(const Sender: TObject;
       const ACharacteristic: TBluetoothGattCharacteristic;
       AGattStatus: TBluetoothGattStatus);
+  private const
+    LOCATION_PERMISSION = 'android.permission.ACCESS_FINE_LOCATION';
   private
     FCurrentDevice: TBluetoothLEDevice;
+    procedure RequestLocationPermission(const CompletionHandler: TProc);
     { Private declarations }
   public
     { Public declarations }
@@ -62,8 +65,8 @@ implementation
 
 {$R *.fmx}
 
-Uses
-  System.Math;
+uses
+  System.Math, System.Permissions;
 
 
 {
@@ -228,7 +231,11 @@ end;
 
 procedure TFrMainform.Button1Click(Sender: TObject);
 begin
-  BluetoothLE1.DiscoverDevices(4000);
+  RequestLocationPermission(
+    procedure
+    begin
+      BluetoothLE1.DiscoverDevices(4000);
+    end);
 end;
 
 procedure TFrMainform.Button2Click(Sender: TObject);
@@ -236,10 +243,30 @@ begin
   if ListBox1.ItemIndex >= 0 then
   begin
     FCurrentDevice := ListBox1.Items.Objects[ListBox1.ItemIndex] as TBluetoothLEDevice;
-    BluetoothLE1.DiscoverServices(FCurrentDevice);
+
+    RequestLocationPermission(
+      procedure
+      begin
+        BluetoothLE1.DiscoverServices(FCurrentDevice);
+      end);
   end
   else
     ShowMessage('Please select a device from the list');
+end;
+
+procedure TFrMainform.RequestLocationPermission(const CompletionHandler: TProc);
+begin
+  if PermissionsService.IsPermissionGranted(LOCATION_PERMISSION) then
+    CompletionHandler
+  else
+    PermissionsService.RequestPermissions([LOCATION_PERMISSION],
+      procedure(const Permissions: TArray<string>; const GrantResults: TArray<TPermissionStatus>)
+      begin
+        if (Length(GrantResults) = 1) and (GrantResults[0] = TPermissionStatus.Granted) then
+          CompletionHandler
+        else
+          ShowMessage('BLE scanning requires the location permission');
+      end);
 end;
 
 end.

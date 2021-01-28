@@ -49,6 +49,8 @@ type
     procedure Button2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
+  private const
+    LOCATION_PERMISSION = 'android.permission.ACCESS_FINE_LOCATION';
   private
     { Private declarations }
     DevicesAdvDataFiltered: TBluetoothLEDeviceList;
@@ -57,7 +59,7 @@ type
     FForceConnectDevices: Boolean;
     StringRawGuid128bStandard: string;
     function AddDeviceToList(const ADevice: TBluetoothLEDevice; const ADeviceList: TBluetoothLEDeviceList): TBluetoothLEDevice;
-    procedure PrintLine();
+    procedure PrintLine;
   public
     { Public declarations }
     property ForceConnectDevices: Boolean read FForceConnectDevices write FForceConnectDevices;
@@ -72,6 +74,9 @@ type
 implementation
 
 {$R *.fmx}
+
+uses
+  System.Permissions;
 
 procedure BinToHex(Buffer: PByte; Text: PWideChar; BufSize: Integer);
 const
@@ -148,7 +153,7 @@ procedure TForm6.BluetoothLE1DiscoverLEDevice(const Sender: TObject;
   const ADevice: TBluetoothLEDevice; Rssi: Integer;
   const ScanResponse: TScanResponse);
 
-  function ChekBLEServices(const AData: TBytes; AServicesLengthType: TServicesLengthType): Boolean;
+  function CheckBLEServices(const AData: TBytes; AServicesLengthType: TServicesLengthType): Boolean;
   var
     GUID: string;
     LDataLength: Integer;
@@ -211,42 +216,42 @@ procedure TForm6.BluetoothLE1DiscoverLEDevice(const Sender: TObject;
     if ScanResponse.ContainsKey(TScanResponseKey.IncompleteList16SCUUID) then
     begin
       Result := True;
-      if ChekBLEServices(ScanResponse.Items[TScanResponseKey.IncompleteList16SCUUID], TServicesLengthType.S16B) then
+      if CheckBLEServices(ScanResponse.Items[TScanResponseKey.IncompleteList16SCUUID], TServicesLengthType.S16B) then
         Exit(True);
     end;
 
     if ScanResponse.ContainsKey(TScanResponseKey.CompleteList16SCUUID) then
     begin
       Result := True;
-      if ChekBLEServices(ScanResponse.Items[TScanResponseKey.CompleteList16SCUUID], TServicesLengthType.S16B) then
+      if CheckBLEServices(ScanResponse.Items[TScanResponseKey.CompleteList16SCUUID], TServicesLengthType.S16B) then
         Exit(True);
     end;
 
     if ScanResponse.ContainsKey(TScanResponseKey.IncompleteList32SCUUID) then
     begin
       Result := True;
-      if ChekBLEServices(ScanResponse.Items[TScanResponseKey.IncompleteList32SCUUID], TServicesLengthType.S32B) then
+      if CheckBLEServices(ScanResponse.Items[TScanResponseKey.IncompleteList32SCUUID], TServicesLengthType.S32B) then
         Exit(True);
     end;
 
     if ScanResponse.ContainsKey(TScanResponseKey.CompleteList32SCUUID) then
     begin
       Result := True;
-      if ChekBLEServices(ScanResponse.Items[TScanResponseKey.CompleteList32SCUUID], TServicesLengthType.S32B) then
+      if CheckBLEServices(ScanResponse.Items[TScanResponseKey.CompleteList32SCUUID], TServicesLengthType.S32B) then
         Exit(True);
     end;
 
     if ScanResponse.ContainsKey(TScanResponseKey.IncompleteList128SCUUID) then
     begin
       Result := True;
-      if ChekBLEServices(ScanResponse.Items[TScanResponseKey.IncompleteList128SCUUID], TServicesLengthType.S128B) then
+      if CheckBLEServices(ScanResponse.Items[TScanResponseKey.IncompleteList128SCUUID], TServicesLengthType.S128B) then
         Exit(True);
     end;
 
     if ScanResponse.ContainsKey(TScanResponseKey.CompleteList128SCUUID) then
     begin
       Result := True;
-      if ChekBLEServices(ScanResponse.Items[TScanResponseKey.CompleteList128SCUUID], TServicesLengthType.S128B) then
+      if CheckBLEServices(ScanResponse.Items[TScanResponseKey.CompleteList128SCUUID], TServicesLengthType.S128B) then
         Exit(True);
     end;
   end;
@@ -318,7 +323,15 @@ begin
 
   ForceConnectDevices := CheckBox1.IsChecked;
   Listbox1.Clear;
-  BluetoothLE1.DiscoverDevices(ScanningTime);
+
+  PermissionsService.RequestPermissions([LOCATION_PERMISSION],
+    procedure(const Permissions: TArray<string>; const GrantResults: TArray<TPermissionStatus>)
+    begin
+      if (Length(GrantResults) = 1) and (GrantResults[0] = TPermissionStatus.Granted) then
+        BluetoothLE1.DiscoverDevices(ScanningTime)
+      else
+        ShowMessage('BLE scanning requires the location permission');
+    end);
 end;
 
 procedure TForm6.Button2Click(Sender: TObject);

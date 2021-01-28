@@ -13,6 +13,7 @@
 #include <System.Beacon.hpp>
 #include <System.SysUtils.hpp>
 #include <System.Math.hpp>
+#include <System.Permissions.hpp>
 #include <FMX.DialogService.hpp>
 #pragma hdrstop
 
@@ -90,7 +91,7 @@ void __fastcall TForm1::AddRegion()
 
 void __fastcall TForm1::CheckManager()
 {
-  if (FBeaconManager == NULL)
+  if (!FBeaconManager)
   {
     FBeaconManager = TBeaconManager::GetBeaconManager((TBeaconScanMode)ComboBox1->ItemIndex);
     FBeaconManager->OnBeaconEnter = BeaconEnter;
@@ -223,18 +224,27 @@ void __fastcall TForm1::StringToRegion(String AString, String &Guid,int &Major, 
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
   CheckManager();
-  if (FBeaconManager->StartScan())
-    Timer1->Enabled = True;
 
-  else
-    ShowMessage("Cannot start to scan beacons");
+  PermissionsService()->RequestPermissions({ LOCATION_PERMISSION },
+    [this](const DynamicArray<String> APermissions, const DynamicArray<TPermissionStatus> AGrantResults)
+    {
+      if (AGrantResults.Length == 1 && AGrantResults[0] == TPermissionStatus::Granted)
+      {
+        if (FBeaconManager->StartScan())
+          Timer1->Enabled = True;
+        else
+          ShowMessage("Cannot start to scan beacons");
+      }
+      else
+        ShowMessage("Beacon scanning requires the location permission");
+    });
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::btnStopClick(TObject *Sender)
 {
   CheckManager();
-  if (FBeaconManager->StopScan() == False)
+  if (!FBeaconManager->StopScan())
     ShowMessage("Cannot stop to scan beacons");
   Timer1->Enabled = False;
 }

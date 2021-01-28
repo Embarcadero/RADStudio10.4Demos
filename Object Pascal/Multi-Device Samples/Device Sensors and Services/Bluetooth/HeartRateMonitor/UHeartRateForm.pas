@@ -17,7 +17,8 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Ani, FMX.StdCtrls, System.Bluetooth, FMX.Layouts,
   FMX.Memo, FMX.Controls.Presentation, FMX.Edit, FMX.Objects, IPPeerClient, IPPeerServer,
-  System.Tether.Manager, System.Bluetooth.Components, FMX.ListBox, FMX.ScrollBox;
+  System.Tether.Manager, System.Bluetooth.Components, FMX.ListBox, FMX.ScrollBox,
+  FMX.Memo.Types;
 
 type
 
@@ -62,6 +63,8 @@ type
       AGattStatus: TBluetoothGattStatus);
     procedure BluetoothLE1CharacteristicRead(const Sender: TObject; const ACharacteristic: TBluetoothGattCharacteristic;
       AGattStatus: TBluetoothGattStatus);
+  private const
+    LOCATION_PERMISSION = 'android.permission.ACCESS_FINE_LOCATION';
   private
     { Private declarations }
     //FBluetoothLE: TBluetoothLE;
@@ -116,6 +119,9 @@ var
 implementation
 
 {$R *.fmx}
+
+uses
+  System.Permissions;
 
 function BytesToString(const B: TBytes): string;
 var
@@ -362,7 +368,15 @@ begin
   lblDevice.Text := '';
   lblBodyLocation.Text := '';
   lblContactStatus.Text := '';
-  BluetoothLE1.DiscoverDevices(2500, [HRSERVICE]);
+
+  PermissionsService.RequestPermissions([LOCATION_PERMISSION],
+    procedure(const Permissions: TArray<string>; const GrantResults: TArray<TPermissionStatus>)
+    begin
+      if (Length(GrantResults) = 1) and (GrantResults[0] = TPermissionStatus.Granted) then
+        BluetoothLE1.DiscoverDevices(2500, [HRSERVICE])
+      else
+        ShowMessage('BLE scanning requires the location permission');
+      end);
 end;
 
 end.

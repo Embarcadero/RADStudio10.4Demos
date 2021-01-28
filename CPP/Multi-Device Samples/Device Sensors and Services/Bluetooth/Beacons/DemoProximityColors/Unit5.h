@@ -42,9 +42,12 @@ __published:	// IDE-managed Components
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 private:	// User declarations
+	const String LOCATION_PERMISSION = "android.permission.ACCESS_FINE_LOCATION";
+
 	System::Boolean FisScanning;
 	TBeaconManager *FBeaconManager;
 	void __fastcall BeaconProximity(System::TObject* const Sender, _di_IBeacon const ABeacon, TBeaconProximity Proximity);
+	void StartScan();
 public:		// User declarations
 	__fastcall TForm5(TComponent* Owner);
 

@@ -93,10 +93,6 @@ object frmBrowser: TfrmBrowser
     OnDocumentComplete = WebBrowserDocumentComplete
     OnNavigateError = WebBrowserNavigateError
     OnNewWindow3 = WebBrowserNewWindow3
-    ExplicitLeft = 120
-    ExplicitTop = 56
-    ExplicitWidth = 375
-    ExplicitHeight = 188
     ControlData = {
       4C000000813400006A1500000000000000000000000000000000000000000000
       000000004C000000000000000000000001000000E0D057007335CF11AE690800

@@ -1,4 +1,3 @@
-
 #include <vcl.h>
 #pragma hdrstop
 
@@ -6,6 +5,7 @@
 #include <windows.h>
 #include <IdURI.hpp>
 #include <System.StrUtils.hpp>
+#include <System.IOUtils.hpp>
 #include <memory>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -17,10 +17,15 @@ THintWindow *HintWnd;
 __fastcall TfrmMain::TfrmMain(TComponent* Owner)
     : TForm(Owner)
 {
-    EdgeBrowser->Navigate(L"http://bing.com");
     FAllowFullScreen = true;
     FBlockImages = false;
     HintWnd = new THintWindow(this);
+    // Set a custom user data (cache) folder
+    EdgeBrowser->UserDataFolder = TPath::Combine(TPath::GetDirectoryName(Application->ExeName), "CustomCache");
+    // Note: if you wish you can call EdgeBrowser->CreateWebView() here
+    // and initiate navigation with Sender->Navigate(L"http://bing.com") in the
+    // OnCreateWebViewCompleted handler, TfrmMain::EdgeBrowserCreateWebViewCompleted
+    EdgeBrowser->Navigate(L"http://bing.com");
 }
 //---------------------------------------------------------------------------
 
@@ -76,8 +81,8 @@ void __fastcall TfrmMain::tbGoClick(TObject *Sender)
 
 void __fastcall TfrmMain::mniFileSaveScreenShotClick(TObject *Sender)
 {
-    if (dlgSaveFile->Execute())
-        EdgeBrowser->CapturePreview(dlgSaveFile->FileName);
+    if (dlgSaveScreenshot->Execute())
+        EdgeBrowser->CapturePreview(dlgSaveScreenshot->FileName);
 }
 //---------------------------------------------------------------------------
 
@@ -129,8 +134,17 @@ void __fastcall TfrmMain::mniWindowCloseWebViewClick(TObject *Sender)
 
 void __fastcall TfrmMain::mniWindowCreateWebViewClick(TObject *Sender)
 {
-    if (!EdgeBrowser->WebViewCreated)
-        EdgeBrowser->CreateWebView();
+    mniWindowCloseWebView->Click();
+    EdgeBrowser->CreateWebView();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::mniWindowCreateWebViewFixedVersionClick(TObject *Sender)
+{
+    mniWindowCloseWebView->Click();
+    if (dlgLocateWebView2Executable->Execute())
+        EdgeBrowser->BrowserExecutableFolder = TPath::GetDirectoryName(dlgLocateWebView2Executable->FileName);
+    EdgeBrowser->CreateWebView();
 }
 //---------------------------------------------------------------------------
 
@@ -143,8 +157,10 @@ void __fastcall TfrmMain::mniWindowCloseWindowClick(TObject *Sender)
 void __fastcall TfrmMain::mniWindowCreateNewWindowClick(TObject *Sender)
 {
     TForm *Form = new TfrmMain(Application);
-    // Bypass the default behaviour of any form being kept above the main form like a tool window
+    // Bypass the default behaviour of any form being kept above the main form like a tool window.
+    // However by so doing we lose the form if it gets minimised, so stop that possibility.
     SetWindowLongPtr(Form->Handle, GWLP_HWNDPARENT, (long)(Application->Handle));
+    Form->BorderIcons = TBorderIcons(Form->BorderIcons) >> biMinimize;
     Form->Show();
 }
 //---------------------------------------------------------------------------
@@ -398,9 +414,22 @@ void __fastcall TfrmMain::EdgeBrowserCreateWebViewCompleted(TCustomEdgeBrowser* 
             Application->MessageBox(L"Could not find Edge installation. "
                 "Do you have a version installed that''s compatible with this WebView2 SDK version?",
                 L"Edge initialisation error", MB_OK | MB_ICONERROR);
-        else
-            Application->MessageBox(L"Failed to initialise Edge browser control",
+        else if (AResult == E_FAIL)
+            Application->MessageBox(L"Failed to initialise Edge loader",
                 L"Edge initialisation error", MB_OK | MB_ICONERROR);
+        else
+            try
+            {
+                OleCheck(AResult);
+            }
+            catch (Exception &e)
+            {
+                String msg;
+                msg.sprintf(L"Failed to initialise Edge: %s", e.Message.c_str());
+                Application->MessageBox(
+                    msg.c_str(),
+                    L"Edge initialisation error", MB_OK | MB_ICONERROR);
+            }
     }
 }
 

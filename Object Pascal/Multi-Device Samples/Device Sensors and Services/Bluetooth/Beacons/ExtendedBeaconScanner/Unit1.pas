@@ -57,6 +57,8 @@ type
     procedure Beacon1NewBLEScanFilter(const Sender: TObject;
       AKindofScanFilter: TKindofScanFilter;
       const ABluetoothLEScanFilter: TBluetoothLEScanFilter);
+  private const
+    LOCATION_PERMISSION = 'android.permission.ACCESS_FINE_LOCATION';
   private
     FBeacon : IBeacon;
     FRssiToDistance: TRssiToDistance;
@@ -75,6 +77,9 @@ var
 implementation
 
 {$R *.fmx}
+
+uses
+  System.Permissions;
 
 //procedure TForm1.Beacon1CalculateDistances(const Sender: TObject;
 //  const ABeacon: IBeacon; ATxPower, ARssi: Integer; var NewDistance: Double);
@@ -117,16 +122,22 @@ begin
 //  Listbox1.Clear;
   Beacon1.Mode := GetScanningModeChecked;
   Beacon1.ModeExtended := GetKindOfBeaconsChecked;
-  if not(Beacon1.Enabled) then
-  begin
-    Beacon1.Enabled := True;
-  end
-  else
-  begin
-    Beacon1.StartScan;
-  end;
 
-  Timer1.Enabled := True;
+  PermissionsService.RequestPermissions([LOCATION_PERMISSION],
+    procedure(const Permissions: TArray<string>; const GrantResults: TArray<TPermissionStatus>)
+    begin
+      if (Length(GrantResults) = 1) and (GrantResults[0] = TPermissionStatus.Granted) then
+      begin
+        if not Beacon1.Enabled then
+          Beacon1.Enabled := True
+        else
+          Beacon1.StartScan;
+
+        Timer1.Enabled := True;
+      end
+      else
+        ShowMessage('Beacon scanning requires the location permission');
+    end);
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);

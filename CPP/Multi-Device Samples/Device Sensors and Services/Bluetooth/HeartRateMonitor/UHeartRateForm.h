@@ -25,6 +25,7 @@
 #include <FMX.Controls.Presentation.hpp>
 #include <FMX.ScrollBox.hpp>
 #include <System.Bluetooth.Components.hpp>
+#include <FMX.Memo.Types.hpp>
 
 //---------------------------------------------------------------------------
 enum TSensorContactStatus {NonSupported, NonDetected, Detected};
@@ -71,6 +72,8 @@ __published:	// IDE-managed Components
 	void __fastcall BluetoothLE1CharacteristicRead(TObject * const Sender, TBluetoothGattCharacteristic * const ACharacteristic,
           TBluetoothGattStatus AGattStatus);
 private:	// User declarations
+	const String LOCATION_PERMISSION = "android.permission.ACCESS_FINE_LOCATION";
+
 	TBluetoothLEDevice * FBLEDevice;
 	bool FServicesDiscovered;
 

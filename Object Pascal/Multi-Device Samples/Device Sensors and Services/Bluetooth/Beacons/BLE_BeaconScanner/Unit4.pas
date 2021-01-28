@@ -98,7 +98,7 @@ begin
       end,
       procedure(const Permissions: TArray<string>; const PostRationaleProc: TProc)
       begin
-        TDialogService.ShowMessage('Please grant the location permission in order to be discover nearby Bluetooth devices',
+        TDialogService.ShowMessage('Please grant the location permission to discover nearby BLE devices',
           procedure(const AResult: TModalResult)
           begin
             PostRationaleProc;

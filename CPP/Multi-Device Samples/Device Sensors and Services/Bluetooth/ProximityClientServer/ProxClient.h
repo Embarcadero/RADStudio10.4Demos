@@ -24,6 +24,7 @@
 #include <FMX.Types.hpp>
 #include <System.Bluetooth.hpp>
 #include <FMX.ScrollBox.hpp>
+#include <FMX.Memo.Types.hpp>
 //---------------------------------------------------------------------------
 enum Position_t {poNear, poFar, poSoFar, poUnknown};
 
@@ -58,6 +59,8 @@ __published:	// IDE-managed Components
 	void __fastcall btnScanClick(TObject *Sender);
 	void __fastcall tmrReadRSSITimer(TObject *Sender);
 private:	// User declarations
+	const String LOCATION_PERMISSION = "android.permission.ACCESS_FINE_LOCATION";
+
 	TBluetoothLEManager *FBLEManager;
 	TBluetoothLEDevice *FBLEDevice;
 	int FRatioDB;

@@ -1,4 +1,4 @@
-FireDAC.InterBase Sample[]()
+﻿FireDAC.InterBase Sample[]()
 # FireDAC.InterBase Sample 
 
 
@@ -49,7 +49,7 @@ The **InterBase** getting started sample shows how to create a temporary connect
 
 1.  Navigate to the location given above and open `GettingStarted.dproj`.
 2.  Press F9 or choose **Run > Run**.
-3.  In the `Database` field, open the following database: **C:\ProgramData\Embarcadero\InterBase\gds_db\examples\database\employee.gdb**.
+3.  To use FireDAC Demo Applications, you should install a Demo Database, following the instructions here: http://docwiki.embarcadero.com/RADStudio/Sydney/en/Demo_Databases_(FireDAC)
 
 ## Files 
 

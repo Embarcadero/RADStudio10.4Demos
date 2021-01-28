@@ -10,6 +10,7 @@
 //---------------------------------------------------------------------------
 
 #include <fmx.h>
+#include <System.Permissions.hpp>
 #pragma hdrstop
 
 #include "Unit5.h"
@@ -33,28 +34,26 @@ void __fastcall TForm5::Button1Click(TObject *Sender)
   }
   else
   {
-	FBeaconManager->StartScan();
-	Button1->Text = "STOP";
-	FisScanning = True;
+	StartScan();
   }
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm5::FormShow(TObject *Sender)
 {
-  TGUID GUID;
-  if (FBeaconManager == NULL)
+  if (!FBeaconManager)
   {
-	FBeaconManager = TBeaconManager::GetBeaconManager(TBeaconScanMode::Standard);
-	FBeaconManager->OnBeaconProximity = BeaconProximity;
+    FBeaconManager = TBeaconManager::GetBeaconManager(TBeaconScanMode::Standard);
+    FBeaconManager->OnBeaconProximity = BeaconProximity;
   }
-  GUID = StringToGUID("{B9407F30-F5F8-466E-AFF9-25556B57FE6D}");
+
+  TGUID GUID = StringToGUID("{B9407F30-F5F8-466E-AFF9-25556B57FE6D}");
 
   FBeaconManager->RegisterBeacon(GUID);
   FBeaconManager->CalcMode = TBeaconCalcMode::Raw;
   FBeaconManager->ScanningTime = 109;
   FBeaconManager->ScanningSleepingTime = 15;
-  FBeaconManager->StartScan();
-  FisScanning = True;
+
+  StartScan();
 }
 //---------------------------------------------------------------------------
 
@@ -85,5 +84,24 @@ void __fastcall TForm5::BeaconProximity(System::TObject* const Sender, _di_IBeac
 	_di_TThreadProcedure mtp = new MyThreadProcedure(ABeacon, Proximity);
 	System::Classes::TThread::Synchronize(NULL, mtp);
   }
+}
+//---------------------------------------------------------------------------
+void TForm5::StartScan()
+{
+  PermissionsService()->RequestPermissions({ LOCATION_PERMISSION },
+    [this](const DynamicArray<String> Permissions, const DynamicArray<TPermissionStatus> GrantResults)
+    {
+      if (GrantResults.Length == 1 && GrantResults[0] == TPermissionStatus::Granted)
+      {
+        FBeaconManager->StartScan();
+        Button1->Text = "STOP";
+        FisScanning = True;
+      }
+      else
+      {
+        Button1->Text = "START";
+        ShowMessage("Beacon scanning requires the location permission");
+      }
+    });
 }
 //---------------------------------------------------------------------------
