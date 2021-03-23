@@ -10,10 +10,6 @@
 //---------------------------------------------------------------------------
 
 #include <fmx.h>
-#ifdef __ANDROID__
-#include <Androidapi.Helpers.hpp>
-#include <Androidapi.JNI.Os.hpp>
-#endif
 #include <FMX.DialogService.hpp>
 #pragma hdrstop
 
@@ -100,13 +96,8 @@ void __fastcall TfrmAboutSensors::ListBoxItemClick(TObject *Sender) {
 	if (dynamic_cast<TListBoxItem *>(Sender)) {
 		FActiveSensor = (TCustomSensor *)dynamic_cast<TListBoxItem *>(Sender)->Data;
 		if (FActiveSensor != NULL && !FActiveSensor->Started) {
-        #ifdef __ANDROID__
             if (FActiveSensor->Category == TSensorCategory::Location) {
-                DynamicArray<String> permissions;
-                permissions.Length = 1;
-                permissions[0] = JStringToString(TJManifest_permission::JavaClass->ACCESS_FINE_LOCATION);
-
-                PermissionsService()->RequestPermissions(permissions,
+                PermissionsService()->RequestPermissions({ cLocationPermission },
                     [this](const DynamicArray<String> APermissions, const DynamicArray<TPermissionStatus> AGrantResults)
                     {
                         if ((AGrantResults.Length == 1) && (AGrantResults[0] == TPermissionStatus::Granted))
@@ -115,9 +106,8 @@ void __fastcall TfrmAboutSensors::ListBoxItemClick(TObject *Sender) {
                             TDialogService::ShowMessage("Location permission not granted");
                     });
             }
-        #else
-            FActiveSensor->Start();
-        #endif
+            else
+                FActiveSensor->Start();
 		}
 	}
 	FShowInfo = true;
@@ -399,8 +389,7 @@ String __fastcall TfrmAboutSensors::ToFormStrB(String AProp, bool AVal) {
 		return ToFormStrS(AProp, "False");
 }
 // ---------------------------------------------------------------------------
-__fastcall TfrmAboutSensors::TfrmAboutSensors(TComponent *Owner) : TForm(Owner), cBorder(10), cND("Not defined"),
-	cForm(L"  %s =\n%30s        %3.5f \n"), cFormS(L"  %s =\n%30s        %s \n") {
+__fastcall TfrmAboutSensors::TfrmAboutSensors(TComponent *Owner) : TForm(Owner) {
 }
 // ---------------------------------------------------------------------------
 String __fastcall TfrmAboutSensors::GetInfoAboutLocation(TCustomSensor *ASensor) {

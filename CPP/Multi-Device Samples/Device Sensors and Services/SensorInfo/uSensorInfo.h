@@ -14,14 +14,14 @@
 //---------------------------------------------------------------------------
 #include <System.Classes.hpp>
 #include <System.Permissions.hpp>
+#include <System.Sensors.hpp>
 #include <FMX.Controls.hpp>
+#include <FMX.Controls.Presentation.hpp>
 #include <FMX.Forms.hpp>
 #include <FMX.Layouts.hpp>
 #include <FMX.ListBox.hpp>
 #include <FMX.StdCtrls.hpp>
 #include <FMX.Types.hpp>
-#include <System.Sensors.hpp>
-#include <FMX.Controls.Presentation.hpp>
 //---------------------------------------------------------------------------
 class TfrmAboutSensors : public TForm
 {
@@ -36,10 +36,11 @@ __published:	// IDE-managed Components
 	void __fastcall lbMainItemClick(const TCustomListBox *Sender, const TListBoxItem *Item);
 	void __fastcall FormResize(TObject *Sender);
 private:	// User declarations
-	const int cBorder;
-	const String cND;
-	const String cForm;
-	const String cFormS;
+	const int cBorder = 10;
+	const String cND = "Not defined";
+	const String cForm = "  %s =\n%30s        %3.5f \n";
+	const String cFormS = "  %s =\n%30s        %s \n";
+	const String cLocationPermission = "android.permission.ACCESS_FINE_LOCATION";
 
 	TCustomSensor *FActiveSensor;
 	bool FShowInfo;

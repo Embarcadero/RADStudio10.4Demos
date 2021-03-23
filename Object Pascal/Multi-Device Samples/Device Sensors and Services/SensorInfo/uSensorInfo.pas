@@ -30,6 +30,16 @@ type
     procedure lbMainItemClick(const Sender: TCustomListBox;
       const Item: TListBoxItem);
     procedure FormResize(Sender: TObject);
+  private const
+    cBorder = 10;
+    cND = 'Not defined';
+    AllCat: TSensorCategories =
+    [TSensorCategory.Location, TSensorCategory.Environmental, TSensorCategory.Motion,
+    TSensorCategory.Orientation, TSensorCategory.Mechanical, TSensorCategory.Electrical,
+    TSensorCategory.Biometric, TSensorCategory.Light, TSensorCategory.Scanner];
+    cForm = '  %s =' + sLineBreak + '%30s        %3.5f ' + sLineBreak;
+    cFormS = '  %s =' + sLineBreak + '%30s        %s ' + sLineBreak;
+    cLocationPermission = 'android.permission.ACCESS_FINE_LOCATION';
   private
     { Private declarations }
     FShowInfo: Boolean;
@@ -76,24 +86,9 @@ implementation
 
 uses
   System.Permissions,
-{$IFDEF ANDROID}
-  Androidapi.JNI.Os,
-  Androidapi.JNI.JavaTypes,
-  Androidapi.Helpers,
-{$ENDIF}
   FMX.DialogService;
 
 {$R *.fmx}
-
-const
-  cBorder = 10;
-  cND = 'Not defined';
-  AllCat: TSensorCategories =
-  [TSensorCategory.Location, TSensorCategory.Environmental, TSensorCategory.Motion,
-  TSensorCategory.Orientation, TSensorCategory.Mechanical, TSensorCategory.Electrical,
-  TSensorCategory.Biometric, TSensorCategory.Light, TSensorCategory.Scanner];
-  cForm = '  %s =' + sLineBreak + '%30s        %3.5f ' + sLineBreak;
-  cFormS = '  %s =' + sLineBreak + '%30s        %s ' + sLineBreak;
 
 procedure TfrmAboutSensors.btnHideClick(Sender: TObject);
 begin
@@ -635,10 +630,9 @@ begin
     FActiveSensor := TCustomSensor(TListBoxItem(Sender).Data);
     if (FActiveSensor <> nil) and (not FActiveSensor.Started) then
     begin
-{$IFDEF ANDROID}
       if FActiveSensor.Category = TSensorCategory.Location then
       begin
-        PermissionsService.RequestPermissions([JStringToString(TJManifest_permission.JavaClass.ACCESS_FINE_LOCATION)],
+        PermissionsService.RequestPermissions([cLocationPermission],
           procedure(const APermissions: TArray<string>; const AGrantResults: TArray<TPermissionStatus>)
           begin
             if (Length(AGrantResults) = 1) and (AGrantResults[0] = TPermissionStatus.Granted) then
@@ -646,10 +640,9 @@ begin
             else
               TDialogService.ShowMessage('Location permission not granted');
           end)
-      end;
-{$ELSE}
-      FActiveSensor.Start;
-{$ENDIF}
+      end
+      else
+        FActiveSensor.Start;
     end;
   end;
   FShowInfo := True;
